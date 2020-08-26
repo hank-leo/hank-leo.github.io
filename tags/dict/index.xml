@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>dict on Hank&#39;s Blog</title>
+    <link>https://hank-leo.github.io/tags/dict/</link>
+    <description>Recent content in dict on Hank&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 05 Dec 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://hank-leo.github.io/tags/dict/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>字典的实际应用</title>
+      <link>https://hank-leo.github.io/post/python/%E5%AD%97%E5%85%B8%E7%9A%84%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8/</link>
+      <pubDate>Thu, 05 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hank-leo.github.io/post/python/%E5%AD%97%E5%85%B8%E7%9A%84%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8/</guid>
+      <description>1.字典排序 利用key排序 d = {&#39;d1&#39;:2, &#39;d2&#39;:4, &#39;d4&#39;:1,&#39;d3&#39;:3,} for k in sorted(d): print(k,d[k]) d1 2 d2 4 d3 3 d4 1 利用value排序：getitem d = {&#39;d1&#39;:2, &#39;d2&#39;:4, &#39;d4&#39;:1,&#39;d3&#39;:3,} for k in sorted(d,key=d.__getitem__): print(k,d[k]) d4 1 d1 2 d3 3 d2 4 反序: reverse=True d = {&#39;d1&#39;:2, &#39;d2&#39;:4, &#39;d4&#39;:1,&#39;d3&#39;:3,} for k in sorted(d,key=d.__getitem__,reverse=True): print(k,d[k]) d2 4 d3 3 d1 2 d4 1 对dict_items进行排序 d = {&#39;d1&#39;:2, &#39;d2&#39;:4, &#39;d4&#39;:1,&#39;d3&#39;:3,} res = sorted(d.items(),key=lambda d:d[1],reverse=True) print(res) [(&amp;lsquo;d2&amp;rsquo;, 4), (&amp;lsquo;d3&amp;rsquo;, 3), (&amp;lsquo;d1&amp;rsquo;, 2), (&amp;lsquo;d4&amp;rsquo;, 1)] 2.两个字典（dict）合并 dict1 = { &amp;quot;name&amp;quot;:&amp;quot;owen&amp;quot;, &amp;quot;age&amp;quot;:</description>
+    </item>
+    
+  </channel>
+</rss>

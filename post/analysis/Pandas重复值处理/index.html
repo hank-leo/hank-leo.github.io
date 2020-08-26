@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Pandas重复值处理 | Hank&#39;s Blog</title>
+    <meta property="og:title" content="Pandas重复值处理 - Hank&#39;s Blog">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2019-12-04T00:00:00&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2019-12-04T00:00:00&#43;08:00'>
+        
+    <meta name="Keywords" content="[pandas]">
+    <meta name="description" content="Pandas重复值处理">
+        
+    <meta name="author" content="Hank">
+    <meta property="og:url" content="https://hank-leo.github.io/post/analysis/Pandas%E9%87%8D%E5%A4%8D%E5%80%BC%E5%A4%84%E7%90%86/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+        <link rel="stylesheet" href='/css/douban.css'>
+    
+        <link rel="stylesheet" href='/css/other.css'>
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://hank-leo.github.io">
+                        Hank&#39;s Blog
+                    </a>
+                
+                <p class="description">专注于Python、JavaScript、SQL、爬虫、数据分析与挖掘</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://hank-leo.github.io">首页</a>
+                    
+                    <a  href="https://hank-leo.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://hank-leo.github.io/tags/" title="标签">标签</a>
+                    
+                    <a  href="https://hank-leo.github.io/categories/" title="分类">分类</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#生成数据">生成数据</a></li>
+        <li><a href="#判断数据">判断数据</a></li>
+        <li><a href="#删除重复的数据">删除重复的数据</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">Pandas重复值处理</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年12月4日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://hank-leo.github.io/categories/Pandas%E5%AD%A6%E4%B9%A0'>Pandas学习</a></span>
+            
+        </div>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="post-content">
+            <p><strong>导包</strong></p>
+<pre><code>import pandas as pd
+</code></pre><h3 id="生成数据">生成数据</h3>
+<pre><code>data1,data2,data3,data4=['a',3],['b',2],['a',3],['c',2]
+df=pd.DataFrame([data1,data2,data3,data4],columns=['col1','col2'])
+print(df)
+</code></pre><blockquote>
+<p>col1  col2<br>
+0    a     3<br>
+1    b     2<br>
+2    a     3<br>
+3    c     2</p>
+</blockquote>
+<h3 id="判断数据">判断数据</h3>
+<pre><code>isDuplicated=df.duplicated() #判断重复数据记录
+print(isDuplicated)
+</code></pre><blockquote>
+<p>0    False<br>
+1    False<br>
+2     True<br>
+3    False<br>
+dtype: bool</p>
+</blockquote>
+<h3 id="删除重复的数据">删除重复的数据</h3>
+<pre><code>print(df.drop_duplicates()) #删除所有列值相同的记录，index为2的记录行被删除
+</code></pre><blockquote>
+<p>col1  col2<br>
+0    a     3<br>
+1    b     2<br>
+3    c     2</p>
+</blockquote>
+<pre><code>#删除col1列值相同的记录，index为2的记录行被删除
+print(df.drop_duplicates(['col1'])) 
+</code></pre><blockquote>
+<p>col1  col2<br>
+0    a     3<br>
+1    b     2<br>
+3    c     2</p>
+</blockquote>
+<pre><code>#删除col2列值相同的记录，index为2和3的记录行被删除
+print(df.drop_duplicates(['col2'])) 
+</code></pre><blockquote>
+<p>col1  col2<br>
+0    a     3<br>
+1    b     2</p>
+</blockquote>
+<pre><code>#删除指定列（col1和col2）值相同的记录，index为2的记录行被删除
+print(df.drop_duplicates(['col1','col2'])) 
+</code></pre><blockquote>
+<p>col1  col2<br>
+0    a     3<br>
+1    b     2<br>
+3    c     2</p>
+</blockquote>
+
+        </div>
+
+        
+<div class="post-archive">
+    <ul class="post-copyright">
+        <li><strong>原文作者：</strong><a rel="author" href="https://hank-leo.github.io">Hank</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://hank-leo.github.io/post/analysis/Pandas%E9%87%8D%E5%A4%8D%E5%80%BC%E5%A4%84%E7%90%86/">https://hank-leo.github.io/post/analysis/Pandas%E9%87%8D%E5%A4%8D%E5%80%BC%E5%A4%84%E7%90%86/</a></li>
+        <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
+    </ul>
+</div>
+<br/>
+
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/post/analysis/Pandas%E5%BC%82%E5%B8%B8%E5%80%BC%E5%A4%84%E7%90%86/">Pandas异常值处理</a></li>
+        
+        <li><a href="/post/analysis/Pandas%E7%BC%BA%E5%A4%B1%E5%80%BC%E5%A4%84%E7%90%86/">Pandas缺失值处理</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            <ul class="clearfix">
+                
+                <li><a href='https://hank-leo.github.io/tags/pandas'>pandas</a></li>
+                
+            </ul>
+            
+        </div>
+    </article>
+    
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yourdiscussshortname" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "https://github.com/hank-leo/hank-leo.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2020 <a href="https://hank-leo.github.io">Hank&#39;s Blog By Hank</a>
+        
+    </div>
+    <br />
+    <div>
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='/js/douban.js'></script>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://hank-leo.github.io/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://hank-leo.github.io">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://hank-leo.github.io/post/python/python%E7%BB%83%E4%B9%A0/" title="Python练习">Python练习</a>
+    </li>
+    
+    <li>
+        <a href="https://hank-leo.github.io/post/python/Python%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Python面试题">Python面试题</a>
+    </li>
+    
+    <li>
+        <a href="https://hank-leo.github.io/post/spider/%E7%88%AC%E8%99%AB%E9%9D%A2%E8%AF%95%E9%A2%98/" title="爬虫面试题">爬虫面试题</a>
+    </li>
+    
+    <li>
+        <a href="https://hank-leo.github.io/post/blog/%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" title="使用hexo搭建个人博客">使用hexo搭建个人博客</a>
+    </li>
+    
+    <li>
+        <a href="https://hank-leo.github.io/post/scrapy/Scrapy%E6%A1%86%E6%9E%B6-Scrapy&#43;MongoDB%E5%AE%9E%E6%88%98%E6%8A%93%E5%8F%96%E5%B9%B6%E4%BF%9D%E5%AD%98IT%E4%B9%8B%E5%AE%B6%E5%8D%9A%E5%AE%A2%E6%96%B0%E9%97%BB/" title="Scrapy框架:Scrapy&#43;MongoDB实战:抓取并保存IT之家博客新闻">Scrapy框架:Scrapy&#43;MongoDB实战:抓取并保存IT之家博客新闻</a>
+    </li>
+    
+    <li>
+        <a href="https://hank-leo.github.io/post/scrapy/Scrapy%E6%A1%86%E6%9E%B6%E9%80%9A%E7%94%A8%E7%88%AC%E8%99%AB/" title="Scrapy框架:通用爬虫">Scrapy框架:通用爬虫</a>
+    </li>
+    
+    <li>
+        <a href="https://hank-leo.github.io/post/app/%E4%BD%BF%E7%94%A8Airtest%E8%BF%9B%E8%A1%8CApp%E7%88%AC%E8%99%AB/" title="使用Airtest进行App爬虫">使用Airtest进行App爬虫</a>
+    </li>
+    
+    <li>
+        <a href="https://hank-leo.github.io/post/spider/%E5%AD%98%E5%82%A8%E6%95%B0%E6%8D%AE%E4%B9%8Bexcel/" title="存储数据之excel">存储数据之excel</a>
+    </li>
+    
+    <li>
+        <a href="https://hank-leo.github.io/post/spider/%E8%A7%A3%E6%9E%90%E4%B8%8E%E6%8F%90%E5%8F%96%E6%95%B0%E6%8D%AE%E4%B9%8Bre/" title="解析与提取数据之re">解析与提取数据之re</a>
+    </li>
+    
+    <li>
+        <a href="https://hank-leo.github.io/post/spider/%E8%A7%A3%E6%9E%90%E4%B8%8E%E6%8F%90%E5%8F%96%E6%95%B0%E6%8D%AE%E4%B9%8Bxpath/" title="解析与提取数据之xpath">解析与提取数据之xpath</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href="/categories">分类</a></h3>
+<ul class="widget-list">
+    
+    <li><a href="https://hank-leo.github.io/categories/App%E7%88%AC%E8%99%AB/">App爬虫 (1)</a></li>
+    
+    <li><a href="https://hank-leo.github.io/categories/Pandas%E5%AD%A6%E4%B9%A0/">Pandas学习 (3)</a></li>
+    
+    <li><a href="https://hank-leo.github.io/categories/Python%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8/">Python实际应用 (6)</a></li>
+    
+    <li><a href="https://hank-leo.github.io/categories/Scrapy%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/">Scrapy框架学习 (11)</a></li>
+    
+    <li><a href="https://hank-leo.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建 (2)</a></li>
+    
+    <li><a href="https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0/">数据库学习 (2)</a></li>
+    
+    <li><a href="https://hank-leo.github.io/categories/%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0/">爬虫学习 (3)</a></li>
+    
+    <li><a href="https://hank-leo.github.io/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题 (2)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href="/tags">标签</a></h3>
+<div class="tagcloud">
+    
+    <a href="https://hank-leo.github.io/tags/MongoDB/">MongoDB</a>
+    
+    <a href="https://hank-leo.github.io/tags/MySQL/">MySQL</a>
+    
+    <a href="https://hank-leo.github.io/tags/Scrapy/">Scrapy</a>
+    
+    <a href="https://hank-leo.github.io/tags/airtest/">airtest</a>
+    
+    <a href="https://hank-leo.github.io/tags/dict/">dict</a>
+    
+    <a href="https://hank-leo.github.io/tags/excel/">excel</a>
+    
+    <a href="https://hank-leo.github.io/tags/hexo/">hexo</a>
+    
+    <a href="https://hank-leo.github.io/tags/hugo/">hugo</a>
+    
+    <a href="https://hank-leo.github.io/tags/list/">list</a>
+    
+    <a href="https://hank-leo.github.io/tags/pandas/">pandas</a>
+    
+    <a href="https://hank-leo.github.io/tags/re/">re</a>
+    
+    <a href="https://hank-leo.github.io/tags/regex/">regex</a>
+    
+    <a href="https://hank-leo.github.io/tags/string/">string</a>
+    
+    <a href="https://hank-leo.github.io/tags/xpath/">xpath</a>
+    
+    <a href="https://hank-leo.github.io/tags/%E7%88%AC%E8%99%AB/">爬虫</a>
+    
+</div>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title">友情链接</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a target="_blank" href="http://cnblogs.hankleo.com" title="博客园">博客园</a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://hank-leo.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

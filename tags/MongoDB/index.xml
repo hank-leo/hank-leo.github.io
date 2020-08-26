@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MongoDB on Hank&#39;s Blog</title>
+    <link>https://hank-leo.github.io/tags/MongoDB/</link>
+    <description>Recent content in MongoDB on Hank&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 05 Dec 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://hank-leo.github.io/tags/MongoDB/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>MongoDB的实际应用</title>
+      <link>https://hank-leo.github.io/post/sql/MongoDB%E7%9A%84%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8/</link>
+      <pubDate>Thu, 05 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hank-leo.github.io/post/sql/MongoDB%E7%9A%84%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8/</guid>
+      <description>MongoDB基本操作 1.数据库操作 使用use DATABASE_NAME创建数据库 use maitian 如果数据库不存在，就创建数据库，否则切换到指定的数据库 使用show dbs查看所有数据库 show dbs 使用db.dropDatabase()删除数据库 use maitian db.dropDatabase() 2.集合操作 在maitian数据库中创建名为zuf</description>
+    </item>
+    
+  </channel>
+</rss>

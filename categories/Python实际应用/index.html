@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Python实际应用 | Hank&#39;s Blog</title>
+    <meta property="og:title" content="Python实际应用 - Hank&#39;s Blog">
+    <meta property="og:type" content="article">
+        
+        
+    <meta name="Keywords" content="Hank,博客,python">
+    <meta name="description" content="Python实际应用">
+        
+    <meta name="author" content="Hank">
+    <meta property="og:url" content="https://hank-leo.github.io/categories/Python%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <link rel="alternate" type="application/rss+xml+xml" href="https://hank-leo.github.io/categories/Python%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8/index.xml" title="Hank's Blog" />
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+        <link rel="stylesheet" href='/css/douban.css'>
+    
+        <link rel="stylesheet" href='/css/other.css'>
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://hank-leo.github.io">
+                        Hank&#39;s Blog
+                    </a>
+                
+                <p class="description">专注于Python、JavaScript、SQL、爬虫、数据分析与挖掘</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="" href="https://hank-leo.github.io">首页</a>
+                    
+                    <a  href="https://hank-leo.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://hank-leo.github.io/tags/" title="标签">标签</a>
+                    
+                    <a  href="https://hank-leo.github.io/categories/" title="分类">分类</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    
+    <h3 class="archive-title">
+        分类
+        <span class="keyword">Python实际应用</span>
+        中的文章
+    </h3>
+    
+
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://hank-leo.github.io/post/python/python%E7%BB%83%E4%B9%A0/">Python练习</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年12月11日
+        </date>
+        
+        <div class="post-meta meta-category">
+            |
+            
+            <a href='https://hank-leo.github.io/categories/Python%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8'>Python实际应用</a>
+            
+        </div>
+        
+        <div class="post-content">
+            实例001：数字组合 题目： 有四个数字：1、2、3、4，能组成多少个互不相同且无重复数字的三位数？各是多少？ 程序分析： 遍历全部可能，把有重复的剃掉。 total=0 for i in range(1,5): for j in range(1,5): for k in range(1,5): if ((i!=j)and(j!=k)and(k!=i)): print(i,j,k) total+=1 print(total) 简便方法： 用itertools中的permutations即可。 import itertools sum2=0 a=[1,2,3,4] for i in itertools.permutations(a,3): print(i) sum2+=1 print(sum2) 实例002：……
+            <p class="readmore"><a href="https://hank-leo.github.io/post/python/python%E7%BB%83%E4%B9%A0/">阅读全文</a></p>
+        </div>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://hank-leo.github.io/post/python/xpath%E7%9A%84%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8/">Xpath的实际应用</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年12月5日
+        </date>
+        
+        <div class="post-meta meta-category">
+            |
+            
+            <a href='https://hank-leo.github.io/categories/Python%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8'>Python实际应用</a>
+            
+        </div>
+        
+        <div class="post-content">
+            xpath中使用contains xpath(span[contanins(@class, 'xxx')]) Xpath如何选择不包含某一个属性的节点? 这里可以用到 not 例如排除一个属性的节点可以使用 //tbody/tr[not(@class)] 排除一个或者两个属性可以使用 //tbody/tr[not(@class or @id)] xpath按序选择 有时候我们在选择的时候可能某些属性同时匹配了多个节点，但是我们只想要其中的某个节点，如第二个节点，或者最……
+            <p class="readmore"><a href="https://hank-leo.github.io/post/python/xpath%E7%9A%84%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8/">阅读全文</a></p>
+        </div>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://hank-leo.github.io/post/python/%E5%88%97%E8%A1%A8%E7%9A%84%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8/">列表的实际应用</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年12月5日
+        </date>
+        
+        <div class="post-meta meta-category">
+            |
+            
+            <a href='https://hank-leo.github.io/categories/Python%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8'>Python实际应用</a>
+            
+        </div>
+        
+        <div class="post-content">
+            列表合并保留最大长度 import itertools w, x, y, z = [], [1], [2, 3], [4, 5, 6] longest_wxyz = itertools.zip_longest(w, x, y, z) print(list(longest_wxyz)) 结果: [(None, 1, 2, 4), (None, None, 3, 5), (None, None, None, 6)] 列表元素替换 lst = ['1','2','3'] rep = ['4' if x == '2' else x for x in lst] print(rep) 结果: [&lsquo;1&rsquo;, &lsquo;4&rsquo;, &lsquo;3&rsquo;] 列表进行去重操作 一般的去重操作后是出现乱序的情况 t=['8','7','2','中国','China','中国','1','4']……
+            <p class="readmore"><a href="https://hank-leo.github.io/post/python/%E5%88%97%E8%A1%A8%E7%9A%84%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8/">阅读全文</a></p>
+        </div>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://hank-leo.github.io/post/python/%E5%AD%97%E5%85%B8%E7%9A%84%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8/">字典的实际应用</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年12月5日
+        </date>
+        
+        <div class="post-meta meta-category">
+            |
+            
+            <a href='https://hank-leo.github.io/categories/Python%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8'>Python实际应用</a>
+            
+        </div>
+        
+        <div class="post-content">
+            1.字典排序 利用key排序 d = {'d1':2, 'd2':4, 'd4':1,'d3':3,} for k in sorted(d): print(k,d[k]) d1 2 d2 4 d3 3 d4 1 利用value排序：getitem d = {'d1':2, 'd2':4, 'd4':1,'d3':3,} for k in sorted(d,key=d.__getitem__): print(k,d[k]) d4 1 d1 2 d3 3 d2 4 反序: reverse=True d = {'d1':2, 'd2':4, 'd4':1,'d3':3,} for k in sorted(d,key=d.__getitem__,reverse=True): print(k,d[k]) d2 4 d3 3 d1 2 d4 1 对dict_items进行排序 d = {'d1':2, 'd2':4, 'd4':1,'d3':3,} res = sorted(d.items(),key=lambda d:d[1],reverse=True) print(res) [(&lsquo;d2&rsquo;, 4), (&lsquo;d3&rsquo;, 3), (&lsquo;d1&rsquo;, 2), (&lsquo;d4&rsquo;, 1)] 2.两个字典（dict）合并 dict1 = { &quot;name&quot;:&quot;owen&quot;, &quot;age&quot;:……
+            <p class="readmore"><a href="https://hank-leo.github.io/post/python/%E5%AD%97%E5%85%B8%E7%9A%84%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8/">阅读全文</a></p>
+        </div>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://hank-leo.github.io/post/python/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8/">字符串的实际应用</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年12月5日
+        </date>
+        
+        <div class="post-meta meta-category">
+            |
+            
+            <a href='https://hank-leo.github.io/categories/Python%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8'>Python实际应用</a>
+            
+        </div>
+        
+        <div class="post-content">
+            1.判断字符串是否为小数 try: lat = float(location.split(',')[1]) lon = float(location.split(',')[0]) except ValueError: print('no number') 2.用split对字符串进行分割 str='storeId=ff8080816277aa0a0162845d48e3012b&amp;appid=wxe37b2e703155ed41&amp;transId=wxe37b2e703155ed412019-05-09%2010%3A28%3A15&amp;sign=dc8fac903b03556247659e1b548bccce&amp;timestamp=2019-05-09%2010%3A28%3A15&amp;memberId=ff8080816a889e71016a9a68a6c55a37&amp;cliqueId=-1&amp;cliqueMemberId=-1&amp;useClique=0&amp;enterpriseId=ff808081624e60f601625c50a30900ce&amp;unionid=oLWn80pR0DtSJXfnO_1O4ZOzfvAE&amp;openid=oZe8D5gmPcPANw4kNNcG8mlAW1mI&amp;launchOptions=%7B%22path%22%3A%22%2Fpages%2Fmall%2Fmall-index%2Fmall-index%22%2C%22query%22%3A%7B%7D%2C%22scene%22%3A1102%2C%22referrerInfo%22%3A%7B%22appId%22%3A%22wx97e5123eb6041454%22%7D%7D' str2=str.split('&amp;') for i in str2: print('&quot;'+i.split('=')[0]+'&quot;:&quot;'+i.split('=')[1]+'&quot;,') 结果如下： &ldquo;storeId&rdquo;:&ldquo;ff8080816277aa0a0162845d48e3012b&rdquo;, &ldquo;appid&rdquo;:&ldquo;wxe37b2e703155ed41&rdquo;, &ldquo;transId&rdquo;:&ldquo;wxe37b2e703155ed412019-05-09%2010%3A28%3A15&rdquo;, &ldquo;sign&rdquo;:&ldquo;dc8fac903b03556247659e1b548bccce&rdquo;, &ldquo;timestamp&rdquo;:&ldquo;2019-05-09%2010%3A28%3A15&rdquo;, &ldquo;memberId&rdquo;:&ldquo;ff8080816a889e71016a9a68a6c55a37&rdquo;, &ldquo;cliqueId&rdquo;:&quot;-1&rdquo;, &ldquo;cliqueMemberId&rdquo;:&quot;-1&rdquo;, &ldquo;useClique&rdquo;:&ldquo;0&rdquo;, &ldquo;enterpriseId&rdquo;:&ldquo;ff808081624e60f601625c50a30900ce&rdquo;, &ldquo;unionid&rdquo;:&ldquo;oLWn80pR0DtSJXfnO_1O4ZOzfvAE&rdquo;, &ldquo;openid&rdquo;:&ldquo;oZe8D5gmPcPANw4kNNcG8mlAW1mI&rdquo;, &ldquo;launchOptions&rdquo;:&quot;%7B%22path%22%3A%22%2Fpages%2Fmall%2Fmall-index%2Fmall-index%22%2C%22query%22%3A%7B%7D%2C%22scene%22%3A1102%2C%22referrerInfo%22%3A%7B%22appId%22%3A%22wx97e5123eb6041454%22%7D%7D&rdquo;, 3.python检测字符串乱码 import chardet f=open('test.txt','rb') f_read=f.read() f_charInfo=chardet.detect(f_read) print(f_charInfo) # f_charInfo的输出是这样的的一个字典{'confidence': 0.99, 'encoding': 'utf-8'} 4.将逗号分隔的字符串转换为P……
+            <p class="readmore"><a href="https://hank-leo.github.io/post/python/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8/">阅读全文</a></p>
+        </div>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://hank-leo.github.io/post/python/%E6%AD%A3%E5%88%99%E7%9A%84%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8/">正则的实际应用</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年12月5日
+        </date>
+        
+        <div class="post-meta meta-category">
+            |
+            
+            <a href='https://hank-leo.github.io/categories/Python%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8'>Python实际应用</a>
+            
+        </div>
+        
+        <div class="post-content">
+            grep hank@hank:~$ cat grep.txt ooxx121212121ooxx ooxx 12121212 oox 12121212 1212 ooxx 1212 oo3xx oo4xx ooWxx oomxx $ooxx oo1234xx ooxyzxx hank@hank:~$ grep &quot;ooxx&quot; grep.txt ooxx121212121ooxx ooxx 12121212 1212 ooxx 1212 $ooxx hank@hank:~$ grep &quot;[34]&quot; grep.txt oo3xx oo4xx oo1234xx hank@hank:~$ grep &quot;[0-9]\{4\}&quot; grep.txt ooxx121212121ooxx ooxx 12121212 oox 12121212 1212 ooxx 1212 oo1234xx hank@hank:~$ grep -E &quot;[0-9]{4}&quot; grep.txt ooxx121212121ooxx ooxx 12121212 oox 12121212 1212 ooxx 1212 oo1234xx hank@hank:~$ grep &quot;\&lt;ooxx\&gt;&quot; grep.txt ooxx 12121212 1212 ooxx 1212 $ooxx hank@hank:~$ grep &quot;[^0-9][0-9]\{4\}[^0-9]&quot; grep.txt oo1234xx hank@hank:~$ grep &quot;\(^[0-9]\|[^0-9][0-9]\)[0-9]\{2\}\([0-9]$\|[0-9][^0-9]\)&quot; grep.txt 1212 ooxx 1212 oo1234xx hank@hank:~$ grep -E &quot;(^[0-9]|[^0-9][0-9])[0-9]{2}([0-9]$|[0-9][^0-9])&quot; grep.txt 1212 ooxx 1212 oo1234xx……
+            <p class="readmore"><a href="https://hank-leo.github.io/post/python/%E6%AD%A3%E5%88%99%E7%9A%84%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8/">阅读全文</a></p>
+        </div>
+    </article>
+    
+
+    
+
+
+
+
+
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2020 <a href="https://hank-leo.github.io">Hank&#39;s Blog By Hank</a>
+        
+    </div>
+    <br />
+    <div>
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='/js/douban.js'></script>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://hank-leo.github.io/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://hank-leo.github.io">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://hank-leo.github.io/post/python/python%E7%BB%83%E4%B9%A0/" title="Python练习">Python练习</a>
+    </li>
+    
+    <li>
+        <a href="https://hank-leo.github.io/post/python/Python%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Python面试题">Python面试题</a>
+    </li>
+    
+    <li>
+        <a href="https://hank-leo.github.io/post/spider/%E7%88%AC%E8%99%AB%E9%9D%A2%E8%AF%95%E9%A2%98/" title="爬虫面试题">爬虫面试题</a>
+    </li>
+    
+    <li>
+        <a href="https://hank-leo.github.io/post/blog/%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" title="使用hexo搭建个人博客">使用hexo搭建个人博客</a>
+    </li>
+    
+    <li>
+        <a href="https://hank-leo.github.io/post/scrapy/Scrapy%E6%A1%86%E6%9E%B6-Scrapy&#43;MongoDB%E5%AE%9E%E6%88%98%E6%8A%93%E5%8F%96%E5%B9%B6%E4%BF%9D%E5%AD%98IT%E4%B9%8B%E5%AE%B6%E5%8D%9A%E5%AE%A2%E6%96%B0%E9%97%BB/" title="Scrapy框架:Scrapy&#43;MongoDB实战:抓取并保存IT之家博客新闻">Scrapy框架:Scrapy&#43;MongoDB实战:抓取并保存IT之家博客新闻</a>
+    </li>
+    
+    <li>
+        <a href="https://hank-leo.github.io/post/scrapy/Scrapy%E6%A1%86%E6%9E%B6%E9%80%9A%E7%94%A8%E7%88%AC%E8%99%AB/" title="Scrapy框架:通用爬虫">Scrapy框架:通用爬虫</a>
+    </li>
+    
+    <li>
+        <a href="https://hank-leo.github.io/post/app/%E4%BD%BF%E7%94%A8Airtest%E8%BF%9B%E8%A1%8CApp%E7%88%AC%E8%99%AB/" title="使用Airtest进行App爬虫">使用Airtest进行App爬虫</a>
+    </li>
+    
+    <li>
+        <a href="https://hank-leo.github.io/post/spider/%E5%AD%98%E5%82%A8%E6%95%B0%E6%8D%AE%E4%B9%8Bexcel/" title="存储数据之excel">存储数据之excel</a>
+    </li>
+    
+    <li>
+        <a href="https://hank-leo.github.io/post/spider/%E8%A7%A3%E6%9E%90%E4%B8%8E%E6%8F%90%E5%8F%96%E6%95%B0%E6%8D%AE%E4%B9%8Bre/" title="解析与提取数据之re">解析与提取数据之re</a>
+    </li>
+    
+    <li>
+        <a href="https://hank-leo.github.io/post/spider/%E8%A7%A3%E6%9E%90%E4%B8%8E%E6%8F%90%E5%8F%96%E6%95%B0%E6%8D%AE%E4%B9%8Bxpath/" title="解析与提取数据之xpath">解析与提取数据之xpath</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href="/categories">分类</a></h3>
+<ul class="widget-list">
+    
+    <li><a href="https://hank-leo.github.io/categories/App%E7%88%AC%E8%99%AB/">App爬虫 (1)</a></li>
+    
+    <li><a href="https://hank-leo.github.io/categories/Pandas%E5%AD%A6%E4%B9%A0/">Pandas学习 (3)</a></li>
+    
+    <li><a href="https://hank-leo.github.io/categories/Python%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8/">Python实际应用 (6)</a></li>
+    
+    <li><a href="https://hank-leo.github.io/categories/Scrapy%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/">Scrapy框架学习 (11)</a></li>
+    
+    <li><a href="https://hank-leo.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建 (2)</a></li>
+    
+    <li><a href="https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0/">数据库学习 (2)</a></li>
+    
+    <li><a href="https://hank-leo.github.io/categories/%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0/">爬虫学习 (3)</a></li>
+    
+    <li><a href="https://hank-leo.github.io/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题 (2)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href="/tags">标签</a></h3>
+<div class="tagcloud">
+    
+    <a href="https://hank-leo.github.io/tags/MongoDB/">MongoDB</a>
+    
+    <a href="https://hank-leo.github.io/tags/MySQL/">MySQL</a>
+    
+    <a href="https://hank-leo.github.io/tags/Scrapy/">Scrapy</a>
+    
+    <a href="https://hank-leo.github.io/tags/airtest/">airtest</a>
+    
+    <a href="https://hank-leo.github.io/tags/dict/">dict</a>
+    
+    <a href="https://hank-leo.github.io/tags/excel/">excel</a>
+    
+    <a href="https://hank-leo.github.io/tags/hexo/">hexo</a>
+    
+    <a href="https://hank-leo.github.io/tags/hugo/">hugo</a>
+    
+    <a href="https://hank-leo.github.io/tags/list/">list</a>
+    
+    <a href="https://hank-leo.github.io/tags/pandas/">pandas</a>
+    
+    <a href="https://hank-leo.github.io/tags/re/">re</a>
+    
+    <a href="https://hank-leo.github.io/tags/regex/">regex</a>
+    
+    <a href="https://hank-leo.github.io/tags/string/">string</a>
+    
+    <a href="https://hank-leo.github.io/tags/xpath/">xpath</a>
+    
+    <a href="https://hank-leo.github.io/tags/%E7%88%AC%E8%99%AB/">爬虫</a>
+    
+</div>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title">友情链接</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a target="_blank" href="http://cnblogs.hankleo.com" title="博客园">博客园</a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://hank-leo.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

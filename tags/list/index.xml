@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>list on Hank&#39;s Blog</title>
+    <link>https://hank-leo.github.io/tags/list/</link>
+    <description>Recent content in list on Hank&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 05 Dec 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://hank-leo.github.io/tags/list/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>列表的实际应用</title>
+      <link>https://hank-leo.github.io/post/python/%E5%88%97%E8%A1%A8%E7%9A%84%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8/</link>
+      <pubDate>Thu, 05 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hank-leo.github.io/post/python/%E5%88%97%E8%A1%A8%E7%9A%84%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8/</guid>
+      <description>列表合并保留最大长度 import itertools w, x, y, z = [], [1], [2, 3], [4, 5, 6] longest_wxyz = itertools.zip_longest(w, x, y, z) print(list(longest_wxyz)) 结果: [(None, 1, 2, 4), (None, None, 3, 5), (None, None, None, 6)] 列表元素替换 lst = [&#39;1&#39;,&#39;2&#39;,&#39;3&#39;] rep = [&#39;4&#39; if x == &#39;2&#39; else x for x in lst] print(rep) 结果: [&amp;lsquo;1&amp;rsquo;, &amp;lsquo;4&amp;rsquo;, &amp;lsquo;3&amp;rsquo;] 列表进行去重操作 一般的去重操作后是出现乱序的情况 t=[&#39;8&#39;,&#39;7&#39;,&#39;2&#39;,&#39;中国&#39;,&#39;China&#39;,&#39;中国&#39;,&#39;1&#39;,&#39;4&#39;]</description>
+    </item>
+    
+  </channel>
+</rss>

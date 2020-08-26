@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>hugo on Hank&#39;s Blog</title>
+    <link>https://hank-leo.github.io/tags/hugo/</link>
+    <description>Recent content in hugo on Hank&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 05 Dec 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://hank-leo.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>使用hugo搭建个人博客</title>
+      <link>https://hank-leo.github.io/post/blog/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link>
+      <pubDate>Thu, 05 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hank-leo.github.io/post/blog/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid>
+      <description>安装 在这个页面下载安装https://github.com/gohugoio/hugo/releases 下载完成后解压，将解压出来的可执行文件，放到自定义目录下，并将选择的路径放入环境变量path中 初始化 下面开始存放我们的博客，在选好的路径下执行 hugo new site ihankleo.github.io 命令执行完会创建一个名为m</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>airtest on Hank&#39;s Blog</title>
+    <link>https://hank-leo.github.io/tags/airtest/</link>
+    <description>Recent content in airtest on Hank&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 06 Dec 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://hank-leo.github.io/tags/airtest/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>使用Airtest进行App爬虫</title>
+      <link>https://hank-leo.github.io/post/app/%E4%BD%BF%E7%94%A8Airtest%E8%BF%9B%E8%A1%8CApp%E7%88%AC%E8%99%AB/</link>
+      <pubDate>Fri, 06 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hank-leo.github.io/post/app/%E4%BD%BF%E7%94%A8Airtest%E8%BF%9B%E8%A1%8CApp%E7%88%AC%E8%99%AB/</guid>
+      <description>前言 Airtest是网易开发的手机UI戒面自动化测试工具， 安装 从Airtest官网 : https://airtest.netease.com 下载Airtest，然后像安装普通软件一样安装即可。 手机连接 启动Airtest以后，把Android手机连接到电脑上，点击下图方框中的refresh ADB 然后点击connect按钮 开始爬虫 以某品牌咖</description>
+    </item>
+    
+  </channel>
+</rss>
