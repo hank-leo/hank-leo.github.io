@@ -6,10 +6,19 @@
     <description>Recent content in 博客搭建 on Hank&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 06 Dec 2019 21:23:32 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 26 Aug 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://hank-leo.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>使用Github Actions搭建hugo</title>
+      <link>https://hank-leo.github.io/post/blog/%E4%BD%BF%E7%94%A8Github-Actions%E6%90%AD%E5%BB%BAhugo/</link>
+      <pubDate>Wed, 26 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hank-leo.github.io/post/blog/%E4%BD%BF%E7%94%A8Github-Actions%E6%90%AD%E5%BB%BAhugo/</guid>
+      <description>前言 在本地提交文章到GitHub，会触发Github Actions把刚提交的文章通过hugo发布到github pages，之后可以通过github pages生成的url进行访问。 这里将把hugo源码和pages分别用两个仓库进行管理。 另外，这篇着重将如何使用github actio</description>
+    </item>
     
     <item>
       <title>使用hexo搭建个人博客</title>

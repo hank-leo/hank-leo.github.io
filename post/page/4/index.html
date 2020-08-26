@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Posts | Hank&#39;s Blog</title>
+    <meta property="og:title" content="Posts - Hank&#39;s Blog">
+    <meta property="og:type" content="article">
+        
+        
+    <meta name="Keywords" content="Hank,博客,python">
+    <meta name="description" content="Posts">
+        
+    <meta name="author" content="Hank">
+    <meta property="og:url" content="https://hank-leo.github.io/post/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <link rel="alternate" type="application/rss+xml+xml" href="https://hank-leo.github.io/post/index.xml" title="Hank's Blog" />
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+        <link rel="stylesheet" href='/css/douban.css'>
+    
+        <link rel="stylesheet" href='/css/other.css'>
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://hank-leo.github.io">
+                        Hank&#39;s Blog
+                    </a>
+                
+                <p class="description">专注于Python、SQL、爬虫、数据分析/挖掘/可视化</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://hank-leo.github.io">首页</a>
+                    
+                    <a  href="https://hank-leo.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://hank-leo.github.io/tags/" title="标签">标签</a>
+                    
+                    <a  href="https://hank-leo.github.io/categories/" title="分类">分类</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://hank-leo.github.io/post/scrapy/scrapy%E6%A1%86%E6%9E%B6-%E6%8A%93%E5%8F%96%E7%8C%AB%E7%9C%BC%E7%94%B5%E5%BD%B1TOP100/" title="Scrapy框架:抓取猫眼电影TOP100">Scrapy框架:抓取猫眼电影TOP100</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年12月4日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://hank-leo.github.io/categories/Scrapy%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0'>Scrapy框架学习</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            需求： 抓取的数据为电影名称、主演、上映日期、评分。将抓取的数据保存到maoyantop100.json文件，并将文件作为附件通过邮件发送给接收人。 创建项目 scrapy startproject maoyan scrapy genspider -t crawl top100 maoyan.com 编写items.py # -*- coding: utf-8 -*- import scrapy class MaoyanItem(scrapy.Item): # define the fields for your item here like: # name = scrapy.Field() # 电影名称 name = scrapy.Field() # 主演 actors = scrapy.Field() # 上映时间 releasetime = scrapy.Field()……
+        </div>
+        <p class="readmore"><a href="https://hank-leo.github.io/post/scrapy/scrapy%E6%A1%86%E6%9E%B6-%E6%8A%93%E5%8F%96%E7%8C%AB%E7%9C%BC%E7%94%B5%E5%BD%B1TOP100/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://hank-leo.github.io/post/scrapy/Scrapy%E6%A1%86%E6%9E%B6-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" title="Scrapy框架:异常处理">Scrapy框架:异常处理</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年12月4日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://hank-leo.github.io/categories/Scrapy%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0'>Scrapy框架学习</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            import scrapy from scrapy.spidermiddlewares.httperror import HttpError from twisted.internet.error import DNSLookupError from twisted.internet.error import TimeoutError, TCPTimedOutError class ErrbackSpider(scrapy.Spider): name = &quot;errback_example&quot; start_urls = [ &quot;http://www.httpbin.org/&quot;, # 正常HTTP 200返回 &quot;http://www.httpbin.org/status/404&quot;, # 404 Not found error &quot;http://www.httpbin.org/status/500&quot;, # 500服务器错误 &quot;http://www.httpbin.org:12345/&quot;, # 超时无响应错误 &quot;http://www.httphttpbinbin.org/&quot;, # DNS 错误 ] def start_requests(self): for u in self.start_urls: yield scrapy.Request(u, callback=self.parse_httpbin, errback=self.errback_httpbin, dont_filter=True) def parse_httpbin(self, response): self.logger.info('Got successful response from {}'.format(response.url)) # 其他处理. def errback_httpbin(self, failure): # 日志记录所有的异常信息 self.logger.error(repr(failure)) # 假设我们需要对指定的异常类型做处理， # 我们需要判断异常的类型 if……
+        </div>
+        <p class="readmore"><a href="https://hank-leo.github.io/post/scrapy/Scrapy%E6%A1%86%E6%9E%B6-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://hank-leo.github.io/post/scrapy/Scrapy%E6%A1%86%E6%9E%B6-%E5%85%A5%E9%97%A8%E6%A1%88%E4%BE%8B/" title="Scrapy框架:入门案例">Scrapy框架:入门案例</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年12月4日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://hank-leo.github.io/categories/Scrapy%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0'>Scrapy框架学习</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            创建项目: scrappy start project maitian 明确要抓取的字段items.py import scrapy class MaitianItem(scrapy.Item): # define the fields for your item here like: # name = scrapy.Field() title = scrapy.Field() price = scrapy.Field() area = scrapy.Field() district = scrapy.Field() 在spider目录下创建爬虫文件: zufang_spider.py 2.1 创建一个类，并继承scrapy的一个子类: scrapy.Spider 2.2 自定义爬取名, name=&quot;&quot; 后面运行框架需要用到； 2.3 定义爬取目标网址 2.4 定义scrapy的方法 下面是简……
+        </div>
+        <p class="readmore"><a href="https://hank-leo.github.io/post/scrapy/Scrapy%E6%A1%86%E6%9E%B6-%E5%85%A5%E9%97%A8%E6%A1%88%E4%BE%8B/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://hank-leo.github.io/post/scrapy/Scrapy%E6%A1%86%E6%9E%B6-settings-py/" title="Scrapy框架:Settings.py">Scrapy框架:Settings.py</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年12月4日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://hank-leo.github.io/categories/Scrapy%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0'>Scrapy框架学习</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            #Scrapy项目名字 BOT_NAME = 'segmentfault' #Scrapy搜索spider的模块列表 SPIDER_MODULES = ['segmentfault.spiders'] #使用爬虫创建命令genspider创建爬虫时生成的模块 NEWSPIDER_MODULE = 'segmentfault.spiders' #默认的USER_AGENT, 使用BOT_NAME配置生成，建议覆盖 #USER_AGNET = 'segmentfault (+http://www.yourdomain.com)' #如果启用，Scrapy则会遵守网站Rebots.txt协议，建议设……
+        </div>
+        <p class="readmore"><a href="https://hank-leo.github.io/post/scrapy/Scrapy%E6%A1%86%E6%9E%B6-settings-py/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://hank-leo.github.io/post/scrapy/Scrapy%E6%A1%86%E6%9E%B6-Request%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0/" title="Scrapy框架:Request回调函数">Scrapy框架:Request回调函数</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年12月4日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://hank-leo.github.io/categories/Scrapy%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0'>Scrapy框架学习</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            Request回调函数 def parse_page1(self, response): return scrapy.Request(&quot;http://www.example.com/some_page.html&quot;, callback=self.parse_page2) def parse_page2(self, response): # this would log http://www.example.com/some_page.html self.logger.info(&quot;Visited %s&quot;, response.url) 传递参数 def parse_page1(self, response): item = MyItem() item['name'] = response.css('.name::text').extract_first() request = scrapy.Request(&quot;http://www.example.com/some_page.html&quot;, callback=self.parse_page2) request.meta['item'] = item yield request def parse_page2(self, response): item = response.meta['item'] item['age'] = response.css('.age::text').extract_first() yield item……
+        </div>
+        <p class="readmore"><a href="https://hank-leo.github.io/post/scrapy/Scrapy%E6%A1%86%E6%9E%B6-Request%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://hank-leo.github.io/post/scrapy/Scrapy%E6%A1%86%E6%9E%B6-%E7%99%BB%E5%BD%95%E7%BD%91%E7%AB%99/" title="Scrapy框架 登录网站">Scrapy框架 登录网站</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年12月4日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://hank-leo.github.io/categories/Scrapy%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0'>Scrapy框架学习</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            使用cookies登录网站 import scrapy class LoginSpider(scrapy.Spider): name = 'login' allowed_domains = ['xxx.com'] start_urls = ['https://www.xxx.com/xx/'] cookies = &quot;&quot; def start_requests(self): for url in self.start_urls: yield scrapy.Request(url, cookies=self.cookies, callback=self.parse) def parse(self, response): with open(&quot;01login.html&quot;, &quot;wb&quot;) as f: f.write(response.body) 发送post请求登录, 要手动解析网页获取登录参数 import scrapy class LoginSpider(scrapy.Spider): name='login_code' allowed_domains = ['xxx.com'] #1. 登录页面 start_urls = ['https://www.xxx.com/login/'] def parse(self, response): #2. 代码登录 login_url='https://www.xxx.com/login' formdata={ &quot;username&quot;:&quot;xxx&quot;, &quot;pwd&quot;:&quot;xxx&quot;, &quot;formhash&quot;:response.xpath(&quot;//input[@id='formhash']/@value&quot;).extract_first(), &quot;backurl&quot;:response.xpath(&quot;//input[@id='backurl']/@value&quot;).extract_first() } #3. 发送登录请求post yield scrapy.FormRequest(login_url, formdata=formdata, callback=self.parse_login) def parse_login(self, response): #4.访问目标页面 member_url=&quot;https://www.xxx.com/member&quot; yield scrapy.Request(member_url, callback=self.parse_member) def parse_member(self, response): with open(&quot;02login.html&quot;,'wb') as……
+        </div>
+        <p class="readmore"><a href="https://hank-leo.github.io/post/scrapy/Scrapy%E6%A1%86%E6%9E%B6-%E7%99%BB%E5%BD%95%E7%BD%91%E7%AB%99/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://hank-leo.github.io/post/scrapy/Scrapy%E6%A1%86%E6%9E%B6-%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/" title="Scrapy框架 基本命令">Scrapy框架 基本命令</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年12月4日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://hank-leo.github.io/categories/Scrapy%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0'>Scrapy框架学习</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            创建爬虫项目 scrapy startproject [项目名称] 创建爬虫文件 scrapy genspider +文件名+网址 运行(crawl) scrapy crawl 爬虫名称 # -o output 输出数据到文件 scrapy crawl [爬虫名称] -o zufang.json scrapy crawl [爬虫名称] -o zufang.csv check检查错误 scrapy check list返回项目所有spider scrapy list view 存储、打开网页 scrapy view http://www.baidu.com scrapy shell, 进入终端 scrapy shell https://www.baidu.com scrapy runspider scrapy runspider zufang_spider.py……
+        </div>
+        <p class="readmore"><a href="https://hank-leo.github.io/post/scrapy/Scrapy%E6%A1%86%E6%9E%B6-%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://hank-leo.github.io/post/analysis/Pandas%E9%87%8D%E5%A4%8D%E5%80%BC%E5%A4%84%E7%90%86/" title="Pandas重复值处理">Pandas重复值处理</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年12月4日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%AD%A6%E4%B9%A0'>数据分析学习</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            导包 import pandas as pd 生成数据 data1,data2,data3,data4=['a',3],['b',2],['a',3],['c',2] df=pd.DataFrame([data1,data2,data3,data4],columns=['col1','col2']) print(df) col1 col2 0 a 3 1 b 2 2 a 3 3 c 2 判断数据 isDuplicated=df.duplicated() #判断重复数据记录 print(isDuplicated) 0 False 1 False 2 True 3 False dtype: bool 删除重复的数据 print(df.drop_duplicates()) #删除所有列值相同的记录，index为2的记录行被删除 col1 col2 0 a 3 1 b 2 3 c 2 #删除col1列值相同的记录，index为2的记录行被删除 print(df.drop_duplicates(['col1'])) col1 col2 0 a 3 1 b 2 3 c 2 #……
+        </div>
+        <p class="readmore"><a href="https://hank-leo.github.io/post/analysis/Pandas%E9%87%8D%E5%A4%8D%E5%80%BC%E5%A4%84%E7%90%86/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://hank-leo.github.io/post/analysis/Pandas%E7%BC%BA%E5%A4%B1%E5%80%BC%E5%A4%84%E7%90%86/" title="Pandas缺失值处理">Pandas缺失值处理</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年12月4日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%AD%A6%E4%B9%A0'>数据分析学习</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            导入库 import pandas as pd import numpy as np from sklearn.preprocessing import Imputer 生成缺失数据 df=pd.DataFrame(np.random.randn(6,4),columns=['col1','col2','col3','col4']) df.iloc[1:2,1] = np.nan #增加缺失值 df.iloc[4,3] = np.nan #增加缺失值 #打印输出 print(df) col1 col2 col3 col4 0 -0.977511 -0.566332 -0.529934 1.489695 1 -0.491128 NaN -0.811174 -1.102717 2 0.385777 -0.638822 0.325953 -0.240780 3 0.938351 -0.746889 0.375200 -0.715265 4 1.103418 0.238959 -0.459114 NaN 5 1.002177 0.448844 -0.584634 -1.038151 查看缺失值位置 nan_all=df.isnull() #打印 print(nan_all) col1 col2 col3 col4 0 False False False False 1 False True False False 2 False False False False 3 False False False False 4 False False False True 5 False False False False #获取含有NA的列 nan_col1=df.isnull().any() #打印 print(nan_col1)……
+        </div>
+        <p class="readmore"><a href="https://hank-leo.github.io/post/analysis/Pandas%E7%BC%BA%E5%A4%B1%E5%80%BC%E5%A4%84%E7%90%86/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://hank-leo.github.io/post/analysis/Pandas%E5%BC%82%E5%B8%B8%E5%80%BC%E5%A4%84%E7%90%86/" title="Pandas异常值处理">Pandas异常值处理</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年12月4日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%AD%A6%E4%B9%A0'>数据分析学习</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            导包 import pandas as pd 生成异常数据 df=pd.DataFrame({'col1':[1,120,3,5,2,12,13],'col2':[12,17,31,53,22,32,43]}) #打印 print(df) col1 col2 0 1 12 1 120 17 2 3 31 3 5 53 4 2 22 5 12 32 6 13 43 df_zscore=df.copy() #复制一个用来存储Z-score得分的数据框 cols=df.columns for col in cols: df_col=df[col] z_score=(df_col - df_col.mean()) / df_col.std() #计算每列的Z-score得分 df_zscore[col] = z_score.abs() &gt; 2.2 #判断Z-score得分是否大于2.2,如果是则为True,否则为False #打印，为Tru……
+        </div>
+        <p class="readmore"><a href="https://hank-leo.github.io/post/analysis/Pandas%E5%BC%82%E5%B8%B8%E5%80%BC%E5%A4%84%E7%90%86/">阅读全文</a></p>
+    </article>
+    
+    
+    
+
+
+
+<ol class="page-navigator">
+    
+    <li class="prev">
+        <a href="https://hank-leo.github.io/post/page/3/">上一页</a>
+    </li>
+    
+
+    
+    <li >
+        <a href="https://hank-leo.github.io/post/">1</a>
+    </li>
+    
+    <li >
+        <a href="https://hank-leo.github.io/post/page/2/">2</a>
+    </li>
+    
+    <li >
+        <a href="https://hank-leo.github.io/post/page/3/">3</a>
+    </li>
+    
+    <li  class="current">
+        <a href="https://hank-leo.github.io/post/page/4/">4</a>
+    </li>
+    
+    <li >
+        <a href="https://hank-leo.github.io/post/page/5/">5</a>
+    </li>
+    
+
+    
+    <li class="next">
+        <a href="https://hank-leo.github.io/post/page/5/">下一页</a>
+    </li>
+    
+</ol>
+
+
+
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2020 <a href="https://hank-leo.github.io">Hank&#39;s Blog By Hank</a>
+        
+    </div>
+    <br />
+    
+</footer>
+
+
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='/js/douban.js'></script>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://hank-leo.github.io/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://hank-leo.github.io">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://hank-leo.github.io/post/spider/Aiohttp&#43;PyMongo%E5%BC%82%E6%AD%A5%E6%A1%88%E4%BE%8B%E5%AE%9E%E6%88%98/" title="Aiohttp&#43;PyMongo异步案例实战">Aiohttp&#43;PyMongo异步案例实战</a>
+    </li>
+    
+    <li>
+        <a href="https://hank-leo.github.io/post/spider/PyMongo&#43;PyQuery%E6%A1%88%E4%BE%8B%E5%AE%9E%E6%88%98/" title="PyMongo&#43;PyQuery案例实战">PyMongo&#43;PyQuery案例实战</a>
+    </li>
+    
+    <li>
+        <a href="https://hank-leo.github.io/post/sql/SQL%E5%A4%8D%E4%B9%A0/" title="SQL复习">SQL复习</a>
+    </li>
+    
+    <li>
+        <a href="https://hank-leo.github.io/post/app/%E4%BD%BF%E7%94%A8Airtest%E7%88%AC%E5%8F%96%E6%9F%90%E5%92%96%E5%95%A1app%E6%95%B0%E6%8D%AEv1/" title="使用Airtest爬取某咖啡app数据">使用Airtest爬取某咖啡app数据</a>
+    </li>
+    
+    <li>
+        <a href="https://hank-leo.github.io/post/app/%E4%BD%BF%E7%94%A8Airtest%E7%88%AC%E5%8F%96%E6%9F%90%E5%92%96%E5%95%A1app%E6%95%B0%E6%8D%AEv2/" title="使用Airtest爬取某咖啡app数据v1">使用Airtest爬取某咖啡app数据v1</a>
+    </li>
+    
+    <li>
+        <a href="https://hank-leo.github.io/post/blog/%E4%BD%BF%E7%94%A8Github-Actions%E6%90%AD%E5%BB%BAhugo/" title="使用Github Actions搭建hugo">使用Github Actions搭建hugo</a>
+    </li>
+    
+    <li>
+        <a href="https://hank-leo.github.io/post/python/%E4%BD%BF%E7%94%A8%E5%BC%82%E6%AD%A5%E5%87%BD%E6%95%B0%E8%8E%B7%E5%8F%96%E6%96%87%E4%BB%B6%E5%90%8D/" title="使用异步函数获取文件名">使用异步函数获取文件名</a>
+    </li>
+    
+    <li>
+        <a href="https://hank-leo.github.io/post/spider/pyqt/%E5%88%A9%E7%94%A8PyQt5%E4%BA%A4%E4%BA%92%E5%AF%BC%E5%87%BA%E6%95%B0%E6%8D%AE/" title="利用PyQt5交互导出数据">利用PyQt5交互导出数据</a>
+    </li>
+    
+    <li>
+        <a href="https://hank-leo.github.io/post/statistics/%E6%8E%A8%E6%96%AD%E6%80%A7%E7%BB%9F%E8%AE%A1/" title="推断性统计">推断性统计</a>
+    </li>
+    
+    <li>
+        <a href="https://hank-leo.github.io/post/statistics/%E6%8F%8F%E8%BF%B0%E6%80%A7%E7%BB%9F%E8%AE%A1/" title="描述性统计">描述性统计</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href="/categories">分类</a></h3>
+<ul class="widget-list">
+    
+    <li><a href="https://hank-leo.github.io/categories/Python%E5%AD%A6%E4%B9%A0/">Python学习 (6)</a></li>
+    
+    <li><a href="https://hank-leo.github.io/categories/Python%E5%AE%9E%E6%88%98/">Python实战 (2)</a></li>
+    
+    <li><a href="https://hank-leo.github.io/categories/Scrapy%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/">Scrapy框架学习 (11)</a></li>
+    
+    <li><a href="https://hank-leo.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建 (3)</a></li>
+    
+    <li><a href="https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%AD%A6%E4%B9%A0/">数据分析学习 (3)</a></li>
+    
+    <li><a href="https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0/">数据库学习 (4)</a></li>
+    
+    <li><a href="https://hank-leo.github.io/categories/%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0/">爬虫学习 (4)</a></li>
+    
+    <li><a href="https://hank-leo.github.io/categories/%E7%88%AC%E8%99%AB%E5%AE%9E%E6%88%98/">爬虫实战 (4)</a></li>
+    
+    <li><a href="https://hank-leo.github.io/categories/%E7%BB%9F%E8%AE%A1%E5%AD%A6/">统计学 (2)</a></li>
+    
+    <li><a href="https://hank-leo.github.io/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题 (2)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href="/tags">标签</a></h3>
+<div class="tagcloud">
+    
+    <a href="https://hank-leo.github.io/tags/MongoDB/">MongoDB</a>
+    
+    <a href="https://hank-leo.github.io/tags/MySQL/">MySQL</a>
+    
+    <a href="https://hank-leo.github.io/tags/Python%E9%9D%A2%E8%AF%95/">Python面试</a>
+    
+    <a href="https://hank-leo.github.io/tags/Scrapy/">Scrapy</a>
+    
+    <a href="https://hank-leo.github.io/tags/aiohttp/">aiohttp</a>
+    
+    <a href="https://hank-leo.github.io/tags/airtest/">airtest</a>
+    
+    <a href="https://hank-leo.github.io/tags/app/">app</a>
+    
+    <a href="https://hank-leo.github.io/tags/dict/">dict</a>
+    
+    <a href="https://hank-leo.github.io/tags/excel/">excel</a>
+    
+    <a href="https://hank-leo.github.io/tags/hexo/">hexo</a>
+    
+    <a href="https://hank-leo.github.io/tags/hugo/">hugo</a>
+    
+    <a href="https://hank-leo.github.io/tags/list/">list</a>
+    
+    <a href="https://hank-leo.github.io/tags/pandas/">pandas</a>
+    
+    <a href="https://hank-leo.github.io/tags/pymongo/">pymongo</a>
+    
+    <a href="https://hank-leo.github.io/tags/pyqt5/">pyqt5</a>
+    
+    <a href="https://hank-leo.github.io/tags/re/">re</a>
+    
+    <a href="https://hank-leo.github.io/tags/regex/">regex</a>
+    
+    <a href="https://hank-leo.github.io/tags/string/">string</a>
+    
+    <a href="https://hank-leo.github.io/tags/xlwings/">xlwings</a>
+    
+    <a href="https://hank-leo.github.io/tags/xpath/">xpath</a>
+    
+    <a href="https://hank-leo.github.io/tags/%E5%BC%82%E6%AD%A5/">异步</a>
+    
+    <a href="https://hank-leo.github.io/tags/%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97/">数据清洗</a>
+    
+    <a href="https://hank-leo.github.io/tags/%E7%88%AC%E8%99%AB%E9%9D%A2%E8%AF%95/">爬虫面试</a>
+    
+</div>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title">友情链接</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a target="_blank" href="http://cnblogs.hankleo.com" title="博客园">博客园</a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://hank-leo.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

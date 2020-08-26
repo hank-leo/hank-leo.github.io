@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>aiohttp on Hank&#39;s Blog</title>
+    <link>https://hank-leo.github.io/tags/aiohttp/</link>
+    <description>Recent content in aiohttp on Hank&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 26 Aug 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://hank-leo.github.io/tags/aiohttp/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Aiohttp&#43;PyMongo异步案例实战</title>
+      <link>https://hank-leo.github.io/post/spider/Aiohttp&#43;PyMongo%E5%BC%82%E6%AD%A5%E6%A1%88%E4%BE%8B%E5%AE%9E%E6%88%98/</link>
+      <pubDate>Wed, 26 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hank-leo.github.io/post/spider/Aiohttp&#43;PyMongo%E5%BC%82%E6%AD%A5%E6%A1%88%E4%BE%8B%E5%AE%9E%E6%88%98/</guid>
+      <description>1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 import json import asyncio import aiohttp import logging from motor.motor_asyncio import AsyncIOMotorClient logging.basicConfig(level=logging.INFO,format=&amp;#34;%(asctime)s- %(levelname)s: %(message)s&amp;#34;) MONGO_CONNECTION_STRING = &amp;#34;mongodb://localhost:27017&amp;#34; MONGO_DB_NAME = &amp;#34;books&amp;#34; MONGO_COLLECTION_NAME = &amp;#34;books&amp;#34; client = AsyncIOMotorClient(MONGO_CONNECTION_STRING) db = client[MONGO_DB_NAME] collection = db[MONGO_COLLECTION_NAME] INDEX_URL = &amp;#34;https://dynamic5.scrape.cuiqingcai.com/api/book/?limit=18&amp;amp;offset={offset}&amp;#34; DETAIL_URL = &amp;#34;https://dynamic5.scrape.cuiqingcai.com/detail/{id}&amp;#34; PAGE_SIZE = 18 PAGE_NUMBER = 100 CONCURRENCY = 5 semaphore = asyncio.Semaphore(CONCURRENCY) session = None async def scrape_api(url): async with semaphore: try: logging.info(&amp;#34;scraping %s&amp;#34;, url) async with session.get(url) as response: return await</description>
+    </item>
+    
+    <item>
+      <title>PyMongo&#43;PyQuery案例实战</title>
+      <link>https://hank-leo.github.io/post/spider/PyMongo&#43;PyQuery%E6%A1%88%E4%BE%8B%E5%AE%9E%E6%88%98/</link>
+      <pubDate>Wed, 26 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hank-leo.github.io/post/spider/PyMongo&#43;PyQuery%E6%A1%88%E4%BE%8B%E5%AE%9E%E6%88%98/</guid>
+      <description>1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 import requests import logging import re import pymongo from pyquery import PyQuery as pq from urllib.parse import urljoin import multiprocessing logging.basicConfig(level=logging.INFO,format=&amp;#39;%(asctime)s-%(levelname)s:%(message)s&amp;#39;) BASE_URL=&amp;#39;https://static1.scrape.cuiqingcai.com&amp;#39; TOTAL_PAGE=10 MONGO_CONNECTION_STRING=&amp;#39;mongodb://localhost:27017&amp;#39; MONGO_DB_NAME=&amp;#39;movies&amp;#39; MONGO_COLLECTION_NAME=&amp;#39;movies&amp;#39; client=pymongo.MongoClient(MONGO_CONNECTION_STRING) db=client[&amp;#39;movies&amp;#39;] collection=db[&amp;#39;movies&amp;#39;] def scrape_page(url): logging.info(&amp;#39;scraping %s...&amp;#39;,url) try: response=requests.get(url) if response.status_code==200: return response.text logging.error(&amp;#39;get invalid status code %swhile scraping %s&amp;#39;,response.status_code,url) except requests.RequestException: logging.error(&amp;#34;error occurred while</description>
+    </item>
+    
+  </channel>
+</rss>
