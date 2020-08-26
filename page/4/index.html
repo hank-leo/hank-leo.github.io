@@ -74,6 +74,29 @@
     <article class="post">
         <header>
             <h1 class="post-title">
+                <a href="https://hank-leo.github.io/post/scrapy/Scrapy%E6%A1%86%E6%9E%B6-%E7%88%AC%E5%8F%96%E9%93%BE%E5%AE%B6%E4%BA%8C%E6%89%8B%E6%88%BF%E4%BF%A1%E6%81%AF/" title="Scrapy框架:爬取链家二手房信息">Scrapy框架:爬取链家二手房信息</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年12月4日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://hank-leo.github.io/categories/Scrapy%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0'>Scrapy框架学习</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            创建爬虫项目 scrapy startproject lianjiahouse 创建爬虫文件 scrapy genspider -t craw house lianjia.com 编写items.py文件 # -*- coding: utf-8 -*- # Define here the models for your scraped items # # See documentation in: # https://doc.scrapy.org/en/latest/topics/items.html import scrapy class LianjiahouseItem(scrapy.Item): # define the fields for your item here like: # name = scrapy.Field() # 发布信息名称 house_name = scrapy.Field() # 小区名称 community_name = scrapy.Field() # 所在区域 # location = scrapy.Field() # 链家编号 house_record = scrapy.Field() # 总售价 total_amount = scrapy.Field() # 单价 unit_price = scrapy.Field() # 房屋基本信息 # 建筑面积 area_total = scrapy.Field() # 套内面积 area_use……
+        </div>
+        <p class="readmore"><a href="https://hank-leo.github.io/post/scrapy/Scrapy%E6%A1%86%E6%9E%B6-%E7%88%AC%E5%8F%96%E9%93%BE%E5%AE%B6%E4%BA%8C%E6%89%8B%E6%88%BF%E4%BF%A1%E6%81%AF/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
                 <a href="https://hank-leo.github.io/post/scrapy/Scrapy%E6%A1%86%E6%9E%B6-%E7%BB%9F%E8%AE%A1%E6%95%B0%E6%8D%AE%E6%94%B6%E9%9B%86/" title="Scrapy框架:统计数据收集">Scrapy框架:统计数据收集</a>
             </h1>
         </header>
@@ -180,6 +203,10 @@
 <ul class="widget-list">
     
     <li>
+        <a href="https://hank-leo.github.io/post/sql/SQL%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/" title="SQL刷题记录">SQL刷题记录</a>
+    </li>
+    
+    <li>
         <a href="https://hank-leo.github.io/post/blog/%E4%BD%BF%E7%94%A8Github-Actions%E6%90%AD%E5%BB%BAhugo/" title="使用Github Actions搭建hugo">使用Github Actions搭建hugo</a>
     </li>
     
@@ -215,10 +242,6 @@
         <a href="https://hank-leo.github.io/post/spider/%E5%AD%98%E5%82%A8%E6%95%B0%E6%8D%AE%E4%B9%8Bexcel/" title="存储数据之excel">存储数据之excel</a>
     </li>
     
-    <li>
-        <a href="https://hank-leo.github.io/post/spider/%E8%A7%A3%E6%9E%90%E4%B8%8E%E6%8F%90%E5%8F%96%E6%95%B0%E6%8D%AE%E4%B9%8Bre/" title="解析与提取数据之re">解析与提取数据之re</a>
-    </li>
-    
 </ul>
     </section>
 
@@ -238,7 +261,7 @@
     
     <li><a href="https://hank-leo.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建 (3)</a></li>
     
-    <li><a href="https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0/">数据库学习 (2)</a></li>
+    <li><a href="https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0/">数据库学习 (3)</a></li>
     
     <li><a href="https://hank-leo.github.io/categories/%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0/">爬虫学习 (3)</a></li>
     

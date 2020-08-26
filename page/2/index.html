@@ -74,6 +74,29 @@
     <article class="post">
         <header>
             <h1 class="post-title">
+                <a href="https://hank-leo.github.io/post/spider/%E8%A7%A3%E6%9E%90%E4%B8%8E%E6%8F%90%E5%8F%96%E6%95%B0%E6%8D%AE%E4%B9%8Bre/" title="解析与提取数据之re">解析与提取数据之re</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年12月6日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://hank-leo.github.io/categories/%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0'>爬虫学习</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            对比xpath, re对文本结构的数据处理更加灵活 #导入包 import re def get_data(response): #提取内容 title = re.findall(&quot;^&lt;span&gt;(.*?)&lt;/span&gt;&quot;,response, re.S)……
+        </div>
+        <p class="readmore"><a href="https://hank-leo.github.io/post/spider/%E8%A7%A3%E6%9E%90%E4%B8%8E%E6%8F%90%E5%8F%96%E6%95%B0%E6%8D%AE%E4%B9%8Bre/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
                 <a href="https://hank-leo.github.io/post/spider/%E8%A7%A3%E6%9E%90%E4%B8%8E%E6%8F%90%E5%8F%96%E6%95%B0%E6%8D%AE%E4%B9%8Bxpath/" title="解析与提取数据之xpath">解析与提取数据之xpath</a>
             </h1>
         </header>
@@ -278,29 +301,6 @@
         <p class="readmore"><a href="https://hank-leo.github.io/post/sql/MySQL%E7%9A%84%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8/">阅读全文</a></p>
     </article>
     
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://hank-leo.github.io/post/analysis/Pandas%E5%BC%82%E5%B8%B8%E5%80%BC%E5%A4%84%E7%90%86/" title="Pandas异常值处理">Pandas异常值处理</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2019年12月4日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='https://hank-leo.github.io/categories/Pandas%E5%AD%A6%E4%B9%A0'>Pandas学习</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            导包 import pandas as pd 生成异常数据 df=pd.DataFrame({'col1':[1,120,3,5,2,12,13],'col2':[12,17,31,53,22,32,43]}) #打印 print(df) col1 col2 0 1 12 1 120 17 2 3 31 3 5 53 4 2 22 5 12 32 6 13 43 df_zscore=df.copy() #复制一个用来存储Z-score得分的数据框 cols=df.columns for col in cols: df_col=df[col] z_score=(df_col - df_col.mean()) / df_col.std() #计算每列的Z-score得分 df_zscore[col] = z_score.abs() &gt; 2.2 #判断Z-score得分是否大于2.2,如果是则为True,否则为False #打印，为Tru……
-        </div>
-        <p class="readmore"><a href="https://hank-leo.github.io/post/analysis/Pandas%E5%BC%82%E5%B8%B8%E5%80%BC%E5%A4%84%E7%90%86/">阅读全文</a></p>
-    </article>
-    
     
 
 
@@ -391,6 +391,10 @@
 <ul class="widget-list">
     
     <li>
+        <a href="https://hank-leo.github.io/post/sql/SQL%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/" title="SQL刷题记录">SQL刷题记录</a>
+    </li>
+    
+    <li>
         <a href="https://hank-leo.github.io/post/blog/%E4%BD%BF%E7%94%A8Github-Actions%E6%90%AD%E5%BB%BAhugo/" title="使用Github Actions搭建hugo">使用Github Actions搭建hugo</a>
     </li>
     
@@ -426,10 +430,6 @@
         <a href="https://hank-leo.github.io/post/spider/%E5%AD%98%E5%82%A8%E6%95%B0%E6%8D%AE%E4%B9%8Bexcel/" title="存储数据之excel">存储数据之excel</a>
     </li>
     
-    <li>
-        <a href="https://hank-leo.github.io/post/spider/%E8%A7%A3%E6%9E%90%E4%B8%8E%E6%8F%90%E5%8F%96%E6%95%B0%E6%8D%AE%E4%B9%8Bre/" title="解析与提取数据之re">解析与提取数据之re</a>
-    </li>
-    
 </ul>
     </section>
 
@@ -449,7 +449,7 @@
     
     <li><a href="https://hank-leo.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建 (3)</a></li>
     
-    <li><a href="https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0/">数据库学习 (2)</a></li>
+    <li><a href="https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0/">数据库学习 (3)</a></li>
     
     <li><a href="https://hank-leo.github.io/categories/%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0/">爬虫学习 (3)</a></li>
     

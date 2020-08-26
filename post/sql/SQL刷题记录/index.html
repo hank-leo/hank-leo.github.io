@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>使用Github Actions搭建hugo | Hank&#39;s Blog</title>
-    <meta property="og:title" content="使用Github Actions搭建hugo - Hank&#39;s Blog">
+    <title>SQL刷题记录 | Hank&#39;s Blog</title>
+    <meta property="og:title" content="SQL刷题记录 - Hank&#39;s Blog">
     <meta property="og:type" content="article">
         
     <meta property="article:published_time" content='2020-08-26T00:00:00&#43;08:00'>
@@ -16,10 +16,10 @@
     <meta property="article:modified_time" content='2020-08-26T00:00:00&#43;08:00'>
         
     <meta name="Keywords" content="Hank,博客,python">
-    <meta name="description" content="使用Github Actions搭建hugo">
+    <meta name="description" content="SQL刷题记录">
         
     <meta name="author" content="Hank">
-    <meta property="og:url" content="https://hank-leo.github.io/post/blog/%E4%BD%BF%E7%94%A8Github-Actions%E6%90%AD%E5%BB%BAhugo/">
+    <meta property="og:url" content="https://hank-leo.github.io/post/sql/SQL%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href='/css/normalize.css'>
@@ -138,15 +138,7 @@
 <div class="post-toc" style="position: absolute; top: 188px;">
     <h2 class="post-toc-title">文章目录</h2>
     <div class="post-toc-content">
-        <nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
+        <nav id="TableOfContents"></nav>
     </div>
 </div>
 <script type="text/javascript">
@@ -178,7 +170,7 @@
 </script>
     <article class="post">
         <header>
-            <h1 class="post-title">使用Github Actions搭建hugo</h1>
+            <h1 class="post-title">SQL刷题记录</h1>
         </header>
         <date class="post-meta meta-date">
             2020年8月26日
@@ -187,7 +179,7 @@
         <div class="post-meta">
             <span>|</span>
             
-            <span class="meta-category"><a href='https://hank-leo.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA'>博客搭建</a></span>
+            <span class="meta-category"><a href='https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0'>数据库学习</a></span>
             
         </div>
         
@@ -199,68 +191,193 @@
         
         
         <div class="post-content">
-            <h4 id="前言">前言</h4>
-<p>在本地提交文章到GitHub，会触发Github Actions把刚提交的文章通过hugo发布到github pages，之后可以通过github pages生成的url进行访问。</p>
-<p>这里将把hugo源码和pages分别用两个仓库进行管理。</p>
-<p>另外，这篇着重将如何使用github actions自动化部署hugo，hugo本地创建可以参考另一篇文章<a href="https://hank-leo.github.io/post/blog/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">使用hugo搭建个人博客</a></p>
-<h4 id="创建仓库">创建仓库</h4>
-<p>创建源码仓库 <code>blog</code>,可以设置为私有<code>Private</code></p>
-<p>创建pages仓库<code>hank-leo.github.io</code></p>
-<h4 id="绑定keys">绑定keys</h4>
-<p>1.使用git生成ssh key(相当于生成对密钥)</p>
-<pre><code>ssh-keygen -t rsa -b 4096 -C &quot;$(git config user.email)&quot; -f gh-pages -N &quot;&quot;
-# You will get 2 files:
-#   gh-pages.pub (public key)
-#   gh-pages     (private key)
-</code></pre><p>2.打开blog仓库<code>settings</code>,再点击<code>Secrets</code>，然后添加刚刚生成的私钥，name为<code>ACTIONS_DEPLOY_KEY</code></p>
-<p>3.同理打开hank-leo.github.io, 点击<code>Deploy keys</code>，添加公钥，<strong>Allow write access</strong>一定要勾上，否则会无法提交</p>
-<h4 id="配置github-actions">配置GitHub actions</h4>
-<p>在本地新建文件<code>.github/workflows/main.yml</code></p>
-<p>输入配置代码：</p>
-<pre><code>name: Deploy Hugo Site to Github Pages on Master Branch
-
-on:
-  push:
-    branches:
-      - master
-
-jobs:
-  build-deploy:
-    runs-on: ubuntu-18.04
-    steps:
-      - name: Checkout master
-        uses: actions/checkout@v1  # v2 does not have submodules option now
-       # with:
-       #   submodules: true
-
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
-        with:
-          hugo-version: '0.62.2'
-          extended: true
-
-      - name: Build
-        run: | #hugo --minify
-          hugo
-
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }} # 这里的 ACTIONS_DEPLOY_KEY 则是上面设置 Private Key的变量名
-          EXTERNAL_REPOSITORY: hank-leo/hank-leo.github.io # Pages 远程仓库 
-          PUBLISH_DIR: ./public
-          #keep_files: false # remove existing files
-          PUBLISH_BRANCH: master  # deploying branch
-          #commit_message: ${{ github.event.head_commit.message }}
-</code></pre><p>最后提交代码到blog库，actions会自动部署代码到pages</p>
-
+            <p><a href="https://www.nowcoder.com/practice/218ae58dfdcd4af195fff264e062138f?tpId=82&amp;rp=1&amp;ru=%2Fta%2Fsql&amp;qru=%2Fta%2Fsql%2Fquestion-ranking">1.查找最晚入职员工的所有信息</a></p>
+<pre><code>select * from employees
+order by hire_date desc limit 0,1;
+</code></pre><p><a href="https://www.nowcoder.com/practice/ec1ca44c62c14ceb990c3c40def1ec6c?tpId=82&amp;rp=1&amp;ru=%2Fta%2Fsql&amp;qru=%2Fta%2Fsql%2Fquestion-ranking">2.查找入职员工时间排名倒数第三的员工所有信息</a></p>
+<pre><code>select * from employees
+order by hire_date desc limit 2,1;
+</code></pre><p><a href="https://www.nowcoder.com/practice/c63c5b54d86e4c6d880e4834bfd70c3b?tpId=82&amp;rp=1&amp;ru=%2Fta%2Fsql&amp;qru=%2Fta%2Fsql%2Fquestion-ranking">3.查找当前薪水详情以及部门编号dept_no</a></p>
+<pre><code>select salaries.*,dept_manager.dept_no from salaries,dept_manager
+on salaries.emp_no = dept_manager.emp_no
+where salaries.to_date='9999-01-01' and dept_manager.to_date='9999-01-01';
+</code></pre><p><a href="https://www.nowcoder.com/practice/6d35b1cd593545ab985a68cd86f28671?tpId=82&amp;tags=&amp;title=&amp;diffculty=0&amp;judgeStatus=0&amp;rp=1">4.查找所有已经分配部门的员工的last_name和first_name以及dept_no</a></p>
+<pre><code>select employees.last_name,employees.first_name,dept_emp.dept_no
+from employees,dept_emp
+on employees.emp_no = dept_emp.emp_no;
+</code></pre><p><a href="https://www.nowcoder.com/practice/dbfafafb2ee2482aa390645abd4463bf?tpId=82&amp;tags=&amp;title=&amp;diffculty=0&amp;judgeStatus=0&amp;rp=1">5.查找所有员工的last_name和first_name以及对应部门编号dept_no，也包括暂时没有分配具体部门的员工</a></p>
+<pre><code>select employees.last_name,employees.first_name,dept_emp.dept_no
+from employees
+left join dept_emp
+on dept_emp.emp_no=employees.emp_no;
+</code></pre><p><a href="https://www.nowcoder.com/practice/23142e7a23e4480781a3b978b5e0f33a?tpId=82&amp;tags=&amp;title=&amp;diffculty=0&amp;judgeStatus=0&amp;rp=1">6.查找所有员工入职时候的薪水情况，给出emp_no以及salary， 并按照emp_no进行逆序</a></p>
+<pre><code>select employees.emp_no,salaries.salary from employees
+left join salaries
+where employees.emp_no=salaries.emp_no
+and employees.hire_date = salaries.from_date
+order by employees.emp_no desc;
+</code></pre><p><a href="https://www.nowcoder.com/practice/6d4a4cff1d58495182f536c548fee1ae?tpId=82&amp;tags=&amp;title=&amp;diffculty=0&amp;judgeStatus=0&amp;rp=1">7.查找薪水变动超过15次的员工号emp_no以及其对应的变动次数t</a></p>
+<pre><code>select emp_no,count(emp_no) as t
+from salaries
+group by emp_no
+having count(emp_no)&gt;15;
+</code></pre><p><a href="https://www.nowcoder.com/practice/ae51e6d057c94f6d891735a48d1c2397?tpId=82&amp;tags=&amp;title=&amp;diffculty=0&amp;judgeStatus=0&amp;rp=1">8.找出所有员工当前(to_date='9999-01-01&rsquo;)具体的薪水salary情况，对于相同的薪水只显示一次,并按照逆序显示</a></p>
+<pre><code>select distinct salary from salaries
+where to_date='9999-01-01'
+order by salary desc;
+</code></pre><p><a href="https://www.nowcoder.com/practice/4c8b4a10ca5b44189e411107e1d8bec1?tpId=82&amp;tags=&amp;title=&amp;diffculty=0&amp;judgeStatus=0&amp;rp=1">9.获取所有部门当前(dept_manager.to_date='9999-01-01&rsquo;)manager的当前(salaries.to_date='9999-01-01&rsquo;)薪水情况，给出dept_no, emp_no以及salary</a></p>
+<pre><code>select d.dept_no,s.emp_no,s.salary
+from dept_manager d,salaries s
+where d.to_date='9999-01-01'
+and s.to_date='9999-01-01'
+and d.emp_no=s.emp_no;
+</code></pre><p><a href="https://www.nowcoder.com/practice/32c53d06443346f4a2f2ca733c19660c?tpId=82&amp;tags=&amp;title=&amp;diffculty=0&amp;judgeStatus=0&amp;rp=1">10.获取所有非manager的员工emp_no</a></p>
+<pre><code>select emp_no
+from employees
+where emp_no
+not in (select emp_no from dept_manager);
+</code></pre><p><a href="https://www.nowcoder.com/practice/e50d92b8673a440ebdf3a517b5b37d62?tpId=82&amp;&amp;tqId=29763&amp;rp=1&amp;ru=/ta/sql&amp;qru=/ta/sql/question-ranking">11.获取所有员工当前的(dept_manager.to_date='9999-01-01&rsquo;)manager，如果员工是manager的话不显示(也就是如果当前的manager是自己的话结果不显示)。输出结果第一列给出当前员工的emp_no,第二列给出其manager对应的emp_no</a></p>
+<pre><code>select de.emp_no,dm.emp_no as manager_no
+from dept_emp as de
+inner join dept_manager as dm
+on de.dept_no=dm.dept_no
+where dm.to_date='9999-01-01'
+and de.to_date='9999-01-01'
+and de.emp_no &lt;&gt; dm.emp_no;
+</code></pre><p><a href="https://www.nowcoder.com/practice/4a052e3e1df5435880d4353eb18a91c6?tpId=82&amp;tags=&amp;title=&amp;diffculty=0&amp;judgeStatus=0&amp;rp=1">12.获取所有部门中当前(dept_emp.to_date = &lsquo;9999-01-01&rsquo;)员工当前(salaries.to_date='9999-01-01&rsquo;)薪水最高的相关信息，给出dept_no, emp_no以及其对应的salary，按照部门升序排列</a></p>
+<pre><code>select e.dept_no,e.emp_no,MAX(s.salary)
+from dept_emp e inner join salaries s
+on e.emp_no = s.emp_no 
+where s.to_date='9999-01-01' and e.to_date = '9999-01-01'
+GROUP BY e.dept_no
+</code></pre><p><a href="https://www.nowcoder.com/practice/72ca694734294dc78f513e147da7821e?tpId=82&amp;&amp;tqId=29765&amp;rp=1&amp;ru=/ta/sql&amp;qru=/ta/sql/question-ranking">13.从titles表获取按照title进行分组，每组个数大于等于2，给出title以及对应的数目t</a></p>
+<pre><code>select title,count(title) t
+from titles
+group by title
+having t &gt;= 2
+</code></pre><p><a href="https://www.nowcoder.com/practice/c59b452f420c47f48d9c86d69efdff20?tpId=82&amp;tags=&amp;title=&amp;diffculty=0&amp;judgeStatus=0&amp;rp=1">14.从titles表获取按照title进行分组，每组个数大于等于2，给出title以及对应的数目t。
+注意对于重复的emp_no进行忽略(即emp_no重复的title不计算，title对应的数目t不增加)。</a></p>
+<pre><code>select title,count(distinct emp_no) t
+from titles
+group by title
+having t&gt;= 2
+</code></pre><p><a href="https://www.nowcoder.com/practice/a32669eb1d1740e785f105fa22741d5c?tpId=82&amp;tags=&amp;title=&amp;diffculty=0&amp;judgeStatus=0&amp;rp=1">15.查找employees表所有emp_no为奇数，且last_name不为Mary(注意大小写)的员工信息，并按照hire_date逆序排列(题目不能使用mod函数)</a></p>
+<pre><code>select * from employees
+where emp_no%2=1
+and last_name&lt;&gt;&quot;Mary&quot;
+order by hire_date desc
+</code></pre><p><a href="https://www.nowcoder.com/practice/c8652e9e5a354b879e2a244200f1eaae?tpId=82&amp;tags=&amp;title=&amp;diffculty=0&amp;judgeStatus=0&amp;rp=1">16.统计出当前(titles.to_date='9999-01-01&rsquo;)各个title类型对应的员工当前(salaries.to_date='9999-01-01&rsquo;)薪水对应的平均工资。结果给出title以及平均工资avg。</a></p>
+<pre><code>select t.title,avg(s.salary)
+from titles t
+join salaries s
+on t.emp_no=s.emp_no
+where t.to_date='9999-01-01'
+and s.to_date='9999-01-01'
+group by t.title
+</code></pre><p><a href="nowcoder.com/practice/8d2c290cc4e24403b98ca82ce45d04db?tpId=82&amp;tags=&amp;title=&amp;diffculty=0&amp;judgeStatus=0&amp;rp=1">17.获取当前（to_date='9999-01-01&rsquo;）薪水第二多的员工的emp_no以及其对应的薪水salary</a></p>
+<pre><code>select emp_no,salary
+from salaries
+order by salary desc limit 1,1
+</code></pre><p><a href="https://www.nowcoder.com/practice/c1472daba75d4635b7f8540b837cc719?tpId=82&amp;tags=&amp;title=&amp;diffculty=0&amp;judgeStatus=0&amp;rp=1">18.查找当前薪水(to_date='9999-01-01&rsquo;)排名第二多的员工编号emp_no、薪水salary、last_name以及first_name，你可以不使用order by完成吗</a></p>
+<pre><code>select e.emp_no,max(s.salary) as salary,e.last_name,e.first_name
+from employees e
+join salaries s
+on e.emp_no=s.emp_no
+where s.salary not in (
+select max(salary)
+    from salaries
+</code></pre><p><a href="https://www.nowcoder.com/practice/5a7975fabe1146329cee4f670c27ad55?tpId=82&amp;tags=&amp;title=&amp;diffculty=0&amp;judgeStatus=0&amp;rp=1">19.查找所有员工的last_name和first_name以及对应的dept_name，也包括暂时没有分配部门的员工</a></p>
+<pre><code>select e.last_name,e.first_name,d.dept_name
+from employees e
+left join dept_emp de
+on e.emp_no=de.emp_no
+left join departments d
+on de.dept_no=d.dept_no
+</code></pre><p><a href="https://www.nowcoder.com/practice/c727647886004942a89848e2b5130dc2?tpId=82&amp;tags=&amp;title=&amp;diffculty=0&amp;judgeStatus=0&amp;rp=1">20.查找员工编号emp_no为10001其自入职以来的薪水salary涨幅(总共涨了多少)growth(可能有多次涨薪，没有降薪)</a></p>
+<pre><code>select max(salary)-min(salary) growth
+from salaries
+where emp_no=&quot;10001&quot;
+</code></pre><p><a href="https://www.nowcoder.com/practice/fc7344ece7294b9e98401826b94c6ea5?tpId=82&amp;tags=&amp;title=&amp;diffculty=0&amp;judgeStatus=0&amp;rp=1">21.查找所有员工自入职以来的薪水涨幅情况，给出员工编号emp_no以及其对应的薪水涨幅growth，并按照growth进行升序
+（注:可能有employees表和salaries表里存在记录的员工，有对应的员工编号和涨薪记录，但是已经离职了，离职的员工salaries表的最新的to_date!='9999-01-01&rsquo;，这样的数据不显示在查找结果里面）</a></p>
+<pre><code>select a.emp_no,(b.salary-c.salary) growth
+from employees as a
+inner join salaries as b
+on a.emp_no=b.emp_no
+and b.to_date=&quot;9999-01-01&quot;
+inner join salaries as c
+on a.emp_no=c.emp_no
+and a.hire_date=c.from_date
+order by growth asc
+</code></pre><p><a href="https://www.nowcoder.com/practice/6a62b6c0a7324350a6d9959fa7c21db3?tpId=82&amp;tags=&amp;title=&amp;diffculty=0&amp;judgeStatus=0&amp;rp=1">22.统计各个部门的工资记录数，给出部门编码dept_no、部门名称dept_name以及部门在salaries表里面有多少条记录sum</a></p>
+<pre><code>select d.dept_no,d.dept_name,count(*)sum
+from departments d
+inner join dept_emp de
+on d.dept_no=de.dept_no
+inner join salaries s
+on s.emp_no=de.emp_no
+group by de.dept_no
+</code></pre><p><a href="https://www.nowcoder.com/practice/b9068bfe5df74276bd015b9729eec4bf?tpId=82&amp;tags=&amp;title=&amp;diffculty=0&amp;judgeStatus=0&amp;rp=1">23.对所有员工的当前(to_date='9999-01-01&rsquo;)薪水按照salary进行按照1-N的排名，相同salary并列且按照emp_no升序排列</a></p>
+<pre><code>select emp_no,salary,dense_rank() over (order by salary desc) as rank
+from salaries
+where to_date='9999-01-01'
+</code></pre><p><a href="https://www.nowcoder.com/practice/8fe212a6c71b42de9c15c56ce354bebe?tpId=82&amp;&amp;tqId=29776&amp;rp=1&amp;ru=/ta/sql&amp;qru=/ta/sql/question-ranking">24.获取所有非manager员工当前的薪水情况，给出dept_no、emp_no以及salary ，当前表示to_date='9999-01-01&rsquo;</a></p>
+<pre><code>select de.dept_no,e.emp_no,s.salary
+from dept_emp de
+inner join employees e
+on e.emp_no=de.emp_no
+inner join salaries s
+on de.emp_no=s.emp_no
+where s.to_date=&quot;9999-01-01&quot;
+and de.emp_no not in (
+select emp_no from dept_manager
+)
+</code></pre><p><a href="https://www.nowcoder.com/practice/f858d74a030e48da8e0f69e21be63bef?tpId=82&amp;&amp;tqId=29777&amp;rp=1&amp;ru=/ta/sql&amp;qru=/ta/sql/question-ranking">25.获取员工其当前的薪水比其manager当前薪水还高的相关信息</a></p>
+<pre><code>获取员工其当前的薪水比其manager当前薪水还高的相关信息，当前表示to_date='9999-01-01',
+结果第一列给出员工的emp_no，
+第二列给出其manager的manager_no，
+第三列给出该员工当前的薪水emp_salary,
+第四列给该员工对应的manager当前的薪水manager_salary
+CREATE TABLE `dept_emp` (
+`emp_no` int(11) NOT NULL,
+`dept_no` char(4) NOT NULL,
+`from_date` date NOT NULL,
+`to_date` date NOT NULL,
+PRIMARY KEY (`emp_no`,`dept_no`));
+CREATE TABLE `dept_manager` (
+`dept_no` char(4) NOT NULL,
+`emp_no` int(11) NOT NULL,
+`from_date` date NOT NULL,
+`to_date` date NOT NULL,
+PRIMARY KEY (`emp_no`,`dept_no`));
+CREATE TABLE `salaries` (
+`emp_no` int(11) NOT NULL,
+`salary` int(11) NOT NULL,
+`from_date` date NOT NULL,
+`to_date` date NOT NULL,
+PRIMARY KEY (`emp_no`,`from_date`));
+</code></pre><p>答案：</p>
+<pre><code>SELECT sem.emp_no AS emp_no, sdm.emp_no AS manager_no, sem.salary AS emp_salary, sdm.salary AS manager_salary
+FROM (
+    SELECT s.salary, s.emp_no, de.dept_no
+    FROM salaries s
+    INNER JOIN dept_emp de 
+    ON s.emp_no = de.emp_no
+    AND s.to_date = '9999-01-01') AS sem, 
+    (SELECT s.salary, s.emp_no, dm.dept_no
+    FROM salaries s
+    INNER JOIN dept_manager dm 
+    ON s.emp_no = dm.emp_no
+    AND s.to_date = '9999-01-01') AS sdm
+WHERE sem.dept_no = sdm.dept_no
+AND sem.salary &gt; sdm.salary
+</code></pre>
         </div>
 
         
 <div class="post-archive">
     <ul class="post-copyright">
         <li><strong>原文作者：</strong><a rel="author" href="https://hank-leo.github.io">Hank</a></li>
-        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://hank-leo.github.io/post/blog/%E4%BD%BF%E7%94%A8Github-Actions%E6%90%AD%E5%BB%BAhugo/">https://hank-leo.github.io/post/blog/%E4%BD%BF%E7%94%A8Github-Actions%E6%90%AD%E5%BB%BAhugo/</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://hank-leo.github.io/post/sql/SQL%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/">https://hank-leo.github.io/post/sql/SQL%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</a></li>
         <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
     </ul>
 </div>
@@ -274,9 +391,7 @@ jobs:
     <h2>See Also</h2>
     <ul class="listing">
         
-        <li><a href="/post/blog/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">使用hugo搭建个人博客</a></li>
-        
-        <li><a href="/post/sql/SQL%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/">SQL刷题记录</a></li>
+        <li><a href="/post/blog/%E4%BD%BF%E7%94%A8Github-Actions%E6%90%AD%E5%BB%BAhugo/">使用Github Actions搭建hugo</a></li>
         
         <li><a href="/post/python/python%E7%BB%83%E4%B9%A0/">Python练习</a></li>
         
@@ -284,17 +399,15 @@ jobs:
         
         <li><a href="/post/spider/%E7%88%AC%E8%99%AB%E9%9D%A2%E8%AF%95%E9%A2%98/">爬虫面试题</a></li>
         
+        <li><a href="/post/blog/%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">使用hexo搭建个人博客</a></li>
+        
     </ul>
 </div>
 
 
         <div class="post-meta meta-tags">
             
-            <ul class="clearfix">
-                
-                <li><a href='https://hank-leo.github.io/tags/hugo'>hugo</a></li>
-                
-            </ul>
+            没有标签
             
         </div>
     </article>
