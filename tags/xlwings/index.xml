@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>xlwings on Hank&#39;s Blog</title>
+    <link>https://hank-leo.github.io/tags/xlwings/</link>
+    <description>Recent content in xlwings on Hank&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 26 Aug 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://hank-leo.github.io/tags/xlwings/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>利用PyQt5交互导出数据</title>
+      <link>https://hank-leo.github.io/post/spider/pyqt/%E5%88%A9%E7%94%A8PyQt5%E4%BA%A4%E4%BA%92%E5%AF%BC%E5%87%BA%E6%95%B0%E6%8D%AE/</link>
+      <pubDate>Wed, 26 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hank-leo.github.io/post/spider/pyqt/%E5%88%A9%E7%94%A8PyQt5%E4%BA%A4%E4%BA%92%E5%AF%BC%E5%87%BA%E6%95%B0%E6%8D%AE/</guid>
+      <description>项目说明 MainFunc.py 主文件功能 选取文件(xlsm,csv) 导出match、减少、新增、更新部分的数据 各个部分新开窗口操作 源文件 SubPart.py 减少部分操作文件 状态确认： 关店、装修、尚未开业的数据 做过reconcile的数据 exc1部分的数据 exc2部分的数据 VDR新增数据 来源harv数据 最后导出到csv</description>
+    </item>
+    
+  </channel>
+</rss>

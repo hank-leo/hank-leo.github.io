@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python实战 on Hank&#39;s Blog</title>
+    <link>https://hank-leo.github.io/categories/Python%E5%AE%9E%E6%88%98/</link>
+    <description>Recent content in Python实战 on Hank&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 26 Aug 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://hank-leo.github.io/categories/Python%E5%AE%9E%E6%88%98/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>使用异步函数获取文件名</title>
+      <link>https://hank-leo.github.io/post/python/%E4%BD%BF%E7%94%A8%E5%BC%82%E6%AD%A5%E5%87%BD%E6%95%B0%E8%8E%B7%E5%8F%96%E6%96%87%E4%BB%B6%E5%90%8D/</link>
+      <pubDate>Wed, 26 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hank-leo.github.io/post/python/%E4%BD%BF%E7%94%A8%E5%BC%82%E6%AD%A5%E5%87%BD%E6%95%B0%E8%8E%B7%E5%8F%96%E6%96%87%E4%BB%B6%E5%90%8D/</guid>
+      <description>1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 import re import os import time import math import shutil import random import random import asyncio import traceback import pandas as pd from win32com.client import</description>
+    </item>
+    
+    <item>
+      <title>利用PyQt5交互导出数据</title>
+      <link>https://hank-leo.github.io/post/spider/pyqt/%E5%88%A9%E7%94%A8PyQt5%E4%BA%A4%E4%BA%92%E5%AF%BC%E5%87%BA%E6%95%B0%E6%8D%AE/</link>
+      <pubDate>Wed, 26 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hank-leo.github.io/post/spider/pyqt/%E5%88%A9%E7%94%A8PyQt5%E4%BA%A4%E4%BA%92%E5%AF%BC%E5%87%BA%E6%95%B0%E6%8D%AE/</guid>
+      <description>项目说明 MainFunc.py 主文件功能 选取文件(xlsm,csv) 导出match、减少、新增、更新部分的数据 各个部分新开窗口操作 源文件 SubPart.py 减少部分操作文件 状态确认： 关店、装修、尚未开业的数据 做过reconcile的数据 exc1部分的数据 exc2部分的数据 VDR新增数据 来源harv数据 最后导出到csv</description>
+    </item>
+    
+  </channel>
+</rss>
