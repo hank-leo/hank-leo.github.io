@@ -4,17 +4,37 @@
   
   <url>
     <loc>https://hank-leo.github.io/categories/</loc>
-    <lastmod>2019-12-11T00:00:00+00:00</lastmod>
+    <lastmod>2020-08-26T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://hank-leo.github.io/</loc>
-    <lastmod>2019-12-11T00:00:00+00:00</lastmod>
+    <lastmod>2020-08-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hank-leo.github.io/tags/hugo/</loc>
+    <lastmod>2020-08-26T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://hank-leo.github.io/post/</loc>
-    <lastmod>2019-12-11T00:00:00+00:00</lastmod>
+    <lastmod>2020-08-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hank-leo.github.io/tags/</loc>
+    <lastmod>2020-08-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hank-leo.github.io/post/blog/%E4%BD%BF%E7%94%A8Github-Actions%E6%90%AD%E5%BB%BAhugo/</loc>
+    <lastmod>2020-08-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hank-leo.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</loc>
+    <lastmod>2020-08-26T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -29,11 +49,6 @@
   
   <url>
     <loc>https://hank-leo.github.io/post/python/Python%E9%9D%A2%E8%AF%95%E9%A2%98/</loc>
-    <lastmod>2019-12-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://hank-leo.github.io/tags/</loc>
     <lastmod>2019-12-10T00:00:00+00:00</lastmod>
   </url>
   
@@ -59,11 +74,6 @@
   
   <url>
     <loc>https://hank-leo.github.io/post/blog/%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</loc>
-    <lastmod>2019-12-06T21:23:32+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://hank-leo.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</loc>
     <lastmod>2019-12-06T21:23:32+08:00</lastmod>
   </url>
   
@@ -139,11 +149,6 @@
   
   <url>
     <loc>https://hank-leo.github.io/tags/dict/</loc>
-    <lastmod>2019-12-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://hank-leo.github.io/tags/hugo/</loc>
     <lastmod>2019-12-05T00:00:00+00:00</lastmod>
   </url>
   

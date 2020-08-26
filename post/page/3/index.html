@@ -76,6 +76,31 @@
     <article class="post">
         <header>
             <h1 class="post-title">
+                <a href="https://hank-leo.github.io/post/scrapy/scrapy%E6%A1%86%E6%9E%B6-%E6%8A%93%E5%8F%96%E7%8C%AB%E7%9C%BC%E7%94%B5%E5%BD%B1TOP100/" title="Scrapy框架:抓取猫眼电影TOP100">Scrapy框架:抓取猫眼电影TOP100</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年12月4日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://hank-leo.github.io/categories/Scrapy%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0'>Scrapy框架学习</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            需求： 抓取的数据为电影名称、主演、上映日期、评分。将抓取的数据保存到maoyantop100.json文件，并将文件作为附件通过邮件发送给接收人。 创建项目 scrapy startproject maoyan scrapy genspider -t crawl top100 maoyan.com 编写items.py # -*- coding: utf-8 -*- import scrapy class MaoyanItem(scrapy.Item): # define the fields for your item here like: # name = scrapy.Field() # 电影名称 name = scrapy.Field() # 主演 actors = scrapy.Field() # 上映时间 releasetime = scrapy.Field()……
+        </div>
+        <p class="readmore"><a href="https://hank-leo.github.io/post/scrapy/scrapy%E6%A1%86%E6%9E%B6-%E6%8A%93%E5%8F%96%E7%8C%AB%E7%9C%BC%E7%94%B5%E5%BD%B1TOP100/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
                 <a href="https://hank-leo.github.io/post/scrapy/Scrapy%E6%A1%86%E6%9E%B6-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" title="Scrapy框架:异常处理">Scrapy框架:异常处理</a>
             </h1>
         </header>
@@ -298,31 +323,6 @@
     
     
     
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://hank-leo.github.io/post/sql/MySQL%E7%9A%84%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8/" title="MySQL的实际应用">MySQL的实际应用</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2019年12月4日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0'>数据库学习</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            创建触发器语法 create trigger tgName after/before insert/delete/update on tableName for each row sql; -- 触发语句 删除触发器 drop trigger tgName; 索引 提高查询速度,但是降低了增删改的速度, 所以使用索引时,要综合考虑. 索引不是越多越好,一般我们在常出现于条件表达式中的列加索引. 值越分散的列，索引的效果越好 索引类型 |索引|解释 :-:|:-: primary key|主键索引 index|普通索引……
-        </div>
-        <p class="readmore"><a href="https://hank-leo.github.io/post/sql/MySQL%E7%9A%84%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8/">阅读全文</a></p>
-    </article>
-    
-    
-    
 
 
 
@@ -346,7 +346,15 @@
         <a href="https://hank-leo.github.io/post/page/3/">3</a>
     </li>
     
+    <li >
+        <a href="https://hank-leo.github.io/post/page/4/">4</a>
+    </li>
+    
 
+    
+    <li class="next">
+        <a href="https://hank-leo.github.io/post/page/4/">下一页</a>
+    </li>
     
 </ol>
 
@@ -404,6 +412,10 @@
 <ul class="widget-list">
     
     <li>
+        <a href="https://hank-leo.github.io/post/blog/%E4%BD%BF%E7%94%A8Github-Actions%E6%90%AD%E5%BB%BAhugo/" title="使用Github Actions搭建hugo">使用Github Actions搭建hugo</a>
+    </li>
+    
+    <li>
         <a href="https://hank-leo.github.io/post/python/python%E7%BB%83%E4%B9%A0/" title="Python练习">Python练习</a>
     </li>
     
@@ -439,10 +451,6 @@
         <a href="https://hank-leo.github.io/post/spider/%E8%A7%A3%E6%9E%90%E4%B8%8E%E6%8F%90%E5%8F%96%E6%95%B0%E6%8D%AE%E4%B9%8Bre/" title="解析与提取数据之re">解析与提取数据之re</a>
     </li>
     
-    <li>
-        <a href="https://hank-leo.github.io/post/spider/%E8%A7%A3%E6%9E%90%E4%B8%8E%E6%8F%90%E5%8F%96%E6%95%B0%E6%8D%AE%E4%B9%8Bxpath/" title="解析与提取数据之xpath">解析与提取数据之xpath</a>
-    </li>
-    
 </ul>
     </section>
 
@@ -460,7 +468,7 @@
     
     <li><a href="https://hank-leo.github.io/categories/Scrapy%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/">Scrapy框架学习 (11)</a></li>
     
-    <li><a href="https://hank-leo.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建 (2)</a></li>
+    <li><a href="https://hank-leo.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建 (3)</a></li>
     
     <li><a href="https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0/">数据库学习 (2)</a></li>
     

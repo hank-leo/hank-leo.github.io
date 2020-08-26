@@ -6,10 +6,19 @@
     <description>Recent content in Tags on Hank&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 10 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 26 Aug 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://hank-leo.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>hugo</title>
+      <link>https://hank-leo.github.io/tags/hugo/</link>
+      <pubDate>Wed, 26 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hank-leo.github.io/tags/hugo/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>爬虫</title>
@@ -80,15 +89,6 @@
       <pubDate>Thu, 05 Dec 2019 00:00:00 +0000</pubDate>
       
       <guid>https://hank-leo.github.io/tags/dict/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>hugo</title>
-      <link>https://hank-leo.github.io/tags/hugo/</link>
-      <pubDate>Thu, 05 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://hank-leo.github.io/tags/hugo/</guid>
       <description></description>
     </item>
     
