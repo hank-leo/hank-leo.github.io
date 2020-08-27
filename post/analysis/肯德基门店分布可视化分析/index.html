@@ -140,11 +140,22 @@
     <div class="post-toc-content">
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#项目介绍">项目介绍</a>
+    <li><a href="#项目介绍">项目介绍</a></li>
+    <li><a href="#数据获取">数据获取</a></li>
+    <li><a href="#数据清洗">数据清洗</a>
       <ul>
-        <li><a href="#数据获取">数据获取</a></li>
         <li><a href="#导入相关库">导入相关库</a></li>
         <li><a href="#导入数据">导入数据</a></li>
+        <li><a href="#合并省份城市和详细地址信息">合并省份，城市和详细地址信息</a></li>
+        <li><a href="#自定义函数根据地址查询经纬度">自定义函数，根据地址查询经纬度</a></li>
+        <li><a href="#保存清洗后的数据">保存清洗后的数据</a></li>
+      </ul>
+    </li>
+    <li><a href="#可视化">可视化</a>
+      <ul>
+        <li><a href="#拥有肯德基门店最多10个城市">拥有肯德基门店最多10个城市</a></li>
+        <li><a href="#全国门店分布热点图">全国门店分布热点图</a></li>
+        <li><a href="#top10的省份">TOP10的省份</a></li>
       </ul>
     </li>
   </ul>
@@ -224,9 +235,10 @@
 <p>门店分布热点图</p>
 </li>
 </ul>
-<h3 id="数据获取">数据获取</h3>
+<h2 id="数据获取">数据获取</h2>
 <p>通过python代码获取肯德基<a href="http://www.kfc.com.cn/kfccda/storelist/index.aspx">官网</a>的门店数据，有7k+条数据</p>
 <p>具体操作过程，这里不着重说明，感兴趣的可以戳这里<a href="https://hank-leo.github.io/post/spider/%E7%88%AC%E5%8F%96%E6%9F%90%E8%91%97%E5%90%8D%E5%BF%AB%E9%A4%90%E5%B7%A8%E5%A4%B4%E9%97%A8%E5%BA%97%E6%95%B0%E6%8D%AE%E5%AE%9E%E6%88%98/">爬取某著名快餐巨头门店数据实战</a></p>
+<h2 id="数据清洗">数据清洗</h2>
 <h3 id="导入相关库">导入相关库</h3>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -261,6 +273,228 @@ warnings<span style="color:#000;font-weight:bold">.</span>filterwarnings(<span s
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 <pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df<span style="color:#000;font-weight:bold">=</span>pd<span style="color:#000;font-weight:bold">.</span>read_excel(<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">kfc.xlsx</span><span style="color:#d14">&#39;</span>)
 df<span style="color:#000;font-weight:bold">.</span>head()
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="合并省份城市和详细地址信息">合并省份，城市和详细地址信息</h3>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df[<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">Addr</span><span style="color:#d14">&#39;</span>]<span style="color:#000;font-weight:bold">=</span>df[<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">Province</span><span style="color:#d14">&#39;</span>]<span style="color:#000;font-weight:bold">+</span>df[<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">City</span><span style="color:#d14">&#39;</span>]<span style="color:#000;font-weight:bold">+</span>df[<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">Address</span><span style="color:#d14">&#39;</span>]
+df<span style="color:#000;font-weight:bold">.</span>head()
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="自定义函数根据地址查询经纬度">自定义函数，根据地址查询经纬度</h3>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">get_location</span>(address):
+    requests<span style="color:#000;font-weight:bold">.</span>adapters<span style="color:#000;font-weight:bold">.</span>DEFAULT_RETRIES<span style="color:#000;font-weight:bold">=</span><span style="color:#099">5</span>
+    requests<span style="color:#000;font-weight:bold">.</span>session()<span style="color:#000;font-weight:bold">.</span>keep_alive<span style="color:#000;font-weight:bold">=</span><span style="color:#999">False</span>
+    url<span style="color:#000;font-weight:bold">=</span><span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">http://restapi.amap.com/v3/geocode/geo?key=1fbbc548b828f33ccc64f4613ae52497&amp;s=rsv3&amp;city=35&amp;address={}</span><span style="color:#d14">&#39;</span><span style="color:#000;font-weight:bold">.</span>format(address)
+    headers <span style="color:#000;font-weight:bold">=</span> {<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">User-Agent</span><span style="color:#d14">&#39;</span>: <span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">Mozilla/5.0</span><span style="color:#d14">&#39;</span>}
+    response <span style="color:#000;font-weight:bold">=</span> requests<span style="color:#000;font-weight:bold">.</span>get(url, headers<span style="color:#000;font-weight:bold">=</span>headers)
+    <span style="color:#000;font-weight:bold">if</span> <span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">location</span><span style="color:#d14">&#39;</span> <span style="color:#000;font-weight:bold">in</span> response<span style="color:#000;font-weight:bold">.</span>text:
+        <span style="color:#000;font-weight:bold">for</span> i <span style="color:#000;font-weight:bold">in</span> json<span style="color:#000;font-weight:bold">.</span>loads(response<span style="color:#000;font-weight:bold">.</span>text)[<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">geocodes</span><span style="color:#d14">&#39;</span>]:
+            <span style="color:#000;font-weight:bold">return</span> i<span style="color:#000;font-weight:bold">.</span>get(<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">location</span><span style="color:#d14">&#39;</span>)
+    <span style="color:#000;font-weight:bold">else</span>:
+        <span style="color:#000;font-weight:bold">pass</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">get_location(<span style="color:#d14"></span><span style="color:#d14">&#34;</span><span style="color:#d14">昆山市虹祺路243号后街商业广场C5幢楼一楼部分商铺</span><span style="color:#d14">&#34;</span>)
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df[<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">locationdetail</span><span style="color:#d14">&#39;</span>]<span style="color:#000;font-weight:bold">=</span>df<span style="color:#000;font-weight:bold">.</span>Addr<span style="color:#000;font-weight:bold">.</span>apply(get_location)
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df[<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">lon</span><span style="color:#d14">&#39;</span>]<span style="color:#000;font-weight:bold">=</span>df<span style="color:#000;font-weight:bold">.</span>locationdetail<span style="color:#000;font-weight:bold">.</span>str<span style="color:#000;font-weight:bold">.</span>split(<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">,</span><span style="color:#d14">&#39;</span>)<span style="color:#000;font-weight:bold">.</span>apply(<span style="color:#000;font-weight:bold">lambda</span> x:x[<span style="color:#099">0</span>])<span style="color:#000;font-weight:bold">.</span>astype(<span style="color:#0086b3">float</span>)<span style="color:#998;font-style:italic">##经度</span>
+df[<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">lat</span><span style="color:#d14">&#39;</span>]<span style="color:#000;font-weight:bold">=</span>df<span style="color:#000;font-weight:bold">.</span>locationdetail<span style="color:#000;font-weight:bold">.</span>str<span style="color:#000;font-weight:bold">.</span>split(<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">,</span><span style="color:#d14">&#39;</span>)<span style="color:#000;font-weight:bold">.</span>apply(<span style="color:#000;font-weight:bold">lambda</span> x:x[<span style="color:#099">1</span>])<span style="color:#000;font-weight:bold">.</span>astype(<span style="color:#0086b3">float</span>)<span style="color:#998;font-style:italic">#纬度</span>
+df<span style="color:#000;font-weight:bold">.</span>head()
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="保存清洗后的数据">保存清洗后的数据</h3>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#998;font-style:italic">#data=df[[&#39;Province&#39;,&#39;City&#39;,&#39;Name&#39;,&#39;Addr&#39;,&#39;lon&#39;,&#39;lat&#39;]]</span>
+<span style="color:#998;font-style:italic">#data.to_excel(&#34;清洗后的数据.xlsx&#34;,index=None)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="可视化">可视化</h2>
+<h3 id="拥有肯德基门店最多10个城市">拥有肯德基门店最多10个城市</h3>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">temp<span style="color:#000;font-weight:bold">=</span>df<span style="color:#000;font-weight:bold">.</span>groupby(<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">City</span><span style="color:#d14">&#39;</span>)[<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">Name</span><span style="color:#d14">&#39;</span>]<span style="color:#000;font-weight:bold">.</span>count()<span style="color:#000;font-weight:bold">.</span>reset_index()
+temp<span style="color:#000;font-weight:bold">.</span>columns<span style="color:#000;font-weight:bold">=</span>[<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">City</span><span style="color:#d14">&#39;</span>,<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">计数</span><span style="color:#d14">&#39;</span>]
+data_pair<span style="color:#000;font-weight:bold">=</span>[(row[<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">City</span><span style="color:#d14">&#39;</span>],row[<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">计数</span><span style="color:#d14">&#39;</span>]) <span style="color:#000;font-weight:bold">for</span> _,row <span style="color:#000;font-weight:bold">in</span> temp<span style="color:#000;font-weight:bold">.</span>iterrows()]
+top_city<span style="color:#000;font-weight:bold">=</span><span style="color:#0086b3">sorted</span>(data_pair,key<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">lambda</span> x:x[<span style="color:#099">1</span>],reverse<span style="color:#000;font-weight:bold">=</span><span style="color:#999">True</span>)[:<span style="color:#099">10</span>][::<span style="color:#000;font-weight:bold">-</span><span style="color:#099">1</span>]
+top_city
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">bar<span style="color:#000;font-weight:bold">=</span>(Bar(init_opts<span style="color:#000;font-weight:bold">=</span>opts<span style="color:#000;font-weight:bold">.</span>InitOpts(theme<span style="color:#000;font-weight:bold">=</span><span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">dark</span><span style="color:#d14">&#39;</span>,width<span style="color:#000;font-weight:bold">=</span><span style="color:#099">400</span>))
+     <span style="color:#000;font-weight:bold">.</span>add_xaxis([x[<span style="color:#099">0</span>] <span style="color:#000;font-weight:bold">for</span> x <span style="color:#000;font-weight:bold">in</span> top_city])
+     <span style="color:#000;font-weight:bold">.</span>add_yaxis(<span style="color:#d14"></span><span style="color:#d14">&#34;</span><span style="color:#d14">&#34;</span>,[x[<span style="color:#099">1</span>] <span style="color:#000;font-weight:bold">for</span> x <span style="color:#000;font-weight:bold">in</span> top_city])
+     <span style="color:#000;font-weight:bold">.</span>set_series_opts(label_opts<span style="color:#000;font-weight:bold">=</span>opts<span style="color:#000;font-weight:bold">.</span>LabelOpts(is_show<span style="color:#000;font-weight:bold">=</span><span style="color:#999">True</span>,
+                                               position<span style="color:#000;font-weight:bold">=</span><span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">insideRight</span><span style="color:#d14">&#39;</span>,
+                                               font_style<span style="color:#000;font-weight:bold">=</span><span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">italic</span><span style="color:#d14">&#39;</span>),
+                     itemstyle_opts<span style="color:#000;font-weight:bold">=</span>opts<span style="color:#000;font-weight:bold">.</span>ItemStyleOpts(
+                         color<span style="color:#000;font-weight:bold">=</span>JsCode(<span style="color:#d14"></span><span style="color:#d14">&#34;&#34;&#34;</span><span style="color:#d14">new echarts.graphic.LinearGradient(1, 0, 0, 0, </span><span style="color:#d14">
+</span><span style="color:#d14"></span><span style="color:#d14">                                             [{</span><span style="color:#d14">
+</span><span style="color:#d14"></span><span style="color:#d14">                                                 offset: 0,</span><span style="color:#d14">
+</span><span style="color:#d14"></span><span style="color:#d14">                                                 color: </span><span style="color:#d14">&#39;</span><span style="color:#d14">rgb(255,99,71)</span><span style="color:#d14">&#39;</span><span style="color:#d14">
+</span><span style="color:#d14"></span><span style="color:#d14">                                             }, {</span><span style="color:#d14">
+</span><span style="color:#d14"></span><span style="color:#d14">                                                 offset: 1,</span><span style="color:#d14">
+</span><span style="color:#d14"></span><span style="color:#d14">                                                 color: </span><span style="color:#d14">&#39;</span><span style="color:#d14">rgb(32,178,170)</span><span style="color:#d14">&#39;</span><span style="color:#d14">
+</span><span style="color:#d14"></span><span style="color:#d14">                                             }])</span><span style="color:#d14">&#34;&#34;&#34;</span>
+                     ))
+    )
+     <span style="color:#000;font-weight:bold">.</span>set_global_opts(
+         title_opts<span style="color:#000;font-weight:bold">=</span>opts<span style="color:#000;font-weight:bold">.</span>TitleOpts(title<span style="color:#000;font-weight:bold">=</span><span style="color:#d14"></span><span style="color:#d14">&#34;</span><span style="color:#d14">肯德基门店最多10个城市</span><span style="color:#d14">&#34;</span>,
+                                  subtitle<span style="color:#000;font-weight:bold">=</span><span style="color:#d14"></span><span style="color:#d14">&#34;</span><span style="color:#d14">数据截止日期：2020年8月</span><span style="color:#d14">&#34;</span>),
+         xaxis_opts<span style="color:#000;font-weight:bold">=</span>opts<span style="color:#000;font-weight:bold">.</span>AxisOpts(axislabel_opts<span style="color:#000;font-weight:bold">=</span>opts<span style="color:#000;font-weight:bold">.</span>LabelOpts(rotate<span style="color:#000;font-weight:bold">=</span><span style="color:#099">45</span>)),
+         legend_opts<span style="color:#000;font-weight:bold">=</span>opts<span style="color:#000;font-weight:bold">.</span>LegendOpts(is_show<span style="color:#000;font-weight:bold">=</span><span style="color:#999">True</span>))
+     <span style="color:#000;font-weight:bold">.</span>reversal_axis()
+     )
+bar<span style="color:#000;font-weight:bold">.</span>render_notebook()
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="全国门店分布热点图">全国门店分布热点图</h3>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">data_pair <span style="color:#000;font-weight:bold">=</span> []
+
+<span style="color:#998;font-style:italic"># 新建一个BMap对象</span>
+geo <span style="color:#000;font-weight:bold">=</span> Geo(init_opts<span style="color:#000;font-weight:bold">=</span>opts<span style="color:#000;font-weight:bold">.</span>InitOpts(theme<span style="color:#000;font-weight:bold">=</span><span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">dark</span><span style="color:#d14">&#39;</span>))
+
+<span style="color:#000;font-weight:bold">for</span> _, row <span style="color:#000;font-weight:bold">in</span> data<span style="color:#000;font-weight:bold">.</span>iterrows():
+    geo<span style="color:#000;font-weight:bold">.</span>add_coordinate(row[<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">City</span><span style="color:#d14">&#39;</span>], row[<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">lon</span><span style="color:#d14">&#39;</span>], row[<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">lat</span><span style="color:#d14">&#39;</span>])
+    data_pair<span style="color:#000;font-weight:bold">.</span>append([row[<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">City</span><span style="color:#d14">&#39;</span>], <span style="color:#099">1</span>])
+    
+geo <span style="color:#000;font-weight:bold">=</span> (
+        geo<span style="color:#000;font-weight:bold">.</span>add_schema(maptype<span style="color:#000;font-weight:bold">=</span><span style="color:#d14"></span><span style="color:#d14">&#34;</span><span style="color:#d14">china</span><span style="color:#d14">&#34;</span>, zoom<span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span>)
+        <span style="color:#000;font-weight:bold">.</span>add(<span style="color:#d14"></span><span style="color:#d14">&#34;</span><span style="color:#d14">&#34;</span>, data_pair, type_<span style="color:#000;font-weight:bold">=</span><span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">heatmap</span><span style="color:#d14">&#39;</span>)
+        <span style="color:#000;font-weight:bold">.</span>set_series_opts(label_opts<span style="color:#000;font-weight:bold">=</span>opts<span style="color:#000;font-weight:bold">.</span>LabelOpts(is_show<span style="color:#000;font-weight:bold">=</span><span style="color:#999">False</span>))
+        <span style="color:#000;font-weight:bold">.</span>set_global_opts(
+            title_opts<span style="color:#000;font-weight:bold">=</span>opts<span style="color:#000;font-weight:bold">.</span>TitleOpts(title<span style="color:#000;font-weight:bold">=</span><span style="color:#d14"></span><span style="color:#d14">&#34;</span><span style="color:#d14">全国门店分布热点图</span><span style="color:#d14">&#34;</span>,
+                                     subtitle<span style="color:#000;font-weight:bold">=</span><span style="color:#d14"></span><span style="color:#d14">&#34;</span><span style="color:#d14">数据截止日期：2020年8月</span><span style="color:#d14">&#34;</span>),
+            legend_opts<span style="color:#000;font-weight:bold">=</span>opts<span style="color:#000;font-weight:bold">.</span>LegendOpts(is_show<span style="color:#000;font-weight:bold">=</span><span style="color:#999">False</span>),
+            visualmap_opts<span style="color:#000;font-weight:bold">=</span>opts<span style="color:#000;font-weight:bold">.</span>VisualMapOpts(is_show<span style="color:#000;font-weight:bold">=</span><span style="color:#999">True</span>,max_<span style="color:#000;font-weight:bold">=</span><span style="color:#099">100</span>, 
+                                              is_piecewise<span style="color:#000;font-weight:bold">=</span><span style="color:#999">False</span>, 
+                                              range_color<span style="color:#000;font-weight:bold">=</span>[<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">blue</span><span style="color:#d14">&#39;</span>, <span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">green</span><span style="color:#d14">&#39;</span>, <span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">yellow</span><span style="color:#d14">&#39;</span>, <span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">red</span><span style="color:#d14">&#39;</span>])
+        )
+)
+
+geo<span style="color:#000;font-weight:bold">.</span>render_notebook()
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>很直观的可以看到这几个区域比较红&ndash;长三角，珠三角，京津冀</li>
+</ul>
+<h3 id="top10的省份">TOP10的省份</h3>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df[<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">shop_counts</span><span style="color:#d14">&#39;</span>]<span style="color:#000;font-weight:bold">=</span>df<span style="color:#000;font-weight:bold">.</span>groupby(<span style="color:#d14"></span><span style="color:#d14">&#34;</span><span style="color:#d14">Province</span><span style="color:#d14">&#34;</span>)[<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">locationdetail</span><span style="color:#d14">&#39;</span>]<span style="color:#000;font-weight:bold">.</span>transform(<span style="color:#000;font-weight:bold">lambda</span> x: x<span style="color:#000;font-weight:bold">.</span>count())
+province_pc<span style="color:#000;font-weight:bold">=</span>df<span style="color:#000;font-weight:bold">.</span>groupby(<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">Province</span><span style="color:#d14">&#39;</span>,as_index<span style="color:#000;font-weight:bold">=</span><span style="color:#999">False</span>)[<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">shop_counts</span><span style="color:#d14">&#39;</span>]<span style="color:#000;font-weight:bold">.</span>count()<span style="color:#000;font-weight:bold">.</span>sort_values(by<span style="color:#000;font-weight:bold">=</span><span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">shop_counts</span><span style="color:#d14">&#39;</span>,ascending<span style="color:#000;font-weight:bold">=</span><span style="color:#999">False</span>)
 </code></pre></td></tr></table>
 </div>
 </div>
