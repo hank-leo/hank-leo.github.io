@@ -140,16 +140,15 @@
     <div class="post-toc-content">
         <nav id="TableOfContents">
   <ul>
-    <li>
+    <li><a href="#项目背景">项目背景</a>
       <ul>
-        <li><a href="#项目陈述">项目陈述</a></li>
         <li><a href="#导入库">导入库</a></li>
-        <li><a href="#数据抓取">数据抓取</a></li>
-        <li><a href="#提取词云图展示的数据">提取词云图展示的数据</a></li>
-        <li><a href="#绘图设置">绘图设置</a></li>
-        <li><a href="#结果展示">结果展示</a></li>
       </ul>
     </li>
+    <li><a href="#数据抓取">数据抓取</a></li>
+    <li><a href="#提取词云图展示的数据">提取词云图展示的数据</a></li>
+    <li><a href="#绘图设置">绘图设置</a></li>
+    <li><a href="#结果展示">结果展示</a></li>
   </ul>
 </nav>
     </div>
@@ -204,7 +203,7 @@
         
         
         <div class="post-content">
-            <h3 id="项目陈述">项目陈述</h3>
+            <h2 id="项目背景">项目背景</h2>
 <p>从豆瓣图书Top250抓取数据，并通过词云图展示</p>
 <h3 id="导入库">导入库</h3>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
@@ -229,7 +228,7 @@
 <span style="color:#000;font-weight:bold">from</span> <span style="color:#555">pyecharts</span> <span style="color:#000;font-weight:bold">import</span> options <span style="color:#000;font-weight:bold">as</span> opts
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="数据抓取">数据抓取</h3>
+</div><h2 id="数据抓取">数据抓取</h2>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
@@ -332,7 +331,7 @@
     final_result <span style="color:#000;font-weight:bold">=</span> main()
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="提取词云图展示的数据">提取词云图展示的数据</h3>
+</div><h2 id="提取词云图展示的数据">提取词云图展示的数据</h2>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
@@ -371,7 +370,7 @@ book_comment_num<span style="color:#000;font-weight:bold">=</span>[x<span style=
 a<span style="color:#000;font-weight:bold">=</span>[z <span style="color:#000;font-weight:bold">for</span> z <span style="color:#000;font-weight:bold">in</span> <span style="color:#0086b3">zip</span>(book_name,book_comment_num)]
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="绘图设置">绘图设置</h3>
+</div><h2 id="绘图设置">绘图设置</h2>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -397,7 +396,7 @@ a<span style="color:#000;font-weight:bold">=</span>[z <span style="color:#000;fo
 </div><pre><code>/Users/Hank/opt/anaconda3/lib/python3.7/site-packages/pyecharts/charts/chart.py:14: PendingDeprecationWarning: pyecharts 所有图表类型将在 v1.9.0 版本开始强制使用 ChartItem 进行数据项配置 :)
   super().__init__(init_opts=init_opts)
 </code></pre>
-<h3 id="结果展示">结果展示</h3>
+<h2 id="结果展示">结果展示</h2>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
