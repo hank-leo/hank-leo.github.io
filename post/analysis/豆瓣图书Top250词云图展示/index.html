@@ -1,0 +1,679 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>豆瓣图书Top250词云图展示 | Hank&#39;s Blog</title>
+    <meta property="og:title" content="豆瓣图书Top250词云图展示 - Hank&#39;s Blog">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2020-08-26T00:00:00&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2020-08-26T00:00:00&#43;08:00'>
+        
+    <meta name="Keywords" content="Hank,博客,python">
+    <meta name="description" content="豆瓣图书Top250词云图展示">
+        
+    <meta name="author" content="Hank">
+    <meta property="og:url" content="https://hank-leo.github.io/post/analysis/%E8%B1%86%E7%93%A3%E5%9B%BE%E4%B9%A6Top250%E8%AF%8D%E4%BA%91%E5%9B%BE%E5%B1%95%E7%A4%BA/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+        <link rel="stylesheet" href='/css/douban.css'>
+    
+        <link rel="stylesheet" href='/css/other.css'>
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://hank-leo.github.io">
+                        Hank&#39;s Blog
+                    </a>
+                
+                <p class="description">专注于Python、SQL、爬虫、数据分析/挖掘/可视化</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://hank-leo.github.io">首页</a>
+                    
+                    <a  href="https://hank-leo.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://hank-leo.github.io/tags/" title="标签">标签</a>
+                    
+                    <a  href="https://hank-leo.github.io/categories/" title="分类">分类</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h4 class="post-toc-title">目录</h4>
+    <div class="post-toc-content">
+        <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#项目陈述">项目陈述</a></li>
+        <li><a href="#导入库">导入库</a></li>
+        <li><a href="#数据抓取">数据抓取</a></li>
+        <li><a href="#提取词云图展示的数据">提取词云图展示的数据</a></li>
+        <li><a href="#绘图设置">绘图设置</a></li>
+        <li><a href="#结果展示">结果展示</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">豆瓣图书Top250词云图展示</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年8月26日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%AE%9E%E6%88%98'>数据分析实战</a></span>
+            
+        </div>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="post-content">
+            <h3 id="项目陈述">项目陈述</h3>
+<p>从豆瓣图书Top250抓取数据，并通过词云图展示</p>
+<h3 id="导入库">导入库</h3>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000;font-weight:bold">from</span> <span style="color:#555">lxml</span> <span style="color:#000;font-weight:bold">import</span> etree <span style="color:#998;font-style:italic">#解析库</span>
+<span style="color:#000;font-weight:bold">import</span> <span style="color:#555">time</span> <span style="color:#998;font-style:italic">#时间</span>
+<span style="color:#000;font-weight:bold">import</span> <span style="color:#555">random</span> <span style="color:#998;font-style:italic">#随机函数</span>
+<span style="color:#000;font-weight:bold">import</span> <span style="color:#555">pandas</span> <span style="color:#000;font-weight:bold">as</span> <span style="color:#555">pd</span>
+<span style="color:#000;font-weight:bold">import</span> <span style="color:#555">requests</span> <span style="color:#998;font-style:italic">#请求库</span>
+<span style="color:#000;font-weight:bold">import</span> <span style="color:#555">jieba</span> <span style="color:#998;font-style:italic">#导入结巴分词</span>
+<span style="color:#000;font-weight:bold">from</span> <span style="color:#555">pyecharts.charts</span> <span style="color:#000;font-weight:bold">import</span> WordCloud
+<span style="color:#000;font-weight:bold">from</span> <span style="color:#555">pyecharts</span> <span style="color:#000;font-weight:bold">import</span> options <span style="color:#000;font-weight:bold">as</span> opts
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="数据抓取">数据抓取</h3>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#998;font-style:italic">#循环构造网址</span>
+<span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">format_url</span>(base_url,pages<span style="color:#000;font-weight:bold">=</span><span style="color:#099">10</span>):
+    urls<span style="color:#000;font-weight:bold">=</span>[]
+    <span style="color:#000;font-weight:bold">for</span> num <span style="color:#000;font-weight:bold">in</span> <span style="color:#0086b3">range</span>(<span style="color:#099">0</span>,pages <span style="color:#000;font-weight:bold">*</span> <span style="color:#099">25</span>,<span style="color:#099">25</span>):
+        urls<span style="color:#000;font-weight:bold">.</span>append(base_url<span style="color:#000;font-weight:bold">.</span>format(num))
+    <span style="color:#000;font-weight:bold">return</span> urls
+
+<span style="color:#998;font-style:italic">#解析单个页面</span>
+<span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">parse_page</span>(url,headers):
+    <span style="color:#998;font-style:italic">#创建一个存储结果的容器</span>
+    result<span style="color:#000;font-weight:bold">=</span>pd<span style="color:#000;font-weight:bold">.</span>DataFrame()
+    html<span style="color:#000;font-weight:bold">=</span>requests<span style="color:#000;font-weight:bold">.</span>get(url,headers<span style="color:#000;font-weight:bold">=</span>headers)
+    bs<span style="color:#000;font-weight:bold">=</span>etree<span style="color:#000;font-weight:bold">.</span>HTML(html<span style="color:#000;font-weight:bold">.</span>text)
+    <span style="color:#000;font-weight:bold">for</span> i <span style="color:#000;font-weight:bold">in</span> bs<span style="color:#000;font-weight:bold">.</span>xpath(<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">//tr[@class=</span><span style="color:#d14">&#34;</span><span style="color:#d14">item</span><span style="color:#d14">&#34;</span><span style="color:#d14">]</span><span style="color:#d14">&#39;</span>):
+        <span style="color:#998;font-style:italic">#书籍中文名</span>
+        book_ch_name<span style="color:#000;font-weight:bold">=</span>i<span style="color:#000;font-weight:bold">.</span>xpath(<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">td[2]/div[1]/a[1]/@title</span><span style="color:#d14">&#39;</span>)[<span style="color:#099">0</span>]
+        <span style="color:#998;font-style:italic">#评分</span>
+        score<span style="color:#000;font-weight:bold">=</span>i<span style="color:#000;font-weight:bold">.</span>xpath(<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">td[2]/div[2]/span[2]</span><span style="color:#d14">&#39;</span>)[<span style="color:#099">0</span>]<span style="color:#000;font-weight:bold">.</span>text
+        <span style="color:#998;font-style:italic">#书籍信息</span>
+        book_info<span style="color:#000;font-weight:bold">=</span>i<span style="color:#000;font-weight:bold">.</span>xpath(<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">td[2]/p[@class=</span><span style="color:#d14">&#34;</span><span style="color:#d14">pl</span><span style="color:#d14">&#34;</span><span style="color:#d14">]</span><span style="color:#d14">&#39;</span>)[<span style="color:#099">0</span>]<span style="color:#000;font-weight:bold">.</span>text
+        <span style="color:#998;font-style:italic">#评价数量由于数据不规整，使用字符串方法进行数据处理</span>
+        comment_num<span style="color:#000;font-weight:bold">=</span>i<span style="color:#000;font-weight:bold">.</span>xpath(<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">td[2]/div[2]/span[3]</span><span style="color:#d14">&#39;</span>)[<span style="color:#099">0</span>]<span style="color:#000;font-weight:bold">.</span>text<span style="color:#000;font-weight:bold">.</span>replace(<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14"> </span><span style="color:#d14">&#39;</span>,<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">&#39;</span>)<span style="color:#000;font-weight:bold">.</span>strip(<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">(</span><span style="color:#d14">\n</span><span style="color:#d14">&#39;</span>)<span style="color:#000;font-weight:bold">.</span>strip(<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">\n</span><span style="color:#d14">)</span><span style="color:#d14">&#39;</span>)
+        <span style="color:#000;font-weight:bold">try</span>:
+            <span style="color:#998;font-style:italic">#一句话概括</span>
+            brief<span style="color:#000;font-weight:bold">=</span>i<span style="color:#000;font-weight:bold">.</span>xpath(<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">td[2]/p[@class=</span><span style="color:#d14">&#34;</span><span style="color:#d14">quote</span><span style="color:#d14">&#34;</span><span style="color:#d14">]/span</span><span style="color:#d14">&#39;</span>)[<span style="color:#099">0</span>]<span style="color:#000;font-weight:bold">.</span>text
+        <span style="color:#000;font-weight:bold">except</span>:
+            brief<span style="color:#000;font-weight:bold">=</span><span style="color:#999">None</span>
+        <span style="color:#998;font-style:italic">#这里的cache是存储每一循环的结果，然后通过下一步操作循环更新result里面的数据</span>
+        cache<span style="color:#000;font-weight:bold">=</span>pd<span style="color:#000;font-weight:bold">.</span>DataFrame({<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">中文名</span><span style="color:#d14">&#39;</span>:[book_ch_name],<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">评分</span><span style="color:#d14">&#39;</span>:[score],<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">书籍信息</span><span style="color:#d14">&#39;</span>:[book_info],<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">评价数量</span><span style="color:#d14">&#39;</span>:[comment_num],<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">一句话概括</span><span style="color:#d14">&#39;</span>:[brief]})
+        result<span style="color:#000;font-weight:bold">=</span>pd<span style="color:#000;font-weight:bold">.</span>concat([result,cache])
+    <span style="color:#000;font-weight:bold">return</span> result
+
+<span style="color:#998;font-style:italic">#主函数</span>
+<span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">main</span>():
+    final_result<span style="color:#000;font-weight:bold">=</span>pd<span style="color:#000;font-weight:bold">.</span>DataFrame()
+    base_url<span style="color:#000;font-weight:bold">=</span><span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">https://book.douban.com/top250?start={}</span><span style="color:#d14">&#39;</span>
+    headers<span style="color:#000;font-weight:bold">=</span>{<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">User-Agent</span><span style="color:#d14">&#39;</span>:<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36</span><span style="color:#d14">&#39;</span>}
+    urls<span style="color:#000;font-weight:bold">=</span>format_url(base_url,pages<span style="color:#000;font-weight:bold">=</span><span style="color:#099">10</span>)
+    <span style="color:#000;font-weight:bold">for</span> url <span style="color:#000;font-weight:bold">in</span> urls:
+        res<span style="color:#000;font-weight:bold">=</span>parse_page(url,headers<span style="color:#000;font-weight:bold">=</span>headers)
+        final_result<span style="color:#000;font-weight:bold">=</span>pd<span style="color:#000;font-weight:bold">.</span>concat([final_result,res])
+    
+    time<span style="color:#000;font-weight:bold">.</span>sleep(random<span style="color:#000;font-weight:bold">.</span>random()<span style="color:#000;font-weight:bold">*</span><span style="color:#099">3</span>)
+    <span style="color:#000;font-weight:bold">return</span> final_result
+
+<span style="color:#998;font-style:italic">#运行函数</span>
+<span style="color:#000;font-weight:bold">if</span> __name__ <span style="color:#000;font-weight:bold">==</span> <span style="color:#d14"></span><span style="color:#d14">&#34;</span><span style="color:#d14">__main__</span><span style="color:#d14">&#34;</span>:
+    final_result <span style="color:#000;font-weight:bold">=</span> main()
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="提取词云图展示的数据">提取词云图展示的数据</h3>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#998;font-style:italic">#提取书名、评分、评价数量</span>
+book_top250<span style="color:#000;font-weight:bold">=</span>final_result[[<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">中文名</span><span style="color:#d14">&#39;</span>,<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">评分</span><span style="color:#d14">&#39;</span>,<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">评价数量</span><span style="color:#d14">&#39;</span>]]
+
+<span style="color:#998;font-style:italic">#将书名转为列表</span>
+book_name<span style="color:#000;font-weight:bold">=</span>book_top250[<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">中文名</span><span style="color:#d14">&#39;</span>]<span style="color:#000;font-weight:bold">.</span>tolist()
+
+<span style="color:#998;font-style:italic">#将评分转为列表</span>
+book_score<span style="color:#000;font-weight:bold">=</span>book_top250[<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">评分</span><span style="color:#d14">&#39;</span>]<span style="color:#000;font-weight:bold">.</span>tolist()
+
+<span style="color:#998;font-style:italic">#将评价人数转为列表</span>
+book_comment_num<span style="color:#000;font-weight:bold">=</span>book_top250[<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">评价数量</span><span style="color:#d14">&#39;</span>]<span style="color:#000;font-weight:bold">.</span>tolist()
+<span style="color:#998;font-style:italic">#去除多余字符&#34;人评价&#34;</span>
+book_comment_num<span style="color:#000;font-weight:bold">=</span>[x<span style="color:#000;font-weight:bold">.</span>strip(<span style="color:#d14"></span><span style="color:#d14">&#34;</span><span style="color:#d14">人评价</span><span style="color:#d14">&#34;</span>) <span style="color:#000;font-weight:bold">for</span> x <span style="color:#000;font-weight:bold">in</span> book_comment_num <span style="color:#000;font-weight:bold">if</span> x<span style="color:#000;font-weight:bold">.</span>strip()<span style="color:#000;font-weight:bold">!=</span><span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">&#39;</span>]
+
+<span style="color:#998;font-style:italic">#用for循环合并数据</span>
+a<span style="color:#000;font-weight:bold">=</span>[z <span style="color:#000;font-weight:bold">for</span> z <span style="color:#000;font-weight:bold">in</span> <span style="color:#0086b3">zip</span>(book_name,book_comment_num)]
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="绘图设置">绘图设置</h3>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">c<span style="color:#000;font-weight:bold">=</span>(
+    <span style="color:#998;font-style:italic">#wordcloud类实例化</span>
+    WordCloud()
+    <span style="color:#998;font-style:italic">#添加图名称、数据、字体的随机大小、图像类型</span>
+    <span style="color:#000;font-weight:bold">.</span>add(<span style="color:#d14"></span><span style="color:#d14">&#34;</span><span style="color:#d14">&#34;</span>,a,word_size_range<span style="color:#000;font-weight:bold">=</span>[<span style="color:#099">5</span>,<span style="color:#099">50</span>],shape<span style="color:#000;font-weight:bold">=</span><span style="color:#d14"></span><span style="color:#d14">&#34;</span><span style="color:#d14">diamond</span><span style="color:#d14">&#34;</span>)
+    <span style="color:#998;font-style:italic">#设置标题</span>
+    <span style="color:#000;font-weight:bold">.</span>set_global_opts(title_opts<span style="color:#000;font-weight:bold">=</span>opts<span style="color:#000;font-weight:bold">.</span>TitleOpts(title<span style="color:#000;font-weight:bold">=</span><span style="color:#d14"></span><span style="color:#d14">&#34;</span><span style="color:#d14">豆瓣图书Top250</span><span style="color:#d14">&#34;</span>))
+)
+</code></pre></td></tr></table>
+</div>
+</div><pre><code>/Users/Hank/opt/anaconda3/lib/python3.7/site-packages/pyecharts/charts/chart.py:14: PendingDeprecationWarning: pyecharts 所有图表类型将在 v1.9.0 版本开始强制使用 ChartItem 进行数据项配置 :)
+  super().__init__(init_opts=init_opts)
+</code></pre>
+<h3 id="结果展示">结果展示</h3>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">c<span style="color:#000;font-weight:bold">.</span>render_notebook()
+</code></pre></td></tr></table>
+</div>
+</div>
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/post/analysis/%E8%82%AF%E5%BE%B7%E5%9F%BA%E9%97%A8%E5%BA%97%E5%88%86%E5%B8%83%E5%8F%AF%E8%A7%86%E5%8C%96%E5%88%86%E6%9E%90/">肯德基门店分布可视化分析</a></li>
+        
+        <li><a href="/post/spider/Aiohttp&#43;PyMongo%E5%BC%82%E6%AD%A5%E6%A1%88%E4%BE%8B%E5%AE%9E%E6%88%98/">Aiohttp&#43;PyMongo异步案例实战</a></li>
+        
+        <li><a href="/post/spider/PyMongo&#43;PyQuery%E6%A1%88%E4%BE%8B%E5%AE%9E%E6%88%98/">PyMongo&#43;PyQuery案例实战</a></li>
+        
+        <li><a href="/post/sql/SQL%E5%A4%8D%E4%B9%A0/">SQL复习</a></li>
+        
+        <li><a href="/post/app/%E4%BD%BF%E7%94%A8Airtest%E7%88%AC%E5%8F%96%E6%9F%90%E5%92%96%E5%95%A1app%E6%95%B0%E6%8D%AEv1/">使用Airtest爬取某咖啡app数据</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            <ul class="clearfix">
+                
+                <li><a href='https://hank-leo.github.io/tags/pyecharts'>pyecharts</a></li>
+                
+            </ul>
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "https://github.com/hank-leo/hank-leo.github.io"
+            issue-term="title"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2020 <a href="https://hank-leo.github.io">Hank&#39;s Blog By Hank</a>
+        
+    </div>
+    <br />
+    
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='/js/douban.js'></script>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://hank-leo.github.io/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://hank-leo.github.io">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://hank-leo.github.io/post/sql/LeetCode-SQL%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/" title="LeetCode SQL刷题记录">LeetCode SQL刷题记录</a>
+    </li>
+    
+    <li>
+        <a href="https://hank-leo.github.io/post/spider/%E7%88%AC%E5%8F%96%E6%9F%90%E8%91%97%E5%90%8D%E5%BF%AB%E9%A4%90%E5%B7%A8%E5%A4%B4%E9%97%A8%E5%BA%97%E6%95%B0%E6%8D%AE%E5%AE%9E%E6%88%98/" title="爬取某著名快餐巨头门店数据实战">爬取某著名快餐巨头门店数据实战</a>
+    </li>
+    
+    <li>
+        <a href="https://hank-leo.github.io/post/spider/Aiohttp&#43;PyMongo%E5%BC%82%E6%AD%A5%E6%A1%88%E4%BE%8B%E5%AE%9E%E6%88%98/" title="Aiohttp&#43;PyMongo异步案例实战">Aiohttp&#43;PyMongo异步案例实战</a>
+    </li>
+    
+    <li>
+        <a href="https://hank-leo.github.io/post/spider/PyMongo&#43;PyQuery%E6%A1%88%E4%BE%8B%E5%AE%9E%E6%88%98/" title="PyMongo&#43;PyQuery案例实战">PyMongo&#43;PyQuery案例实战</a>
+    </li>
+    
+    <li>
+        <a href="https://hank-leo.github.io/post/sql/SQL%E5%A4%8D%E4%B9%A0/" title="SQL复习">SQL复习</a>
+    </li>
+    
+    <li>
+        <a href="https://hank-leo.github.io/post/app/%E4%BD%BF%E7%94%A8Airtest%E7%88%AC%E5%8F%96%E6%9F%90%E5%92%96%E5%95%A1app%E6%95%B0%E6%8D%AEv1/" title="使用Airtest爬取某咖啡app数据">使用Airtest爬取某咖啡app数据</a>
+    </li>
+    
+    <li>
+        <a href="https://hank-leo.github.io/post/app/%E4%BD%BF%E7%94%A8Airtest%E7%88%AC%E5%8F%96%E6%9F%90%E5%92%96%E5%95%A1app%E6%95%B0%E6%8D%AEv2/" title="使用Airtest爬取某咖啡app数据v1">使用Airtest爬取某咖啡app数据v1</a>
+    </li>
+    
+    <li>
+        <a href="https://hank-leo.github.io/post/blog/%E4%BD%BF%E7%94%A8Github-Actions%E6%90%AD%E5%BB%BAhugo/" title="使用Github Actions搭建hugo">使用Github Actions搭建hugo</a>
+    </li>
+    
+    <li>
+        <a href="https://hank-leo.github.io/post/python/%E4%BD%BF%E7%94%A8%E5%BC%82%E6%AD%A5%E5%87%BD%E6%95%B0%E8%8E%B7%E5%8F%96%E6%96%87%E4%BB%B6%E5%90%8D/" title="使用异步函数获取文件名">使用异步函数获取文件名</a>
+    </li>
+    
+    <li>
+        <a href="https://hank-leo.github.io/post/spider/pyqt/%E5%88%A9%E7%94%A8PyQt5%E4%BA%A4%E4%BA%92%E5%AF%BC%E5%87%BA%E6%95%B0%E6%8D%AE/" title="利用PyQt5交互导出数据">利用PyQt5交互导出数据</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href="/categories">分类</a></h3>
+<ul class="widget-list">
+    
+    <li><a href="https://hank-leo.github.io/categories/Python%E5%AD%A6%E4%B9%A0/">Python学习 (6)</a></li>
+    
+    <li><a href="https://hank-leo.github.io/categories/Python%E5%AE%9E%E6%88%98/">Python实战 (2)</a></li>
+    
+    <li><a href="https://hank-leo.github.io/categories/Scrapy%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/">Scrapy框架学习 (11)</a></li>
+    
+    <li><a href="https://hank-leo.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建 (3)</a></li>
+    
+    <li><a href="https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%AD%A6%E4%B9%A0/">数据分析学习 (3)</a></li>
+    
+    <li><a href="https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%AE%9E%E6%88%98/">数据分析实战 (3)</a></li>
+    
+    <li><a href="https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/">数据分析报告 (1)</a></li>
+    
+    <li><a href="https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/">数据可视化 (1)</a></li>
+    
+    <li><a href="https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0/">数据库学习 (5)</a></li>
+    
+    <li><a href="https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E6%80%9D%E7%BB%B4/">数据思维 (1)</a></li>
+    
+    <li><a href="https://hank-leo.github.io/categories/%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0/">爬虫学习 (4)</a></li>
+    
+    <li><a href="https://hank-leo.github.io/categories/%E7%88%AC%E8%99%AB%E5%AE%9E%E6%88%98/">爬虫实战 (4)</a></li>
+    
+    <li><a href="https://hank-leo.github.io/categories/%E7%88%AC%E8%99%AB%E5%AE%9E%E6%88%98%E5%AE%9E%E6%88%98/">爬虫实战实战 (1)</a></li>
+    
+    <li><a href="https://hank-leo.github.io/categories/%E7%BB%9F%E8%AE%A1%E5%AD%A6/">统计学 (2)</a></li>
+    
+    <li><a href="https://hank-leo.github.io/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题 (2)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href="/tags">标签</a></h3>
+<div class="tagcloud">
+    
+    <a href="https://hank-leo.github.io/tags/MongoDB/">MongoDB</a>
+    
+    <a href="https://hank-leo.github.io/tags/MySQL/">MySQL</a>
+    
+    <a href="https://hank-leo.github.io/tags/Python%E9%9D%A2%E8%AF%95/">Python面试</a>
+    
+    <a href="https://hank-leo.github.io/tags/Scrapy/">Scrapy</a>
+    
+    <a href="https://hank-leo.github.io/tags/aiohttp/">aiohttp</a>
+    
+    <a href="https://hank-leo.github.io/tags/airtest/">airtest</a>
+    
+    <a href="https://hank-leo.github.io/tags/app/">app</a>
+    
+    <a href="https://hank-leo.github.io/tags/dict/">dict</a>
+    
+    <a href="https://hank-leo.github.io/tags/excel/">excel</a>
+    
+    <a href="https://hank-leo.github.io/tags/hexo/">hexo</a>
+    
+    <a href="https://hank-leo.github.io/tags/hugo/">hugo</a>
+    
+    <a href="https://hank-leo.github.io/tags/list/">list</a>
+    
+    <a href="https://hank-leo.github.io/tags/numpy/">numpy</a>
+    
+    <a href="https://hank-leo.github.io/tags/pandas/">pandas</a>
+    
+    <a href="https://hank-leo.github.io/tags/pyecharts/">pyecharts</a>
+    
+    <a href="https://hank-leo.github.io/tags/pymongo/">pymongo</a>
+    
+    <a href="https://hank-leo.github.io/tags/pyqt5/">pyqt5</a>
+    
+    <a href="https://hank-leo.github.io/tags/re/">re</a>
+    
+    <a href="https://hank-leo.github.io/tags/regex/">regex</a>
+    
+    <a href="https://hank-leo.github.io/tags/requests/">requests</a>
+    
+    <a href="https://hank-leo.github.io/tags/string/">string</a>
+    
+    <a href="https://hank-leo.github.io/tags/superset/">superset</a>
+    
+    <a href="https://hank-leo.github.io/tags/xlwings/">xlwings</a>
+    
+    <a href="https://hank-leo.github.io/tags/xpath/">xpath</a>
+    
+    <a href="https://hank-leo.github.io/tags/%E5%BC%82%E6%AD%A5/">异步</a>
+    
+    <a href="https://hank-leo.github.io/tags/%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97/">数据清洗</a>
+    
+    <a href="https://hank-leo.github.io/tags/%E7%88%AC%E8%99%AB%E9%9D%A2%E8%AF%95/">爬虫面试</a>
+    
+</div>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title">友情链接</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a target="_blank" href="http://cnblogs.hankleo.com" title="博客园">博客园</a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://hank-leo.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

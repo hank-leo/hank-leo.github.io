@@ -76,6 +76,31 @@
     <article class="post">
         <header>
             <h1 class="post-title">
+                <a href="https://hank-leo.github.io/post/spider/%E7%88%AC%E8%99%AB%E9%9D%A2%E8%AF%95%E9%A2%98/" title="爬虫面试题">爬虫面试题</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年12月10日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://hank-leo.github.io/categories/%E9%9D%A2%E8%AF%95%E9%A2%98'>面试题</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            基础 http协议, tcp协议 top 命令 Linux/Mac 下虚拟内存 (Swap) 用过的linux命令，具体细节比如crontab命令报错可能有哪些原因 线程、进程、协程 Async 相关、事件驱动相关 阻塞、非阻塞 Python GIL 布隆过滤器原理：如何实现、一般要几次哈希函数 MySQL的索引底层 实战 抓取天猫超市上某些商品配送省份信息 (主要需……
+        </div>
+        <p class="readmore"><a href="https://hank-leo.github.io/post/spider/%E7%88%AC%E8%99%AB%E9%9D%A2%E8%AF%95%E9%A2%98/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
                 <a href="https://hank-leo.github.io/post/python/Python%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Python面试题">Python面试题</a>
             </h1>
         </header>
@@ -298,31 +323,6 @@
     
     
     
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://hank-leo.github.io/post/python/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8/" title="字符串的实际应用">字符串的实际应用</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2019年12月5日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='https://hank-leo.github.io/categories/Python%E5%AD%A6%E4%B9%A0'>Python学习</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            1.判断字符串是否为小数 try: lat = float(location.split(',')[1]) lon = float(location.split(',')[0]) except ValueError: print('no number') 2.用split对字符串进行分割 str='storeId=ff8080816277aa0a0162845d48e3012b&amp;appid=wxe37b2e703155ed41&amp;transId=wxe37b2e703155ed412019-05-09%2010%3A28%3A15&amp;sign=dc8fac903b03556247659e1b548bccce&amp;timestamp=2019-05-09%2010%3A28%3A15&amp;memberId=ff8080816a889e71016a9a68a6c55a37&amp;cliqueId=-1&amp;cliqueMemberId=-1&amp;useClique=0&amp;enterpriseId=ff808081624e60f601625c50a30900ce&amp;unionid=oLWn80pR0DtSJXfnO_1O4ZOzfvAE&amp;openid=oZe8D5gmPcPANw4kNNcG8mlAW1mI&amp;launchOptions=%7B%22path%22%3A%22%2Fpages%2Fmall%2Fmall-index%2Fmall-index%22%2C%22query%22%3A%7B%7D%2C%22scene%22%3A1102%2C%22referrerInfo%22%3A%7B%22appId%22%3A%22wx97e5123eb6041454%22%7D%7D' str2=str.split('&amp;') for i in str2: print('&quot;'+i.split('=')[0]+'&quot;:&quot;'+i.split('=')[1]+'&quot;,') 结果如下： &ldquo;storeId&rdquo;:&ldquo;ff8080816277aa0a0162845d48e3012b&rdquo;, &ldquo;appid&rdquo;:&ldquo;wxe37b2e703155ed41&rdquo;, &ldquo;transId&rdquo;:&ldquo;wxe37b2e703155ed412019-05-09%2010%3A28%3A15&rdquo;, &ldquo;sign&rdquo;:&ldquo;dc8fac903b03556247659e1b548bccce&rdquo;, &ldquo;timestamp&rdquo;:&ldquo;2019-05-09%2010%3A28%3A15&rdquo;, &ldquo;memberId&rdquo;:&ldquo;ff8080816a889e71016a9a68a6c55a37&rdquo;, &ldquo;cliqueId&rdquo;:&quot;-1&rdquo;, &ldquo;cliqueMemberId&rdquo;:&quot;-1&rdquo;, &ldquo;useClique&rdquo;:&ldquo;0&rdquo;, &ldquo;enterpriseId&rdquo;:&ldquo;ff808081624e60f601625c50a30900ce&rdquo;, &ldquo;unionid&rdquo;:&ldquo;oLWn80pR0DtSJXfnO_1O4ZOzfvAE&rdquo;, &ldquo;openid&rdquo;:&ldquo;oZe8D5gmPcPANw4kNNcG8mlAW1mI&rdquo;, &ldquo;launchOptions&rdquo;:&quot;%7B%22path%22%3A%22%2Fpages%2Fmall%2Fmall-index%2Fmall-index%22%2C%22query%22%3A%7B%7D%2C%22scene%22%3A1102%2C%22referrerInfo%22%3A%7B%22appId%22%3A%22wx97e5123eb6041454%22%7D%7D&rdquo;, 3.python检测字符串乱码 import chardet f=open('test.txt','rb') f_read=f.read() f_charInfo=chardet.detect(f_read) print(f_charInfo) # f_charInfo的输出是这样的的一个字典{'confidence': 0.99, 'encoding': 'utf-8'} 4.将逗号分隔的字符串转换为P……
-        </div>
-        <p class="readmore"><a href="https://hank-leo.github.io/post/python/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8/">阅读全文</a></p>
-    </article>
-    
-    
-    
 
 
 
@@ -464,7 +464,7 @@
     
     <li><a href="https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%AD%A6%E4%B9%A0/">数据分析学习 (3)</a></li>
     
-    <li><a href="https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%AE%9E%E6%88%98/">数据分析实战 (2)</a></li>
+    <li><a href="https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%AE%9E%E6%88%98/">数据分析实战 (3)</a></li>
     
     <li><a href="https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/">数据分析报告 (1)</a></li>
     
