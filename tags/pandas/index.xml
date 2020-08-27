@@ -30,6 +30,15 @@
     </item>
     
     <item>
+      <title>肯德基门店分布可视化分析</title>
+      <link>https://hank-leo.github.io/post/analysis/%E8%82%AF%E5%BE%B7%E5%9F%BA%E9%97%A8%E5%BA%97%E5%88%86%E5%B8%83%E5%8F%AF%E8%A7%86%E5%8C%96%E5%88%86%E6%9E%90/</link>
+      <pubDate>Wed, 26 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hank-leo.github.io/post/analysis/%E8%82%AF%E5%BE%B7%E5%9F%BA%E9%97%A8%E5%BA%97%E5%88%86%E5%B8%83%E5%8F%AF%E8%A7%86%E5%8C%96%E5%88%86%E6%9E%90/</guid>
+      <description>项目介绍 背景：肯德基快餐公司是全球大型连锁快餐企业，截止至2020年已进驻了中国140多个城市，门店突破7000家。 根据门店地址，使用Pyecharts对肯德基门店分布进行可视化分析： 可视化需要解决的思路: 需要把门店地址转换成经纬度 需要根据省份、城市、详细地址信息得到经纬度 构造G</description>
+    </item>
+    
+    <item>
       <title>Pandas异常值处理</title>
       <link>https://hank-leo.github.io/post/analysis/Pandas%E5%BC%82%E5%B8%B8%E5%80%BC%E5%A4%84%E7%90%86/</link>
       <pubDate>Wed, 04 Dec 2019 00:00:00 +0000</pubDate>

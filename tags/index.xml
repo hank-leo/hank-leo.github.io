@@ -6,10 +6,19 @@
     <description>Recent content in Tags on Hank&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 26 Aug 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 27 Aug 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://hank-leo.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>requests</title>
+      <link>https://hank-leo.github.io/tags/requests/</link>
+      <pubDate>Thu, 27 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hank-leo.github.io/tags/requests/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>aiohttp</title>
@@ -62,6 +71,15 @@
       <pubDate>Wed, 26 Aug 2020 00:00:00 +0000</pubDate>
       
       <guid>https://hank-leo.github.io/tags/pandas/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pyecharts</title>
+      <link>https://hank-leo.github.io/tags/pyecharts/</link>
+      <pubDate>Wed, 26 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hank-leo.github.io/tags/pyecharts/</guid>
       <description></description>
     </item>
     
