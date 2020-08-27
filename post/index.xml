@@ -147,6 +147,15 @@
     </item>
     
     <item>
+      <title>朝阳医院药品销售数据分析</title>
+      <link>https://hank-leo.github.io/post/analysis/%E4%BA%B2%E8%87%AA%E5%8A%A8%E6%89%8B%E6%9C%9D%E9%98%B3%E5%8C%BB%E9%99%A2%E8%8D%AF%E5%93%81%E9%94%80%E5%94%AE%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/</link>
+      <pubDate>Wed, 26 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hank-leo.github.io/post/analysis/%E4%BA%B2%E8%87%AA%E5%8A%A8%E6%89%8B%E6%9C%9D%E9%98%B3%E5%8C%BB%E9%99%A2%E8%8D%AF%E5%93%81%E9%94%80%E5%94%AE%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/</guid>
+      <description>前言 先来囊括一下数据分析的流程，大致分为以下几个部分： 提出问题 理解数据 数据清洗 构建模型 数据可视化 提出问题 在进行数据分析之前，先要明确分析的目标是什么，只有这样才能更为高效的选取数据，进行分析研究，最终产生价值。 本次目标是从销售数据中分析书以下业务指标： 月均消费次数 月均消费金额 客单</description>
+    </item>
+    
+    <item>
       <title>某医院药品销售数据分析实战</title>
       <link>https://hank-leo.github.io/post/analysis/%E6%9F%90%E5%8C%BB%E9%99%A2%E8%8D%AF%E5%93%81%E9%94%80%E5%94%AE%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%AE%9E%E6%88%98/</link>
       <pubDate>Wed, 26 Aug 2020 00:00:00 +0000</pubDate>
@@ -450,6 +459,29 @@
       
       <guid>https://hank-leo.github.io/post/scrapy/Scrapy%E6%A1%86%E6%9E%B6-%E7%BB%9F%E8%AE%A1%E6%95%B0%E6%8D%AE%E6%94%B6%E9%9B%86/</guid>
       <description>通过stats属性来使用数据收集器 class ExtensionThatAccessStats(object): def __init__(self, stats): self.stats = stats @classmethod def from_crawler(cls, crawler): return cls(crawler.stats) 设置数据 stats.set_value(&#39;hostname&#39;, socket.gethostname()) 增加数据值 stats.inc_value(&#39;pages_crawled&#39;) 当新的值比原来的值大时设置数据 stats.max_value(&#39;max_items_scraoed&#39;, value) 当新的值比原来的值小时设置数据 stats.min_value(&#39;min_free_memory_percent&#39;, value) 获取数据 stats.get_value(&#39;pages_crawled&#39;) 获取所有数据 stats.get_stats() 示例：统计名人名言网站(http://quotes.toscrape.com/)标签为love的名言数</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://hank-leo.github.io/post/analysis/%E6%9C%9D%E9%98%B3%E5%8C%BB%E9%99%A2%E8%8D%AF%E5%93%81%E9%94%80%E5%94%AE%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hank-leo.github.io/post/analysis/%E6%9C%9D%E9%98%B3%E5%8C%BB%E9%99%A2%E8%8D%AF%E5%93%81%E9%94%80%E5%94%AE%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/</guid>
+      <description>1.导入数据包，提取数据文件
+在提取数据中，为了保证数据文件中的数据读取正常，通常会将函数中dtype参数设置为object 意思是统一按照字符串格式读取数据
+1 2 3 4 5  import numpy as np import pandas as pd #导入数据 salesDf=pd.read_excel(r&amp;#34;朝阳医院2018年销售数据.xlsx&amp;#34;,dtype=&amp;#39;object&amp;#39;) # salesDf=xls.parse(&amp;#34;数据1&amp;#34;)   2.查看导入数据的基本状况
+1 2  #查看数据类型 type(salesDf)   pandas.core.frame.DataFrame  1 2  #查看每个项目的类型 salesDf.dtypes   购药时间 object 社保卡号 object 商品编码 object 商品名称 object 销售数量 object 应收金额 object 实收金额 object dtype: object  1 2  #查看数据的基本大小 salesDf.shape   (6578, 7)  1 2  #查看开头几行数据，看看数据是否读取正确 salesDf.head()   .dataframe tbody tr th { vertical-align: top; } .dataframe thead th { text-align: right; }  1 2  #用描述函数describ查看整个数据的基本状况 salesDf.describe()   .dataframe tbody tr th { vertical-align: top; } .dataframe thead th { text-align: right; }  从以上信息可以基本了解到数据是由购药时间、社保卡号、商品编码、商品名称、销售数量、应收金额、实收金额等七个项目组成，数据总条数为6576
+数据清洗 取得数据并不能直接进行分析，通常并不完全符合分析条件，可能存在缺失值、异常值，这些数据会使分析结果产生偏差，所以分析前需进行子集选择、缺失数据补充、异常值处理、数据类型转换等多个步骤，这些都属于数据清洗范畴。
+在数据分析中，通常会超过60%的时间花在清洗中。
+清洗步骤有如下几步：
+  选择子集
+  列名重命名
+  缺失数据处理
+  数据类型转换
+  数据排序
+  异常值处理
+  这些步骤可能还需重复操作
+1.选择子集 此项目数据忽略选择子集</description>
     </item>
     
   </channel>
