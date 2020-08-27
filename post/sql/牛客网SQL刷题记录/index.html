@@ -701,7 +701,9 @@
 <span style="color:#000;font-weight:bold">group</span> <span style="color:#000;font-weight:bold">by</span> de.dept_no,t.title
 </code></pre></td></tr></table>
 </div>
-</div><p><a href="https://www.nowcoder.com/practice/a158fa6e79274ac497832697b4b83658?tpId=82&amp;tags=&amp;title=&amp;diffculty=0&amp;judgeStatus=0&amp;rp=1">27.使用join查询方式找出没有分类的电影id以及名称</a></p>
+</div><p><a href="https://www.nowcoder.com/practice/eb9b13e5257744db8265aa73de04fd44?tpId=82&amp;&amp;tqId=29779&amp;rp=1&amp;ru=/ta/sql&amp;qru=/ta/sql/question-ranking">27.给出每个员工每年薪水涨幅超过5000的员工编号emp_no、薪水变更开始日期from_date以及薪水涨幅值salary_growth，并按照salary_growth逆序排列</a></p>
+<p><a href="https://www.nowcoder.com/practice/3a303a39cc40489b99a7e1867e6507c5?tpId=82&amp;&amp;tqId=29780&amp;rp=1&amp;ru=/ta/sql&amp;qru=/ta/sql/question-ranking">28.查找描述信息(film.description)中包含robot的电影对应的分类名称(category.name)以及电影数目(count(film.film_id))，而且还需要该分类包含电影总数量(count(film_category.category_id))&gt;=5部</a></p>
+<p><a href="https://www.nowcoder.com/practice/a158fa6e79274ac497832697b4b83658?tpId=82&amp;tags=&amp;title=&amp;diffculty=0&amp;judgeStatus=0&amp;rp=1">29.使用join查询方式找出没有分类的电影id以及名称</a></p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -718,7 +720,7 @@
 <span style="color:#000;font-weight:bold">where</span> fc.category_id <span style="color:#000;font-weight:bold">is</span> <span style="color:#000;font-weight:bold">null</span>
 </code></pre></td></tr></table>
 </div>
-</div><p><a href="https://www.nowcoder.com/practice/2f2e556d335d469f96b91b212c4c203e?tpId=82&amp;tags=&amp;title=&amp;diffculty=0&amp;judgeStatus=0&amp;rp=1">28.你能使用子查询的方式找出属于Action分类的所有电影对应的title,description吗</a></p>
+</div><p><a href="https://www.nowcoder.com/practice/2f2e556d335d469f96b91b212c4c203e?tpId=82&amp;tags=&amp;title=&amp;diffculty=0&amp;judgeStatus=0&amp;rp=1">30.你能使用子查询的方式找出属于Action分类的所有电影对应的title,description吗</a></p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
@@ -747,7 +749,7 @@
 )
 </code></pre></td></tr></table>
 </div>
-</div><p><a href="https://www.nowcoder.com/practice/6744b90bbdde40209f8ecaac0b0516fe?tpId=82&amp;tags=&amp;title=&amp;diffculty=0&amp;judgeStatus=0&amp;rp=1">29.将employees表的所有员工的last_name和first_name拼接起来作为Name，中间以一个空格区分</a></p>
+</div><p><a href="https://www.nowcoder.com/practice/6744b90bbdde40209f8ecaac0b0516fe?tpId=82&amp;tags=&amp;title=&amp;diffculty=0&amp;judgeStatus=0&amp;rp=1">31.将employees表的所有员工的last_name和first_name拼接起来作为Name，中间以一个空格区分</a></p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -756,6 +758,163 @@
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 <pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> last_name<span style="color:#000;font-weight:bold">|</span><span style="color:#000;font-weight:bold">|</span><span style="color:#d14">&#34;</span><span style="color:#d14"> </span><span style="color:#d14">&#34;</span><span style="color:#000;font-weight:bold">|</span><span style="color:#000;font-weight:bold">|</span>first_name <span style="color:#000;font-weight:bold">as</span> Name
 <span style="color:#000;font-weight:bold">from</span> employees
+</code></pre></td></tr></table>
+</div>
+</div><p><a href="https://www.nowcoder.com/practice/ac233de508ef4849b0eeb4f38dcf09cf?tpId=82&amp;tags=&amp;title=&amp;diffculty=0&amp;judgeStatus=0&amp;rp=1">32.创建一个actor表，包含如下列信息(注：sqlite获取系统默认时间是datetime(&lsquo;now&rsquo;,&lsquo;localtime&rsquo;))</a></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">table</span> <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">exists</span> actor(
+    actor_id <span style="color:#0086b3">smallint</span>(<span style="color:#099">5</span>) <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span>,
+    first_name <span style="color:#0086b3">varchar</span>(<span style="color:#099">45</span>) <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span>,
+    last_name <span style="color:#0086b3">varchar</span>(<span style="color:#099">45</span>) <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span>,
+    last_update <span style="color:#000;font-weight:bold">timestamp</span> <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">default</span> (datetime(<span style="color:#d14">&#39;</span><span style="color:#d14">now</span><span style="color:#d14">&#39;</span>, <span style="color:#d14">&#39;</span><span style="color:#d14">localtime</span><span style="color:#d14">&#39;</span>)),
+    <span style="color:#000;font-weight:bold">primary</span> <span style="color:#000;font-weight:bold">key</span>(actor_id)
+)
+</code></pre></td></tr></table>
+</div>
+</div><p><a href="https://www.nowcoder.com/practice/51c12cea6a97468da149c04b7ecf362e?tpId=82&amp;tags=&amp;title=&amp;diffculty=0&amp;judgeStatus=0&amp;rp=1">31.对于表actor批量插入如下数据(不能有2条insert语句哦!)</a></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">insert</span> <span style="color:#000;font-weight:bold">into</span> actor <span style="color:#000;font-weight:bold">values</span>
+(<span style="color:#099">1</span>,<span style="color:#d14">&#39;</span><span style="color:#d14">PENELOPE</span><span style="color:#d14">&#39;</span>,<span style="color:#d14">&#39;</span><span style="color:#d14">GUINESS</span><span style="color:#d14">&#39;</span>,<span style="color:#d14">&#39;</span><span style="color:#d14">2006-02-15 12:34:33</span><span style="color:#d14">&#39;</span>),
+(<span style="color:#099">2</span>,<span style="color:#d14">&#39;</span><span style="color:#d14">NICK</span><span style="color:#d14">&#39;</span>,<span style="color:#d14">&#39;</span><span style="color:#d14">WAHLBERG</span><span style="color:#d14">&#39;</span>,<span style="color:#d14">&#39;</span><span style="color:#d14">2006-02-15 12:34:33</span><span style="color:#d14">&#39;</span>)
+</code></pre></td></tr></table>
+</div>
+</div><p><a href="https://www.nowcoder.com/practice/153c8a8e7805400ba8e384e03acc6b3e?tpId=82&amp;tags=&amp;title=&amp;diffculty=0&amp;judgeStatus=0&amp;rp=1">32.对于表actor批量插入如下数据,如果数据已经存在，请忽略(不支持使用replace操作)</a></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">insert</span> <span style="color:#000;font-weight:bold">or</span> <span style="color:#000;font-weight:bold">ignore</span> <span style="color:#000;font-weight:bold">into</span> actor <span style="color:#000;font-weight:bold">values</span>
+(<span style="color:#099">3</span>,<span style="color:#d14">&#39;</span><span style="color:#d14">ED</span><span style="color:#d14">&#39;</span>,<span style="color:#d14">&#39;</span><span style="color:#d14">CHASE</span><span style="color:#d14">&#39;</span>,<span style="color:#d14">&#39;</span><span style="color:#d14">2006-02-15 12:34:33</span><span style="color:#d14">&#39;</span>)
+</code></pre></td></tr></table>
+</div>
+</div><p><a href="https://www.nowcoder.com/practice/881385f388cf4fe98b2ed9f8897846df?tpId=82&amp;tags=&amp;title=&amp;diffculty=0&amp;judgeStatus=0&amp;rp=1">33.请你创建一个actor_name表，并且将actor表中的所有first_name以及last_name导入该表.</a></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">table</span> actor_name <span style="color:#000;font-weight:bold">as</span>
+<span style="color:#000;font-weight:bold">select</span> first_name,last_name <span style="color:#000;font-weight:bold">from</span> actor
+</code></pre></td></tr></table>
+</div>
+</div><p><a href="https://www.nowcoder.com/practice/e1824daa0c49404aa602cf0cb34bdd75?tpId=82&amp;tags=&amp;title=&amp;diffculty=0&amp;judgeStatus=0&amp;rp=1">34.针对如下表actor结构创建索引</a></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">unique</span> <span style="color:#000;font-weight:bold">index</span> uniq_idx_firstname <span style="color:#000;font-weight:bold">on</span> actor(first_name);
+<span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">index</span> idx_lastname <span style="color:#000;font-weight:bold">on</span> actor(last_name);
+</code></pre></td></tr></table>
+</div>
+</div><p><a href="https://www.nowcoder.com/practice/b9db784b5e3d488cbd30bd78fdb2a862?tpId=82&amp;tags=&amp;title=&amp;diffculty=0&amp;judgeStatus=0&amp;rp=1">35.针对actor表创建视图actor_name_view，只包含first_name以及last_name两列，并对这两列重新命名，first_name为first_name_v，last_name修改为last_name_v</a></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">view</span> actor_name_view
+<span style="color:#000;font-weight:bold">as</span> <span style="color:#000;font-weight:bold">select</span> first_name <span style="color:#000;font-weight:bold">as</span> first_name_v,
+last_name <span style="color:#000;font-weight:bold">as</span> last_name_v
+<span style="color:#000;font-weight:bold">from</span> actor
+</code></pre></td></tr></table>
+</div>
+</div><p><a href="https://www.nowcoder.com/practice/f9fa9dc1a1fc4130b08e26c22c7a1e5f?tpId=82&amp;tags=&amp;title=&amp;diffculty=0&amp;judgeStatus=0&amp;rp=1">36.针对salaries表emp_no字段创建索引idx_emp_no，查询emp_no为10005, 使用强制索引。</a></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">SELECT</span> <span style="color:#000;font-weight:bold">*</span> <span style="color:#000;font-weight:bold">FROM</span> salaries INDEXED <span style="color:#000;font-weight:bold">BY</span> idx_emp_no <span style="color:#000;font-weight:bold">WHERE</span> emp_no <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">10005</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><a href="https://www.nowcoder.com/practice/119f04716d284cb7a19fba65dd876b03?tpId=82&amp;tags=&amp;title=&amp;diffculty=0&amp;judgeStatus=0&amp;rp=1">37.现在在last_update后面新增加一列名字为create_date, 类型为datetime, NOT NULL，默认值为'0000-00-00 00:00:00&rsquo;</a></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">alter</span> <span style="color:#000;font-weight:bold">table</span> actor 
+<span style="color:#000;font-weight:bold">add</span> <span style="color:#000;font-weight:bold">`</span>create_date<span style="color:#000;font-weight:bold">`</span> datetime <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">default</span> <span style="color:#d14">&#39;</span><span style="color:#d14">0000-00-00 00:00:00</span><span style="color:#d14">&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><a href="https://www.nowcoder.com/practice/7e920bb2e1e74c4e83750f5c16033e2e?tpId=82&amp;tags=&amp;title=&amp;diffculty=0&amp;judgeStatus=0&amp;rp=1">38.构造一个触发器audit_log，在向employees_test表中插入一条数据的时候，触发插入相关的数据到audit中。</a></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">trigger</span> audit_log
+<span style="color:#000;font-weight:bold">after</span> <span style="color:#000;font-weight:bold">insert</span>
+<span style="color:#000;font-weight:bold">on</span> employees_test
+<span style="color:#000;font-weight:bold">begin</span>
+<span style="color:#000;font-weight:bold">insert</span> <span style="color:#000;font-weight:bold">into</span> audit <span style="color:#000;font-weight:bold">values</span> (<span style="color:#000;font-weight:bold">NEW</span>.ID,<span style="color:#000;font-weight:bold">NEW</span>.NAME);
+<span style="color:#000;font-weight:bold">end</span>;
+</code></pre></td></tr></table>
+</div>
+</div><p><a href="https://www.nowcoder.com/practice/3d92551a6f6d4f1ebde272d20872cf05?tpId=82&amp;tags=&amp;title=&amp;diffculty=0&amp;judgeStatus=0&amp;rp=1">39.删除emp_no重复的记录，只保留最小的id对应的记录。</a></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">delete</span> <span style="color:#000;font-weight:bold">from</span> titles_test
+<span style="color:#000;font-weight:bold">where</span> id <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">in</span> (
+    <span style="color:#000;font-weight:bold">select</span> <span style="color:#000;font-weight:bold">min</span>(id)
+    <span style="color:#000;font-weight:bold">from</span> titles_test
+    <span style="color:#000;font-weight:bold">group</span> <span style="color:#000;font-weight:bold">by</span> emp_no
+)
+</code></pre></td></tr></table>
+</div>
+</div><p><a href="https://www.nowcoder.com/practice/859f28f43496404886a77600ea68ef59?tpId=82&amp;tags=&amp;title=&amp;diffculty=0&amp;judgeStatus=0&amp;rp=1">40.将所有to_date为9999-01-01的全部更新为NULL,且 from_date更新为2001-01-01</a></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">update</span> titles_test
+<span style="color:#000;font-weight:bold">set</span> 
+to_date<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">NULL</span>,
+from_date<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;</span><span style="color:#d14">2001-01-01</span><span style="color:#d14">&#34;</span>
+<span style="color:#000;font-weight:bold">where</span> to_date<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;</span><span style="color:#d14">9999-01-01</span><span style="color:#d14">&#39;</span>
 </code></pre></td></tr></table>
 </div>
 </div>

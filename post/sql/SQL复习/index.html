@@ -231,40 +231,114 @@ mysql -u -p -h
 列名称N　列类型　[列参数]　[not null default ]
 )engine myisam/innodb charset utf8/gbk
 </code></pre><p>3.4的例子:</p>
-<pre><code>create table user (
-    id int auto_increment,
-    name varchar(20) not null default '',
-    age tinyint unsigned not null default 0,
-   index id (id)
-   )engine=innodb charset=utf8;
-</code></pre><p>注:innodb是表引擎,也可以是myisam或其他,但最常用的是myisam和innodb,
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">table</span> <span style="color:#000;font-weight:bold">user</span> (
+    id <span style="color:#0086b3">int</span> auto_increment,
+    name <span style="color:#0086b3">varchar</span>(<span style="color:#099">20</span>) <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">default</span> <span style="color:#d14">&#39;</span><span style="color:#d14">&#39;</span>,
+    age tinyint unsigned <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">default</span> <span style="color:#099">0</span>,
+   <span style="color:#000;font-weight:bold">index</span> id (id)
+   )engine<span style="color:#000;font-weight:bold">=</span>innodb charset<span style="color:#000;font-weight:bold">=</span>utf8;
+</code></pre></td></tr></table>
+</div>
+</div><p>注:innodb是表引擎,也可以是myisam或其他,但最常用的是myisam和innodb,
 charset 常用的有utf8,gbk;</p>
 <p>3.5 修改表
-3.5.1	修改表之增加列:</p>
-<pre><code>alter table tbName 
-</code></pre><p>add 列名称１　列类型　[列参数]　[not null default ]　#(add之后的旧列名之后的语法和创建表时的列声明一样)</p>
-<p>3.5.2	修改表之修改列</p>
-<pre><code>alter table tbName
-</code></pre><p>change 旧列名  新列名  列类型　[列参数]　[not null default ]
-(注:旧列名之后的语法和创建表时的列声明一样)</p>
-<p>3.5.3	修改表之减少列:</p>
-<pre><code>alter table tbName 
-</code></pre><p>drop 列名称;</p>
-<p>3.5.4	修改表之增加主键</p>
-<pre><code>alter table tbName add primary key(主键所在列名);
-</code></pre><p>例:alter table goods add primary key(id)
-该例是把主键建立在id列上</p>
-<p>3.5.5	修改表之删除主键</p>
-<pre><code>alter table tbName　drop primary key;
-</code></pre><p>3.5.6	修改表之增加索引</p>
-<pre><code>alter table tbName add [unique|fulltext] index 索引名(列名);
-</code></pre><p>3.5.7	修改表之删除索引</p>
-<pre><code>alter table tbName drop index 索引名;
-</code></pre><p>3.5.8	清空表的数据</p>
-<pre><code>truncate tableName;
-</code></pre><p>4:列类型讲解
+<strong>3.5.1 增加列</strong></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">alter</span> <span style="color:#000;font-weight:bold">table</span> tbName 
+<span style="color:#000;font-weight:bold">add</span> <span style="color:#a61717;background-color:#e3d2d2">列</span><span style="color:#a61717;background-color:#e3d2d2">名</span><span style="color:#a61717;background-color:#e3d2d2">称</span><span style="color:#a61717;background-color:#e3d2d2">１</span>　<span style="color:#a61717;background-color:#e3d2d2">列</span><span style="color:#a61717;background-color:#e3d2d2">类</span><span style="color:#a61717;background-color:#e3d2d2">型</span>　[<span style="color:#a61717;background-color:#e3d2d2">列</span><span style="color:#a61717;background-color:#e3d2d2">参</span><span style="color:#a61717;background-color:#e3d2d2">数</span>]　[<span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">default</span> ]　<span style="color:#000;font-weight:bold">#</span>(add之后的旧列名之后的语法和创建表时的列声明一样)
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>3.5.2 修改列</strong></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">alter</span> <span style="color:#000;font-weight:bold">table</span> tbName
+change <span style="color:#a61717;background-color:#e3d2d2">旧</span><span style="color:#a61717;background-color:#e3d2d2">列</span><span style="color:#a61717;background-color:#e3d2d2">名</span>  <span style="color:#a61717;background-color:#e3d2d2">新</span><span style="color:#a61717;background-color:#e3d2d2">列</span><span style="color:#a61717;background-color:#e3d2d2">名</span>  <span style="color:#a61717;background-color:#e3d2d2">列</span><span style="color:#a61717;background-color:#e3d2d2">类</span><span style="color:#a61717;background-color:#e3d2d2">型</span>　[<span style="color:#a61717;background-color:#e3d2d2">列</span><span style="color:#a61717;background-color:#e3d2d2">参</span><span style="color:#a61717;background-color:#e3d2d2">数</span>]　[<span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">default</span> ]
+(<span style="color:#a61717;background-color:#e3d2d2">注</span>:<span style="color:#a61717;background-color:#e3d2d2">旧</span><span style="color:#a61717;background-color:#e3d2d2">列</span><span style="color:#a61717;background-color:#e3d2d2">名</span><span style="color:#a61717;background-color:#e3d2d2">之</span><span style="color:#a61717;background-color:#e3d2d2">后</span><span style="color:#a61717;background-color:#e3d2d2">的</span><span style="color:#a61717;background-color:#e3d2d2">语</span><span style="color:#a61717;background-color:#e3d2d2">法</span><span style="color:#a61717;background-color:#e3d2d2">和</span><span style="color:#a61717;background-color:#e3d2d2">创</span><span style="color:#a61717;background-color:#e3d2d2">建</span><span style="color:#a61717;background-color:#e3d2d2">表</span><span style="color:#a61717;background-color:#e3d2d2">时</span><span style="color:#a61717;background-color:#e3d2d2">的</span><span style="color:#a61717;background-color:#e3d2d2">列</span><span style="color:#a61717;background-color:#e3d2d2">声</span><span style="color:#a61717;background-color:#e3d2d2">明</span><span style="color:#a61717;background-color:#e3d2d2">一</span><span style="color:#a61717;background-color:#e3d2d2">样</span>)
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>3.5.3 减少列</strong></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">alter</span> <span style="color:#000;font-weight:bold">table</span> tbName 
+<span style="color:#000;font-weight:bold">drop</span> <span style="color:#a61717;background-color:#e3d2d2">列</span><span style="color:#a61717;background-color:#e3d2d2">名</span><span style="color:#a61717;background-color:#e3d2d2">称</span>;
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>3.5.4 增加主键</strong></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">alter</span> <span style="color:#000;font-weight:bold">table</span> tbName <span style="color:#000;font-weight:bold">add</span> <span style="color:#000;font-weight:bold">primary</span> <span style="color:#000;font-weight:bold">key</span>(<span style="color:#a61717;background-color:#e3d2d2">主</span><span style="color:#a61717;background-color:#e3d2d2">键</span><span style="color:#a61717;background-color:#e3d2d2">所</span><span style="color:#a61717;background-color:#e3d2d2">在</span><span style="color:#a61717;background-color:#e3d2d2">列</span><span style="color:#a61717;background-color:#e3d2d2">名</span>);
+<span style="color:#a61717;background-color:#e3d2d2">例</span>:<span style="color:#000;font-weight:bold">`</span><span style="color:#000;font-weight:bold">alter</span> <span style="color:#000;font-weight:bold">table</span> goods <span style="color:#000;font-weight:bold">add</span> <span style="color:#000;font-weight:bold">primary</span> <span style="color:#000;font-weight:bold">key</span>(id)<span style="color:#000;font-weight:bold">`</span>
+<span style="color:#a61717;background-color:#e3d2d2">该</span><span style="color:#a61717;background-color:#e3d2d2">例</span><span style="color:#a61717;background-color:#e3d2d2">是</span><span style="color:#a61717;background-color:#e3d2d2">把</span><span style="color:#a61717;background-color:#e3d2d2">主</span><span style="color:#a61717;background-color:#e3d2d2">键</span><span style="color:#a61717;background-color:#e3d2d2">建</span><span style="color:#a61717;background-color:#e3d2d2">立</span><span style="color:#a61717;background-color:#e3d2d2">在</span>id列上
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>3.5.5 删除主键</strong></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">alter</span> <span style="color:#000;font-weight:bold">table</span> tbName　<span style="color:#000;font-weight:bold">drop</span> <span style="color:#000;font-weight:bold">primary</span> <span style="color:#000;font-weight:bold">key</span>;
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>3.5.6 增加索引</strong></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">alter</span> <span style="color:#000;font-weight:bold">table</span> tbName <span style="color:#000;font-weight:bold">add</span> [<span style="color:#000;font-weight:bold">unique</span><span style="color:#000;font-weight:bold">|</span>fulltext] <span style="color:#000;font-weight:bold">index</span> <span style="color:#a61717;background-color:#e3d2d2">索</span><span style="color:#a61717;background-color:#e3d2d2">引</span><span style="color:#a61717;background-color:#e3d2d2">名</span>(<span style="color:#a61717;background-color:#e3d2d2">列</span><span style="color:#a61717;background-color:#e3d2d2">名</span>);
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>3.5.7 删除索引</strong></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">alter</span> <span style="color:#000;font-weight:bold">table</span> tbName <span style="color:#000;font-weight:bold">drop</span> <span style="color:#000;font-weight:bold">index</span> <span style="color:#a61717;background-color:#e3d2d2">索</span><span style="color:#a61717;background-color:#e3d2d2">引</span><span style="color:#a61717;background-color:#e3d2d2">名</span>;
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>3.5.8 清空表的数据</strong></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">truncate</span> tableName;
+</code></pre></td></tr></table>
+</div>
+</div><p>4:列类型讲解
 列类型:
-整型:tinyint (0~255/-128~127) smallint (0~65535/-32768~32767) mediumint int bigint (参考手册11.2)</p>
+整型:<code>tinyint (0~255/-128~127) smallint (0~65535/-32768~32767) mediumint int bigint</code> (参考手册11.2)</p>
 <p>参数解释:unsigned 无符号(不能为负)  zerofill 0填充  M 填充后的宽度</p>
 <p>举例:tinyint unsigned;
 tinyint(6) zerofill;</p>
@@ -290,24 +364,57 @@ year       YYYY	范围:1901~2155. 可输入值2位和4位(如98,2012)
                timestamp  YYYY-MM-DD  HH:MM:SS 特性:不用赋值,该列会为自己赋当前的具体时间 
 </code></pre><p>5:增删改查基本操作</p>
 <p>5.1 插入数据</p>
-<pre><code>insert into 表名(col1,col2,……) values(val1,val2……); -- 插入指定列
-insert into 表名 values (,,,,); -- 插入所有列
-insert into 表名 values	-- 一次插入多行 
-(val1,val2……),
-(val1,val2……),
-(val1,val2……);
-</code></pre><p>5.3修改数据</p>
-<pre><code>update tablename 
-set 
-col1=newval1,  
-col2=newval2,
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">insert</span> <span style="color:#000;font-weight:bold">into</span> <span style="color:#a61717;background-color:#e3d2d2">表</span><span style="color:#a61717;background-color:#e3d2d2">名</span>(col1,col2,<span style="color:#a61717;background-color:#e3d2d2">…</span><span style="color:#a61717;background-color:#e3d2d2">…</span>) <span style="color:#000;font-weight:bold">values</span>(val1,val2<span style="color:#a61717;background-color:#e3d2d2">…</span><span style="color:#a61717;background-color:#e3d2d2">…</span>); <span style="color:#998;font-style:italic">-- 插入指定列
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">insert</span> <span style="color:#000;font-weight:bold">into</span> <span style="color:#a61717;background-color:#e3d2d2">表</span><span style="color:#a61717;background-color:#e3d2d2">名</span> <span style="color:#000;font-weight:bold">values</span> (,,,,); <span style="color:#998;font-style:italic">-- 插入所有列
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">insert</span> <span style="color:#000;font-weight:bold">into</span> <span style="color:#a61717;background-color:#e3d2d2">表</span><span style="color:#a61717;background-color:#e3d2d2">名</span> <span style="color:#000;font-weight:bold">values</span>	<span style="color:#998;font-style:italic">-- 一次插入多行 
+</span><span style="color:#998;font-style:italic"></span>(val1,val2<span style="color:#a61717;background-color:#e3d2d2">…</span><span style="color:#a61717;background-color:#e3d2d2">…</span>),
+(val1,val2<span style="color:#a61717;background-color:#e3d2d2">…</span><span style="color:#a61717;background-color:#e3d2d2">…</span>),
+(val1,val2<span style="color:#a61717;background-color:#e3d2d2">…</span><span style="color:#a61717;background-color:#e3d2d2">…</span>);
+</code></pre></td></tr></table>
+</div>
+</div><p>5.3修改数据</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">update</span> tablename 
+<span style="color:#000;font-weight:bold">set</span> 
+col1<span style="color:#000;font-weight:bold">=</span>newval1,  
+col2<span style="color:#000;font-weight:bold">=</span>newval2,
 ...
 ...
-colN=newvalN
-where 条件;
-</code></pre><p>5.4，删除数据</p>
-<pre><code>delete from tablenaeme where 条件;
-</code></pre><p>5.5，<code>select</code> 查询</p>
+colN<span style="color:#000;font-weight:bold">=</span>newvalN
+<span style="color:#000;font-weight:bold">where</span> <span style="color:#a61717;background-color:#e3d2d2">条</span><span style="color:#a61717;background-color:#e3d2d2">件</span>;
+</code></pre></td></tr></table>
+</div>
+</div><p>5.4，删除数据</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">delete</span> <span style="color:#000;font-weight:bold">from</span> tablenaeme <span style="color:#000;font-weight:bold">where</span> <span style="color:#a61717;background-color:#e3d2d2">条</span><span style="color:#a61717;background-color:#e3d2d2">件</span>;
+</code></pre></td></tr></table>
+</div>
+</div><p>5.5，<code>select</code> 查询</p>
 <p>（1）条件查询 <code>where</code>
 a. 条件表达式的意义，表达式为真，则该行取出
 b. 比较运算符  = ，!=，&lt; &gt; &lt;=  &gt;=
@@ -322,11 +429,26 @@ max,min,sum,avg,count</p>
 <p>（5）限制<code>limit</code></p>
 <p>6:连接查询</p>
 <p>6.1，左连接</p>
-<pre><code>.. left join .. on
-table A left join table B on tableA.col1 = tableB.col2 ; 
-</code></pre><p>例句:</p>
-<pre><code>select 列名 from table A left join table B on tableA.col1 = tableB.col2
-</code></pre><ol start="2">
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">.. <span style="color:#000;font-weight:bold">left</span> <span style="color:#000;font-weight:bold">join</span> .. <span style="color:#000;font-weight:bold">on</span>
+<span style="color:#000;font-weight:bold">table</span> A <span style="color:#000;font-weight:bold">left</span> <span style="color:#000;font-weight:bold">join</span> <span style="color:#000;font-weight:bold">table</span> B <span style="color:#000;font-weight:bold">on</span> tableA.col1 <span style="color:#000;font-weight:bold">=</span> tableB.col2 ; 
+</code></pre></td></tr></table>
+</div>
+</div><p>例句:</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> <span style="color:#a61717;background-color:#e3d2d2">列</span><span style="color:#a61717;background-color:#e3d2d2">名</span> <span style="color:#000;font-weight:bold">from</span> <span style="color:#000;font-weight:bold">table</span> A <span style="color:#000;font-weight:bold">left</span> <span style="color:#000;font-weight:bold">join</span> <span style="color:#000;font-weight:bold">table</span> B <span style="color:#000;font-weight:bold">on</span> tableA.col1 <span style="color:#000;font-weight:bold">=</span> tableB.col2
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
 <li>
 <p>右链接:<code>right join</code></p>
 </li>
@@ -339,11 +461,25 @@ table A left join table B on tableA.col1 = tableB.col2 ;
 <p>7 子查询
 where 型子查询:内层sql的返回值在where后作为条件表达式的一部分
 例句:</p>
-<pre><code>select * from tableA where colA = (select colB from tableB where ...);
-</code></pre><p>from 型子查询:内层sql查询结果,作为一张表,供外层的sql语句再次查询
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> <span style="color:#000;font-weight:bold">*</span> <span style="color:#000;font-weight:bold">from</span> tableA <span style="color:#000;font-weight:bold">where</span> colA <span style="color:#000;font-weight:bold">=</span> (<span style="color:#000;font-weight:bold">select</span> colB <span style="color:#000;font-weight:bold">from</span> tableB <span style="color:#000;font-weight:bold">where</span> ...);
+</code></pre></td></tr></table>
+</div>
+</div><p>from 型子查询:内层sql查询结果,作为一张表,供外层的sql语句再次查询
 例句:</p>
-<pre><code>select * from (select * from ...) as tableName where ....
-</code></pre><p>8: 字符集
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> <span style="color:#000;font-weight:bold">*</span> <span style="color:#000;font-weight:bold">from</span> (<span style="color:#000;font-weight:bold">select</span> <span style="color:#000;font-weight:bold">*</span> <span style="color:#000;font-weight:bold">from</span> ...) <span style="color:#000;font-weight:bold">as</span> tableName <span style="color:#000;font-weight:bold">where</span> ....
+</code></pre></td></tr></table>
+</div>
+</div><p>8: 字符集
 客服端sql编码 character_set_client
 服务器转化后的sql编码 character_set_connection
 服务器返回给客户端的结果集编码     character_set_results
@@ -360,23 +496,51 @@ where 型子查询:内层sql的返回值在where后作为条件表达式的一�
 触发时间:after\before
 触发事件:增 删 改</p>
 <p>创建触发器语法</p>
-<pre><code>create trigger tgName
-after/before insert/delete/update 
-on tableName
-for each row
-sql; -- 触发语句
-</code></pre><p>删除触发器:</p>
-<pre><code>drop trigger tgName;
-</code></pre><p>索引
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">trigger</span> tgName
+<span style="color:#000;font-weight:bold">after</span><span style="color:#000;font-weight:bold">/</span><span style="color:#000;font-weight:bold">before</span> <span style="color:#000;font-weight:bold">insert</span><span style="color:#000;font-weight:bold">/</span><span style="color:#000;font-weight:bold">delete</span><span style="color:#000;font-weight:bold">/</span><span style="color:#000;font-weight:bold">update</span> 
+<span style="color:#000;font-weight:bold">on</span> tableName
+<span style="color:#000;font-weight:bold">for</span> <span style="color:#000;font-weight:bold">each</span> <span style="color:#000;font-weight:bold">row</span>
+<span style="color:#000;font-weight:bold">sql</span>; <span style="color:#998;font-style:italic">-- 触发语句
+</span></code></pre></td></tr></table>
+</div>
+</div><p>删除触发器:</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">drop</span> <span style="color:#000;font-weight:bold">trigger</span> tgName;
+</code></pre></td></tr></table>
+</div>
+</div><p>索引
 提高查询速度,但是降低了增删改的速度,所以使用索引时,要综合考虑.
 索引不是越多越好,一般我们在常出现于条件表达式中的列加索引.
 值越分散的列，索引的效果越好</p>
 <p>索引类型</p>
-<pre><code>primary key主键索引
-index 普通索引
-unique index 唯一性索引
-fulltext index 全文索引
-</code></pre><h3 id="综合练习">综合练习</h3>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">primary</span> key主键索引
+<span style="color:#000;font-weight:bold">index</span> <span style="color:#a61717;background-color:#e3d2d2">普</span><span style="color:#a61717;background-color:#e3d2d2">通</span><span style="color:#a61717;background-color:#e3d2d2">索</span><span style="color:#a61717;background-color:#e3d2d2">引</span>
+<span style="color:#000;font-weight:bold">unique</span> <span style="color:#000;font-weight:bold">index</span> <span style="color:#a61717;background-color:#e3d2d2">唯</span><span style="color:#a61717;background-color:#e3d2d2">一</span><span style="color:#a61717;background-color:#e3d2d2">性</span><span style="color:#a61717;background-color:#e3d2d2">索</span><span style="color:#a61717;background-color:#e3d2d2">引</span>
+fulltext <span style="color:#000;font-weight:bold">index</span> <span style="color:#a61717;background-color:#e3d2d2">全</span><span style="color:#a61717;background-color:#e3d2d2">文</span><span style="color:#a61717;background-color:#e3d2d2">索</span><span style="color:#a61717;background-color:#e3d2d2">引</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="综合练习">综合练习</h3>
 <p>连接上数据库服务器
 创建一个gbk编码的数据库
 建立商品表和栏目表,字段如下:</p>
@@ -442,54 +606,172 @@ parent_id -- 栏目的父id
 <p>1: 基础查询 where的练习:</p>
 <p>查出满足以下条件的商品
 1.1:主键为32的商品</p>
-<pre><code>select goods_id,goods_name,shop_price 
-from ecs_goods
-where goods_id=32;
-</code></pre><p>1.2:不属第3栏目的所有商品</p>
-<pre><code>select goods_id,cat_id,goods_name,shop_price  from ecs_goods
-where cat_id!=3;
-</code></pre><p>1.3:本店价格高于3000元的商品</p>
-<pre><code>select goods_id,cat_id,goods_name,shop_price  from ecs_goods
-where shop_price &gt;3000;
-</code></pre><p>1.4:本店价格低于或等于100元的商品</p>
-<pre><code>select goods_id,cat_id,goods_name,shop_price  from ecs_goods where shop_price &lt;=100;
-</code></pre><p>1.5:取出第4栏目或第11栏目的商品(不许用or)</p>
-<pre><code>select goods_id,cat_id,goods_name,shop_price  from ecs_goods
-where cat_id in (4,11);
-</code></pre><p>1.6:取出100&lt;=价格&lt;=500的商品(不许用and)</p>
-<pre><code>select goods_id,cat_id,goods_name,shop_price  from ecs_goods
-where shop_price between 100 and 500;
-</code></pre><p>1.7:取出不属于第3栏目且不属于第11栏目的商品(and,或not in分别实现)</p>
-<pre><code>select goods_id,cat_id,goods_name,shop_price from ecs_goods
-where cat_id!=3 and cat_id!=11;
-#或者
-select goods_id,cat_id,goods_name,shop_price from ecs_goods
-where cat_id not in (3,11);
-</code></pre><p>1.8:取出价格大于100且小于300,或者大于4000且小于5000的商品()</p>
-<pre><code>select goods_id,cat_id,goods_name,shop_price  from ecs_goods
-where shop_price&gt;100 and shop_price &lt;300 or shop_price &gt;4000 and shop_price &lt;5000;
-</code></pre><p>1.9:取出第3个栏目下面价格&lt;1000或&gt;3000,并且点击量&gt;5的系列商品</p>
-<pre><code>select goods_id,cat_id,goods_name,shop_price,click_count from ecs_goods
-where cat_id=3 and (shop_price &lt;1000 or shop_price&gt;3000) and click_count&gt;5;
-</code></pre><p>1.10:取出第1个栏目下面的商品(注意:1栏目下面没商品,但其子栏目下有)</p>
-<pre><code>select goods_id,cat_id,goods_name,shop_price,click_count from ecs_goods
-where cat_id in (2,3,4,5);
-</code></pre><p>1.11:取出名字以&quot;诺基亚&quot;开头的商品</p>
-<pre><code>select goods_id,cat_id,goods_name,shop_price  from ecs_goods
-where goods_name like '诺基亚%';
-</code></pre><p>1.12:取出名字为&quot;诺基亚Nxx&quot;的手机</p>
-<pre><code>select goods_id,cat_id,goods_name,shop_price  from ecs_goods  
-where goods_name like '诺基亚N__';
-</code></pre><p>1.13:取出名字不以&quot;诺基亚&quot;开头的商品</p>
-<pre><code>select goods_id,cat_id,goods_name,shop_price from ecs_goos
-where goods_name not like '诺基亚%';
-</code></pre><p>1.14:取出第3个栏目下面价格在1000到3000之间,并且点击量&gt;5 &ldquo;诺基亚&quot;开头的系列商品</p>
-<pre><code>select goods_id,cat_id,goods_name,shop_price  from ecs_goods
-where cat_id=3 and shop_price&gt;1000 and shop_price &lt;3000 and click_count&gt;5 and goods_name like '诺基亚%';
-#或者
-select goods_id,cat_id,goods_name,shop_price  from ecs_goods 
-where shop_price between 1000 and 3000 and cat_id=3  and click_count&gt;5 and goods_name like '诺基亚%';
-</code></pre><p>1.15 一道面试题
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> goods_id,goods_name,shop_price 
+<span style="color:#000;font-weight:bold">from</span> ecs_goods
+<span style="color:#000;font-weight:bold">where</span> goods_id<span style="color:#000;font-weight:bold">=</span><span style="color:#099">32</span>;
+</code></pre></td></tr></table>
+</div>
+</div><p>1.2:不属第3栏目的所有商品</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> goods_id,cat_id,goods_name,shop_price  <span style="color:#000;font-weight:bold">from</span> ecs_goods
+<span style="color:#000;font-weight:bold">where</span> cat_id<span style="color:#000;font-weight:bold">!</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">3</span>;
+</code></pre></td></tr></table>
+</div>
+</div><p>1.3:本店价格高于3000元的商品</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> goods_id,cat_id,goods_name,shop_price  <span style="color:#000;font-weight:bold">from</span> ecs_goods
+<span style="color:#000;font-weight:bold">where</span> shop_price <span style="color:#000;font-weight:bold">&gt;</span><span style="color:#099">3000</span>;
+</code></pre></td></tr></table>
+</div>
+</div><p>1.4:本店价格低于或等于100元的商品</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> goods_id,cat_id,goods_name,shop_price <span style="color:#000;font-weight:bold">from</span> ecs_goods <span style="color:#000;font-weight:bold">where</span> shop_price <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">100</span>;
+</code></pre></td></tr></table>
+</div>
+</div><p>1.5:取出第4栏目或第11栏目的商品(不许用or)</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> goods_id,cat_id,goods_name,shop_price <span style="color:#000;font-weight:bold">from</span> ecs_goods
+<span style="color:#000;font-weight:bold">where</span> cat_id <span style="color:#000;font-weight:bold">in</span> (<span style="color:#099">4</span>,<span style="color:#099">11</span>);
+</code></pre></td></tr></table>
+</div>
+</div><p>1.6:取出100&lt;=价格&lt;=500的商品(不许用and)</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> goods_id,cat_id,goods_name,shop_price  <span style="color:#000;font-weight:bold">from</span> ecs_goods
+<span style="color:#000;font-weight:bold">where</span> shop_price <span style="color:#000;font-weight:bold">between</span> <span style="color:#099">100</span> <span style="color:#000;font-weight:bold">and</span> <span style="color:#099">500</span>;
+</code></pre></td></tr></table>
+</div>
+</div><p>1.7:取出不属于第3栏目且不属于第11栏目的商品(and,或not in分别实现)</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> goods_id,cat_id,goods_name,shop_price <span style="color:#000;font-weight:bold">from</span> ecs_goods
+<span style="color:#000;font-weight:bold">where</span> cat_id<span style="color:#000;font-weight:bold">!</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">3</span> <span style="color:#000;font-weight:bold">and</span> cat_id<span style="color:#000;font-weight:bold">!</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">11</span>;
+<span style="color:#000;font-weight:bold">#</span><span style="color:#a61717;background-color:#e3d2d2">或</span><span style="color:#a61717;background-color:#e3d2d2">者</span>
+<span style="color:#000;font-weight:bold">select</span> goods_id,cat_id,goods_name,shop_price <span style="color:#000;font-weight:bold">from</span> ecs_goods
+<span style="color:#000;font-weight:bold">where</span> cat_id <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">in</span> (<span style="color:#099">3</span>,<span style="color:#099">11</span>);
+</code></pre></td></tr></table>
+</div>
+</div><p>1.8:取出价格大于100且小于300,或者大于4000且小于5000的商品()</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> goods_id,cat_id,goods_name,shop_price  <span style="color:#000;font-weight:bold">from</span> ecs_goods
+<span style="color:#000;font-weight:bold">where</span> shop_price<span style="color:#000;font-weight:bold">&gt;</span><span style="color:#099">100</span> <span style="color:#000;font-weight:bold">and</span> shop_price <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#099">300</span> <span style="color:#000;font-weight:bold">or</span> shop_price <span style="color:#000;font-weight:bold">&gt;</span><span style="color:#099">4000</span> <span style="color:#000;font-weight:bold">and</span> shop_price <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#099">5000</span>;
+</code></pre></td></tr></table>
+</div>
+</div><p>1.9:取出第3个栏目下面价格&lt;1000或&gt;3000,并且点击量&gt;5的系列商品</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> goods_id,cat_id,goods_name,shop_price,click_count <span style="color:#000;font-weight:bold">from</span> ecs_goods
+<span style="color:#000;font-weight:bold">where</span> cat_id<span style="color:#000;font-weight:bold">=</span><span style="color:#099">3</span> <span style="color:#000;font-weight:bold">and</span> (shop_price <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#099">1000</span> <span style="color:#000;font-weight:bold">or</span> shop_price<span style="color:#000;font-weight:bold">&gt;</span><span style="color:#099">3000</span>) <span style="color:#000;font-weight:bold">and</span> click_count<span style="color:#000;font-weight:bold">&gt;</span><span style="color:#099">5</span>;
+</code></pre></td></tr></table>
+</div>
+</div><p>1.10:取出第1个栏目下面的商品(注意:1栏目下面没商品,但其子栏目下有)</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> goods_id,cat_id,goods_name,shop_price,click_count <span style="color:#000;font-weight:bold">from</span> ecs_goods
+<span style="color:#000;font-weight:bold">where</span> cat_id <span style="color:#000;font-weight:bold">in</span> (<span style="color:#099">2</span>,<span style="color:#099">3</span>,<span style="color:#099">4</span>,<span style="color:#099">5</span>);
+</code></pre></td></tr></table>
+</div>
+</div><p>1.11:取出名字以&quot;诺基亚&quot;开头的商品</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> goods_id,cat_id,goods_name,shop_price <span style="color:#000;font-weight:bold">from</span> ecs_goods
+<span style="color:#000;font-weight:bold">where</span> goods_name <span style="color:#000;font-weight:bold">like</span> <span style="color:#d14">&#39;</span><span style="color:#d14">诺基亚%</span><span style="color:#d14">&#39;</span>;
+</code></pre></td></tr></table>
+</div>
+</div><p>1.12:取出名字为&quot;诺基亚Nxx&quot;的手机</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> goods_id,cat_id,goods_name,shop_price <span style="color:#000;font-weight:bold">from</span> ecs_goods  
+<span style="color:#000;font-weight:bold">where</span> goods_name <span style="color:#000;font-weight:bold">like</span> <span style="color:#d14">&#39;</span><span style="color:#d14">诺基亚N__</span><span style="color:#d14">&#39;</span>;
+</code></pre></td></tr></table>
+</div>
+</div><p>1.13:取出名字不以&quot;诺基亚&quot;开头的商品</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> goods_id,cat_id,goods_name,shop_price <span style="color:#000;font-weight:bold">from</span> ecs_goos
+<span style="color:#000;font-weight:bold">where</span> goods_name <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">like</span> <span style="color:#d14">&#39;</span><span style="color:#d14">诺基亚%</span><span style="color:#d14">&#39;</span>;
+</code></pre></td></tr></table>
+</div>
+</div><p>1.14:取出第3个栏目下面价格在1000到3000之间,并且点击量&gt;5 &ldquo;诺基亚&quot;开头的系列商品</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> goods_id,cat_id,goods_name,shop_price  <span style="color:#000;font-weight:bold">from</span> ecs_goods
+<span style="color:#000;font-weight:bold">where</span> cat_id<span style="color:#000;font-weight:bold">=</span><span style="color:#099">3</span> <span style="color:#000;font-weight:bold">and</span> shop_price<span style="color:#000;font-weight:bold">&gt;</span><span style="color:#099">1000</span> <span style="color:#000;font-weight:bold">and</span> shop_price <span style="color:#000;font-weight:bold">&lt;</span><span style="color:#099">3000</span> <span style="color:#000;font-weight:bold">and</span> click_count<span style="color:#000;font-weight:bold">&gt;</span><span style="color:#099">5</span> <span style="color:#000;font-weight:bold">and</span> goods_name <span style="color:#000;font-weight:bold">like</span> <span style="color:#d14">&#39;</span><span style="color:#d14">诺基亚%</span><span style="color:#d14">&#39;</span>;
+<span style="color:#000;font-weight:bold">#</span><span style="color:#a61717;background-color:#e3d2d2">或</span><span style="color:#a61717;background-color:#e3d2d2">者</span>
+<span style="color:#000;font-weight:bold">select</span> goods_id,cat_id,goods_name,shop_price  <span style="color:#000;font-weight:bold">from</span> ecs_goods 
+<span style="color:#000;font-weight:bold">where</span> shop_price <span style="color:#000;font-weight:bold">between</span> <span style="color:#099">1000</span> <span style="color:#000;font-weight:bold">and</span> <span style="color:#099">3000</span> <span style="color:#000;font-weight:bold">and</span> cat_id<span style="color:#000;font-weight:bold">=</span><span style="color:#099">3</span>  <span style="color:#000;font-weight:bold">and</span> click_count<span style="color:#000;font-weight:bold">&gt;</span><span style="color:#099">5</span> <span style="color:#000;font-weight:bold">and</span> goods_name <span style="color:#000;font-weight:bold">like</span> <span style="color:#d14">&#39;</span><span style="color:#d14">诺基亚%</span><span style="color:#d14">&#39;</span>;
+</code></pre></td></tr></table>
+</div>
+</div><p>1.15 一道面试题
 有如下表和数组
 把num值处于[20,29]之间,改为20
 num值处于[30,39]之间的,改为30</p>
@@ -516,47 +798,151 @@ num值处于[30,39]之间的,改为30</p>
 <pre><code>substring(),concat()
 </code></pre><p>2 分组查询group:</p>
 <p>2.1:查出最贵的商品的价格</p>
-<pre><code>select max(shop_price) from ecs_goods;
-</code></pre><p>2.2:查出最大(最新)的商品编号</p>
-<pre><code>select max(goods_id) from ecs_goods;
-</code></pre><p>2.3:查出最便宜的商品的价格</p>
-<pre><code>select min(shop_price) from ecs_goods;
-</code></pre><p>2.4:查出最旧(最小)的商品编号</p>
-<pre><code>select min(goods_id) from ecs_goods;
-</code></pre><p>2.5:查询该店所有商品的库存总量</p>
-<pre><code>select sum(goods_number) from ecs_goods;
-</code></pre><p>2.6:查询所有商品的平均价</p>
-<pre><code>select avg(shop_price) from ecs_goods;
-</code></pre><p>2.7:查询该店一共有多少种商品</p>
-<pre><code>select count(*) from ecs_goods;
-</code></pre><p>2.8:查询每个栏目下面
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> <span style="color:#000;font-weight:bold">max</span>(shop_price) <span style="color:#000;font-weight:bold">from</span> ecs_goods;
+</code></pre></td></tr></table>
+</div>
+</div><p>2.2:查出最大(最新)的商品编号</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> <span style="color:#000;font-weight:bold">max</span>(goods_id) <span style="color:#000;font-weight:bold">from</span> ecs_goods;
+</code></pre></td></tr></table>
+</div>
+</div><p>2.3:查出最便宜的商品的价格</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> <span style="color:#000;font-weight:bold">min</span>(shop_price) <span style="color:#000;font-weight:bold">from</span> ecs_goods;
+</code></pre></td></tr></table>
+</div>
+</div><p>2.4:查出最旧(最小)的商品编号</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> <span style="color:#000;font-weight:bold">min</span>(goods_id) <span style="color:#000;font-weight:bold">from</span> ecs_goods;
+</code></pre></td></tr></table>
+</div>
+</div><p>2.5:查询该店所有商品的库存总量</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> <span style="color:#000;font-weight:bold">sum</span>(goods_number) <span style="color:#000;font-weight:bold">from</span> ecs_goods;
+</code></pre></td></tr></table>
+</div>
+</div><p>2.6:查询所有商品的平均价</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> <span style="color:#000;font-weight:bold">avg</span>(shop_price) <span style="color:#000;font-weight:bold">from</span> ecs_goods;
+</code></pre></td></tr></table>
+</div>
+</div><p>2.7:查询该店一共有多少种商品</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> <span style="color:#000;font-weight:bold">count</span>(<span style="color:#000;font-weight:bold">*</span>) <span style="color:#000;font-weight:bold">from</span> ecs_goods;
+</code></pre></td></tr></table>
+</div>
+</div><p>2.8:查询每个栏目下面
 最贵商品价格
 最低商品价格
 商品平均价格
 商品库存量
 商品种类
 提示:(5个聚合函数,sum,avg,max,min,count与group综合运用)</p>
-<pre><code>select cat_id,max(shop_price) from ecs_goods  group by cat_id;
-</code></pre><p>3 having与group综合运用查询:</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> cat_id,<span style="color:#000;font-weight:bold">max</span>(shop_price) <span style="color:#000;font-weight:bold">from</span> ecs_goods  <span style="color:#000;font-weight:bold">group</span> <span style="color:#000;font-weight:bold">by</span> cat_id;
+</code></pre></td></tr></table>
+</div>
+</div><p>3 having与group综合运用查询:</p>
 <p>3.1:查询该店的商品比市场价所节省的价格</p>
-<pre><code>select goods_id,goods_name,market_price-shop_price as j 
-from ecs_goods ;
-</code></pre><p>3.2:查询每个商品所积压的货款(提示:库存*单价)</p>
-<pre><code>select goods_id,goods_name,goods_number*shop_price  from ecs_goods
-</code></pre><p>3.3:查询该店积压的总货款</p>
-<pre><code>select sum(goods_number*shop_price) from ecs_goods;
-</code></pre><p>3.4:查询该店每个栏目下面积压的货款.</p>
-<pre><code>select cat_id,sum(goods_number*shop_price) as k from ecs_goods group by cat_id;
-</code></pre><p>3.5:查询比市场价省钱200元以上的商品及该商品所省的钱(where和having分别实现)</p>
-<pre><code>select goods_id,goods_name,market_price-shop_price  as k from ecs_goods
-where market_price-shop_price &gt;200;
-#或者
-select goods_id,goods_name,market_price-shop_price  as k from ecs_goods
-having k &gt;200;
-</code></pre><p>3.6:查询积压货款超过2W元的栏目,以及该栏目积压的货款</p>
-<pre><code>select cat_id,sum(goods_number*shop_price) as k from ecs_goods group by cat_id
-having k&gt;20000
-</code></pre><p>3.7:where-having-group综合练习题
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> goods_id,goods_name,market_price<span style="color:#000;font-weight:bold">-</span>shop_price <span style="color:#000;font-weight:bold">as</span> j 
+<span style="color:#000;font-weight:bold">from</span> ecs_goods ;
+</code></pre></td></tr></table>
+</div>
+</div><p>3.2:查询每个商品所积压的货款(提示:库存*单价)</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> goods_id,goods_name,goods_number<span style="color:#000;font-weight:bold">*</span>shop_price  <span style="color:#000;font-weight:bold">from</span> ecs_goods
+</code></pre></td></tr></table>
+</div>
+</div><p>3.3:查询该店积压的总货款</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> <span style="color:#000;font-weight:bold">sum</span>(goods_number<span style="color:#000;font-weight:bold">*</span>shop_price) <span style="color:#000;font-weight:bold">from</span> ecs_goods;
+</code></pre></td></tr></table>
+</div>
+</div><p>3.4:查询该店每个栏目下面积压的货款</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> cat_id,<span style="color:#000;font-weight:bold">sum</span>(goods_number<span style="color:#000;font-weight:bold">*</span>shop_price) <span style="color:#000;font-weight:bold">as</span> k <span style="color:#000;font-weight:bold">from</span> ecs_goods <span style="color:#000;font-weight:bold">group</span> <span style="color:#000;font-weight:bold">by</span> cat_id;
+</code></pre></td></tr></table>
+</div>
+</div><p>3.5:查询比市场价省钱200元以上的商品及该商品所省的钱(where和having分别实现)</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> goods_id,goods_name,market_price<span style="color:#000;font-weight:bold">-</span>shop_price  <span style="color:#000;font-weight:bold">as</span> k <span style="color:#000;font-weight:bold">from</span> ecs_goods
+<span style="color:#000;font-weight:bold">where</span> market_price<span style="color:#000;font-weight:bold">-</span>shop_price <span style="color:#000;font-weight:bold">&gt;</span><span style="color:#099">200</span>;
+<span style="color:#000;font-weight:bold">#</span><span style="color:#a61717;background-color:#e3d2d2">或</span><span style="color:#a61717;background-color:#e3d2d2">者</span>
+<span style="color:#000;font-weight:bold">select</span> goods_id,goods_name,market_price<span style="color:#000;font-weight:bold">-</span>shop_price  <span style="color:#000;font-weight:bold">as</span> k <span style="color:#000;font-weight:bold">from</span> ecs_goods
+<span style="color:#000;font-weight:bold">having</span> k <span style="color:#000;font-weight:bold">&gt;</span><span style="color:#099">200</span>;
+</code></pre></td></tr></table>
+</div>
+</div><p>3.6:查询积压货款超过2W元的栏目,以及该栏目积压的货款</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> cat_id,<span style="color:#000;font-weight:bold">sum</span>(goods_number<span style="color:#000;font-weight:bold">*</span>shop_price) <span style="color:#000;font-weight:bold">as</span> k <span style="color:#000;font-weight:bold">from</span> ecs_goods <span style="color:#000;font-weight:bold">group</span> <span style="color:#000;font-weight:bold">by</span> cat_id
+<span style="color:#000;font-weight:bold">having</span> k<span style="color:#000;font-weight:bold">&gt;</span><span style="color:#099">20000</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>3.7:where-having-group综合练习题
 有如下表及数据</p>
 <pre><code>+------+---------+-------+
 | name | subject | score |
@@ -570,146 +956,329 @@ having k&gt;20000
 +------+---------+-------+
 </code></pre><p>要求:查询出2门及2门以上不及格者的平均成绩</p>
 <p><strong>一种错误做法</strong></p>
-<pre><code>mysql&gt; select name,count(score&lt;60) as k,avg(score) from stu group by name having k&gt;=2;
-+------+---+------------+
-| name | k | avg(score) |
-+------+---+------------+
-| 张三     | 3 |    60.0000 |
-| 李四     | 2 |    50.0000 |
-+------+---+------------+
-2 rows in set (0.00 sec)
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 36
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 37
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 38
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 39
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 40
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 41
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 42
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 43
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 44
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 45
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 46
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 47
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 48
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 49
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 50
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 51
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 52
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 53
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 54
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 55
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 56
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 57
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 58
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 59
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 60
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 61
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 62
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 63
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 64
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 65
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 66
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 67
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 68
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 69
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 70
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 71
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 72
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 73
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 74
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 75
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 76
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 77
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 78
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 79
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 80
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 81
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 82
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 83
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 84
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 85
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 86
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 87
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 88
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 89
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 90
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 91
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 92
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 93
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 94
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 95
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 96
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 97
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 98
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 99
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">100
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">101
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">102
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">103
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">104
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">105
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">106
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">107
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">108
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">109
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">110
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">mysql<span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#000;font-weight:bold">select</span> name,<span style="color:#000;font-weight:bold">count</span>(score<span style="color:#000;font-weight:bold">&lt;</span><span style="color:#099">60</span>) <span style="color:#000;font-weight:bold">as</span> k,<span style="color:#000;font-weight:bold">avg</span>(score) <span style="color:#000;font-weight:bold">from</span> stu <span style="color:#000;font-weight:bold">group</span> <span style="color:#000;font-weight:bold">by</span> name <span style="color:#000;font-weight:bold">having</span> k<span style="color:#000;font-weight:bold">&gt;</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">2</span>;
+<span style="color:#000;font-weight:bold">+</span><span style="color:#998;font-style:italic">------+---+------------+
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">|</span> name <span style="color:#000;font-weight:bold">|</span> k <span style="color:#000;font-weight:bold">|</span> <span style="color:#000;font-weight:bold">avg</span>(score) <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">+</span><span style="color:#998;font-style:italic">------+---+------------+
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">|</span> <span style="color:#a61717;background-color:#e3d2d2">张</span><span style="color:#a61717;background-color:#e3d2d2">三</span>     <span style="color:#000;font-weight:bold">|</span> <span style="color:#099">3</span> <span style="color:#000;font-weight:bold">|</span>    <span style="color:#099">60</span>.<span style="color:#099">0000</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span> <span style="color:#a61717;background-color:#e3d2d2">李</span><span style="color:#a61717;background-color:#e3d2d2">四</span>     <span style="color:#000;font-weight:bold">|</span> <span style="color:#099">2</span> <span style="color:#000;font-weight:bold">|</span>    <span style="color:#099">50</span>.<span style="color:#099">0000</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">+</span><span style="color:#998;font-style:italic">------+---+------------+
+</span><span style="color:#998;font-style:italic"></span><span style="color:#099">2</span> <span style="color:#000;font-weight:bold">rows</span> <span style="color:#000;font-weight:bold">in</span> <span style="color:#000;font-weight:bold">set</span> (<span style="color:#099">0</span>.<span style="color:#099">00</span> sec)
 
-mysql&gt; select name,count(score&lt;60) as k,avg(score) from stu group by name;
-+------+---+------------+
-| name | k | avg(score) |
-+------+---+------------+
-| 张三     | 3 |    60.0000 |
-| 李四     | 2 |    50.0000 |
-| 王五     | 1 |    30.0000 |
-+------+---+------------+
-3 rows in set (0.00 sec)
+mysql<span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#000;font-weight:bold">select</span> name,<span style="color:#000;font-weight:bold">count</span>(score<span style="color:#000;font-weight:bold">&lt;</span><span style="color:#099">60</span>) <span style="color:#000;font-weight:bold">as</span> k,<span style="color:#000;font-weight:bold">avg</span>(score) <span style="color:#000;font-weight:bold">from</span> stu <span style="color:#000;font-weight:bold">group</span> <span style="color:#000;font-weight:bold">by</span> name;
+<span style="color:#000;font-weight:bold">+</span><span style="color:#998;font-style:italic">------+---+------------+
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">|</span> name <span style="color:#000;font-weight:bold">|</span> k <span style="color:#000;font-weight:bold">|</span> <span style="color:#000;font-weight:bold">avg</span>(score) <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">+</span><span style="color:#998;font-style:italic">------+---+------------+
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">|</span> <span style="color:#a61717;background-color:#e3d2d2">张</span><span style="color:#a61717;background-color:#e3d2d2">三</span>     <span style="color:#000;font-weight:bold">|</span> <span style="color:#099">3</span> <span style="color:#000;font-weight:bold">|</span>    <span style="color:#099">60</span>.<span style="color:#099">0000</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span> <span style="color:#a61717;background-color:#e3d2d2">李</span><span style="color:#a61717;background-color:#e3d2d2">四</span>     <span style="color:#000;font-weight:bold">|</span> <span style="color:#099">2</span> <span style="color:#000;font-weight:bold">|</span>    <span style="color:#099">50</span>.<span style="color:#099">0000</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span> <span style="color:#a61717;background-color:#e3d2d2">王</span><span style="color:#a61717;background-color:#e3d2d2">五</span>     <span style="color:#000;font-weight:bold">|</span> <span style="color:#099">1</span> <span style="color:#000;font-weight:bold">|</span>    <span style="color:#099">30</span>.<span style="color:#099">0000</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">+</span><span style="color:#998;font-style:italic">------+---+------------+
+</span><span style="color:#998;font-style:italic"></span><span style="color:#099">3</span> <span style="color:#000;font-weight:bold">rows</span> <span style="color:#000;font-weight:bold">in</span> <span style="color:#000;font-weight:bold">set</span> (<span style="color:#099">0</span>.<span style="color:#099">00</span> sec)
 
-mysql&gt; select name,count(score&lt;60) as k,avg(score) from stu group by name having k&gt;=2;
-+------+---+------------+
-| name | k | avg(score) |
-+------+---+------------+
-| 张三     | 3 |    60.0000 |
-| 李四     | 2 |    50.0000 |
-+------+---+------------+
-2 rows in set (0.00 sec)
+mysql<span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#000;font-weight:bold">select</span> name,<span style="color:#000;font-weight:bold">count</span>(score<span style="color:#000;font-weight:bold">&lt;</span><span style="color:#099">60</span>) <span style="color:#000;font-weight:bold">as</span> k,<span style="color:#000;font-weight:bold">avg</span>(score) <span style="color:#000;font-weight:bold">from</span> stu <span style="color:#000;font-weight:bold">group</span> <span style="color:#000;font-weight:bold">by</span> name <span style="color:#000;font-weight:bold">having</span> k<span style="color:#000;font-weight:bold">&gt;</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">2</span>;
+<span style="color:#000;font-weight:bold">+</span><span style="color:#998;font-style:italic">------+---+------------+
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">|</span> name <span style="color:#000;font-weight:bold">|</span> k <span style="color:#000;font-weight:bold">|</span> <span style="color:#000;font-weight:bold">avg</span>(score) <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">+</span><span style="color:#998;font-style:italic">------+---+------------+
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">|</span> <span style="color:#a61717;background-color:#e3d2d2">张</span><span style="color:#a61717;background-color:#e3d2d2">三</span>     <span style="color:#000;font-weight:bold">|</span> <span style="color:#099">3</span> <span style="color:#000;font-weight:bold">|</span>    <span style="color:#099">60</span>.<span style="color:#099">0000</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span> <span style="color:#a61717;background-color:#e3d2d2">李</span><span style="color:#a61717;background-color:#e3d2d2">四</span>     <span style="color:#000;font-weight:bold">|</span> <span style="color:#099">2</span> <span style="color:#000;font-weight:bold">|</span>    <span style="color:#099">50</span>.<span style="color:#099">0000</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">+</span><span style="color:#998;font-style:italic">------+---+------------+
+</span><span style="color:#998;font-style:italic"></span><span style="color:#099">2</span> <span style="color:#000;font-weight:bold">rows</span> <span style="color:#000;font-weight:bold">in</span> <span style="color:#000;font-weight:bold">set</span> (<span style="color:#099">0</span>.<span style="color:#099">00</span> sec)
 
-#加上赵六后错误暴露
-mysql&gt; insert into stu 
-    -&gt; values 
-    -&gt; ('赵六','A',100),
-    -&gt; ('赵六','B',99),
-    -&gt; ('赵六','C',98);
-Query OK, 3 rows affected (0.05 sec)
-Records: 3  Duplicates: 0  Warnings: 0
+<span style="color:#000;font-weight:bold">#</span><span style="color:#a61717;background-color:#e3d2d2">加</span><span style="color:#a61717;background-color:#e3d2d2">上</span><span style="color:#a61717;background-color:#e3d2d2">赵</span><span style="color:#a61717;background-color:#e3d2d2">六</span><span style="color:#a61717;background-color:#e3d2d2">后</span><span style="color:#a61717;background-color:#e3d2d2">错</span><span style="color:#a61717;background-color:#e3d2d2">误</span><span style="color:#a61717;background-color:#e3d2d2">暴</span><span style="color:#a61717;background-color:#e3d2d2">露</span>
+mysql<span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#000;font-weight:bold">insert</span> <span style="color:#000;font-weight:bold">into</span> stu 
+    <span style="color:#000;font-weight:bold">-</span><span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#000;font-weight:bold">values</span> 
+    <span style="color:#000;font-weight:bold">-</span><span style="color:#000;font-weight:bold">&gt;</span> (<span style="color:#d14">&#39;</span><span style="color:#d14">赵六</span><span style="color:#d14">&#39;</span>,<span style="color:#d14">&#39;</span><span style="color:#d14">A</span><span style="color:#d14">&#39;</span>,<span style="color:#099">100</span>),
+    <span style="color:#000;font-weight:bold">-</span><span style="color:#000;font-weight:bold">&gt;</span> (<span style="color:#d14">&#39;</span><span style="color:#d14">赵六</span><span style="color:#d14">&#39;</span>,<span style="color:#d14">&#39;</span><span style="color:#d14">B</span><span style="color:#d14">&#39;</span>,<span style="color:#099">99</span>),
+    <span style="color:#000;font-weight:bold">-</span><span style="color:#000;font-weight:bold">&gt;</span> (<span style="color:#d14">&#39;</span><span style="color:#d14">赵六</span><span style="color:#d14">&#39;</span>,<span style="color:#d14">&#39;</span><span style="color:#d14">C</span><span style="color:#d14">&#39;</span>,<span style="color:#099">98</span>);
+Query OK, <span style="color:#099">3</span> <span style="color:#000;font-weight:bold">rows</span> affected (<span style="color:#099">0</span>.<span style="color:#099">05</span> sec)
+Records: <span style="color:#099">3</span>  Duplicates: <span style="color:#099">0</span>  Warnings: <span style="color:#099">0</span>
 
-#错误显现
-mysql&gt; select name,count(score&lt;60) as k,avg(score) from stu group by name having k&gt;=2;
-+------+---+------------+
-| name | k | avg(score) |
-+------+---+------------+
-| 张三 | 3 |    60.0000 |
-| 李四 | 2 |    50.0000 |
-| 赵六 | 3 |    99.0000 |
-+------+---+------------+
-3 rows in set (0.00 sec)
+<span style="color:#000;font-weight:bold">#</span><span style="color:#a61717;background-color:#e3d2d2">错</span><span style="color:#a61717;background-color:#e3d2d2">误</span><span style="color:#a61717;background-color:#e3d2d2">显</span><span style="color:#a61717;background-color:#e3d2d2">现</span>
+mysql<span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#000;font-weight:bold">select</span> name,<span style="color:#000;font-weight:bold">count</span>(score<span style="color:#000;font-weight:bold">&lt;</span><span style="color:#099">60</span>) <span style="color:#000;font-weight:bold">as</span> k,<span style="color:#000;font-weight:bold">avg</span>(score) <span style="color:#000;font-weight:bold">from</span> stu <span style="color:#000;font-weight:bold">group</span> <span style="color:#000;font-weight:bold">by</span> name <span style="color:#000;font-weight:bold">having</span> k<span style="color:#000;font-weight:bold">&gt;</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">2</span>;
+<span style="color:#000;font-weight:bold">+</span><span style="color:#998;font-style:italic">------+---+------------+
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">|</span> name <span style="color:#000;font-weight:bold">|</span> k <span style="color:#000;font-weight:bold">|</span> <span style="color:#000;font-weight:bold">avg</span>(score) <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">+</span><span style="color:#998;font-style:italic">------+---+------------+
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">|</span> <span style="color:#a61717;background-color:#e3d2d2">张</span><span style="color:#a61717;background-color:#e3d2d2">三</span> <span style="color:#000;font-weight:bold">|</span> <span style="color:#099">3</span> <span style="color:#000;font-weight:bold">|</span>    <span style="color:#099">60</span>.<span style="color:#099">0000</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span> <span style="color:#a61717;background-color:#e3d2d2">李</span><span style="color:#a61717;background-color:#e3d2d2">四</span> <span style="color:#000;font-weight:bold">|</span> <span style="color:#099">2</span> <span style="color:#000;font-weight:bold">|</span>    <span style="color:#099">50</span>.<span style="color:#099">0000</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span> <span style="color:#a61717;background-color:#e3d2d2">赵</span><span style="color:#a61717;background-color:#e3d2d2">六</span> <span style="color:#000;font-weight:bold">|</span> <span style="color:#099">3</span> <span style="color:#000;font-weight:bold">|</span>    <span style="color:#099">99</span>.<span style="color:#099">0000</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">+</span><span style="color:#998;font-style:italic">------+---+------------+
+</span><span style="color:#998;font-style:italic"></span><span style="color:#099">3</span> <span style="color:#000;font-weight:bold">rows</span> <span style="color:#000;font-weight:bold">in</span> <span style="color:#000;font-weight:bold">set</span> (<span style="color:#099">0</span>.<span style="color:#099">00</span> sec)
 
-#正确思路,先查看每个人的平均成绩
-mysql&gt; select name,avg(score) from stu group by name;
-+------+------------+
-| name | avg(score) |
-+------+------------+
-| 张三 |    60.0000 |
-| 李四 |    50.0000 |
-| 王五 |    30.0000 |
-| 赵六 |    99.0000 |
-+------+------------+
-4 rows in set (0.00 sec)
+<span style="color:#000;font-weight:bold">#</span><span style="color:#a61717;background-color:#e3d2d2">正</span><span style="color:#a61717;background-color:#e3d2d2">确</span><span style="color:#a61717;background-color:#e3d2d2">思</span><span style="color:#a61717;background-color:#e3d2d2">路</span>,<span style="color:#a61717;background-color:#e3d2d2">先</span><span style="color:#a61717;background-color:#e3d2d2">查</span><span style="color:#a61717;background-color:#e3d2d2">看</span><span style="color:#a61717;background-color:#e3d2d2">每</span><span style="color:#a61717;background-color:#e3d2d2">个</span><span style="color:#a61717;background-color:#e3d2d2">人</span><span style="color:#a61717;background-color:#e3d2d2">的</span><span style="color:#a61717;background-color:#e3d2d2">平</span><span style="color:#a61717;background-color:#e3d2d2">均</span><span style="color:#a61717;background-color:#e3d2d2">成</span><span style="color:#a61717;background-color:#e3d2d2">绩</span>
+mysql<span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#000;font-weight:bold">select</span> name,<span style="color:#000;font-weight:bold">avg</span>(score) <span style="color:#000;font-weight:bold">from</span> stu <span style="color:#000;font-weight:bold">group</span> <span style="color:#000;font-weight:bold">by</span> name;
+<span style="color:#000;font-weight:bold">+</span><span style="color:#998;font-style:italic">------+------------+
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">|</span> name <span style="color:#000;font-weight:bold">|</span> <span style="color:#000;font-weight:bold">avg</span>(score) <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">+</span><span style="color:#998;font-style:italic">------+------------+
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">|</span> <span style="color:#a61717;background-color:#e3d2d2">张</span><span style="color:#a61717;background-color:#e3d2d2">三</span> <span style="color:#000;font-weight:bold">|</span>    <span style="color:#099">60</span>.<span style="color:#099">0000</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span> <span style="color:#a61717;background-color:#e3d2d2">李</span><span style="color:#a61717;background-color:#e3d2d2">四</span> <span style="color:#000;font-weight:bold">|</span>    <span style="color:#099">50</span>.<span style="color:#099">0000</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span> <span style="color:#a61717;background-color:#e3d2d2">王</span><span style="color:#a61717;background-color:#e3d2d2">五</span> <span style="color:#000;font-weight:bold">|</span>    <span style="color:#099">30</span>.<span style="color:#099">0000</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span> <span style="color:#a61717;background-color:#e3d2d2">赵</span><span style="color:#a61717;background-color:#e3d2d2">六</span> <span style="color:#000;font-weight:bold">|</span>    <span style="color:#099">99</span>.<span style="color:#099">0000</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">+</span><span style="color:#998;font-style:italic">------+------------+
+</span><span style="color:#998;font-style:italic"></span><span style="color:#099">4</span> <span style="color:#000;font-weight:bold">rows</span> <span style="color:#000;font-weight:bold">in</span> <span style="color:#000;font-weight:bold">set</span> (<span style="color:#099">0</span>.<span style="color:#099">00</span> sec)
 
-mysql&gt; # 看每个人挂科情况
-mysql&gt; select name,score &lt; 60 from stu;
-+------+------------+
-| name | score &lt; 60 |
-+------+------------+
-| 张三 |          0 |
-| 张三 |          1 |
-| 张三 |          1 |
-| 李四 |          1 |
-| 李四 |          1 |
-| 王五 |          1 |
-| 赵六 |          0 |
-| 赵六 |          0 |
-| 赵六 |          0 |
-+------+------------+
-9 rows in set (0.00 sec)
+mysql<span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#000;font-weight:bold">#</span> <span style="color:#a61717;background-color:#e3d2d2">看</span><span style="color:#a61717;background-color:#e3d2d2">每</span><span style="color:#a61717;background-color:#e3d2d2">个</span><span style="color:#a61717;background-color:#e3d2d2">人</span><span style="color:#a61717;background-color:#e3d2d2">挂</span><span style="color:#a61717;background-color:#e3d2d2">科</span><span style="color:#a61717;background-color:#e3d2d2">情</span><span style="color:#a61717;background-color:#e3d2d2">况</span>
+mysql<span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#000;font-weight:bold">select</span> name,score <span style="color:#000;font-weight:bold">&lt;</span> <span style="color:#099">60</span> <span style="color:#000;font-weight:bold">from</span> stu;
+<span style="color:#000;font-weight:bold">+</span><span style="color:#998;font-style:italic">------+------------+
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">|</span> name <span style="color:#000;font-weight:bold">|</span> score <span style="color:#000;font-weight:bold">&lt;</span> <span style="color:#099">60</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">+</span><span style="color:#998;font-style:italic">------+------------+
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">|</span> <span style="color:#a61717;background-color:#e3d2d2">张</span><span style="color:#a61717;background-color:#e3d2d2">三</span> <span style="color:#000;font-weight:bold">|</span>          <span style="color:#099">0</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span> <span style="color:#a61717;background-color:#e3d2d2">张</span><span style="color:#a61717;background-color:#e3d2d2">三</span> <span style="color:#000;font-weight:bold">|</span>          <span style="color:#099">1</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span> <span style="color:#a61717;background-color:#e3d2d2">张</span><span style="color:#a61717;background-color:#e3d2d2">三</span> <span style="color:#000;font-weight:bold">|</span>          <span style="color:#099">1</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span> <span style="color:#a61717;background-color:#e3d2d2">李</span><span style="color:#a61717;background-color:#e3d2d2">四</span> <span style="color:#000;font-weight:bold">|</span>          <span style="color:#099">1</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span> <span style="color:#a61717;background-color:#e3d2d2">李</span><span style="color:#a61717;background-color:#e3d2d2">四</span> <span style="color:#000;font-weight:bold">|</span>          <span style="color:#099">1</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span> <span style="color:#a61717;background-color:#e3d2d2">王</span><span style="color:#a61717;background-color:#e3d2d2">五</span> <span style="color:#000;font-weight:bold">|</span>          <span style="color:#099">1</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span> <span style="color:#a61717;background-color:#e3d2d2">赵</span><span style="color:#a61717;background-color:#e3d2d2">六</span> <span style="color:#000;font-weight:bold">|</span>          <span style="color:#099">0</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span> <span style="color:#a61717;background-color:#e3d2d2">赵</span><span style="color:#a61717;background-color:#e3d2d2">六</span> <span style="color:#000;font-weight:bold">|</span>          <span style="color:#099">0</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span> <span style="color:#a61717;background-color:#e3d2d2">赵</span><span style="color:#a61717;background-color:#e3d2d2">六</span> <span style="color:#000;font-weight:bold">|</span>          <span style="color:#099">0</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">+</span><span style="color:#998;font-style:italic">------+------------+
+</span><span style="color:#998;font-style:italic"></span><span style="color:#099">9</span> <span style="color:#000;font-weight:bold">rows</span> <span style="color:#000;font-weight:bold">in</span> <span style="color:#000;font-weight:bold">set</span> (<span style="color:#099">0</span>.<span style="color:#099">00</span> sec)
 
-mysql&gt; #计算每个人的挂科科目
-mysql&gt; select name,sum(score &lt; 60) from stu group by name;
-+------+-----------------+
-| name | sum(score &lt; 60) |
-+------+-----------------+
-| 张三 |               2 |
-| 李四 |               2 |
-| 王五 |               1 |
-| 赵六 |               0 |
-+------+-----------------+
-4 rows in set (0.00 sec)
+mysql<span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#000;font-weight:bold">#</span><span style="color:#a61717;background-color:#e3d2d2">计</span><span style="color:#a61717;background-color:#e3d2d2">算</span><span style="color:#a61717;background-color:#e3d2d2">每</span><span style="color:#a61717;background-color:#e3d2d2">个</span><span style="color:#a61717;background-color:#e3d2d2">人</span><span style="color:#a61717;background-color:#e3d2d2">的</span><span style="color:#a61717;background-color:#e3d2d2">挂</span><span style="color:#a61717;background-color:#e3d2d2">科</span><span style="color:#a61717;background-color:#e3d2d2">科</span><span style="color:#a61717;background-color:#e3d2d2">目</span>
+mysql<span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#000;font-weight:bold">select</span> name,<span style="color:#000;font-weight:bold">sum</span>(score <span style="color:#000;font-weight:bold">&lt;</span> <span style="color:#099">60</span>) <span style="color:#000;font-weight:bold">from</span> stu <span style="color:#000;font-weight:bold">group</span> <span style="color:#000;font-weight:bold">by</span> name;
+<span style="color:#000;font-weight:bold">+</span><span style="color:#998;font-style:italic">------+-----------------+
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">|</span> name <span style="color:#000;font-weight:bold">|</span> <span style="color:#000;font-weight:bold">sum</span>(score <span style="color:#000;font-weight:bold">&lt;</span> <span style="color:#099">60</span>) <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">+</span><span style="color:#998;font-style:italic">------+-----------------+
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">|</span> <span style="color:#a61717;background-color:#e3d2d2">张</span><span style="color:#a61717;background-color:#e3d2d2">三</span> <span style="color:#000;font-weight:bold">|</span>               <span style="color:#099">2</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span> <span style="color:#a61717;background-color:#e3d2d2">李</span><span style="color:#a61717;background-color:#e3d2d2">四</span> <span style="color:#000;font-weight:bold">|</span>               <span style="color:#099">2</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span> <span style="color:#a61717;background-color:#e3d2d2">王</span><span style="color:#a61717;background-color:#e3d2d2">五</span> <span style="color:#000;font-weight:bold">|</span>               <span style="color:#099">1</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span> <span style="color:#a61717;background-color:#e3d2d2">赵</span><span style="color:#a61717;background-color:#e3d2d2">六</span> <span style="color:#000;font-weight:bold">|</span>               <span style="color:#099">0</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">+</span><span style="color:#998;font-style:italic">------+-----------------+
+</span><span style="color:#998;font-style:italic"></span><span style="color:#099">4</span> <span style="color:#000;font-weight:bold">rows</span> <span style="color:#000;font-weight:bold">in</span> <span style="color:#000;font-weight:bold">set</span> (<span style="color:#099">0</span>.<span style="color:#099">00</span> sec)
 
-#同时计算每人的平均分
-mysql&gt; select name,sum(score &lt; 60),avg(score) as pj from stu group by name;
-+------+-----------------+---------+
-| name | sum(score &lt; 60) | pj      |
-+------+-----------------+---------+
-| 张三 |               2 | 60.0000 |
-| 李四 |               2 | 50.0000 |
-| 王五 |               1 | 30.0000 |
-| 赵六 |               0 | 99.0000 |
-+------+-----------------+---------+
-4 rows in set (0.00 sec)
+<span style="color:#000;font-weight:bold">#</span><span style="color:#a61717;background-color:#e3d2d2">同</span><span style="color:#a61717;background-color:#e3d2d2">时</span><span style="color:#a61717;background-color:#e3d2d2">计</span><span style="color:#a61717;background-color:#e3d2d2">算</span><span style="color:#a61717;background-color:#e3d2d2">每</span><span style="color:#a61717;background-color:#e3d2d2">人</span><span style="color:#a61717;background-color:#e3d2d2">的</span><span style="color:#a61717;background-color:#e3d2d2">平</span><span style="color:#a61717;background-color:#e3d2d2">均</span><span style="color:#a61717;background-color:#e3d2d2">分</span>
+mysql<span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#000;font-weight:bold">select</span> name,<span style="color:#000;font-weight:bold">sum</span>(score <span style="color:#000;font-weight:bold">&lt;</span> <span style="color:#099">60</span>),<span style="color:#000;font-weight:bold">avg</span>(score) <span style="color:#000;font-weight:bold">as</span> pj <span style="color:#000;font-weight:bold">from</span> stu <span style="color:#000;font-weight:bold">group</span> <span style="color:#000;font-weight:bold">by</span> name;
+<span style="color:#000;font-weight:bold">+</span><span style="color:#998;font-style:italic">------+-----------------+---------+
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">|</span> name <span style="color:#000;font-weight:bold">|</span> <span style="color:#000;font-weight:bold">sum</span>(score <span style="color:#000;font-weight:bold">&lt;</span> <span style="color:#099">60</span>) <span style="color:#000;font-weight:bold">|</span> pj      <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">+</span><span style="color:#998;font-style:italic">------+-----------------+---------+
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">|</span> <span style="color:#a61717;background-color:#e3d2d2">张</span><span style="color:#a61717;background-color:#e3d2d2">三</span> <span style="color:#000;font-weight:bold">|</span>               <span style="color:#099">2</span> <span style="color:#000;font-weight:bold">|</span> <span style="color:#099">60</span>.<span style="color:#099">0000</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span> <span style="color:#a61717;background-color:#e3d2d2">李</span><span style="color:#a61717;background-color:#e3d2d2">四</span> <span style="color:#000;font-weight:bold">|</span>               <span style="color:#099">2</span> <span style="color:#000;font-weight:bold">|</span> <span style="color:#099">50</span>.<span style="color:#099">0000</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span> <span style="color:#a61717;background-color:#e3d2d2">王</span><span style="color:#a61717;background-color:#e3d2d2">五</span> <span style="color:#000;font-weight:bold">|</span>               <span style="color:#099">1</span> <span style="color:#000;font-weight:bold">|</span> <span style="color:#099">30</span>.<span style="color:#099">0000</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span> <span style="color:#a61717;background-color:#e3d2d2">赵</span><span style="color:#a61717;background-color:#e3d2d2">六</span> <span style="color:#000;font-weight:bold">|</span>               <span style="color:#099">0</span> <span style="color:#000;font-weight:bold">|</span> <span style="color:#099">99</span>.<span style="color:#099">0000</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">+</span><span style="color:#998;font-style:italic">------+-----------------+---------+
+</span><span style="color:#998;font-style:italic"></span><span style="color:#099">4</span> <span style="color:#000;font-weight:bold">rows</span> <span style="color:#000;font-weight:bold">in</span> <span style="color:#000;font-weight:bold">set</span> (<span style="color:#099">0</span>.<span style="color:#099">00</span> sec)
 
-#利用having筛选挂科2门以上的.
-mysql&gt; select name,sum(score &lt; 60) as gk ,avg(score) as pj from stu group by name having gk &gt;=2; 
-+------+------+---------+
-| name | gk   | pj      |
-+------+------+---------+
-| 张三 |    2 | 60.0000 |
-| 李四 |    2 | 50.0000 |
-+------+------+---------+
-2 rows in set (0.00 sec)
-</code></pre><p>4:<code>order by</code>与<code>limit</code>查询
+<span style="color:#000;font-weight:bold">#</span><span style="color:#a61717;background-color:#e3d2d2">利</span><span style="color:#a61717;background-color:#e3d2d2">用</span>having筛选挂科2门以上的.
+mysql<span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#000;font-weight:bold">select</span> name,<span style="color:#000;font-weight:bold">sum</span>(score <span style="color:#000;font-weight:bold">&lt;</span> <span style="color:#099">60</span>) <span style="color:#000;font-weight:bold">as</span> gk ,<span style="color:#000;font-weight:bold">avg</span>(score) <span style="color:#000;font-weight:bold">as</span> pj <span style="color:#000;font-weight:bold">from</span> stu <span style="color:#000;font-weight:bold">group</span> <span style="color:#000;font-weight:bold">by</span> name <span style="color:#000;font-weight:bold">having</span> gk <span style="color:#000;font-weight:bold">&gt;</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">2</span>; 
+<span style="color:#000;font-weight:bold">+</span><span style="color:#998;font-style:italic">------+------+---------+
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">|</span> name <span style="color:#000;font-weight:bold">|</span> gk   <span style="color:#000;font-weight:bold">|</span> pj      <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">+</span><span style="color:#998;font-style:italic">------+------+---------+
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">|</span> <span style="color:#a61717;background-color:#e3d2d2">张</span><span style="color:#a61717;background-color:#e3d2d2">三</span> <span style="color:#000;font-weight:bold">|</span>    <span style="color:#099">2</span> <span style="color:#000;font-weight:bold">|</span> <span style="color:#099">60</span>.<span style="color:#099">0000</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span> <span style="color:#a61717;background-color:#e3d2d2">李</span><span style="color:#a61717;background-color:#e3d2d2">四</span> <span style="color:#000;font-weight:bold">|</span>    <span style="color:#099">2</span> <span style="color:#000;font-weight:bold">|</span> <span style="color:#099">50</span>.<span style="color:#099">0000</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">+</span><span style="color:#998;font-style:italic">------+------+---------+
+</span><span style="color:#998;font-style:italic"></span><span style="color:#099">2</span> <span style="color:#000;font-weight:bold">rows</span> <span style="color:#000;font-weight:bold">in</span> <span style="color:#000;font-weight:bold">set</span> (<span style="color:#099">0</span>.<span style="color:#099">00</span> sec)
+</code></pre></td></tr></table>
+</div>
+</div><p>4:<code>order by</code>与<code>limit</code>查询
 4.1:按价格由高到低排序</p>
-<pre><code>select goods_id,goods_name,shop_price from ecs_goods order by shop_price desc;
-</code></pre><p>4.2:按发布时间由早到晚排序</p>
-<pre><code>select goods_id,goods_name,add_time from ecs_goods order by add_time;
-</code></pre><p>4.3:接栏目由低到高排序,栏目内部按价格由高到低排序</p>
-<pre><code>select goods_id,cat_id,goods_name,shop_price from ecs_goods
-order by cat_id ,shop_price desc;
-</code></pre><p>4.4:取出价格最高的前三名商品</p>
-<pre><code>select goods_id,goods_name,shop_price from ecs_goods order by shop_price desc limit 3;
-</code></pre><p>4.5:取出点击量前三名到前5名的商品</p>
-<pre><code>select goods_id,goods_name,click_count from ecs_goods order by click_count desc limit 2,3;
-</code></pre><p>5 连接查询</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> goods_id,goods_name,shop_price <span style="color:#000;font-weight:bold">from</span> ecs_goods <span style="color:#000;font-weight:bold">order</span> <span style="color:#000;font-weight:bold">by</span> shop_price <span style="color:#000;font-weight:bold">desc</span>;
+</code></pre></td></tr></table>
+</div>
+</div><p>4.2:按发布时间由早到晚排序</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> goods_id,goods_name,add_time <span style="color:#000;font-weight:bold">from</span> ecs_goods <span style="color:#000;font-weight:bold">order</span> <span style="color:#000;font-weight:bold">by</span> add_time;
+</code></pre></td></tr></table>
+</div>
+</div><p>4.3:接栏目由低到高排序,栏目内部按价格由高到低排序</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> goods_id,cat_id,goods_name,shop_price <span style="color:#000;font-weight:bold">from</span> ecs_goods
+<span style="color:#000;font-weight:bold">order</span> <span style="color:#000;font-weight:bold">by</span> cat_id ,shop_price <span style="color:#000;font-weight:bold">desc</span>;
+</code></pre></td></tr></table>
+</div>
+</div><p>4.4:取出价格最高的前三名商品</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> goods_id,goods_name,shop_price <span style="color:#000;font-weight:bold">from</span> ecs_goods <span style="color:#000;font-weight:bold">order</span> <span style="color:#000;font-weight:bold">by</span> shop_price <span style="color:#000;font-weight:bold">desc</span> <span style="color:#000;font-weight:bold">limit</span> <span style="color:#099">3</span>;
+</code></pre></td></tr></table>
+</div>
+</div><p>4.5:取出点击量前三名到前5名的商品</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> goods_id,goods_name,click_count <span style="color:#000;font-weight:bold">from</span> ecs_goods <span style="color:#000;font-weight:bold">order</span> <span style="color:#000;font-weight:bold">by</span> click_count <span style="color:#000;font-weight:bold">desc</span> <span style="color:#000;font-weight:bold">limit</span> <span style="color:#099">2</span>,<span style="color:#099">3</span>;
+</code></pre></td></tr></table>
+</div>
+</div><p>5 连接查询</p>
 <p>5.1:取出所有商品的商品名,栏目名,价格</p>
-<pre><code>select goods_name,cat_name,shop_price from 
-ecs_goods left join ecs_category
-on ecs_goods.cat_id=ecs_category.cat_id;
-</code></pre><p>5.2:取出第4个栏目下的商品的商品名,栏目名,价格</p>
-<pre><code>select goods_name,cat_name,shop_price from 
-ecs_goods left join ecs_category
-on ecs_goods.cat_id=ecs_category.cat_id
-where ecs_goods.cat_id = 4;
-</code></pre><p>5.3:取出第4个栏目下的商品的商品名,栏目名,与品牌名</p>
-<pre><code>select goods_name,cat_name,brand_name from 
-ecs_goods left join ecs_category
-on ecs_goods.cat_id=ecs_category.cat_id
-left join ecs_brand 
-on ecs_goods.brand_id=ecs_brand.brand_id
-where ecs_goods.cat_id = 4;
-</code></pre><p>5.4: 用友面试题</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> goods_name,cat_name,shop_price <span style="color:#000;font-weight:bold">from</span> 
+ecs_goods <span style="color:#000;font-weight:bold">left</span> <span style="color:#000;font-weight:bold">join</span> ecs_category
+<span style="color:#000;font-weight:bold">on</span> ecs_goods.cat_id<span style="color:#000;font-weight:bold">=</span>ecs_category.cat_id;
+</code></pre></td></tr></table>
+</div>
+</div><p>5.2:取出第4个栏目下的商品的商品名,栏目名,价格</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> goods_name,cat_name,shop_price <span style="color:#000;font-weight:bold">from</span> 
+ecs_goods <span style="color:#000;font-weight:bold">left</span> <span style="color:#000;font-weight:bold">join</span> ecs_category
+<span style="color:#000;font-weight:bold">on</span> ecs_goods.cat_id<span style="color:#000;font-weight:bold">=</span>ecs_category.cat_id
+<span style="color:#000;font-weight:bold">where</span> ecs_goods.cat_id <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">4</span>;
+</code></pre></td></tr></table>
+</div>
+</div><p>5.3:取出第4个栏目下的商品的商品名,栏目名,与品牌名</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> goods_name,cat_name,brand_name <span style="color:#000;font-weight:bold">from</span> 
+ecs_goods <span style="color:#000;font-weight:bold">left</span> <span style="color:#000;font-weight:bold">join</span> ecs_category
+<span style="color:#000;font-weight:bold">on</span> ecs_goods.cat_id<span style="color:#000;font-weight:bold">=</span>ecs_category.cat_id
+<span style="color:#000;font-weight:bold">left</span> <span style="color:#000;font-weight:bold">join</span> ecs_brand 
+<span style="color:#000;font-weight:bold">on</span> ecs_goods.brand_id<span style="color:#000;font-weight:bold">=</span>ecs_brand.brand_id
+<span style="color:#000;font-weight:bold">where</span> ecs_goods.cat_id <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">4</span>;
+</code></pre></td></tr></table>
+</div>
+</div><p>5.4: 用友面试题</p>
 <p>根据给出的表结构按要求写出SQL语句。</p>
 <pre><code>Match 赛程表
 字段名称	字段类型	描述
@@ -726,148 +1295,333 @@ teamName	varchar(20)	队伍名称
 </code></pre><p>Match的hostTeamID与guestTeamID都与Team中的teamID关联
 查出 2006-6-1 到2006-7-1之间举行的所有比赛，并且用以下形式列出：
 拜仁  2：0 不来梅 2006-6-21</p>
-<pre><code>mysql&gt; select * from m;
-+-----+------+------+------+------------+
-| mid | hid  | gid  | mres | matime     |
-+-----+------+------+------+------------+
-|   1 |    1 |    2 | 2:0  | 2006-05-21 |
-|   2 |    2 |    3 | 1:2  | 2006-06-21 |
-|   3 |    3 |    1 | 2:5  | 2006-06-25 |
-|   4 |    2 |    1 | 3:2  | 2006-07-21 |
-+-----+------+------+------+------------+
-4 rows in set (0.00 sec)
-</code></pre><pre><code>mysql&gt; select * from t;
-+------+----------+
-| tid  | tname    |
-+------+----------+
-|    1 | 国安     |
-|    2 | 申花     |
-|    3 | 公益联队 |
-+------+----------+
-3 rows in set (0.00 sec)
-</code></pre><pre><code>mysql&gt; select hid,t1.tname as hname ,mres,gid,t2.tname as gname,matime
-    -&gt; from 
-    -&gt; m left join t as t1
-    -&gt; on m.hid = t1.tid
-    -&gt; left join t as t2
-    -&gt; on m.gid = t2.tid;
-+------+----------+------+------+----------+------------+
-| hid  | hname    | mres | gid  | gname    | matime     |
-+------+----------+------+------+----------+------------+
-|    1 | 国安     | 2:0  |    2 | 申花     | 2006-05-21 |
-|    2 | 申花     | 1:2  |    3 | 公益联队 | 2006-06-21 |
-|    3 | 公益联队 | 2:5  |    1 | 国安     | 2006-06-25 |
-|    2 | 申花     | 3:2  |    1 | 国安     | 2006-07-21 |
-+------+----------+------+------+----------+------------+
-4 rows in set (0.00 sec)
-</code></pre><p>6 union查询
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">mysql<span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#000;font-weight:bold">select</span> <span style="color:#000;font-weight:bold">*</span> <span style="color:#000;font-weight:bold">from</span> m;
+<span style="color:#000;font-weight:bold">+</span><span style="color:#998;font-style:italic">-----+------+------+------+------------+
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">|</span> mid <span style="color:#000;font-weight:bold">|</span> hid  <span style="color:#000;font-weight:bold">|</span> gid  <span style="color:#000;font-weight:bold">|</span> mres <span style="color:#000;font-weight:bold">|</span> matime     <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">+</span><span style="color:#998;font-style:italic">-----+------+------+------+------------+
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">|</span>   <span style="color:#099">1</span> <span style="color:#000;font-weight:bold">|</span>    <span style="color:#099">1</span> <span style="color:#000;font-weight:bold">|</span>    <span style="color:#099">2</span> <span style="color:#000;font-weight:bold">|</span> <span style="color:#099">2</span>:<span style="color:#099">0</span>  <span style="color:#000;font-weight:bold">|</span> <span style="color:#099">2006</span><span style="color:#000;font-weight:bold">-</span><span style="color:#099">05</span><span style="color:#000;font-weight:bold">-</span><span style="color:#099">21</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span>   <span style="color:#099">2</span> <span style="color:#000;font-weight:bold">|</span>    <span style="color:#099">2</span> <span style="color:#000;font-weight:bold">|</span>    <span style="color:#099">3</span> <span style="color:#000;font-weight:bold">|</span> <span style="color:#099">1</span>:<span style="color:#099">2</span>  <span style="color:#000;font-weight:bold">|</span> <span style="color:#099">2006</span><span style="color:#000;font-weight:bold">-</span><span style="color:#099">06</span><span style="color:#000;font-weight:bold">-</span><span style="color:#099">21</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span>   <span style="color:#099">3</span> <span style="color:#000;font-weight:bold">|</span>    <span style="color:#099">3</span> <span style="color:#000;font-weight:bold">|</span>    <span style="color:#099">1</span> <span style="color:#000;font-weight:bold">|</span> <span style="color:#099">2</span>:<span style="color:#099">5</span>  <span style="color:#000;font-weight:bold">|</span> <span style="color:#099">2006</span><span style="color:#000;font-weight:bold">-</span><span style="color:#099">06</span><span style="color:#000;font-weight:bold">-</span><span style="color:#099">25</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span>   <span style="color:#099">4</span> <span style="color:#000;font-weight:bold">|</span>    <span style="color:#099">2</span> <span style="color:#000;font-weight:bold">|</span>    <span style="color:#099">1</span> <span style="color:#000;font-weight:bold">|</span> <span style="color:#099">3</span>:<span style="color:#099">2</span>  <span style="color:#000;font-weight:bold">|</span> <span style="color:#099">2006</span><span style="color:#000;font-weight:bold">-</span><span style="color:#099">07</span><span style="color:#000;font-weight:bold">-</span><span style="color:#099">21</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">+</span><span style="color:#998;font-style:italic">-----+------+------+------+------------+
+</span><span style="color:#998;font-style:italic"></span><span style="color:#099">4</span> <span style="color:#000;font-weight:bold">rows</span> <span style="color:#000;font-weight:bold">in</span> <span style="color:#000;font-weight:bold">set</span> (<span style="color:#099">0</span>.<span style="color:#099">00</span> sec)
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">mysql<span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#000;font-weight:bold">select</span> <span style="color:#000;font-weight:bold">*</span> <span style="color:#000;font-weight:bold">from</span> t;
+<span style="color:#000;font-weight:bold">+</span><span style="color:#998;font-style:italic">------+----------+
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">|</span> tid  <span style="color:#000;font-weight:bold">|</span> tname    <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">+</span><span style="color:#998;font-style:italic">------+----------+
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">|</span>    <span style="color:#099">1</span> <span style="color:#000;font-weight:bold">|</span> <span style="color:#a61717;background-color:#e3d2d2">国</span><span style="color:#a61717;background-color:#e3d2d2">安</span>     <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span>    <span style="color:#099">2</span> <span style="color:#000;font-weight:bold">|</span> <span style="color:#a61717;background-color:#e3d2d2">申</span><span style="color:#a61717;background-color:#e3d2d2">花</span>     <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span>    <span style="color:#099">3</span> <span style="color:#000;font-weight:bold">|</span> <span style="color:#a61717;background-color:#e3d2d2">公</span><span style="color:#a61717;background-color:#e3d2d2">益</span><span style="color:#a61717;background-color:#e3d2d2">联</span><span style="color:#a61717;background-color:#e3d2d2">队</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">+</span><span style="color:#998;font-style:italic">------+----------+
+</span><span style="color:#998;font-style:italic"></span><span style="color:#099">3</span> <span style="color:#000;font-weight:bold">rows</span> <span style="color:#000;font-weight:bold">in</span> <span style="color:#000;font-weight:bold">set</span> (<span style="color:#099">0</span>.<span style="color:#099">00</span> sec)
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">mysql<span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#000;font-weight:bold">select</span> hid,t1.tname <span style="color:#000;font-weight:bold">as</span> hname ,mres,gid,t2.tname <span style="color:#000;font-weight:bold">as</span> gname,matime
+    <span style="color:#000;font-weight:bold">-</span><span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#000;font-weight:bold">from</span> 
+    <span style="color:#000;font-weight:bold">-</span><span style="color:#000;font-weight:bold">&gt;</span> m <span style="color:#000;font-weight:bold">left</span> <span style="color:#000;font-weight:bold">join</span> t <span style="color:#000;font-weight:bold">as</span> t1
+    <span style="color:#000;font-weight:bold">-</span><span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#000;font-weight:bold">on</span> m.hid <span style="color:#000;font-weight:bold">=</span> t1.tid
+    <span style="color:#000;font-weight:bold">-</span><span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#000;font-weight:bold">left</span> <span style="color:#000;font-weight:bold">join</span> t <span style="color:#000;font-weight:bold">as</span> t2
+    <span style="color:#000;font-weight:bold">-</span><span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#000;font-weight:bold">on</span> m.gid <span style="color:#000;font-weight:bold">=</span> t2.tid;
+<span style="color:#000;font-weight:bold">+</span><span style="color:#998;font-style:italic">------+----------+------+------+----------+------------+
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">|</span> hid  <span style="color:#000;font-weight:bold">|</span> hname    <span style="color:#000;font-weight:bold">|</span> mres <span style="color:#000;font-weight:bold">|</span> gid  <span style="color:#000;font-weight:bold">|</span> gname    <span style="color:#000;font-weight:bold">|</span> matime     <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">+</span><span style="color:#998;font-style:italic">------+----------+------+------+----------+------------+
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">|</span>    <span style="color:#099">1</span> <span style="color:#000;font-weight:bold">|</span> <span style="color:#a61717;background-color:#e3d2d2">国</span><span style="color:#a61717;background-color:#e3d2d2">安</span>     <span style="color:#000;font-weight:bold">|</span> <span style="color:#099">2</span>:<span style="color:#099">0</span>  <span style="color:#000;font-weight:bold">|</span>    <span style="color:#099">2</span> <span style="color:#000;font-weight:bold">|</span> <span style="color:#a61717;background-color:#e3d2d2">申</span><span style="color:#a61717;background-color:#e3d2d2">花</span>     <span style="color:#000;font-weight:bold">|</span> <span style="color:#099">2006</span><span style="color:#000;font-weight:bold">-</span><span style="color:#099">05</span><span style="color:#000;font-weight:bold">-</span><span style="color:#099">21</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span>    <span style="color:#099">2</span> <span style="color:#000;font-weight:bold">|</span> <span style="color:#a61717;background-color:#e3d2d2">申</span><span style="color:#a61717;background-color:#e3d2d2">花</span>     <span style="color:#000;font-weight:bold">|</span> <span style="color:#099">1</span>:<span style="color:#099">2</span>  <span style="color:#000;font-weight:bold">|</span>    <span style="color:#099">3</span> <span style="color:#000;font-weight:bold">|</span> <span style="color:#a61717;background-color:#e3d2d2">公</span><span style="color:#a61717;background-color:#e3d2d2">益</span><span style="color:#a61717;background-color:#e3d2d2">联</span><span style="color:#a61717;background-color:#e3d2d2">队</span> <span style="color:#000;font-weight:bold">|</span> <span style="color:#099">2006</span><span style="color:#000;font-weight:bold">-</span><span style="color:#099">06</span><span style="color:#000;font-weight:bold">-</span><span style="color:#099">21</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span>    <span style="color:#099">3</span> <span style="color:#000;font-weight:bold">|</span> <span style="color:#a61717;background-color:#e3d2d2">公</span><span style="color:#a61717;background-color:#e3d2d2">益</span><span style="color:#a61717;background-color:#e3d2d2">联</span><span style="color:#a61717;background-color:#e3d2d2">队</span> <span style="color:#000;font-weight:bold">|</span> <span style="color:#099">2</span>:<span style="color:#099">5</span>  <span style="color:#000;font-weight:bold">|</span>    <span style="color:#099">1</span> <span style="color:#000;font-weight:bold">|</span> <span style="color:#a61717;background-color:#e3d2d2">国</span><span style="color:#a61717;background-color:#e3d2d2">安</span>     <span style="color:#000;font-weight:bold">|</span> <span style="color:#099">2006</span><span style="color:#000;font-weight:bold">-</span><span style="color:#099">06</span><span style="color:#000;font-weight:bold">-</span><span style="color:#099">25</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span>    <span style="color:#099">2</span> <span style="color:#000;font-weight:bold">|</span> <span style="color:#a61717;background-color:#e3d2d2">申</span><span style="color:#a61717;background-color:#e3d2d2">花</span>     <span style="color:#000;font-weight:bold">|</span> <span style="color:#099">3</span>:<span style="color:#099">2</span>  <span style="color:#000;font-weight:bold">|</span>    <span style="color:#099">1</span> <span style="color:#000;font-weight:bold">|</span> <span style="color:#a61717;background-color:#e3d2d2">国</span><span style="color:#a61717;background-color:#e3d2d2">安</span>     <span style="color:#000;font-weight:bold">|</span> <span style="color:#099">2006</span><span style="color:#000;font-weight:bold">-</span><span style="color:#099">07</span><span style="color:#000;font-weight:bold">-</span><span style="color:#099">21</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">+</span><span style="color:#998;font-style:italic">------+----------+------+------+----------+------------+
+</span><span style="color:#998;font-style:italic"></span><span style="color:#099">4</span> <span style="color:#000;font-weight:bold">rows</span> <span style="color:#000;font-weight:bold">in</span> <span style="color:#000;font-weight:bold">set</span> (<span style="color:#099">0</span>.<span style="color:#099">00</span> sec)
+</code></pre></td></tr></table>
+</div>
+</div><p>6 union查询
 6.1:把ecs_comment,ecs_feedback两个表中的数据,各取出4列,并把结果集union成一个结果集.</p>
 <p>6.2:3期学员碰到的一道面试题</p>
-<pre><code>#A表:
-+------+------+
-| id   | num  |
-+------+------+
-| a    |    5 |
-| b    |   10 |
-| c    |   15 |
-| d    |   10 |
-+------+------+
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">55
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">56
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">57
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">58
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">59
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">60
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">61
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">62
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">63
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">64
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">65
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">66
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">67
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">68
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">69
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">70
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">71
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">72
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">73
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">74
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">75
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">76
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">#</span>A表:
+<span style="color:#000;font-weight:bold">+</span><span style="color:#998;font-style:italic">------+------+
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">|</span> id   <span style="color:#000;font-weight:bold">|</span> num  <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">+</span><span style="color:#998;font-style:italic">------+------+
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">|</span> a    <span style="color:#000;font-weight:bold">|</span>    <span style="color:#099">5</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span> b    <span style="color:#000;font-weight:bold">|</span>   <span style="color:#099">10</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span> <span style="color:#000;font-weight:bold">c</span>    <span style="color:#000;font-weight:bold">|</span>   <span style="color:#099">15</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span> d    <span style="color:#000;font-weight:bold">|</span>   <span style="color:#099">10</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">+</span><span style="color:#998;font-style:italic">------+------+
+</span><span style="color:#998;font-style:italic"></span>
 
-
-#B表:
-+------+------+
-| id   | num  |
-+------+------+
-| b    |    5 |
-| c    |   15 |
-| d    |   20 |
-| e    |   99 |
-+------+------+
-
-#要求查询出以下效果:
-+------+----------+
-| id   |    num   |
-+------+----------+
-| a    |        5 |
-| b    |       15 |
-| c    |       30 |
-| d    |       30 |
-| e    |       99 |
-+------+----------+
-
-create table a (
-id char(1),
-num int
+<span style="color:#000;font-weight:bold">#</span>B表:
+<span style="color:#000;font-weight:bold">+</span><span style="color:#998;font-style:italic">------+------+
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">|</span> id   <span style="color:#000;font-weight:bold">|</span> num  <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">+</span><span style="color:#998;font-style:italic">------+------+
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">|</span> b    <span style="color:#000;font-weight:bold">|</span>    <span style="color:#099">5</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span> <span style="color:#000;font-weight:bold">c</span>    <span style="color:#000;font-weight:bold">|</span>   <span style="color:#099">15</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span> d    <span style="color:#000;font-weight:bold">|</span>   <span style="color:#099">20</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span> e    <span style="color:#000;font-weight:bold">|</span>   <span style="color:#099">99</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">+</span><span style="color:#998;font-style:italic">------+------+
+</span><span style="color:#998;font-style:italic"></span>
+<span style="color:#000;font-weight:bold">#</span><span style="color:#a61717;background-color:#e3d2d2">要</span><span style="color:#a61717;background-color:#e3d2d2">求</span><span style="color:#a61717;background-color:#e3d2d2">查</span><span style="color:#a61717;background-color:#e3d2d2">询</span><span style="color:#a61717;background-color:#e3d2d2">出</span><span style="color:#a61717;background-color:#e3d2d2">以</span><span style="color:#a61717;background-color:#e3d2d2">下</span><span style="color:#a61717;background-color:#e3d2d2">效</span><span style="color:#a61717;background-color:#e3d2d2">果</span>:
+<span style="color:#000;font-weight:bold">+</span><span style="color:#998;font-style:italic">------+----------+
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">|</span> id   <span style="color:#000;font-weight:bold">|</span>    num   <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">+</span><span style="color:#998;font-style:italic">------+----------+
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">|</span> a    <span style="color:#000;font-weight:bold">|</span>        <span style="color:#099">5</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span> b    <span style="color:#000;font-weight:bold">|</span>       <span style="color:#099">15</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span> <span style="color:#000;font-weight:bold">c</span>    <span style="color:#000;font-weight:bold">|</span>       <span style="color:#099">30</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span> d    <span style="color:#000;font-weight:bold">|</span>       <span style="color:#099">30</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span> e    <span style="color:#000;font-weight:bold">|</span>       <span style="color:#099">99</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">+</span><span style="color:#998;font-style:italic">------+----------+
+</span><span style="color:#998;font-style:italic"></span>
+<span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">table</span> a (
+id <span style="color:#0086b3">char</span>(<span style="color:#099">1</span>),
+num <span style="color:#0086b3">int</span>
 )engine myisam charset utf8;
 
-insert into a values ('a',5),('b',10),('c',15),('d',10);
+<span style="color:#000;font-weight:bold">insert</span> <span style="color:#000;font-weight:bold">into</span> a <span style="color:#000;font-weight:bold">values</span> (<span style="color:#d14">&#39;</span><span style="color:#d14">a</span><span style="color:#d14">&#39;</span>,<span style="color:#099">5</span>),(<span style="color:#d14">&#39;</span><span style="color:#d14">b</span><span style="color:#d14">&#39;</span>,<span style="color:#099">10</span>),(<span style="color:#d14">&#39;</span><span style="color:#d14">c</span><span style="color:#d14">&#39;</span>,<span style="color:#099">15</span>),(<span style="color:#d14">&#39;</span><span style="color:#d14">d</span><span style="color:#d14">&#39;</span>,<span style="color:#099">10</span>);
 
-create table b (
-id char(1),
-num int
+<span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">table</span> b (
+id <span style="color:#0086b3">char</span>(<span style="color:#099">1</span>),
+num <span style="color:#0086b3">int</span>
 )engine myisam charset utf8;
 
-insert into b values ('b',5),('c',15),('d',20),('e',99);
+<span style="color:#000;font-weight:bold">insert</span> <span style="color:#000;font-weight:bold">into</span> b <span style="color:#000;font-weight:bold">values</span> (<span style="color:#d14">&#39;</span><span style="color:#d14">b</span><span style="color:#d14">&#39;</span>,<span style="color:#099">5</span>),(<span style="color:#d14">&#39;</span><span style="color:#d14">c</span><span style="color:#d14">&#39;</span>,<span style="color:#099">15</span>),(<span style="color:#d14">&#39;</span><span style="color:#d14">d</span><span style="color:#d14">&#39;</span>,<span style="color:#099">20</span>),(<span style="color:#d14">&#39;</span><span style="color:#d14">e</span><span style="color:#d14">&#39;</span>,<span style="color:#099">99</span>);
 
-mysql&gt; # 合并 ,注意all的作用
-mysql&gt; select * from ta 
-    -&gt; union all
-    -&gt; select * from tb;
-+------+------+
-| id   | num  |
-+------+------+
-| a    |    5 |
-| b    |   10 |
-| c    |   15 |
-| d    |   10 |
-| b    |    5 |
-| c    |   15 |
-| d    |   20 |
-| e    |   99 |
-+------+------+
-
-#参考答案:
-mysql&gt; # sum,group求和
-mysql&gt; select id,sum(num) from (select * from ta union all select * from tb) as tmp group by id; 
-+------+----------+
-| id   | sum(num) |
-+------+----------+
-| a    |        5 |
-| b    |       15 |
-| c    |       30 |
-| d    |       30 |
-| e    |       99 |
-+------+----------+
-5 rows in set (0.00 sec)
-</code></pre><p>7: 子查询</p>
+mysql<span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#000;font-weight:bold">#</span> <span style="color:#a61717;background-color:#e3d2d2">合</span><span style="color:#a61717;background-color:#e3d2d2">并</span> ,<span style="color:#a61717;background-color:#e3d2d2">注</span><span style="color:#a61717;background-color:#e3d2d2">意</span>all的作用
+mysql<span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#000;font-weight:bold">select</span> <span style="color:#000;font-weight:bold">*</span> <span style="color:#000;font-weight:bold">from</span> ta 
+    <span style="color:#000;font-weight:bold">-</span><span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#000;font-weight:bold">union</span> <span style="color:#000;font-weight:bold">all</span>
+    <span style="color:#000;font-weight:bold">-</span><span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#000;font-weight:bold">select</span> <span style="color:#000;font-weight:bold">*</span> <span style="color:#000;font-weight:bold">from</span> tb;
+<span style="color:#000;font-weight:bold">+</span><span style="color:#998;font-style:italic">------+------+
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">|</span> id   <span style="color:#000;font-weight:bold">|</span> num  <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">+</span><span style="color:#998;font-style:italic">------+------+
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">|</span> a    <span style="color:#000;font-weight:bold">|</span>    <span style="color:#099">5</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span> b    <span style="color:#000;font-weight:bold">|</span>   <span style="color:#099">10</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span> <span style="color:#000;font-weight:bold">c</span>    <span style="color:#000;font-weight:bold">|</span>   <span style="color:#099">15</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span> d    <span style="color:#000;font-weight:bold">|</span>   <span style="color:#099">10</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span> b    <span style="color:#000;font-weight:bold">|</span>    <span style="color:#099">5</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span> <span style="color:#000;font-weight:bold">c</span>    <span style="color:#000;font-weight:bold">|</span>   <span style="color:#099">15</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span> d    <span style="color:#000;font-weight:bold">|</span>   <span style="color:#099">20</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span> e    <span style="color:#000;font-weight:bold">|</span>   <span style="color:#099">99</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">+</span><span style="color:#998;font-style:italic">------+------+
+</span><span style="color:#998;font-style:italic"></span>
+<span style="color:#000;font-weight:bold">#</span><span style="color:#a61717;background-color:#e3d2d2">参</span><span style="color:#a61717;background-color:#e3d2d2">考</span><span style="color:#a61717;background-color:#e3d2d2">答</span><span style="color:#a61717;background-color:#e3d2d2">案</span>:
+mysql<span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#000;font-weight:bold">#</span> <span style="color:#000;font-weight:bold">sum</span>,group求和
+mysql<span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#000;font-weight:bold">select</span> id,<span style="color:#000;font-weight:bold">sum</span>(num) <span style="color:#000;font-weight:bold">from</span> (<span style="color:#000;font-weight:bold">select</span> <span style="color:#000;font-weight:bold">*</span> <span style="color:#000;font-weight:bold">from</span> ta <span style="color:#000;font-weight:bold">union</span> <span style="color:#000;font-weight:bold">all</span> <span style="color:#000;font-weight:bold">select</span> <span style="color:#000;font-weight:bold">*</span> <span style="color:#000;font-weight:bold">from</span> tb) <span style="color:#000;font-weight:bold">as</span> tmp <span style="color:#000;font-weight:bold">group</span> <span style="color:#000;font-weight:bold">by</span> id; 
+<span style="color:#000;font-weight:bold">+</span><span style="color:#998;font-style:italic">------+----------+
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">|</span> id   <span style="color:#000;font-weight:bold">|</span> <span style="color:#000;font-weight:bold">sum</span>(num) <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">+</span><span style="color:#998;font-style:italic">------+----------+
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">|</span> a    <span style="color:#000;font-weight:bold">|</span>        <span style="color:#099">5</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span> b    <span style="color:#000;font-weight:bold">|</span>       <span style="color:#099">15</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span> <span style="color:#000;font-weight:bold">c</span>    <span style="color:#000;font-weight:bold">|</span>       <span style="color:#099">30</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span> d    <span style="color:#000;font-weight:bold">|</span>       <span style="color:#099">30</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">|</span> e    <span style="color:#000;font-weight:bold">|</span>       <span style="color:#099">99</span> <span style="color:#000;font-weight:bold">|</span>
+<span style="color:#000;font-weight:bold">+</span><span style="color:#998;font-style:italic">------+----------+
+</span><span style="color:#998;font-style:italic"></span><span style="color:#099">5</span> <span style="color:#000;font-weight:bold">rows</span> <span style="color:#000;font-weight:bold">in</span> <span style="color:#000;font-weight:bold">set</span> (<span style="color:#099">0</span>.<span style="color:#099">00</span> sec)
+</code></pre></td></tr></table>
+</div>
+</div><p>7: 子查询</p>
 <p>7.1:查询出最新一行商品(以商品编号最大为最新,用子查询实现)</p>
-<pre><code>select goods_id,goods_name from 
-ecs_goods where goods_id =(select max(goods_id) from ecs_goods);
-</code></pre><p>7.2:查询出编号为19的商品的栏目名称(用左连接查询和子查询分别)</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> goods_id,goods_name <span style="color:#000;font-weight:bold">from</span> 
+ecs_goods <span style="color:#000;font-weight:bold">where</span> goods_id <span style="color:#000;font-weight:bold">=</span> (<span style="color:#000;font-weight:bold">select</span> <span style="color:#000;font-weight:bold">max</span>(goods_id) <span style="color:#000;font-weight:bold">from</span> ecs_goods);
+</code></pre></td></tr></table>
+</div>
+</div><p>7.2:查询出编号为19的商品的栏目名称(用左连接查询和子查询分别)</p>
 <p>7.3:用where型子查询把ecs_goods表中的每个栏目下面最新的商品取出来</p>
-<pre><code>select goods_id,goods_name,cat_id from ecs_goods where goods_id in (select max(goods_id) from ecs_goods group by cat_id);
-</code></pre><p>7.4:用from型子查询把ecs_goods表中的每个栏目下面最新的商品取出来</p>
-<pre><code>select * from (select goods_id,cat_id,goods_name from ecs_goods order by goods_id desc) as t group by cat_id;
-</code></pre><p>7.5 用exists型子查询,查出所有有商品的栏目</p>
-<pre><code>select * from category
-where exists (select * from goods where goods.cat_id=category.cat_id);
-</code></pre><p>创建触发器:</p>
-<pre><code> CREATE  trigger tg2
-after insert on ord
-for each row
-update goods set goods_number=goods_number-new.num where id=new.gid
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> goods_id,goods_name,cat_id <span style="color:#000;font-weight:bold">from</span> ecs_goods <span style="color:#000;font-weight:bold">where</span> goods_id <span style="color:#000;font-weight:bold">in</span> (<span style="color:#000;font-weight:bold">select</span> <span style="color:#000;font-weight:bold">max</span>(goods_id) <span style="color:#000;font-weight:bold">from</span> ecs_goods <span style="color:#000;font-weight:bold">group</span> <span style="color:#000;font-weight:bold">by</span> cat_id);
+</code></pre></td></tr></table>
+</div>
+</div><p>7.4:用from型子查询把ecs_goods表中的每个栏目下面最新的商品取出来</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> <span style="color:#000;font-weight:bold">*</span> <span style="color:#000;font-weight:bold">from</span> (<span style="color:#000;font-weight:bold">select</span> goods_id,cat_id,goods_name <span style="color:#000;font-weight:bold">from</span> ecs_goods <span style="color:#000;font-weight:bold">order</span> <span style="color:#000;font-weight:bold">by</span> goods_id <span style="color:#000;font-weight:bold">desc</span>) <span style="color:#000;font-weight:bold">as</span> t <span style="color:#000;font-weight:bold">group</span> <span style="color:#000;font-weight:bold">by</span> cat_id;
+</code></pre></td></tr></table>
+</div>
+</div><p>7.5 用exists型子查询,查出所有有商品的栏目</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> <span style="color:#000;font-weight:bold">*</span> <span style="color:#000;font-weight:bold">from</span> category
+<span style="color:#000;font-weight:bold">where</span> <span style="color:#000;font-weight:bold">exists</span> (<span style="color:#000;font-weight:bold">select</span> <span style="color:#000;font-weight:bold">*</span> <span style="color:#000;font-weight:bold">from</span> goods <span style="color:#000;font-weight:bold">where</span> goods.cat_id<span style="color:#000;font-weight:bold">=</span>category.cat_id);
+</code></pre></td></tr></table>
+</div>
+</div><p>创建触发器:</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"> <span style="color:#000;font-weight:bold">CREATE</span>  <span style="color:#000;font-weight:bold">trigger</span> tg2
+<span style="color:#000;font-weight:bold">after</span> <span style="color:#000;font-weight:bold">insert</span> <span style="color:#000;font-weight:bold">on</span> ord
+<span style="color:#000;font-weight:bold">for</span> <span style="color:#000;font-weight:bold">each</span> <span style="color:#000;font-weight:bold">row</span>
+<span style="color:#000;font-weight:bold">update</span> goods <span style="color:#000;font-weight:bold">set</span> goods_number<span style="color:#000;font-weight:bold">=</span>goods_number<span style="color:#000;font-weight:bold">-</span><span style="color:#000;font-weight:bold">new</span>.num <span style="color:#000;font-weight:bold">where</span> id<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">new</span>.gid
 
-CREATE trigger tg3
-after delete on ord
-for each row
-update goods set goods_number=good_number+old.num where id=old.gid
+<span style="color:#000;font-weight:bold">CREATE</span> <span style="color:#000;font-weight:bold">trigger</span> tg3
+<span style="color:#000;font-weight:bold">after</span> <span style="color:#000;font-weight:bold">delete</span> <span style="color:#000;font-weight:bold">on</span> ord
+<span style="color:#000;font-weight:bold">for</span> <span style="color:#000;font-weight:bold">each</span> <span style="color:#000;font-weight:bold">row</span>
+<span style="color:#000;font-weight:bold">update</span> goods <span style="color:#000;font-weight:bold">set</span> goods_number<span style="color:#000;font-weight:bold">=</span>good_number<span style="color:#000;font-weight:bold">+</span><span style="color:#000;font-weight:bold">old</span>.num <span style="color:#000;font-weight:bold">where</span> id<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">old</span>.gid
 
 
-CREATE  trigger tg4
-after update on ord
-for each row
-update goods set goods_number=goods_number+old.num-new.num where id=old.gid
-</code></pre>
+<span style="color:#000;font-weight:bold">CREATE</span>  <span style="color:#000;font-weight:bold">trigger</span> tg4
+<span style="color:#000;font-weight:bold">after</span> <span style="color:#000;font-weight:bold">update</span> <span style="color:#000;font-weight:bold">on</span> ord
+<span style="color:#000;font-weight:bold">for</span> <span style="color:#000;font-weight:bold">each</span> <span style="color:#000;font-weight:bold">row</span>
+<span style="color:#000;font-weight:bold">update</span> goods <span style="color:#000;font-weight:bold">set</span> goods_number<span style="color:#000;font-weight:bold">=</span>goods_number<span style="color:#000;font-weight:bold">+</span><span style="color:#000;font-weight:bold">old</span>.num<span style="color:#000;font-weight:bold">-</span><span style="color:#000;font-weight:bold">new</span>.num <span style="color:#000;font-weight:bold">where</span> id<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">old</span>.gid
+</code></pre></td></tr></table>
+</div>
+</div>
         </div>
 
         
