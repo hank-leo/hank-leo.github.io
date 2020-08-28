@@ -155,18 +155,11 @@
         <li><a href="#11非关系型数据库和关系型数据库区别优势比较">11.非关系型数据库和关系型数据库区别，优势比较?</a></li>
         <li><a href="#12数据库范式根据某个场景设计数据表">12.数据库范式，根据某个场景设计数据表?</a></li>
         <li><a href="#13什么是-内连接外连接交叉连接笛卡尔积等">13.什么是 内连接、外连接、交叉连接、笛卡尔积等?</a></li>
+        <li><a href="#16like-和-的区别">16.like %和-的区别</a></li>
       </ul>
     </li>
-    <li><a href="#索引">索引</a>
-      <ul>
-        <li><a href="#1什么是索引">1.什么是索引？</a></li>
-      </ul>
-    </li>
-    <li><a href="#事务">事务</a>
-      <ul>
-        <li><a href="#1什么是事务">1.什么是事务？</a></li>
-      </ul>
-    </li>
+    <li><a href="#索引">索引</a></li>
+    <li><a href="#事务">事务</a></li>
     <li><a href="#存储引擎">存储引擎</a></li>
     <li><a href="#优化">优化</a></li>
     <li><a href="#数据库锁">数据库锁</a></li>
@@ -339,8 +332,8 @@ time <span style="color:#0086b3">date</span> <span style="color:#000;font-weight
 </ul>
 <h3 id="12数据库范式根据某个场景设计数据表">12.数据库范式，根据某个场景设计数据表?</h3>
 <p><strong>第一范式</strong>:(确保每列保持原子性)所有字段值都是不可分解的原子值。</p>
-<p>第一范式是最基本的范式。如果数据库表中的所有字段值都是不可分解的原子值，就说明该数据库表满足了第一范式。
-第一范式的合理遵循需要根据系统的实际需求来定。比如某些数据库系统中需要用到“地址”这个属性，本来直接将“地址”属性设计成一个数据库表的字段就行。但是如果系统经常会访问“地址”属性中的“城市”部分，那么就非要将“地址”这个属性重新拆分为省份、城市、详细地址等多个部分进行存储，这样在对地址中某一部分操作的时候将非常方便。这样设计才算满足了数据库的第一范式，如下表所示。
+<p>第一范式是最基本的范式。如果数据库表中的所有字段值都是不可分解的原子值，就说明该数据库表满足了第一范式。</p>
+<p>第一范式的合理遵循需要根据系统的实际需求来定。比如某些数据库系统中需要用到“地址”这个属性，本来直接将“地址”属性设计成一个数据库表的字段就行。但是如果系统经常会访问“地址”属性中的“城市”部分，那么就非要将“地址”这个属性重新拆分为省份、城市、详细地址等多个部分进行存储，这样在对地址中某一部分操作的时候将非常方便。这样设计才算满足了数据库的第一范式，如下表所示。
 上表所示的用户信息遵循了第一范式的要求，这样在对用户使用城市进行分类的时候就非常方便，也提高了数据库的性能。</p>
 <p><strong>第二范式</strong>:(确保表中的每列都和主键相关)在一个数据库表中，一个表中只能保存一种数据，不可以把多种数据保存在同一张数据库表中。</p>
 <p>第二范式在第一范式的基础之上更进一层。第二范式需要确保数据库表中的每一列都和主键相关，而不能只与主键的某一部分相关（主要针对联合主键而言）。也就是说在一个数据库表中，一个表中只能保存一种数据，不可以把多种数据保存在同一张数据库表中。
@@ -350,9 +343,9 @@ time <span style="color:#0086b3">date</span> <span style="color:#000;font-weight
 比如在设计一个订单数据表的时候，可以将客户编号作为一个外键和订单表建立相应的关系。而不可以在订单表中添加关于客户其它信息（比如姓名、所属公司等）的字段。</p>
 <p><strong>BCNF</strong>:符合3NF，并且，主属性不依赖于主属性。</p>
 <p>若关系模式属于第二范式，且每个属性都不传递依赖于键码，则R属于BC范式。
-通常BC范式的条件有多种等价的表述：每个非平凡依赖的左边必须包含键码；每个决定因素必须包含键码。
-BC范式既检查非主属性，又检查主属性。当只检查非主属性时，就成了第三范式。满足BC范式的关系都必然满足第三范式。
-还可以这么说：若一个关系达到了第三范式，并且它只有一个候选码，或者它的每个候选码都是单属性，则该关系自然达到BC范式。
+通常BC范式的条件有多种等价的表述：每个非平凡依赖的左边必须包含键码；每个决定因素必须包含键码。</p>
+<p>BC范式既检查非主属性，又检查主属性。当只检查非主属性时，就成了第三范式。满足BC范式的关系都必然满足第三范式。</p>
+<p>还可以这么说：若一个关系达到了第三范式，并且它只有一个候选码，或者它的每个候选码都是单属性，则该关系自然达到BC范式。
 一般，一个数据库设计符合3NF或BCNF就可以了。</p>
 <p><strong>第四范式</strong>:要求把同一表内的多对多关系删除。</p>
 <p><strong>第五范式</strong>:从最终结构重新建立原始结构。</p>
@@ -361,44 +354,23 @@ BC范式既检查非主属性，又检查主属性。当只检查非主属性时
 <p><strong>左外连接</strong>: 包含左边表的全部行（不管右边的表中是否存在与它们匹配的行），以及右边表中全部匹配的行</p>
 <p><strong>右外连接</strong>: 包含右边表的全部行（不管左边的表中是否存在与它们匹配的行），以及左边表中全部匹配的行</p>
 <p>例如1：</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">SELECT</span> a.,b. <span style="color:#000;font-weight:bold">FROM</span> luntan <span style="color:#000;font-weight:bold">LEFT</span> <span style="color:#000;font-weight:bold">JOIN</span> usertable <span style="color:#000;font-weight:bold">as</span> b <span style="color:#000;font-weight:bold">ON</span> a.username<span style="color:#000;font-weight:bold">=</span>b.username
-</code></pre></td></tr></table>
-</div>
-</div><p>例如2：</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">SELECT</span> a.,b. <span style="color:#000;font-weight:bold">FROM</span> city <span style="color:#000;font-weight:bold">as</span> a <span style="color:#000;font-weight:bold">FULL</span> <span style="color:#000;font-weight:bold">OUTER</span> <span style="color:#000;font-weight:bold">JOIN</span> <span style="color:#000;font-weight:bold">user</span> <span style="color:#000;font-weight:bold">as</span> b <span style="color:#000;font-weight:bold">ON</span> a.username<span style="color:#000;font-weight:bold">=</span>b.username
-</code></pre></td></tr></table>
-</div>
-</div><p><strong>全外连接</strong>: 包含左、右两个表的全部行，不管另外一边的表中是否存在与它们匹配的行。</p>
+<p><code>SELECT a.,b. FROM luntan LEFT JOIN usertable as b ON a.username=b.username</code></p>
+<p>例如2：</p>
+<p><code>SELECT a.,b. FROM city as a FULL OUTER JOIN user as b ON a.username=b.username</code></p>
+<p><strong>全外连接</strong>: 包含左、右两个表的全部行，不管另外一边的表中是否存在与它们匹配的行。</p>
 <p><strong>交叉连接</strong>: 生成笛卡尔积－它不使用任何匹配或者选取条件，而是直接将一个数据源中的每个行与另一个数据源的每个行都一一匹配</p>
 <p>例如：</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">SELECT</span> <span style="color:#000;font-weight:bold">type</span>,pub_name <span style="color:#000;font-weight:bold">FROM</span> titles <span style="color:#000;font-weight:bold">CROSS</span> <span style="color:#000;font-weight:bold">JOIN</span> publishers <span style="color:#000;font-weight:bold">ORDER</span> <span style="color:#000;font-weight:bold">BY</span> <span style="color:#000;font-weight:bold">type</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>注意：</p>
+<p><code>SELECT type,pub_name FROM titles CROSS JOIN publishers ORDER BY type</code></p>
+<p>注意：</p>
 <p>很多公司都只是考察是否知道其概念，但是也有很多公司需要不仅仅知道概念，还需要动手写sql,一般都是简单的连接查询，具体关于连接查询的sql练习，参见以下链接：</p>
 <p><a href="https://www.nowcoder.com/ta/sql">牛客网数据库SQL实战</a></p>
 <p><a href="https://leetcode-cn.com/problemset/database/">leetcode中文网站数据库</a></p>
-<p>14.varchar和char的使用场景?
-1.char的长度是不可变的，而varchar的长度是可变的。</p>
+<p>14.varchar和char的使用场景?</p>
+<p>1.char的长度是不可变的，而varchar的长度是可变的。</p>
 <p>定义一个char[10]和varchar[10]。
 如果存进去的是‘csdn’,那么char所占的长度依然为10，除了字符‘csdn’外，后面跟六个空格，varchar就立马把长度变为4了，取数据的时候，char类型的要用trim()去掉多余的空格，而varchar是不需要的。</p>
-<p>2.char的存取数度还是要比varchar要快得多，因为其长度固定，方便程序的存储与查找。
-char也为此付出的是空间的代价，因为其长度固定，所以难免会有多余的空格占位符占据空间，可谓是以空间换取时间效率。
+<p>2.char的存取数度还是要比varchar要快得多，因为其长度固定，方便程序的存储与查找。</p>
+<p>char也为此付出的是空间的代价，因为其长度固定，所以难免会有多余的空格占位符占据空间，可谓是以空间换取时间效率。
 varchar是以空间效率为首位。</p>
 <p>3.char的存储方式是：对英文字符（ASCII）占用1个字节，对一个汉字占用两个字节。
 varchar的存储方式是：对每个英文字符占用2个字节，汉字也占用2个字节。</p>
@@ -421,7 +393,7 @@ WHERE</p>
 <p>删除：DELETE</p>
 <p>3.数据定义语言DDL</p>
 <p>数据定义语言DDL用来创建数据库中的各种对象表、视图、索引、同义词、聚簇等如：</p>
-<p>CREATE TABLE/VIEW/INDEX/SYN/CLUSTER</p>
+<p><code>CREATE TABLE/VIEW/INDEX/SYN/CLUSTER</code></p>
 <p>表 视图 索引 同义词 簇</p>
 <p>DDL操作是隐性提交的！不能rollback</p>
 <p>4.数据控制语言DCL</p>
@@ -434,31 +406,38 @@ WHERE</p>
 到所做的事情，别人只有在最后提交完成后才可以看到。
 提交数据有三种类型：显式提交、隐式提交及自动提交。下面分
 别说明这三种类型。</p>
-<p>(1) 显式提交
-用COMMIT命令直接完成的提交为显式提交。其格式为：</p>
+<p>(1) 显式提交</p>
+<p>用COMMIT命令直接完成的提交为显式提交。其格式为：</p>
 <p>SQL&gt;COMMIT；</p>
 <p>(2) 隐式提交</p>
 <p>用SQL命令间接完成的提交为隐式提交。这些命令是：</p>
-<pre><code>ALTER，AUDIT，COMMENT，CONNECT，CREATE，DISCONNECT，DROP，
-EXIT，GRANT，NOAUDIT，QUIT，REVOKE，RENAME。
-</code></pre><p>(3) 自动提交
-若把AUTOCOMMIT设置为ON，则在插入、修改、删除语句执行后，
-系统将自动进行提交，这就是自动提交。其格式为：
-SQL&gt;SET AUTOCOMMIT ON；</p>
+<p><code>ALTER，AUDIT，COMMENT，CONNECT，CREATE，DISCONNECT，DROP，EXIT，GRANT，NOAUDIT，QUIT，REVOKE，RENAME。</code></p>
+<p>(3) 自动提交</p>
+<p>若把AUTOCOMMIT设置为ON，则在插入、修改、删除语句执行后，
+系统将自动进行提交，这就是自动提交。其格式为：</p>
+<p><code>SQL&gt;SET AUTOCOMMIT ON；</code></p>
 <p>参考文章：
 <a href="https://www.cnblogs.com/study-s/p/5287529.html">https://www.cnblogs.com/study-s/p/5287529.html</a></p>
-<p>16.like %和-的区别
-通配符的分类:</p>
+<h3 id="16like-和-的区别">16.like %和-的区别</h3>
+<p>通配符的分类:</p>
 <p>%百分号通配符:表示任何字符出现任意次数(可以是0次).</p>
 <p>_下划线通配符:表示只能匹配单个字符,不能多也不能少,就是一个字符.</p>
 <p>like操作符: LIKE作用是指示mysql后面的搜索模式是利用通配符而不是直接相等匹配进行比较.</p>
-<p>注意: 如果在使用like操作符时,后面的没有使用通用匹配符效果是和=一致的,SELECT * FROM products WHERE products.prod_name like &lsquo;1000&rsquo;;
-只能匹配的结果为1000,而不能匹配像JetPack 1000这样的结果.</p>
-<p>%通配符使用: 匹配以&quot;yves&quot;开头的记录:(包括记录&quot;yves&rdquo;) SELECT FROM products WHERE products.prod_name like &lsquo;yves%';
-匹配包含&quot;yves&quot;的记录(包括记录&quot;yves&rdquo;) SELECT FROM products WHERE products.prod_name like &lsquo;%yves%';
-匹配以&quot;yves&quot;结尾的记录(包括记录&quot;yves&rdquo;,不包括记录&quot;yves &ldquo;,也就是yves后面有空格的记录,这里需要注意) SELECT * FROM products WHERE products.prod_name like &lsquo;%yves&rsquo;;</p>
-<p>通配符使用: SELECT FROM products WHERE products.prod_name like &lsquo;_yves&rsquo;; 匹配结果为: 像&quot;yyves&quot;这样记录.
-SELECT FROM products WHERE products.prod<em>name like &lsquo;yves</em>'; 匹配结果为: 像&quot;yvesHe&quot;这样的记录.(一个下划线只能匹配一个字符,不能多也不能少)</p>
+<p>注意: 如果在使用like操作符时,后面的没有使用通用匹配符效果是和=一致的,</p>
+<p><code>SELECT * FROM products WHERE products.prod_name like '1000';</code></p>
+<p>只能匹配的结果为1000,而不能匹配像JetPack 1000这样的结果.</p>
+<p>%通配符使用:</p>
+<p>匹配以&quot;yves&quot;开头的记录:(包括记录&quot;yves&rdquo;)</p>
+<p><code>SELECT FROM products WHERE products.prod_name like 'yves%';</code></p>
+<p>匹配包含&quot;yves&quot;的记录(包括记录&quot;yves&rdquo;)</p>
+<p><code>SELECT FROM products WHERE products.prod_name like '%yves%';</code></p>
+<p>匹配以&quot;yves&quot;结尾的记录(包括记录&quot;yves&rdquo;,不包括记录&quot;yves &ldquo;,也就是yves后面有空格的记录,这里需要注意)</p>
+<p><code>SELECT * FROM products WHERE products.prod_name like '%yves';</code></p>
+<p>通配符使用:</p>
+<p><code>SELECT FROM products WHERE products.prod_name like '_yves'; </code></p>
+<p>匹配结果为: 像&quot;yyves&quot;这样记录.</p>
+<p><code>SELECT FROM products WHERE products.prod*name like 'yves*'; </code></p>
+<p>匹配结果为: 像&quot;yvesHe&quot;这样的记录.(一个下划线只能匹配一个字符,不能多也不能少)</p>
 <p>注意事项:</p>
 <p>注意大小写,在使用模糊匹配时,也就是匹配文本时,mysql是可能区分大小的,也可能是不区分大小写的,这个结果是取决于用户对MySQL的配置方式.如果是区分大小写,那么像YvesHe这样记录是不能被&quot;yves__&ldquo;这样的匹配条件匹配的.
 注意尾部空格,&quot;%yves&quot;是不能匹配&quot;heyves &ldquo;这样的记录的.
@@ -467,50 +446,66 @@ SELECT FROM products WHERE products.prod<em>name like &lsquo;yves</em>'; 匹配�
 <p>正如所见， MySQL的通配符很有用。但这种功能是有代价的：通配符搜索的处理一般要比前面讨论的其他搜索所花时间更长。这里给出一些使用通配符要记住的技巧。</p>
 <p>不要过度使用通配符。如果其他操作符能达到相同的目的，应该 使用其他操作符。
 在确实需要使用通配符时，除非绝对有必要，否则不要把它们用 在搜索模式的开始处。把通配符置于搜索模式的开始处，搜索起 来是最慢的。
-仔细注意通配符的位置。如果放错地方，可能不会返回想要的数.
-参考博文：https://blog.csdn.net/u011479200/article/details/78513632</p>
-<p>17.count(<em>)、count(1)、count(column)的区别
-count(</em>)对行的数目进行计算,包含NULL</p>
+仔细注意通配符的位置。如果放错地方，可能不会返回想要的数.</p>
+<p>参考博文：https://blog.csdn.net/u011479200/article/details/78513632</p>
+<p>17.count(*)、count(1)、count(column)的区别</p>
+<p>count(*)对行的数目进行计算,包含NULL</p>
 <p>count(column)对特定的列的值具有的行数进行计算,不包含NULL值。</p>
 <p>count()还有一种使用方式,count(1)这个用法和count(*)的结果是一样的。</p>
 <p>性能问题:</p>
-<p>1.任何情况下SELECT COUNT(*) FROM tablename是最优选择;</p>
-<p>2.尽量减少SELECT COUNT(*) FROM tablename WHERE COL = ‘value’ 这种查询;</p>
-<p>3.杜绝SELECT COUNT(COL) FROM tablename WHERE COL2 = ‘value’ 的出现。</p>
+<p>1.任何情况下<code>SELECT COUNT(*) FROM tablename</code>是最优选择;</p>
+<p>2.尽量减少<code>SELECT COUNT(*) FROM tablename WHERE COL = 'value' </code>这种查询;</p>
+<p>3.杜绝<code>SELECT COUNT(COL) FROM tablename WHERE COL2 = 'value'</code> 的出现。</p>
 <p>如果表没有主键,那么count(1)比count(*)快。</p>
 <p>如果有主键,那么count(主键,联合主键)比count(*)快。</p>
 <p>如果表只有一个字段,count(*)最快。</p>
 <p>count(1)跟count(主键)一样,只扫描主键。count(*)跟count(非主键)一样,扫描整个表。明显前者更快一些。</p>
-<p>18.最左前缀原则
-多列索引：</p>
-<p>ALTER TABLE people ADD INDEX lname_fname_age (lame,fname,age);</p>
+<p>18.最左前缀原则</p>
+<p>多列索引：</p>
+<p><code>ALTER TABLE people ADD INDEX lname_fname_age (lame,fname,age);</code></p>
 <p>为了提高搜索效率，我们需要考虑运用多列索引,由于索引文件以B－Tree格式保存，所以我们不用扫描任何记录，即可得到最终结果。</p>
 <p>注：在mysql中执行查询时，只能使用一个索引，如果我们在lname,fname,age上分别建索引,执行查询时，只能使用一个索引，mysql会选择一个最严格(获得结果集记录数最少)的索引。</p>
 <p>最左前缀原则：顾名思义，就是最左优先，上例中我们创建了lname_fname_age多列索引,相当于创建了(lname)单列索引，(lname,fname)组合索引以及(lname,fname,age)组合索引。</p>
 <h2 id="索引">索引</h2>
-<h3 id="1什么是索引">1.什么是索引？</h3>
+<p>1.什么是索引？</p>
 <p>何为索引：</p>
 <p>数据库索引，是数据库管理系统中一个排序的数据结构，索引的实现通常使用B树及其变种B+树。</p>
 <p>在数据之外，数据库系统还维护着满足特定查找算法的数据结构，这些数据结构以某种方式引用（指向）数据，这样就可以在这些数据结构上实现高级查找算法。这种数据结构，就是索引。</p>
-<p>2.索引的作用？它的优点缺点是什么？
-索引作用：</p>
+<p>2.索引的作用？它的优点缺点是什么？</p>
+<p>索引作用：</p>
 <p>协助快速查询、更新数据库表中数据。</p>
 <p>为表设置索引要付出代价的：</p>
 <p>一是增加了数据库的存储空间</p>
 <p>二是在插入和修改数据时要花费较多的时间(因为索引也要随之变动)。</p>
-<p>3.索引的优缺点？
-创建索引可以大大提高系统的性能（优点）：</p>
+<p>3.索引的优缺点？</p>
+<p>创建索引可以大大提高系统的性能（优点）：</p>
+<ul>
+<li>
 <p>1.通过创建唯一性索引，可以保证数据库表中每一行数据的唯一性。</p>
+</li>
+<li>
 <p>2.可以大大加快数据的检索速度，这也是创建索引的最主要的原因。</p>
+</li>
+<li>
 <p>3.可以加速表和表之间的连接，特别是在实现数据的参考完整性方面特别有意义。</p>
+</li>
+</ul>
 <p>4.在使用分组和排序子句进行数据检索时，同样可以显著减少查询中分组和排序的时间。</p>
 <p>5.通过使用索引，可以在查询的过程中，使用优化隐藏器，提高系统的性能。</p>
 <p>增加索引也有许多不利的方面(缺点)：</p>
+<ul>
+<li>
 <p>1.创建索引和维护索引要耗费时间，这种时间随着数据量的增加而增加。</p>
+</li>
+<li>
 <p>2.索引需要占物理空间，除了数据表占数据空间之外，每一个索引还要占一定的物理空间，如果要建立聚簇索引，那么需要的空间就会更大。</p>
+</li>
+<li>
 <p>3.当对表中的数据进行增加、删除和修改的时候，索引也要动态的维护，这样就降低了数据的维护速度。</p>
-<p>4.哪些列适合建立索引、哪些不适合建索引？
-索引是建立在数据库表中的某些列的上面。在创建索引的时候，应该考虑在哪些列上可以创建索引，在哪些列上不能创建索引。</p>
+</li>
+</ul>
+<p>4.哪些列适合建立索引、哪些不适合建索引？</p>
+<p>索引是建立在数据库表中的某些列的上面。在创建索引的时候，应该考虑在哪些列上可以创建索引，在哪些列上不能创建索引。</p>
 <p>一般来说，应该在这些列上创建索引：</p>
 <p>（1）在经常需要搜索的列上，可以加快搜索的速度；</p>
 <p>（2）在作为主键的列上，强制该列的唯一性和组织表中数据的排列结构；</p>
@@ -527,10 +522,10 @@ count(</em>)对行的数目进行计算,包含NULL</p>
 <p>这是因为，这些列的数据量要么相当大，要么取值很少。</p>
 <p>(4)当修改性能远远大于检索性能时，不应该创建索引。</p>
 <p>这是因为，修改性能和检索性能是互相矛盾的。当增加索引时，会提高检索性能，但是会降低修改性能。当减少索引时，会提高修改性能，降低检索性能。因此，当修改性能远远大于检索性能时，不应该创建索引。</p>
-<p>5.什么样的字段适合建索引
-唯一、不为空、经常被查询的字段</p>
-<p>6.MySQL B+Tree索引和Hash索引的区别?
-Hash索引和B+树索引的特点：</p>
+<p>5.什么样的字段适合建索引</p>
+<p>唯一、不为空、经常被查询的字段</p>
+<p>6.MySQL B+Tree索引和Hash索引的区别?</p>
+<p>Hash索引和B+树索引的特点：</p>
 <p>Hash索引结构的特殊性，其检索效率非常高，索引的检索可以一次定位;</p>
 <p>B+树索引需要从根节点到枝节点，最后才能访问到页节点这样多次的IO访问;</p>
 <p>为什么不都用Hash索引而使用B+树索引？</p>
@@ -549,38 +544,38 @@ B+树索引和哈希索引的明显区别是：</p>
 <p>5.哈希索引也不支持多列联合索引的最左匹配规则；</p>
 <p>6.B+树索引的关键字检索效率比较平均，不像B树那样波动幅度大，在有大量重复键值情况下，哈希索引的效率也是极低的，因为存在所谓的哈希碰撞问题。</p>
 <p>7.在大多数场景下，都会有范围查询、排序、分组等查询特征，用B+树索引就可以了。</p>
-<p>7.B树和B+树的区别
-B树，每个节点都存储key和data，所有节点组成这棵树，并且叶子节点指针为nul，叶子结点不包含任何关键字信息。</p>
+<p><strong>7.B树和B+树的区别</strong></p>
+<p>B树，每个节点都存储key和data，所有节点组成这棵树，并且叶子节点指针为nul，叶子结点不包含任何关键字信息。</p>
 <p>B+树，所有的叶子结点中包含了全部关键字的信息，及指向含有这些关键字记录的指针，且叶子结点本身依关键字的大小自小而大的顺序链接，所有的非终端结点可以看成是索引部分，结点中仅含有其子树根结点中最大（或最小）关键字。 (而B 树的非终节点也包含需要查找的有效信息)</p>
-<p>8.为什么说B+比B树更适合实际应用中操作系统的文件索引和数据库索引？
-1.B+的磁盘读写代价更低</p>
+<p>8.为什么说B+比B树更适合实际应用中操作系统的文件索引和数据库索引？</p>
+<p>1.B+的磁盘读写代价更低</p>
 <p>B+的内部结点并没有指向关键字具体信息的指针。因此其内部结点相对B树更小。如果把所有同一内部结点的关键字存放在同一盘块中，那么盘块所能容纳的关键字数量也越多。一次性读入内存中的需要查找的关键字也就越多。相对来说IO读写次数也就降低了。</p>
 <p>2.B+tree的查询效率更加稳定</p>
 <p>由于非终结点并不是最终指向文件内容的结点，而只是叶子结点中关键字的索引。所以任何关键字的查找必须走一条从根结点到叶子结点的路。所有关键字查询的路径长度相同，导致每一个数据的查询效率相当。</p>
-<p>9.聚集索引和非聚集索引区别?
-聚合索引(clustered index):</p>
-<p>聚集索引表记录的排列顺序和索引的排列顺序一致，所以查询效率快，只要找到第一个索引值记录，其余就连续性的记录在物理也一样连续存放。聚集索引对应的缺点就是修改慢，因为为了保证表中记录的物理和索引顺序一致，在记录插入的时候，会对数据页重新排序。
-聚集索引类似于新华字典中用拼音去查找汉字，拼音检索表于书记顺序都是按照a~z排列的，就像相同的逻辑顺序于物理顺序一样，当你需要查找a,ai两个读音的字，或是想一次寻找多个傻(sha)的同音字时，也许向后翻几页，或紧接着下一行就得到结果了。</p>
+<p>9.聚集索引和非聚集索引区别?</p>
+<p>聚合索引(clustered index):</p>
+<p>聚集索引表记录的排列顺序和索引的排列顺序一致，所以查询效率快，只要找到第一个索引值记录，其余就连续性的记录在物理也一样连续存放。聚集索引对应的缺点就是修改慢，因为为了保证表中记录的物理和索引顺序一致，在记录插入的时候，会对数据页重新排序。</p>
+<p>聚集索引类似于新华字典中用拼音去查找汉字，拼音检索表于书记顺序都是按照a~z排列的，就像相同的逻辑顺序于物理顺序一样，当你需要查找a,ai两个读音的字，或是想一次寻找多个傻(sha)的同音字时，也许向后翻几页，或紧接着下一行就得到结果了。</p>
 <p>非聚合索引(nonclustered index):</p>
-<p>非聚集索引指定了表中记录的逻辑顺序，但是记录的物理和索引不一定一致，两种索引都采用B+树结构，非聚集索引的叶子层并不和实际数据页相重叠，而采用叶子层包含一个指向表中的记录在数据页中的指针方式。非聚集索引层次多，不会造成数据重排。
-非聚集索引类似在新华字典上通过偏旁部首来查询汉字，检索表也许是按照横、竖、撇来排列的，但是由于正文中是a~z的拼音顺序，所以就类似于逻辑地址于物理地址的不对应。同时适用的情况就在于分组，大数目的不同值，频繁更新的列中，这些情况即不适合聚集索引。</p>
+<p>非聚集索引指定了表中记录的逻辑顺序，但是记录的物理和索引不一定一致，两种索引都采用B+树结构，非聚集索引的叶子层并不和实际数据页相重叠，而采用叶子层包含一个指向表中的记录在数据页中的指针方式。非聚集索引层次多，不会造成数据重排。</p>
+<p>非聚集索引类似在新华字典上通过偏旁部首来查询汉字，检索表也许是按照横、竖、撇来排列的，但是由于正文中是a~z的拼音顺序，所以就类似于逻辑地址于物理地址的不对应。同时适用的情况就在于分组，大数目的不同值，频繁更新的列中，这些情况即不适合聚集索引。</p>
 <p>根本区别：</p>
 <p>聚集索引和非聚集索引的根本区别是表记录的排列顺序和与索引的排列顺序是否一致。</p>
 <h2 id="事务">事务</h2>
-<h3 id="1什么是事务">1.什么是事务？</h3>
+<p>1.什么是事务？</p>
 <p>事务是对数据库中一系列操作进行统一的回滚或者提交的操作，主要用来保证数据的完整性和一致性。</p>
-<p>2.事务四大特性（ACID）原子性、一致性、隔离性、持久性?
-原子性（Atomicity）:
-原子性是指事务包含的所有操作要么全部成功，要么全部失败回滚，因此事务的操作如果成功就必须要完全应用到数据库，如果操作失败则不能对数据库有任何影响。</p>
-<p>一致性（Consistency）:
-事务开始前和结束后，数据库的完整性约束没有被破坏。比如A向B转账，不可能A扣了钱，B却没收到。</p>
-<p>隔离性（Isolation）:
-隔离性是当多个用户并发访问数据库时，比如操作同一张表时，数据库为每一个用户开启的事务，不能被其他事务的操作所干扰，多个并发事务之间要相互隔离。同一时间，只允许一个事务请求同一数据，不同的事务之间彼此没有任何干扰。比如A正在从一张银行卡中取钱，在A取钱的过程结束前，B不能向这张卡转账。</p>
-<p>持久性（Durability）:
-持久性是指一个事务一旦被提交了，那么对数据库中的数据的改变就是永久性的，即便是在数据库系统遇到故障的情况下也不会丢失提交事务的操作。</p>
-<p>3.事务的并发?事务隔离级别，每个级别会引发什么问题，MySQL默认是哪个级别?
-从理论上来说, 事务应该彼此完全隔离, 以避免并发事务所导致的问题，然而, 那样会对性能产生极大的影响, 因为事务必须按顺序运行， 在实际开发中, 为了提升性能, 事务会以较低的隔离级别运行， 事务的隔离级别可以通过隔离事务属性指定。
-事务的并发问题</p>
+<p>2.事务四大特性（ACID）原子性、一致性、隔离性、持久性?</p>
+<p>原子性（Atomicity）:</p>
+<p>原子性是指事务包含的所有操作要么全部成功，要么全部失败回滚，因此事务的操作如果成功就必须要完全应用到数据库，如果操作失败则不能对数据库有任何影响。</p>
+<p>一致性（Consistency）:</p>
+<p>事务开始前和结束后，数据库的完整性约束没有被破坏。比如A向B转账，不可能A扣了钱，B却没收到。</p>
+<p>隔离性（Isolation）:</p>
+<p>隔离性是当多个用户并发访问数据库时，比如操作同一张表时，数据库为每一个用户开启的事务，不能被其他事务的操作所干扰，多个并发事务之间要相互隔离。同一时间，只允许一个事务请求同一数据，不同的事务之间彼此没有任何干扰。比如A正在从一张银行卡中取钱，在A取钱的过程结束前，B不能向这张卡转账。</p>
+<p>持久性（Durability）:</p>
+<p>持久性是指一个事务一旦被提交了，那么对数据库中的数据的改变就是永久性的，即便是在数据库系统遇到故障的情况下也不会丢失提交事务的操作。</p>
+<p>3.事务的并发? 事务隔离级别，每个级别会引发什么问题，MySQL默认是哪个级别?</p>
+<p>从理论上来说, 事务应该彼此完全隔离, 以避免并发事务所导致的问题，然而, 那样会对性能产生极大的影响, 因为事务必须按顺序运行， 在实际开发中, 为了提升性能, 事务会以较低的隔离级别运行， 事务的隔离级别可以通过隔离事务属性指定。</p>
+<p>事务的并发问题</p>
 <p>1、脏读：事务A读取了事务B更新的数据，然后B回滚操作，那么A读取到的数据是脏数据</p>
 <p>2、不可重复读：事务 A 多次读取同一数据，事务 B 在事务A多次读取的过程中，对数据作了更新并提交，导致事务A多次读取同一数据时，结果因此本事务先后两次读到的数据结果会不一致。</p>
 <p>3、幻读：幻读解决了不重复读，保证了同一个事务里，查询的结果都是事务开始时的状态（一致性）。</p>
@@ -601,17 +596,18 @@ B树，每个节点都存储key和data，所有节点组成这棵树，并且叶
 <p>事务隔离级别：未提交读时，写数据只会锁住相应的行。</p>
 <p>事务隔离级别为：可重复读时，写数据会锁住整张表。</p>
 <p>事务隔离级别为：串行化时，读写数据都会锁住整张表。</p>
-<p>隔离级别越高，越能保证数据的完整性和一致性，但是对并发性能的影响也越大，鱼和熊掌不可兼得啊。对于多数应用程序，可以优先考虑把数据库系统的隔离级别设为Read Committed，它能够避免脏读取，而且具有较好的并发性能。尽管它会导致不可重复读、幻读这些并发问题，在可能出现这类问题的个别场合，可以由应用程序采用悲观锁或乐观锁来控制。</p>
-<p>4.事务传播行为
-1.PROPAGATION_REQUIRED：如果当前没有事务，就创建一个新事务，如果当前存在事务，就加入该事务，该设置是最常用的设置。</p>
+<p>隔离级别越高，越能保证数据的完整性和一致性，但是对并发性能的影响也越大，鱼和熊掌不可兼得啊。对于多数应用程序，可以优先考虑把数据库系统的隔离级别设为Read Committed，它能够避免脏读取，而且具有较好的并发性能。</p>
+<p>尽管它会导致不可重复读、幻读这些并发问题，在可能出现这类问题的个别场合，可以由应用程序采用悲观锁或乐观锁来控制。</p>
+<p>4.事务传播行为</p>
+<p>1.PROPAGATION_REQUIRED：如果当前没有事务，就创建一个新事务，如果当前存在事务，就加入该事务，该设置是最常用的设置。</p>
 <p>2.PROPAGATION_SUPPORTS：支持当前事务，如果当前存在事务，就加入该事务，如果当前不存在事务，就以非事务执行。</p>
 <p>3.PROPAGATION_MANDATORY：支持当前事务，如果当前存在事务，就加入该事务，如果当前不存在事务，就抛出异常。</p>
 <p>4.PROPAGATION_REQUIRES_NEW：创建新事务，无论当前存不存在事务，都创建新事务。</p>
 <p>5.PROPAGATION_NOT_SUPPORTED：以非事务方式执行操作，如果当前存在事务，就把当前事务挂起。</p>
 <p>6.PROPAGATION_NEVER：以非事务方式执行，如果当前存在事务，则抛出异常。</p>
 <p>7.PROPAGATION_NESTED：如果当前存在事务，则在嵌套事务内执行。如果当前没有事务，则执行与PROPAGATION_REQUIRED类似的操作。</p>
-<p>5.嵌套事务
-什么是嵌套事务？</p>
+<p>5.嵌套事务</p>
+<p>什么是嵌套事务？</p>
 <p>嵌套是子事务套在父事务中执行，子事务是父事务的一部分，在进入子事务之前，父事务建立一个回滚点，叫save point，然后执行子事务，这个子事务的执行也算是父事务的一部分，然后子事务执行结束，父事务继续执行。重点就在于那个save point。看几个问题就明了了：</p>
 <p>如果子事务回滚，会发生什么？</p>
 <p>父事务会回滚到进入子事务前建立的save point，然后尝试其他的事务或者其他的业务逻辑，父事务之前的操作不会受到影响，更不会自动回滚。</p>
@@ -633,19 +629,21 @@ B树，每个节点都存储key和data，所有节点组成这棵树，并且叶
 <p>8.对于自增长的字段，InnoDB中必须包含只有该字段的索引，但是在MyISAM表中可以和其他字段一起建立联合索引。</p>
 <p>9.DELETE FROM table时，InnoDB不会重新建立表，而是一行一行的 删除，效率非常慢。MyISAM则会重建表。</p>
 <p>10.InnoDB支持行锁（某些情况下还是锁整表，如 update table set a=1 where user like &lsquo;%lee%'。</p>
-<p>2.MySQL存储引擎MyISAM与InnoDB如何选择
-MySQL有多种存储引擎，每种存储引擎有各自的优缺点，可以择优选择使用：MyISAM、InnoDB、MERGE、MEMORY(HEAP)、BDB(BerkeleyDB)、EXAMPLE、FEDERATED、ARCHIVE、CSV、BLACKHOLE。</p>
+<p>2.MySQL存储引擎MyISAM与InnoDB如何选择</p>
+<p>MySQL有多种存储引擎，每种存储引擎有各自的优缺点，可以择优选择使用：MyISAM、InnoDB、MERGE、MEMORY(HEAP)、BDB(BerkeleyDB)、EXAMPLE、FEDERATED、ARCHIVE、CSV、BLACKHOLE。</p>
 <p>虽然MySQL里的存储引擎不只是MyISAM与InnoDB这两个，但常用的就是两个。
 关于MySQL数据库提供的两种存储引擎，MyISAM与InnoDB选择使用：</p>
-<p>1.INNODB会支持一些关系数据库的高级功能，如事务功能和行级锁，MyISAM不支持。
-2.MyISAM的性能更优，占用的存储空间少，所以，选择何种存储引擎，视具体应用而定。
-如果你的应用程序一定要使用事务，毫无疑问你要选择INNODB引擎。但要注意，INNODB的行级锁是有条件的。在where条件没有使用主键时，照样会锁全表。比如DELETE FROM mytable这样的删除语句。</p>
-<p>如果你的应用程序对查询性能要求较高，就要使用MyISAM了。MyISAM索引和数据是分开的，而且其索引是压缩的，可以更好地利用内存。所以它的查询性能明显优于INNODB。压缩后的索引也能节约一些磁盘空间。MyISAM拥有全文索引的功能，这可以极大地优化LIKE查询的效率。</p>
+<p>1.INNODB会支持一些关系数据库的高级功能，如事务功能和行级锁，MyISAM不支持。</p>
+<p>2.MyISAM的性能更优，占用的存储空间少，所以，选择何种存储引擎，视具体应用而定。</p>
+<p>如果你的应用程序一定要使用事务，毫无疑问你要选择INNODB引擎。但要注意，INNODB的行级锁是有条件的。在where条件没有使用主键时，照样会锁全表。比如DELETE FROM mytable这样的删除语句。</p>
+<p>如果你的应用程序对查询性能要求较高，就要使用MyISAM了。MyISAM索引和数据是分开的，而且其索引是压缩的，可以更好地利用内存。</p>
+<p>所以它的查询性能明显优于INNODB。压缩后的索引也能节约一些磁盘空间。MyISAM拥有全文索引的功能，这可以极大地优化LIKE查询的效率。</p>
 <p>有人说MyISAM只能用于小型应用，其实这只是一种偏见。如果数据量比较大，这是需要通过升级架构来解决，比如分表分库，而不是单纯地依赖存储引擎。</p>
 <p>现在一般都是选用innodb了，主要是MyISAM的全表锁，读写串行问题，并发效率锁表，效率低，MyISAM对于读写密集型应用一般是不会去选用的。
 MEMORY存储引擎</p>
-<p>MEMORY是MySQL中一类特殊的存储引擎。它使用存储在内存中的内容来创建表，而且数据全部放在内存中。这些特性与前面的两个很不同。
-每个基于MEMORY存储引擎的表实际对应一个磁盘文件。该文件的文件名与表名相同，类型为frm类型。该文件中只存储表的结构。而其数据文件，都是存储在内存中，这样有利于数据的快速处理，提高整个表的效率。值得注意的是，服务器需要有足够的内存来维持MEMORY存储引擎的表的使用。如果不需要了，可以释放内存，甚至删除不需要的表。</p>
+<p>MEMORY是MySQL中一类特殊的存储引擎。它使用存储在内存中的内容来创建表，而且数据全部放在内存中。这些特性与前面的两个很不同。</p>
+<p>每个基于MEMORY存储引擎的表实际对应一个磁盘文件。该文件的文件名与表名相同，类型为frm类型。该文件中只存储表的结构。而其数据文件，都是存储在内存中，这样有利于数据的快速处理，提高整个表的效率。</p>
+<p>值得注意的是，服务器需要有足够的内存来维持MEMORY存储引擎的表的使用。如果不需要了，可以释放内存，甚至删除不需要的表。</p>
 <p>MEMORY默认使用哈希索引。速度比使用B型树索引快。当然如果你想用B型树索引，可以在创建索引时指定。</p>
 <p>注意，MEMORY用到的很少，因为它是把数据存到内存中，如果内存出现异常就会影响数据。如果重启或者关机，所有数据都会消失。因此，基于MEMORY的表的生命周期很短，一般是一次性的。</p>
 <p>3.MySQL的MyISAM与InnoDB两种存储引擎在，事务、锁级别，各自的适用场景?
@@ -696,9 +694,9 @@ MEMORY存储引擎</p>
 <h2 id="数据库锁">数据库锁</h2>
 <p>1.mysql都有什么锁，死锁判定原理和具体场景，死锁怎么解决?</p>
 <p>MySQL有三种锁的级别：页级、表级、行级。</p>
-<p>表级锁：开销小，加锁快；不会出现死锁；锁定粒度大，发生锁冲突的概率最高,并发度最低。
-行级锁：开销大，加锁慢；会出现死锁；锁定粒度最小，发生锁冲突的概率最低,并发度也最高。
-页面锁：开销和加锁时间界于表锁和行锁之间；会出现死锁；锁定粒度界于表锁和行锁之间，并发度一般</p>
+<p>表级锁：开销小，加锁快；不会出现死锁；锁定粒度大，发生锁冲突的概率最高,并发度最低。</p>
+<p>行级锁：开销大，加锁慢；会出现死锁；锁定粒度最小，发生锁冲突的概率最低,并发度也最高。</p>
+<p>页面锁：开销和加锁时间界于表锁和行锁之间；会出现死锁；锁定粒度界于表锁和行锁之间，并发度一般</p>
 <p>什么情况下会造成死锁?
 什么是死锁？</p>
 <p>死锁: 是指两个或两个以上的进程在执行过程中。因争夺资源而造成的一种互相等待的现象,若无外力作用,它们都将无法推进下去。此时称系统处于死锁状态或系统产生了死锁,这些永远在互相等竺的进程称为死锁进程。</p>
@@ -707,40 +705,25 @@ MEMORY存储引擎</p>
 <p>那么对应的解决死锁问题的关键就是：让不同的session加锁有次序。</p>
 <p>死锁的解决办法?</p>
 <p>1.查出的线程杀死 kill</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">SELECT</span> trx_MySQL_thread_id <span style="color:#000;font-weight:bold">FROM</span> information_schema.INNODB_TRX;
-</code></pre></td></tr></table>
-</div>
-</div><p>2.设置锁的超时时间
-Innodb 行锁的等待时间，单位秒。可在会话级别设置，RDS 实例该参数的默认值为 50（秒）。</p>
+<p><code>SELECT trx_MySQL_thread_id FROM information_schema.INNODB_TRX;</code></p>
+<p>2.设置锁的超时时间</p>
+<p>Innodb 行锁的等待时间，单位秒。可在会话级别设置，RDS 实例该参数的默认值为 50（秒）。</p>
 <p>生产环境不推荐使用过大的 innodb_lock_wait_timeout参数值
 该参数支持在会话级别修改，方便应用在会话级别单独设置某些特殊操作的行锁等待超时时间，如下：</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">set</span> innodb_lock_wait_timeout<span style="color:#000;font-weight:bold">=</span><span style="color:#099">1000</span>; 
-</code></pre></td></tr></table>
-</div>
-</div><p>—设置当前会话 Innodb 行锁等待超时时间，单位秒。</p>
+<p><code>set innodb_lock_wait_timeout=1000; </code></p>
+<p>—设置当前会话 Innodb 行锁等待超时时间，单位秒。</p>
 <p>3.指定获取锁的顺序</p>
-<p>2.有哪些锁（乐观锁悲观锁），select 时怎么加排它锁?
-悲观锁（Pessimistic Lock）:</p>
+<p>2.有哪些锁（乐观锁悲观锁），select 时怎么加排它锁?</p>
+<p>悲观锁（Pessimistic Lock）:</p>
 <p>悲观锁特点:先获取锁，再进行业务操作。</p>
-<p>即“悲观”的认为获取锁是非常有可能失败的，因此要先确保获取锁成功再进行业务操作。通常所说的“一锁二查三更新”即指的是使用悲观锁。通常来讲在数据库上的悲观锁需要数据库本身提供支持，即通过常用的select … for update操作来实现悲观锁。当数据库执行select for update时会获取被select中的数据行的行锁，因此其他并发执行的select for update如果试图选中同一行则会发生排斥（需要等待行锁被释放），因此达到锁的效果。select for update获取的行锁会在当前事务结束时自动释放，因此必须在事务中使用。</p>
-<p>补充：
-不同的数据库对select for update的实现和支持都是有所区别的，</p>
-<p>oracle支持select for update no wait，表示如果拿不到锁立刻报错，而不是等待，MySQL就没有no wait这个选项。
-MySQL还有个问题是select for update语句执行中所有扫描过的行都会被锁上，这一点很容易造成问题。因此如果在MySQL中用悲观锁务必要确定走了索引，而不是全表扫描。
-乐观锁（Optimistic Lock）:</p>
+<p>即“悲观”的认为获取锁是非常有可能失败的，因此要先确保获取锁成功再进行业务操作。通常所说的“一锁二查三更新”即指的是使用悲观锁。通常来讲在数据库上的悲观锁需要数据库本身提供支持，即通过常用的select … for update操作来实现悲观锁。当数据库执行select for update时会获取被select中的数据行的行锁，因此其他并发执行的select for update如果试图选中同一行则会发生排斥（需要等待行锁被释放），</p>
+<p>因此达到锁的效果。select for update获取的行锁会在当前事务结束时自动释放，因此必须在事务中使用。</p>
+<p>补充：不同的数据库对select for update的实现和支持都是有所区别的，</p>
+<p>oracle支持select for update no wait，表示如果拿不到锁立刻报错，而不是等待，MySQL就没有no wait这个选项。</p>
+<p>MySQL还有个问题是select for update语句执行中所有扫描过的行都会被锁上，这一点很容易造成问题。因此如果在MySQL中用悲观锁务必要确定走了索引，而不是全表扫描。</p>
+<p>乐观锁（Optimistic Lock）:</p>
 <p>1.乐观锁，也叫乐观并发控制，它假设多用户并发的事务在处理时不会彼此互相影响，各事务能够在不产生锁的情况下处理各自影响的那部分数据。在提交数据更新之前，每个事务会先检查在该事务读取数据后，有没有其他事务又修改了该数据。如果其他事务有更新的话，那么当前正在提交的事务会进行回滚。</p>
-<p>2.乐观锁的特点先进行业务操作，不到万不得已不去拿锁。即“乐观”的认为拿锁多半是会成功的，因此在进行完业务操作需要实际更新数据的最后一步再去拿一下锁就好。
-乐观锁在数据库上的实现完全是逻辑的，不需要数据库提供特殊的支持。</p>
+<p>2.乐观锁的特点先进行业务操作，不到万不得已不去拿锁。即“乐观”的认为拿锁多半是会成功的，因此在进行完业务操作需要实际更新数据的最后一步再去拿一下锁就好。乐观锁在数据库上的实现完全是逻辑的，不需要数据库提供特殊的支持。</p>
 <p>3.一般的做法是在需要锁的数据上增加一个版本号，或者时间戳，</p>
 <p>实现方式举例如下：</p>
 <p>乐观锁（给表加一个版本号字段） 这个并不是乐观锁的定义，给表加版本号，是数据库实现乐观锁的一种方式。</p>
@@ -758,10 +741,14 @@ MySQL还有个问题是select for update语句执行中所有扫描过的行都�
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 <pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">SELECT</span> <span style="color:#000;font-weight:bold">data</span> <span style="color:#000;font-weight:bold">AS</span> old_data, <span style="color:#000;font-weight:bold">version</span> <span style="color:#000;font-weight:bold">AS</span> old_version <span style="color:#000;font-weight:bold">FROM</span> <span style="color:#a61717;background-color:#e3d2d2">…</span>;
-<span style="color:#a61717;background-color:#e3d2d2">根</span><span style="color:#a61717;background-color:#e3d2d2">据</span><span style="color:#a61717;background-color:#e3d2d2">获</span><span style="color:#a61717;background-color:#e3d2d2">取</span><span style="color:#a61717;background-color:#e3d2d2">的</span><span style="color:#a61717;background-color:#e3d2d2">数</span><span style="color:#a61717;background-color:#e3d2d2">据</span><span style="color:#a61717;background-color:#e3d2d2">进</span><span style="color:#a61717;background-color:#e3d2d2">行</span><span style="color:#a61717;background-color:#e3d2d2">业</span><span style="color:#a61717;background-color:#e3d2d2">务</span><span style="color:#a61717;background-color:#e3d2d2">操</span><span style="color:#a61717;background-color:#e3d2d2">作</span><span style="color:#a61717;background-color:#e3d2d2">，</span><span style="color:#a61717;background-color:#e3d2d2">得</span><span style="color:#a61717;background-color:#e3d2d2">到</span>new_data和new_version
+
+<span style="color:#000;font-weight:bold">/</span><span style="color:#000;font-weight:bold">/</span><span style="color:#a61717;background-color:#e3d2d2">根</span><span style="color:#a61717;background-color:#e3d2d2">据</span><span style="color:#a61717;background-color:#e3d2d2">获</span><span style="color:#a61717;background-color:#e3d2d2">取</span><span style="color:#a61717;background-color:#e3d2d2">的</span><span style="color:#a61717;background-color:#e3d2d2">数</span><span style="color:#a61717;background-color:#e3d2d2">据</span><span style="color:#a61717;background-color:#e3d2d2">进</span><span style="color:#a61717;background-color:#e3d2d2">行</span><span style="color:#a61717;background-color:#e3d2d2">业</span><span style="color:#a61717;background-color:#e3d2d2">务</span><span style="color:#a61717;background-color:#e3d2d2">操</span><span style="color:#a61717;background-color:#e3d2d2">作</span><span style="color:#a61717;background-color:#e3d2d2">，</span><span style="color:#a61717;background-color:#e3d2d2">得</span><span style="color:#a61717;background-color:#e3d2d2">到</span>new_data和new_version
+
 <span style="color:#000;font-weight:bold">UPDATE</span> <span style="color:#000;font-weight:bold">SET</span> <span style="color:#000;font-weight:bold">data</span> <span style="color:#000;font-weight:bold">=</span> new_data, <span style="color:#000;font-weight:bold">version</span> <span style="color:#000;font-weight:bold">=</span> new_version <span style="color:#000;font-weight:bold">WHERE</span> <span style="color:#000;font-weight:bold">version</span> <span style="color:#000;font-weight:bold">=</span> old_version
 <span style="color:#000;font-weight:bold">if</span> (updated <span style="color:#000;font-weight:bold">row</span> <span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#099">0</span>) <span style="color:#a61717;background-color:#e3d2d2">{</span>
 
@@ -803,8 +790,8 @@ MySQL还有个问题是select for update语句执行中所有扫描过的行都�
 <p>问题1：master的写操作，slaves被动的进行一样的操作，保持数据一致性，那么slave是否可以主动的进行写操作？</p>
 <p>假设slave可以主动的进行写操作，slave又无法通知master，这样就导致了master和slave数据不一致了。因此slave不应该进行写操作，至少是slave上涉及到复制的数据库不可以写。实际上，这里已经揭示了读写分离的概念。</p>
 <p>问题2：主从复制中，可以有N个slave,可是这些slave又不能进行写操作，要他们干嘛？</p>
-<p>实现数据备份:
-类似于高可用的功能，一旦master挂了，可以让slave顶上去，同时slave提升为master。</p>
+<p>实现数据备份:</p>
+<p>类似于高可用的功能，一旦master挂了，可以让slave顶上去，同时slave提升为master。</p>
 <p>异地容灾:比如master在北京，地震挂了，那么在上海的slave还可以继续。
 主要用于实现scale out,分担负载,可以将读的任务分散到slaves上。
 【很可能的情况是，一个系统的读操作远远多于写操作，因此写操作发向master，读操作发向slaves进行操作】</p>
@@ -839,13 +826,14 @@ MySQL proxy并不负责，怎么从众多的slaves挑一个？可以交给另一
 原理Undo Log的原理很简单，为了满足事务的原子性，在操作任何数据之前，首先将数据备份到一个地方（这个存储数据备份的地方称为UndoLog）。然后进行数据的修改。如果出现了错误或者用户执行了ROLLBACK语句，系统可以利用Undo Log中的备份将数据恢复到事务开始之前的状态。</p>
 <p>之所以能同时保证原子性和持久化，是因为以下特点：</p>
 <p>更新数据前记录Undo log。
-为了保证持久性，必须将数据在事务提交前写到磁盘。只要事务成功提交，数据必然已经持久化。
-Undo log必须先于数据持久化到磁盘。如果在G,H之间系统崩溃，undo log是完整的， 可以用来回滚事务。
-如果在A-F之间系统崩溃,因为数据没有持久化到磁盘。所以磁盘上的数据还是保持在事务开始前的状态。</p>
-<p>缺陷：每个事务提交前将数据和Undo Log写入磁盘，这样会导致大量的磁盘IO，因此性能很低。
-如果能够将数据缓存一段时间，就能减少IO提高性能。但是这样就会丧失事务的持久性。因此引入了另外一种机制来实现持久化，即Redo Log。</p>
+为了保证持久性，必须将数据在事务提交前写到磁盘。只要事务成功提交，数据必然已经持久化。</p>
+<p>Undo log必须先于数据持久化到磁盘。如果在G,H之间系统崩溃，undo log是完整的， 可以用来回滚事务。</p>
+<p>如果在A-F之间系统崩溃,因为数据没有持久化到磁盘。所以磁盘上的数据还是保持在事务开始前的状态。</p>
+<p>缺陷：每个事务提交前将数据和Undo Log写入磁盘，这样会导致大量的磁盘IO，因此性能很低。</p>
+<p>如果能够将数据缓存一段时间，就能减少IO提高性能。但是这样就会丧失事务的持久性。因此引入了另外一种机制来实现持久化，即Redo Log。</p>
 <p>Redo Log:</p>
-<p>原理和Undo Log相反，Redo Log记录的是新数据的备份。在事务提交前，只要将Redo Log持久化即可，不需要将数据持久化。当系统崩溃时，虽然数据没有持久化，但是Redo Log已经持久化。系统可以根据Redo Log的内容，将所有数据恢复到最新的状态。</p>
+<p>原理和Undo Log相反，Redo Log记录的是新数据的备份。在事务提交前，只要将Redo Log持久化即可，不需要将数据持久化。</p>
+<p>当系统崩溃时，虽然数据没有持久化，但是Redo Log已经持久化。系统可以根据Redo Log的内容，将所有数据恢复到最新的状态。</p>
 <h2 id="参考">参考</h2>
 <p><a href="http://mp.weixin.qq.com/s?__biz=MzIwMTY0NDU3Nw==&amp;mid=2651936134&amp;idx=1&amp;sn=5213a59104f6d2a90bc18d878cafe417&amp;chksm=8d0f3ac8ba78b3deb2ea3473906a37dd205b6e64bfbebe86cc00108242bfa4c49a7d1e509eca&amp;mpshare=1&amp;scene=1&amp;srcid=0707k8Bdz85tDHyVotxEQ9of#rd">java团长 数据库整理</a></p>
 <p><a href="https://my.oschina.net/yanpenglei/blog/1650277">20个数据库常见面试题讲解-鹏磊-开源中国</a></p>
