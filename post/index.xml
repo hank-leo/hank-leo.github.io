@@ -147,6 +147,15 @@
     </item>
     
     <item>
+      <title>数据库面试知识点</title>
+      <link>https://hank-leo.github.io/post/sql/%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9D%A2%E8%AF%95%E7%9F%A5%E8%AF%86%E7%82%B9/</link>
+      <pubDate>Wed, 26 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hank-leo.github.io/post/sql/%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9D%A2%E8%AF%95%E7%9F%A5%E8%AF%86%E7%82%B9/</guid>
+      <description>基本概念 1.主键、外键、超键、候选键 超键：在关系中能唯一标识元组的属性集称为关系模式的超键。一个属性可以为作为一个超键，多个属性组合在一起也可以作为一个超键。超键包含候选键和主键。 候选键：是最小超键，即没有冗余元素的超键。 主键：数据库表中对储存数据对象予以唯一和完整标识的数据列或</description>
+    </item>
+    
+    <item>
       <title>朝阳医院药品销售数据分析</title>
       <link>https://hank-leo.github.io/post/analysis/%E4%BA%B2%E8%87%AA%E5%8A%A8%E6%89%8B%E6%9C%9D%E9%98%B3%E5%8C%BB%E9%99%A2%E8%8D%AF%E5%93%81%E9%94%80%E5%94%AE%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/</link>
       <pubDate>Wed, 26 Aug 2020 00:00:00 +0000</pubDate>
