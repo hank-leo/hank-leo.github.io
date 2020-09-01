@@ -76,6 +76,31 @@
     <article class="post">
         <header>
             <h1 class="post-title">
+                <a href="https://hank-leo.github.io/post/app/%E4%BD%BF%E7%94%A8Airtest%E7%88%AC%E5%8F%96%E6%9F%90%E5%92%96%E5%95%A1app%E6%95%B0%E6%8D%AEv1/" title="使用Airtest爬取某咖啡app数据">使用Airtest爬取某咖啡app数据</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年8月26日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://hank-leo.github.io/categories/%E7%88%AC%E8%99%AB%E5%AE%9E%E6%88%98'>爬虫实战</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 # -*- encoding=utf8 -*- __author__ = &#34;Hank&#34; from airtest.core.api import * from poco.drivers.android.uiautomation import AndroidUiautomationPoco poco = AndroidUiautomationPoco(use_airtest_input=True, screenshot_each_action=False) auto_setup(__file__) import time import random import pandas as pd page_data=[] while True: city=poco(name=&#39;com.lucky.luckyclient:id/tv_select_city&#39;).get_text() result_obj = poco(&#34;com.lucky.luckyclient:id/frameLayout&#34;).offspring(&#34;com.lucky.luckyclient:id/lv_address_list&#34;).child(&#34;android.widget.LinearLayout&#34;) for result in result_obj: brand = result.child(&#34;android.widget.LinearLayout&#34;).child(&#34;android.widget.LinearLayout&#34;).child(name=&#39;com.lucky.luckyclient:id/iv_shop_brand&#39;).get_text() name = result.child(&#34;android.widget.LinearLayout&#34;).child(&#34;android.widget.LinearLayout&#34;).child(name=&#39;com.lucky.luckyclient:id/tv_dept_name&#39;).get_text() address = result.child(&#34;android.widget.LinearLayout&#34;).child(&#34;android.widget.LinearLayout&#34;).child(name=&#39;com.lucky.luckyclient:id/tv_dept_address&#39;).get_text() city=poco(name=&#39;com.lucky.luckyclient:id/tv_select_city&#39;).get_text() data = city, name, address, brand s=str(city)+str(name)+str(address)+str(brand) if &#34;UIObjectProxy&#34; in s: pass else: page_data.append(data) print(data) end = poco(text=&#34;已经全部加载完成&#34;)……
+        </div>
+        <p class="readmore"><a href="https://hank-leo.github.io/post/app/%E4%BD%BF%E7%94%A8Airtest%E7%88%AC%E5%8F%96%E6%9F%90%E5%92%96%E5%95%A1app%E6%95%B0%E6%8D%AEv1/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
                 <a href="https://hank-leo.github.io/post/sql/SQL%E5%A4%8D%E4%B9%A0/" title="SQL复习">SQL复习</a>
             </h1>
         </header>
@@ -298,31 +323,6 @@
     
     
     
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://hank-leo.github.io/post/spider/%E5%AD%98%E5%82%A8%E6%95%B0%E6%8D%AE%E4%B9%8Bexcel/" title="存储数据之excel">存储数据之excel</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2019年12月6日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='https://hank-leo.github.io/categories/%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0'>爬虫学习</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            第一种方式是使用pandas库 def save(data): data = pd.DataFrame(data) data.to_excel(index=False) 第二种方式是使用openpyxl库 import openpyxl def save(title, head, data): outwb = openpyxl.Workbook() outws = outwb.active outws.title=title for h in range(len(head)): outws.cell(1,h+1).value=head[h] for row in data: outws.append(row) outwb.save(&quot;path&quot;) 第三种方式是使用xlwt库 def save(title, head, data): workbook = xlwt.Workbook(encoding='utf8') sheet = workbook.add_sheet(title, cell_overwrite_ok=True) for h in range(len(head)): sheet.write(0, h, head[h]) i = 1 for list in data: j = 0 for data in list: sheet.write(i, j, data) j += 1 i += 1 workbook.save(path)……
-        </div>
-        <p class="readmore"><a href="https://hank-leo.github.io/post/spider/%E5%AD%98%E5%82%A8%E6%95%B0%E6%8D%AE%E4%B9%8Bexcel/">阅读全文</a></p>
-    </article>
-    
-    
-    
 
 
 
@@ -418,6 +418,10 @@
     </li>
     
     <li>
+        <a href="https://hank-leo.github.io/post/analysis/Tableau%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AE%80%E5%8D%95%E6%A1%88%E4%BE%8B/" title="Tableau的一些简单案例">Tableau的一些简单案例</a>
+    </li>
+    
+    <li>
         <a href="https://hank-leo.github.io/post/go/Go%E7%88%AC%E8%99%AB/" title="Go爬虫">Go爬虫</a>
     </li>
     
@@ -445,10 +449,6 @@
         <a href="https://hank-leo.github.io/post/sql/SQL%E5%A4%8D%E4%B9%A0/" title="SQL复习">SQL复习</a>
     </li>
     
-    <li>
-        <a href="https://hank-leo.github.io/post/app/%E4%BD%BF%E7%94%A8Airtest%E7%88%AC%E5%8F%96%E6%9F%90%E5%92%96%E5%95%A1app%E6%95%B0%E6%8D%AEv1/" title="使用Airtest爬取某咖啡app数据">使用Airtest爬取某咖啡app数据</a>
-    </li>
-    
 </ul>
     </section>
 
@@ -474,7 +474,7 @@
     
     <li><a href="https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/">数据分析报告 (1)</a></li>
     
-    <li><a href="https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/">数据可视化 (2)</a></li>
+    <li><a href="https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/">数据可视化 (3)</a></li>
     
     <li><a href="https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0/">数据库学习 (6)</a></li>
     
@@ -542,6 +542,8 @@
     <a href="https://hank-leo.github.io/tags/string/">string</a>
     
     <a href="https://hank-leo.github.io/tags/superset/">superset</a>
+    
+    <a href="https://hank-leo.github.io/tags/tableau/">tableau</a>
     
     <a href="https://hank-leo.github.io/tags/xlwings/">xlwings</a>
     
