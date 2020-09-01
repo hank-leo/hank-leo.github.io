@@ -6,20 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Xpath的实际应用 | Hank&#39;s Blog</title>
-    <meta property="og:title" content="Xpath的实际应用 - Hank&#39;s Blog">
+    <title>搜索 | Hank&#39;s Blog</title>
+    <meta property="og:title" content="搜索 - Hank&#39;s Blog">
     <meta property="og:type" content="article">
         
-    <meta property="article:published_time" content='2019-12-05T00:00:00&#43;08:00'>
-        
-        
-    <meta property="article:modified_time" content='2019-12-05T00:00:00&#43;08:00'>
         
     <meta name="Keywords" content="Hank,博客,python">
-    <meta name="description" content="Xpath的实际应用">
+    <meta name="description" content="搜索页面">
         
     <meta name="author" content="Hank">
-    <meta property="og:url" content="https://hank-leo.github.io/post/python/xpath%E7%9A%84%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8/">
+    <meta property="og:url" content="https://hank-leo.github.io/search/">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href='/css/normalize.css'>
@@ -53,7 +49,7 @@
             </div>
             <div>
                 <nav id="nav-menu" class="clearfix">
-                    <a class="current" href="https://hank-leo.github.io">首页</a>
+                    <a class="" href="https://hank-leo.github.io">首页</a>
                     
                     <a  href="https://hank-leo.github.io/post/" title="归档">归档</a>
                     
@@ -74,215 +70,71 @@
                 <div class="col-8" id="main">
                     
 <div class="res-cons">
-    <style type="text/css">
-    .post-toc {
-        position: fixed;
-        width: 200px;
-        margin-left: -210px;
-        padding: 5px 10px;
-        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
-        font-size: 12px;
-        border: 1px solid rgba(0, 0, 0, .07);
-        border-radius: 5px;
-        background-color: rgba(255, 255, 255, 0.98);
-        background-clip: padding-box;
-        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
-        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
-        word-wrap: break-word;
-        white-space: nowrap;
-        -webkit-box-sizing: border-box;
-        box-sizing: border-box;
-        z-index: 999;
-        cursor: pointer;
-        max-height: 70%;
-        overflow-y: auto;
-        overflow-x: hidden;
-    }
+    <h3 class="archive-title">
+        搜索
+        <span class="keyword">哈哈</span>
+        的结果
+    </h3>
 
-    .post-toc .post-toc-title {
-        width: 100%;
-        margin: 0 auto;
-        font-size: 20px;
-        font-weight: 400;
-        text-transform: uppercase;
-        text-align: center;
-    }
-
-    .post-toc .post-toc-content {
-        font-size: 15px;
-    }
-
-    .post-toc .post-toc-content>nav>ul {
-        margin: 10px 0;
-    }
-
-    .post-toc .post-toc-content ul {
-        padding-left: 20px;
-        list-style: square;
-        margin: 0.5em;
-        line-height: 1.8em;
-    }
-
-    .post-toc .post-toc-content ul ul {
-        padding-left: 15px;
-        display: none;
-    }
-
-    @media print,
-    screen and (max-width:1057px) {
-        .post-toc {
-            display: none;
-        }
-    }
-</style>
-<div class="post-toc" style="position: absolute; top: 188px;">
-    <h4 class="post-toc-title">目录</h4>
-    <div class="post-toc-content">
-        <nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-    </div>
-</div>
-<script type="text/javascript">
-    $(document).ready(function () {
-        var postToc = $(".post-toc");
-        if (postToc.length) {
-            var leftPos = $("#main").offset().left;
-            if(leftPos<220){
-                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
-            }
-
-            var t = postToc.offset().top - 20,
-                a = {
-                    start: {
-                        position: "absolute",
-                        top: t
-                    },
-                    process: {
-                        position: "fixed",
-                        top: 20
-                    },
-                };
-            $(window).scroll(function () {
-                var e = $(window).scrollTop();
-                e < t ? postToc.css(a.start) : postToc.css(a.process)
-            })
-        }
-    })
-</script>
     <article class="post">
         <header>
-            <h1 class="post-title">Xpath的实际应用</h1>
+            <h1 class="post-title">
+                <a href="链接">标题</a>
+            </h1>
         </header>
         <date class="post-meta meta-date">
-            2019年12月5日
+            2019年12月01日
         </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='https://hank-leo.github.io/categories/Python%E5%AD%A6%E4%B9%A0'>Python学习</a></span>
-            
-        </div>
-        
-        
-        <div class="post-meta">
-            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
-                    阅读</span></span>
-        </div>
-        
-        
         <div class="post-content">
-            <h4 id="xpath中使用contains">xpath中使用contains</h4>
-<pre><code>xpath(span[contanins(@class, 'xxx')])
-</code></pre><p>Xpath如何选择不包含某一个属性的节点?
-这里可以用到 not 例如排除一个属性的节点可以使用</p>
-<pre><code>//tbody/tr[not(@class)]
-</code></pre><p>排除一个或者两个属性可以使用</p>
-<pre><code>//tbody/tr[not(@class or @id)]
-</code></pre><h4 id="xpath按序选择">xpath按序选择</h4>
-<p>有时候我们在选择的时候可能某些属性同时匹配了多个节点，但是我们只想要其中的某个节点，如第二个节点，或者最后一个节点，这时该怎么办呢？</p>
-<p>这时可以利用中括号传入索引的方法获取特定次序的节点，示例如下：</p>
-<pre><code>from lxml import etree
-text = '''
-first item
-second item
-third item
-fourth item
-fifth item
-'''
-html = etree.HTML(text)
-result = html.xpath('//li[1]/a/text()')
-print(result)
-result = html.xpath('//li[last()]/a/text()')
-print(result)
-result = html.xpath('//li[position()&lt;3]/a/text()')
-print(result)
-result = html.xpath('//li[last()-2]/a/text()')
-print(result)
-</code></pre><p>第一次选择我们选取了第一个 li 节点，中括号中传入数字1即可，注意这里和代码中不同，序号是以 1 开头的，不是 0 开头的。 第二次选择我们选取了最后一个 li 节点，中括号中传入 last() 即可，返回的便是最后一个 li 节点。 第三次选择我们选取了位置小于 3 的 li 节点，也就是位置序号为 1 和 2 的节点，得到的结果就是前 2 个 li 节点。 第四次选择我们选取了倒数第三个 li 节点，中括号中传入 last()-2即可，因为 last() 是最后一个，所以 last()-2 就是倒数第三个。</p>
-<p>运行结果如下：</p>
-<pre><code>['first item']
-['fifth item']
-['first item', 'second item']
-['third item']
-</code></pre><p>在这里我们使用了 last()、position() 等函数，XPath 中提供了 100 多个函数，包括存取、数值、字符串、逻辑、节点、序列等处理功能。 具体所有的函数作用可以参考：http://www.w3school.com.cn/xpath/xpath_functions.asp。</p>
-<h4 id="xpath获取带注释的text">xpath获取带注释的text</h4>
-<pre><code>from lxml import etree
-
-html_str = &quot;&quot;&quot;
-this from blog.csdn.net/lncxydjq , DO NOT COPY!
-*****
-html = etree.HTML(html_str)
-print html.xpath('//div[@id=&quot;box1&quot;]/div/node()')[1]
-print type(html.xpath('//div[@id=&quot;box1&quot;]/div/node()')[1])
-print html.xpath('//div[@id=&quot;box1&quot;]/div/node()')[1].text
-</code></pre><p>output:</p>
-<pre><code>can u get me, bitch?
-</code></pre>
-        </div>
-
-        
-
-
-        
-
-
-
-
-
-        <div class="post-meta meta-tags">
-            
-            <ul class="clearfix">
-                
-                <li><a href='https://hank-leo.github.io/tags/xpath'>xpath</a></li>
-                
-            </ul>
-            
+            概要……
+            <p class="readmore"><a href="链接">阅读全文</a></p>
         </div>
     </article>
-    
-    
 
-    
-    
-    <div class="post bg-white">
-      <script src="https://utteranc.es/client.js"
-            repo= "hank-leo/hugoblogtalks"
-            issue-term="title"
-            theme="github-light"
-            crossorigin="anonymous"
-            async>
-      </script>
-    </div>
-    
 </div>
+
+<script type="text/javascript">
+
+    var getUrlParameter = function getUrlParameter(sParam) {
+        var sPageURL = window.location.search.substring(1),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+            }
+        }
+    };
+
+    $(document).ready(function () {
+        var q = getUrlParameter("q");
+        $("span.keyword").text(q);
+        $("article.post").remove();
+        $.ajax({
+            url: 'https:\/\/hank-leo.github.io\/index.xml',
+            dataType: "xml",
+            success: function (data) {
+                $(data).find("item").each(function () {
+                    var item = $(this);
+                    var title = item.find("title").text();
+                    if (title.toLowerCase().indexOf(q.toLowerCase()) >= 0) {
+                        var url = item.find("link").text();
+                        var searchItem = `<article class="post"><header><h1 class="post-title"><a href="` + url + `">` + title + `</a></h1></header>`;
+                        var pubDate = new Date(item.find("pubDate").text())
+                        searchItem += `<date class="post-meta meta-date">` + pubDate.getFullYear() + `年` + (pubDate.getMonth() + 1) + `月` + pubDate.getDate() + `日</date>`;
+                        searchItem += `<div class="post-content">` + item.find("description").text() + `……<p class="readmore"><a href="` + url + `">阅读全文</a></p></div></article>`;
+
+                        $("div.res-cons").append(searchItem);
+                    }
+                });
+            }
+        });
+    });
+</script>
 
                     <footer id="footer">
     <div>

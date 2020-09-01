@@ -497,5 +497,14 @@
       <description>通过stats属性来使用数据收集器 class ExtensionThatAccessStats(object): def __init__(self, stats): self.stats = stats @classmethod def from_crawler(cls, crawler): return cls(crawler.stats) 设置数据 stats.set_value(&#39;hostname&#39;, socket.gethostname()) 增加数据值 stats.inc_value(&#39;pages_crawled&#39;) 当新的值比原来的值大时设置数据 stats.max_value(&#39;max_items_scraoed&#39;, value) 当新的值比原来的值小时设置数据 stats.min_value(&#39;min_free_memory_percent&#39;, value) 获取数据 stats.get_value(&#39;pages_crawled&#39;) 获取所有数据 stats.get_stats() 示例：统计名人名言网站(http://quotes.toscrape.com/)标签为love的名言数</description>
     </item>
     
+    <item>
+      <title>搜索</title>
+      <link>https://hank-leo.github.io/search/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hank-leo.github.io/search/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>
