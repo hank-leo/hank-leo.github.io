@@ -6,10 +6,19 @@
     <description>Recent content in pyecharts on Hank&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 26 Aug 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 01 Sep 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://hank-leo.github.io/tags/pyecharts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>PyEcharts可视化入门</title>
+      <link>https://hank-leo.github.io/post/analysis/PyEcharts%E5%8F%AF%E8%A7%86%E5%8C%96%E5%85%A5%E9%97%A8/</link>
+      <pubDate>Tue, 01 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hank-leo.github.io/post/analysis/PyEcharts%E5%8F%AF%E8%A7%86%E5%8C%96%E5%85%A5%E9%97%A8/</guid>
+      <description>1 2 3 4 5 6 7 8 9 10 from pyecharts.charts import Bar bar=Bar() #参数设置：x轴数据 bar.add_xaxis([&amp;#39;衬衫&amp;#39;,&amp;#39;羊毛衫&amp;#39;,&amp;#39;雪纺衫&amp;#39;, &amp;#34;裤子&amp;#34;, &amp;#34;高跟鞋&amp;#34;, &amp;#34;袜子&amp;#34;]) #参数设置：y轴数据 bar.add_</description>
+    </item>
     
     <item>
       <title>肯德基门店分布可视化分析</title>

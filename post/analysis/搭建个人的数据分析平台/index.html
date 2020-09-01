@@ -138,7 +138,19 @@
 <div class="post-toc" style="position: absolute; top: 188px;">
     <h4 class="post-toc-title">目录</h4>
     <div class="post-toc-content">
-        <nav id="TableOfContents"></nav>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#anaconda环境">Anaconda环境</a></li>
+    <li><a href="#docker环境">Docker环境</a>
+      <ul>
+        <li><a href="#安装">安装</a></li>
+        <li><a href="#运行">运行</a></li>
+        <li><a href="#初始化设置">初始化设置</a></li>
+        <li><a href="#停止和开启superset服务">停止和开启superset服务</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
     </div>
 </div>
 <script type="text/javascript">
@@ -191,7 +203,59 @@
         
         
         <div class="post-content">
-            
+            <h2 id="anaconda环境">Anaconda环境</h2>
+<p>创建虚拟环境</p>
+<pre><code>conda create -n superset python=3.6 anaconda
+</code></pre><p>后面加上anaconda，可以不用重复安装原有依赖包</p>
+<p>激活</p>
+<pre><code>source activate superset
+</code></pre><p>如果要退出，就用</p>
+<pre><code>source deactivate superset
+</code></pre><p>安装</p>
+<pre><code>pip install superset -i https://pypi.douban.com/simple
+</code></pre><p>安装后验证</p>
+<pre><code>(superset) macdeMacBook-Air-2% conda list | grep superset
+# packages in environment at /Users/Hank/opt/anaconda3/envs/superset:
+superset                  0.30.1                   pypi_0    pypi
+</code></pre><p>进入安装包</p>
+<pre><code>cd D:\Anaconda3\Lib\site-packages\superset
+cd bin
+python superset
+fabmanager create-admin --app superset
+python superset db upgrade
+python superset load_examples
+python superset init
+python superset runserver -d
+</code></pre><h2 id="docker环境">Docker环境</h2>
+<h3 id="安装">安装</h3>
+<p>在镜像站中搜索与superset有关的镜像</p>
+<p><code>docker search superset</code></p>
+<p>拉取排在第一位的amancevice/superset</p>
+<p><code>docker pull amancevice/superset</code></p>
+<p>查看镜像</p>
+<p><code>docker images</code></p>
+<h3 id="运行">运行</h3>
+<p>在本地新建一个文件夹，我新建的文件夹为<code>D:/Data/sqlite</code>。稍后将这个文件夹映射给容器内的一个文件夹，让superset可以直接访问宿主机的数据文件。</p>
+<p>需要注意的时，映射给docker容器的宿主机文件夹所在的驱动器要开启共享，可以在docker菜单中进行设置。</p>
+<p>开启docker容器内的superset应用，开启的同时进行端口映射，并挂载宿主机的数据文件目录<code>D:/Data/sqlite</code></p>
+<p><code>docker run -d -p 8088:8088 -v D:/Data/sqlite:/home/superset amancevice/superset</code></p>
+<p>成功开启后会返回一组字符串，即容器ID</p>
+<p>查看开启的docker应用</p>
+<p><code>docker ps</code></p>
+<h3 id="初始化设置">初始化设置</h3>
+<p>复制容器ID，container的ID，稍后我们要在这个容器内执行一些命令来初始化superset应用。</p>
+<p>设定用户名和密码</p>
+<p><code>docker exec -it c2fc56d845ea  fabmanager create-admin --app superset</code></p>
+<p>创建默认角色和许可</p>
+<p><code>docker exec -it c2fc56d845ea superset init</code></p>
+<p>开启</p>
+<p><code>docker exec -it c2fc56d845ea superset runserver</code></p>
+<p>打开宿主浏览器，输入<code>http://localhost:8088</code>,用刚创建的用户名和密码登陆即可</p>
+<h3 id="停止和开启superset服务">停止和开启superset服务</h3>
+<p>列出运行的容器，找到运行superset的容器ID <code>docker ps</code></p>
+<p>停止 <code>docker stop 容器ID</code></p>
+<p>开启 <code>docker start 容器ID</code></p>
+
         </div>
 
         
@@ -294,6 +358,22 @@
 <ul class="widget-list">
     
     <li>
+        <a href="https://hank-leo.github.io/post/go/Docker%E5%AD%A6%E4%B9%A0%E4%B8%8E%E4%BD%BF%E7%94%A8/" title="Docker学习与使用">Docker学习与使用</a>
+    </li>
+    
+    <li>
+        <a href="https://hank-leo.github.io/post/analysis/PyEcharts%E5%8F%AF%E8%A7%86%E5%8C%96%E5%85%A5%E9%97%A8/" title="PyEcharts可视化入门">PyEcharts可视化入门</a>
+    </li>
+    
+    <li>
+        <a href="https://hank-leo.github.io/post/go/Go%E7%88%AC%E8%99%AB/" title="Go爬虫">Go爬虫</a>
+    </li>
+    
+    <li>
+        <a href="https://hank-leo.github.io/post/sql/%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9D%A2%E8%AF%95%E7%9F%A5%E8%AF%86%E7%82%B9/" title="数据库面试知识点">数据库面试知识点</a>
+    </li>
+    
+    <li>
         <a href="https://hank-leo.github.io/post/sql/LeetCode-SQL%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/" title="LeetCode SQL刷题记录">LeetCode SQL刷题记录</a>
     </li>
     
@@ -317,22 +397,6 @@
         <a href="https://hank-leo.github.io/post/app/%E4%BD%BF%E7%94%A8Airtest%E7%88%AC%E5%8F%96%E6%9F%90%E5%92%96%E5%95%A1app%E6%95%B0%E6%8D%AEv1/" title="使用Airtest爬取某咖啡app数据">使用Airtest爬取某咖啡app数据</a>
     </li>
     
-    <li>
-        <a href="https://hank-leo.github.io/post/app/%E4%BD%BF%E7%94%A8Airtest%E7%88%AC%E5%8F%96%E6%9F%90%E5%92%96%E5%95%A1app%E6%95%B0%E6%8D%AEv2/" title="使用Airtest爬取某咖啡app数据v1">使用Airtest爬取某咖啡app数据v1</a>
-    </li>
-    
-    <li>
-        <a href="https://hank-leo.github.io/post/blog/%E4%BD%BF%E7%94%A8Github-Actions%E6%90%AD%E5%BB%BAhugo/" title="使用Github Actions搭建hugo">使用Github Actions搭建hugo</a>
-    </li>
-    
-    <li>
-        <a href="https://hank-leo.github.io/post/python/%E4%BD%BF%E7%94%A8%E5%BC%82%E6%AD%A5%E5%87%BD%E6%95%B0%E8%8E%B7%E5%8F%96%E6%96%87%E4%BB%B6%E5%90%8D/" title="使用异步函数获取文件名">使用异步函数获取文件名</a>
-    </li>
-    
-    <li>
-        <a href="https://hank-leo.github.io/post/spider/pyqt/%E5%88%A9%E7%94%A8PyQt5%E4%BA%A4%E4%BA%92%E5%AF%BC%E5%87%BA%E6%95%B0%E6%8D%AE/" title="利用PyQt5交互导出数据">利用PyQt5交互导出数据</a>
-    </li>
-    
 </ul>
     </section>
 
@@ -341,6 +405,8 @@
     <section class="widget">
         <h3 class="widget-title"><a href="/categories">分类</a></h3>
 <ul class="widget-list">
+    
+    <li><a href="https://hank-leo.github.io/categories/Go%E5%AD%A6%E4%B9%A0/">Go学习 (1)</a></li>
     
     <li><a href="https://hank-leo.github.io/categories/Python%E5%AD%A6%E4%B9%A0/">Python学习 (6)</a></li>
     
@@ -352,11 +418,11 @@
     
     <li><a href="https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%AD%A6%E4%B9%A0/">数据分析学习 (3)</a></li>
     
-    <li><a href="https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%AE%9E%E6%88%98/">数据分析实战 (4)</a></li>
+    <li><a href="https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%AE%9E%E6%88%98/">数据分析实战 (3)</a></li>
     
     <li><a href="https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/">数据分析报告 (1)</a></li>
     
-    <li><a href="https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/">数据可视化 (1)</a></li>
+    <li><a href="https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/">数据可视化 (2)</a></li>
     
     <li><a href="https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0/">数据库学习 (6)</a></li>
     
@@ -394,6 +460,8 @@
     <a href="https://hank-leo.github.io/tags/app/">app</a>
     
     <a href="https://hank-leo.github.io/tags/dict/">dict</a>
+    
+    <a href="https://hank-leo.github.io/tags/docker/">docker</a>
     
     <a href="https://hank-leo.github.io/tags/excel/">excel</a>
     

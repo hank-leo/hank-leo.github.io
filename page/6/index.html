@@ -74,6 +74,52 @@
     <article class="post">
         <header>
             <h1 class="post-title">
+                <a href="https://hank-leo.github.io/post/scrapy/scrapy%E6%A1%86%E6%9E%B6-%E6%8A%93%E5%8F%96%E7%8C%AB%E7%9C%BC%E7%94%B5%E5%BD%B1TOP100/" title="Scrapy框架:抓取猫眼电影TOP100">Scrapy框架:抓取猫眼电影TOP100</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年12月4日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://hank-leo.github.io/categories/Scrapy%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0'>Scrapy框架学习</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            需求： 抓取的数据为电影名称、主演、上映日期、评分。将抓取的数据保存到maoyantop100.json文件，并将文件作为附件通过邮件发送给接收人。 创建项目 scrapy startproject maoyan scrapy genspider -t crawl top100 maoyan.com 编写items.py # -*- coding: utf-8 -*- import scrapy class MaoyanItem(scrapy.Item): # define the fields for your item here like: # name = scrapy.Field() # 电影名称 name = scrapy.Field() # 主演 actors = scrapy.Field() # 上映时间 releasetime = scrapy.Field()……
+        </div>
+        <p class="readmore"><a href="https://hank-leo.github.io/post/scrapy/scrapy%E6%A1%86%E6%9E%B6-%E6%8A%93%E5%8F%96%E7%8C%AB%E7%9C%BC%E7%94%B5%E5%BD%B1TOP100/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://hank-leo.github.io/post/scrapy/Scrapy%E6%A1%86%E6%9E%B6-%E7%88%AC%E5%8F%96%E9%93%BE%E5%AE%B6%E4%BA%8C%E6%89%8B%E6%88%BF%E4%BF%A1%E6%81%AF/" title="Scrapy框架:爬取链家二手房信息">Scrapy框架:爬取链家二手房信息</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年12月4日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://hank-leo.github.io/categories/Scrapy%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0'>Scrapy框架学习</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            创建爬虫项目 scrapy startproject lianjiahouse 创建爬虫文件 scrapy genspider -t craw house lianjia.com 编写items.py文件 # -*- coding: utf-8 -*- # Define here the models for your scraped items # # See documentation in: # https://doc.scrapy.org/en/latest/topics/items.html import scrapy class LianjiahouseItem(scrapy.Item): # define the fields for your item here like: # name = scrapy.Field() # 发布信息名称 house_name = scrapy.Field() # 小区名称 community_name = scrapy.Field() # 所在区域 # location = scrapy.Field() # 链家编号 house_record = scrapy.Field() # 总售价 total_amount = scrapy.Field() # 单价 unit_price = scrapy.Field() # 房屋基本信息 # 建筑面积 area_total = scrapy.Field() # 套内面积 area_use……
+        </div>
+        <p class="readmore"><a href="https://hank-leo.github.io/post/scrapy/Scrapy%E6%A1%86%E6%9E%B6-%E7%88%AC%E5%8F%96%E9%93%BE%E5%AE%B6%E4%BA%8C%E6%89%8B%E6%88%BF%E4%BF%A1%E6%81%AF/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
                 <a href="https://hank-leo.github.io/post/scrapy/Scrapy%E6%A1%86%E6%9E%B6-%E7%BB%9F%E8%AE%A1%E6%95%B0%E6%8D%AE%E6%94%B6%E9%9B%86/" title="Scrapy框架:统计数据收集">Scrapy框架:统计数据收集</a>
             </h1>
         </header>
@@ -92,36 +138,6 @@
             通过stats属性来使用数据收集器 class ExtensionThatAccessStats(object): def __init__(self, stats): self.stats = stats @classmethod def from_crawler(cls, crawler): return cls(crawler.stats) 设置数据 stats.set_value('hostname', socket.gethostname()) 增加数据值 stats.inc_value('pages_crawled') 当新的值比原来的值大时设置数据 stats.max_value('max_items_scraoed', value) 当新的值比原来的值小时设置数据 stats.min_value('min_free_memory_percent', value) 获取数据 stats.get_value('pages_crawled') 获取所有数据 stats.get_stats() 示例：统计名人名言网站(http://quotes.toscrape.com/)标签为love的名言数……
         </div>
         <p class="readmore"><a href="https://hank-leo.github.io/post/scrapy/Scrapy%E6%A1%86%E6%9E%B6-%E7%BB%9F%E8%AE%A1%E6%95%B0%E6%8D%AE%E6%94%B6%E9%9B%86/">阅读全文</a></p>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://hank-leo.github.io/post/analysis/%E6%9C%9D%E9%98%B3%E5%8C%BB%E9%99%A2%E8%8D%AF%E5%93%81%E9%94%80%E5%94%AE%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" title=""></a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            1年1月1日
-        </date>
-        
-        <div class="post-content">
-            1.导入数据包，提取数据文件
-在提取数据中，为了保证数据文件中的数据读取正常，通常会将函数中dtype参数设置为object 意思是统一按照字符串格式读取数据
-1 2 3 4 5  import numpy as np import pandas as pd #导入数据 salesDf=pd.read_excel(r&#34;朝阳医院2018年销售数据.xlsx&#34;,dtype=&#39;object&#39;) # salesDf=xls.parse(&#34;数据1&#34;)   2.查看导入数据的基本状况
-1 2  #查看数据类型 type(salesDf)   pandas.core.frame.DataFrame  1 2  #查看每个项目的类型 salesDf.dtypes   购药时间 object 社保卡号 object 商品编码 object 商品名称 object 销售数量 object 应收金额 object 实收金额 object dtype: object  1 2  #查看数据的基本大小 salesDf.shape   (6578, 7)  1 2  #查看开头几行数据，看看数据是否读取正确 salesDf.head()   .dataframe tbody tr th { vertical-align: top; } .dataframe thead th { text-align: right; }  1 2  #用描述函数describ查看整个数据的基本状况 salesDf.describe()   .dataframe tbody tr th { vertical-align: top; } .dataframe thead th { text-align: right; }  从以上信息可以基本了解到数据是由购药时间、社保卡号、商品编码、商品名称、销售数量、应收金额、实收金额等七个项目组成，数据总条数为6576
-数据清洗 取得数据并不能直接进行分析，通常并不完全符合分析条件，可能存在缺失值、异常值，这些数据会使分析结果产生偏差，所以分析前需进行子集选择、缺失数据补充、异常值处理、数据类型转换等多个步骤，这些都属于数据清洗范畴。
-在数据分析中，通常会超过60%的时间花在清洗中。
-清洗步骤有如下几步：
-  选择子集
-  列名重命名
-  缺失数据处理
-  数据类型转换
-  数据排序
-  异常值处理
-  这些步骤可能还需重复操作
-1.选择子集 此项目数据忽略选择子集……
-        </div>
-        <p class="readmore"><a href="https://hank-leo.github.io/post/analysis/%E6%9C%9D%E9%98%B3%E5%8C%BB%E9%99%A2%E8%8D%AF%E5%93%81%E9%94%80%E5%94%AE%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">阅读全文</a></p>
     </article>
     
     
@@ -208,6 +224,22 @@
 <ul class="widget-list">
     
     <li>
+        <a href="https://hank-leo.github.io/post/go/Docker%E5%AD%A6%E4%B9%A0%E4%B8%8E%E4%BD%BF%E7%94%A8/" title="Docker学习与使用">Docker学习与使用</a>
+    </li>
+    
+    <li>
+        <a href="https://hank-leo.github.io/post/analysis/PyEcharts%E5%8F%AF%E8%A7%86%E5%8C%96%E5%85%A5%E9%97%A8/" title="PyEcharts可视化入门">PyEcharts可视化入门</a>
+    </li>
+    
+    <li>
+        <a href="https://hank-leo.github.io/post/go/Go%E7%88%AC%E8%99%AB/" title="Go爬虫">Go爬虫</a>
+    </li>
+    
+    <li>
+        <a href="https://hank-leo.github.io/post/sql/%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9D%A2%E8%AF%95%E7%9F%A5%E8%AF%86%E7%82%B9/" title="数据库面试知识点">数据库面试知识点</a>
+    </li>
+    
+    <li>
         <a href="https://hank-leo.github.io/post/sql/LeetCode-SQL%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/" title="LeetCode SQL刷题记录">LeetCode SQL刷题记录</a>
     </li>
     
@@ -231,22 +263,6 @@
         <a href="https://hank-leo.github.io/post/app/%E4%BD%BF%E7%94%A8Airtest%E7%88%AC%E5%8F%96%E6%9F%90%E5%92%96%E5%95%A1app%E6%95%B0%E6%8D%AEv1/" title="使用Airtest爬取某咖啡app数据">使用Airtest爬取某咖啡app数据</a>
     </li>
     
-    <li>
-        <a href="https://hank-leo.github.io/post/app/%E4%BD%BF%E7%94%A8Airtest%E7%88%AC%E5%8F%96%E6%9F%90%E5%92%96%E5%95%A1app%E6%95%B0%E6%8D%AEv2/" title="使用Airtest爬取某咖啡app数据v1">使用Airtest爬取某咖啡app数据v1</a>
-    </li>
-    
-    <li>
-        <a href="https://hank-leo.github.io/post/blog/%E4%BD%BF%E7%94%A8Github-Actions%E6%90%AD%E5%BB%BAhugo/" title="使用Github Actions搭建hugo">使用Github Actions搭建hugo</a>
-    </li>
-    
-    <li>
-        <a href="https://hank-leo.github.io/post/python/%E4%BD%BF%E7%94%A8%E5%BC%82%E6%AD%A5%E5%87%BD%E6%95%B0%E8%8E%B7%E5%8F%96%E6%96%87%E4%BB%B6%E5%90%8D/" title="使用异步函数获取文件名">使用异步函数获取文件名</a>
-    </li>
-    
-    <li>
-        <a href="https://hank-leo.github.io/post/spider/pyqt/%E5%88%A9%E7%94%A8PyQt5%E4%BA%A4%E4%BA%92%E5%AF%BC%E5%87%BA%E6%95%B0%E6%8D%AE/" title="利用PyQt5交互导出数据">利用PyQt5交互导出数据</a>
-    </li>
-    
 </ul>
     </section>
 
@@ -255,6 +271,8 @@
     <section class="widget">
         <h3 class="widget-title"><a href="/categories">分类</a></h3>
 <ul class="widget-list">
+    
+    <li><a href="https://hank-leo.github.io/categories/Go%E5%AD%A6%E4%B9%A0/">Go学习 (1)</a></li>
     
     <li><a href="https://hank-leo.github.io/categories/Python%E5%AD%A6%E4%B9%A0/">Python学习 (6)</a></li>
     
@@ -266,11 +284,11 @@
     
     <li><a href="https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%AD%A6%E4%B9%A0/">数据分析学习 (3)</a></li>
     
-    <li><a href="https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%AE%9E%E6%88%98/">数据分析实战 (4)</a></li>
+    <li><a href="https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%AE%9E%E6%88%98/">数据分析实战 (3)</a></li>
     
     <li><a href="https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/">数据分析报告 (1)</a></li>
     
-    <li><a href="https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/">数据可视化 (1)</a></li>
+    <li><a href="https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/">数据可视化 (2)</a></li>
     
     <li><a href="https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0/">数据库学习 (6)</a></li>
     
@@ -308,6 +326,8 @@
     <a href="https://hank-leo.github.io/tags/app/">app</a>
     
     <a href="https://hank-leo.github.io/tags/dict/">dict</a>
+    
+    <a href="https://hank-leo.github.io/tags/docker/">docker</a>
     
     <a href="https://hank-leo.github.io/tags/excel/">excel</a>
     

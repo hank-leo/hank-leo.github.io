@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Go学习 on Hank&#39;s Blog</title>
+    <link>https://hank-leo.github.io/categories/Go%E5%AD%A6%E4%B9%A0/</link>
+    <description>Recent content in Go学习 on Hank&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 28 Aug 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://hank-leo.github.io/categories/Go%E5%AD%A6%E4%B9%A0/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Go爬虫</title>
+      <link>https://hank-leo.github.io/post/go/Go%E7%88%AC%E8%99%AB/</link>
+      <pubDate>Fri, 28 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hank-leo.github.io/post/go/Go%E7%88%AC%E8%99%AB/</guid>
+      <description>前言 Go是Google开发的一种静态强类型、编译型、并发型并具有垃圾回收功能的编程语言。为了方便搜索和识别，有时会将其称为Golang。 特点 Go是一种新的语言，是一种支持并发、带垃圾回收、可快速编译的静态语言。 Go为并发执行与通信提供了基本的支持，是天生的高性能服务开发语言。 Go</description>
+    </item>
+    
+  </channel>
+</rss>
