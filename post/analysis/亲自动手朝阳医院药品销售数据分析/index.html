@@ -325,18 +325,7 @@ salesDf<span style="color:#000;font-weight:bold">.</span>shape
 salesDf<span style="color:#000;font-weight:bold">.</span>head()
 </code></pre></td></tr></table>
 </div>
-</div><!-- raw HTML omitted -->
-<pre><code>.dataframe tbody tr th {
-    vertical-align: top;
-}
-
-.dataframe thead th {
-    text-align: right;
-}
-</code></pre>
-<p><!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+</div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
@@ -346,19 +335,7 @@ salesDf<span style="color:#000;font-weight:bold">.</span>head()
 salesDf<span style="color:#000;font-weight:bold">.</span>describe()
 </code></pre></td></tr></table>
 </div>
-</div><!-- raw HTML omitted -->
-<pre><code>.dataframe tbody tr th {
-    vertical-align: top;
-}
-
-.dataframe thead th {
-    text-align: right;
-}
-</code></pre>
-<p><!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
-<p>从以上信息可以基本了解到数据是由购药时间、社保卡号、商品编码、商品名称、销售数量、应收金额、实收金额等七个项目组成，数据总条数为6576</p>
-<h2 id="数据清洗">数据清洗</h2>
+</div><h2 id="数据清洗">数据清洗</h2>
 <p>取得数据并不能直接进行分析，通常并不完全符合分析条件，可能存在缺失值、异常值，这些数据会使分析结果产生偏差，所以分析前需进行<strong>子集选择</strong>、<strong>缺失数据补充</strong>、<strong>异常值处理</strong>、<strong>数据类型转换</strong>等多个步骤，这些都属于数据清洗范畴。</p>
 <p>在数据分析中，通常会超过60%的时间花在清洗中。</p>
 <p>清洗步骤有如下几步：</p>
@@ -410,18 +387,7 @@ salesDf<span style="color:#000;font-weight:bold">.</span>rename(columns<span sty
 <pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">salesDf<span style="color:#000;font-weight:bold">.</span>head()
 </code></pre></td></tr></table>
 </div>
-</div><!-- raw HTML omitted -->
-<pre><code>.dataframe tbody tr th {
-    vertical-align: top;
-}
-
-.dataframe thead th {
-    text-align: right;
-}
-</code></pre>
-<p><!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
-<h3 id="3缺失数据处理">3.缺失数据处理</h3>
+</div><h3 id="3缺失数据处理">3.缺失数据处理</h3>
 <p>对于缺失数据，可以有以下几种处理方法：</p>
 <ul>
 <li>
@@ -461,18 +427,7 @@ dtype: bool
 salesDf[salesDf[[<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">销售时间</span><span style="color:#d14">&#39;</span>,<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">社保卡号</span><span style="color:#d14">&#39;</span>]]<span style="color:#000;font-weight:bold">.</span>isnull()<span style="color:#000;font-weight:bold">.</span>values<span style="color:#000;font-weight:bold">==</span><span style="color:#999">True</span>]
 </code></pre></td></tr></table>
 </div>
-</div><!-- raw HTML omitted -->
-<pre><code>.dataframe tbody tr th {
-    vertical-align: top;
-}
-
-.dataframe thead th {
-    text-align: right;
-}
-</code></pre>
-<p><!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+</div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
@@ -484,18 +439,7 @@ naDf <span style="color:#000;font-weight:bold">=</span> salesDf[salesDf[[<span s
 naDf
 </code></pre></td></tr></table>
 </div>
-</div><!-- raw HTML omitted -->
-<pre><code>.dataframe tbody tr th {
-    vertical-align: top;
-}
-
-.dataframe thead th {
-    text-align: right;
-}
-</code></pre>
-<p><!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+</div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
@@ -505,8 +449,7 @@ naDf
 naDf<span style="color:#000;font-weight:bold">.</span>shape[<span style="color:#099">0</span>]
 </code></pre></td></tr></table>
 </div>
-</div><pre><code>3
-</code></pre>
+</div><p>3</p>
 <p>删除缺失数据</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -518,8 +461,7 @@ naDf<span style="color:#000;font-weight:bold">.</span>shape[<span style="color:#
 salesDf<span style="color:#000;font-weight:bold">.</span>shape
 </code></pre></td></tr></table>
 </div>
-</div><pre><code>(6578, 7)
-</code></pre>
+</div><p>(6578, 7)</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -540,8 +482,7 @@ salesDf<span style="color:#000;font-weight:bold">=</span>salesDf<span style="col
 salesDf<span style="color:#000;font-weight:bold">.</span>shape
 </code></pre></td></tr></table>
 </div>
-</div><pre><code>(6575, 7)
-</code></pre>
+</div><p>(6575, 7)</p>
 <p>在数据删除后要及时更新一下最新的序号，不然可能会产生问题。我开始做的时候，在这里没有更新数据序号，导致后续销售时间数据类型用函数转换后与元数据合并时发生了错位，数据发生了新的缺失，后来发现导致问题产生的原因在这里。</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -563,18 +504,7 @@ salesDf<span style="color:#000;font-weight:bold">=</span>salesDf<span style="col
 <pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">salesDf<span style="color:#000;font-weight:bold">.</span>head()
 </code></pre></td></tr></table>
 </div>
-</div><!-- raw HTML omitted -->
-<pre><code>.dataframe tbody tr th {
-    vertical-align: top;
-}
-
-.dataframe thead th {
-    text-align: right;
-}
-</code></pre>
-<p><!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+</div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
@@ -638,18 +568,7 @@ salesDf[<span style="color:#d14"></span><span style="color:#d14">&#39;</span><sp
 salesDf<span style="color:#000;font-weight:bold">.</span>head()
 </code></pre></td></tr></table>
 </div>
-</div><!-- raw HTML omitted -->
-<pre><code>.dataframe tbody tr th {
-    vertical-align: top;
-}
-
-.dataframe thead th {
-    text-align: right;
-}
-</code></pre>
-<p><!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
-<p>做完转化后再观察有无新的缺失值</p>
+</div><p>做完转化后再观察有无新的缺失值</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -658,8 +577,7 @@ salesDf<span style="color:#000;font-weight:bold">.</span>head()
 <pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">salesDf[<span style="color:#d14"></span><span style="color:#d14">&#39;</span><span style="color:#d14">销售时间</span><span style="color:#d14">&#39;</span>]<span style="color:#000;font-weight:bold">.</span>isnull()<span style="color:#000;font-weight:bold">.</span>any()
 </code></pre></td></tr></table>
 </div>
-</div><pre><code>False
-</code></pre>
+</div><p>False</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -709,8 +627,7 @@ Name: 销售时间, Length: 6575, dtype: datetime64[ns]
 <pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">dateSer<span style="color:#000;font-weight:bold">.</span>isnull()<span style="color:#000;font-weight:bold">.</span>any()
 </code></pre></td></tr></table>
 </div>
-</div><pre><code>True
-</code></pre>
+</div><p>True</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -721,18 +638,7 @@ Name: 销售时间, Length: 6575, dtype: datetime64[ns]
 compareDf
 </code></pre></td></tr></table>
 </div>
-</div><!-- raw HTML omitted -->
-<pre><code>.dataframe tbody tr th {
-    vertical-align: top;
-}
-
-.dataframe thead th {
-    text-align: right;
-}
-</code></pre>
-<p><!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+</div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
@@ -759,8 +665,7 @@ dtype: object
 <pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">salesDf<span style="color:#000;font-weight:bold">.</span>shape
 </code></pre></td></tr></table>
 </div>
-</div><pre><code>(6575, 7)
-</code></pre>
+</div><p>(6575, 7)</p>
 <p>对缺失值进行简单删除处理</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -772,8 +677,7 @@ dtype: object
 salesDf<span style="color:#000;font-weight:bold">.</span>shape
 </code></pre></td></tr></table>
 </div>
-</div><pre><code>(6552, 7)
-</code></pre>
+</div><p>(6552, 7)</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -804,18 +708,7 @@ salesDf<span style="color:#000;font-weight:bold">=</span>salesDf<span style="col
 <pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">salesDf<span style="color:#000;font-weight:bold">.</span>head()
 </code></pre></td></tr></table>
 </div>
-</div><!-- raw HTML omitted -->
-<pre><code>.dataframe tbody tr th {
-    vertical-align: top;
-}
-
-.dataframe thead th {
-    text-align: right;
-}
-</code></pre>
-<p><!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+</div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
@@ -833,18 +726,7 @@ salesDf<span style="color:#000;font-weight:bold">=</span>salesDf<span style="col
 <pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">salesDf<span style="color:#000;font-weight:bold">.</span>head()
 </code></pre></td></tr></table>
 </div>
-</div><!-- raw HTML omitted -->
-<pre><code>.dataframe tbody tr th {
-    vertical-align: top;
-}
-
-.dataframe thead th {
-    text-align: right;
-}
-</code></pre>
-<p><!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
-<h3 id="6异常值处理">6.异常值处理</h3>
+</div><h3 id="6异常值处理">6.异常值处理</h3>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -853,18 +735,7 @@ salesDf<span style="color:#000;font-weight:bold">=</span>salesDf<span style="col
 <pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">salesDf<span style="color:#000;font-weight:bold">.</span>describe()
 </code></pre></td></tr></table>
 </div>
-</div><!-- raw HTML omitted -->
-<pre><code>.dataframe tbody tr th {
-    vertical-align: top;
-}
-
-.dataframe thead th {
-    text-align: right;
-}
-</code></pre>
-<p><!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
-<p>从上面指标可以看出，存在销售数量为负的数据，显然不合理，需要将这部分数据删除</p>
+</div><p>从上面指标可以看出，存在销售数量为负的数据，显然不合理，需要将这部分数据删除</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -909,8 +780,7 @@ salesDf<span style="color:#000;font-weight:bold">=</span>salesDf<span style="col
 salesDf<span style="color:#000;font-weight:bold">.</span>shape
 </code></pre></td></tr></table>
 </div>
-</div><pre><code>(6509, 7)
-</code></pre>
+</div><p>(6509, 7)</p>
 <p>数据清洗完了之后，终于可以搭建模型了</p>
 <h2 id="4构建模型">4.构建模型</h2>
 <h3 id="1业务指标">1.业务指标</h3>
@@ -931,8 +801,7 @@ total<span style="color:#000;font-weight:bold">=</span>kpDf<span style="color:#0
 total
 </code></pre></td></tr></table>
 </div>
-</div><pre><code>5345
-</code></pre>
+</div><p>5345</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -1029,18 +898,7 @@ groupDf<span style="color:#000;font-weight:bold">.</span>index<span style="color
 groupDf<span style="color:#000;font-weight:bold">.</span>head()
 </code></pre></td></tr></table>
 </div>
-</div><!-- raw HTML omitted -->
-<pre><code>.dataframe tbody tr th {
-    vertical-align: top;
-}
-
-.dataframe thead th {
-    text-align: right;
-}
-</code></pre>
-<p><!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+</div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
@@ -1062,18 +920,7 @@ monthDf<span style="color:#000;font-weight:bold">=</span>gb<span style="color:#0
 monthDf
 </code></pre></td></tr></table>
 </div>
-</div><!-- raw HTML omitted -->
-<pre><code>.dataframe tbody tr th {
-    vertical-align: top;
-}
-
-.dataframe thead th {
-    text-align: right;
-}
-</code></pre>
-<p><!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+</div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
@@ -1111,7 +958,7 @@ plt<span style="color:#000;font-weight:bold">.</span>ylabel(<span style="color:#
 </div>
 </div><p>Text(0, 0.5, &lsquo;销售数量&rsquo;)</p>
 <p>
-        <img class="mx-auto" alt="png" src="img/202008/%e6%b6%88%e8%b4%b9%e8%b6%8b%e5%8a%bf.png" />   
+        <img class="mx-auto" alt="消费趋势" src="images/202008/%e6%b6%88%e8%b4%b9%e8%b6%8b%e5%8a%bf.png" />   
     </p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -1149,7 +996,7 @@ plt<span style="color:#000;font-weight:bold">.</span>ylabel(<span style="color:#
 </div>
 </div><p>Text(0, 0.5, &lsquo;金额&rsquo;)</p>
 <p>
-        <img class="mx-auto" alt="png" src="img/202008/%e5%ba%94%e6%94%b6%e9%87%91%e9%a2%9d%e4%b8%8e%e5%ae%9e%e6%94%b6%e9%87%91%e9%a2%9d.png" />   
+        <img class="mx-auto" alt="应收金额与实收金额" src="images/202008/%e5%ba%94%e6%94%b6%e9%87%91%e9%a2%9d%e4%b8%8e%e5%ae%9e%e6%94%b6%e9%87%91%e9%a2%9d.png" />   
     </p>
 <p>从途中可以看出销售数量和销售金额的整个趋势是基本一致的</p>
 <p>四月份为最高点，二月份为前期一个最低点，而且四月份以后销售一直处于向下的趋势</p>
@@ -1160,15 +1007,7 @@ plt<span style="color:#000;font-weight:bold">.</span>ylabel(<span style="color:#
 比如这个数据集中【2018-02-29】这样的数据很可能是业务员录入失误导致，
 可以通过了解实际情况后修改数据。</p>
 <p>3.画图时发现中文标题，xy坐标标识无法正常显示，通过加了关于字体的设置后解决了问题</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
-</code></pre></td></tr></table>
-</div>
-</div>
+
         </div>
 
         
