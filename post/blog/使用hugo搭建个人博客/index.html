@@ -55,7 +55,9 @@
                 <nav id="nav-menu" class="clearfix">
                     <a class="current" href="https://hank-leo.github.io">首页</a>
                     
-                    <a  href="https://hank-leo.github.io/archives/" title="归档">归档</a>
+                    <a  href="https://hank-leo.github.io/" title="主页">主页</a>
+                    
+                    <a  href="https://hank-leo.github.io/post/" title="归档">归档</a>
                     
                     <a  href="https://hank-leo.github.io/tags/" title="标签">标签</a>
                     
@@ -146,10 +148,11 @@
         <li><a href="#初始化">初始化</a></li>
         <li><a href="#安装主题">安装主题</a></li>
         <li><a href="#创建新页面">创建新页面</a></li>
-        <li><a href="#配置-configtoml">配置 config.toml</a></li>
+        <li><a href="#配置configtoml">配置config.toml</a></li>
         <li><a href="#生成网站">生成网站</a></li>
         <li><a href="#发布">发布</a></li>
         <li><a href="#添加图片">添加图片</a></li>
+        <li><a href="#添加评论">添加评论</a></li>
         <li><a href="#遇到的报错">遇到的报错</a></li>
       </ul>
     </li>
@@ -244,7 +247,7 @@ draft: # 是否为草稿，如果为 true 需要在命令中加入 --buildDrafts
 <pre><code>description: # 描述
 tags: # 标签，用于文章分类
 </code></pre><p>自动生成 和 执行添加 的内容并不是绝对的，你可以根据自己的喜好配置模板文件<code>archetypes/default.md</code></p>
-<h3 id="配置-configtoml">配置 <code>config.toml</code></h3>
+<h3 id="配置configtoml">配置config.toml</h3>
 <p>用于存放整个网站的配置信息</p>
 <pre><code># This is a simple configuration.
 # If you want to see the full configuration, please check `full-config.toml` .
@@ -397,6 +400,21 @@ cd ..
 </code></pre><p>
         <img class="mx-auto" alt="添加图片" src="/images/202009/%e6%b7%bb%e5%8a%a0%e5%9b%be%e7%89%87.png" />   
     </p>
+<h3 id="添加评论">添加评论</h3>
+<p><strong>配置使用 utterances</strong></p>
+<p>首先在github上创建一个空仓库，如：hugoblogtalks，并且初始化设置，仓库必须是Public，而不是私有的，这样我们的读者才可以查看以及发表评论。</p>
+<p>接着就是在hugo的配置文件（config.toml）中启用utterances，打开config.toml，添加如下：</p>
+<pre><code>## 配置 utteranc评论,教程参考 https://utteranc.es/
+[params.utteranc]
+  enable = true
+  repo = &quot;yunxd/hugoblogtalks&quot; ##换成自己得
+  issueTerm = &quot;pathname&quot;
+  theme = &quot;github-light&quot;
+</code></pre><p>repo的格式为：github用户名/创建的仓库名</p>
+<p><strong>github上安装 utterances</strong></p>
+<p>首先必须在 github 上进行安装 utterances，访问<a href="https://github.com/apps/utterances">utterances应用程序</a> 然后点击 Install 按钮进行安装。</p>
+<p>在这里可以选择可以关联的存储库，可以选择我们所拥有的库(也包括未来建立的库)或者某一个仓库，这里只选择某一个需要进行评论的库，这样比较好</p>
+<p>安装完成即可，随后访问 utterances应用程序 就不再是安装而是是执行配置项目。</p>
 <h3 id="遇到的报错">遇到的报错</h3>
 <p><strong>git 无法push远程仓库 Note about fast-forwards</strong></p>
 <p>分析：</p>
@@ -434,7 +452,7 @@ cd ..
     
     <div class="post bg-white">
       <script src="https://utteranc.es/client.js"
-            repo= "https://github.com/hank-leo/hank-leo.github.io"
+            repo= "hank-leo/hugoblogtalks"
             issue-term="title"
             theme="github-light"
             crossorigin="anonymous"
