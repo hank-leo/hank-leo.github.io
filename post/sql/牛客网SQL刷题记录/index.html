@@ -1043,6 +1043,15 @@ from_date<span style="color:#000;font-weight:bold">=</span><span style="color:#d
 <span style="color:#000;font-weight:bold">and</span> salary<span style="color:#000;font-weight:bold">&lt;</span>(<span style="color:#000;font-weight:bold">select</span> <span style="color:#000;font-weight:bold">max</span>(salary) <span style="color:#000;font-weight:bold">from</span> salaries <span style="color:#000;font-weight:bold">where</span> to_date<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;</span><span style="color:#d14">9999-01-01</span><span style="color:#d14">&#39;</span>)
 </code></pre></td></tr></table>
 </div>
+</div><p><a href="https://www.nowcoder.com/practice/f24966e0cb8a49c192b5e65339bc8c03?tpId=82&amp;&amp;tqId=29823&amp;rp=1&amp;ru=/ta/sql&amp;qru=/ta/sql/question-ranking">55.分页查询employees表，每5行一页，返回第2页的数据</a></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> <span style="color:#000;font-weight:bold">*</span> <span style="color:#000;font-weight:bold">from</span> employees <span style="color:#000;font-weight:bold">limit</span> <span style="color:#099">5</span>,<span style="color:#099">5</span>;
+</code></pre></td></tr></table>
+</div>
 </div>
         </div>
 
