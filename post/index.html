@@ -78,6 +78,24 @@
     <article class="post">
         <header>
             <h1 class="post-title">
+                <a href="https://hank-leo.github.io/post/excel/%E5%9C%A8%E4%B8%8D%E6%89%93%E5%BC%80excel%E7%9A%84%E6%83%85%E5%86%B5%E4%B8%8B%E7%94%A8python%E6%89%A7%E8%A1%8Cexcel/" title="在不打开excel的情况下用python执行excel">在不打开excel的情况下用python执行excel</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年9月1日
+        </date>
+        
+        <div class="post-content">
+            1 2 3 4 5 6 7 8 9 10 11 12 import win32com.client import time path = r&#39;absolute dir&#39; #比如填文件的绝对路径，比如d:/file/stock.xlsx xl = win32com.client.DispatchEx(&#34;Excel.Application&#34;) workbook = xl.Workbooks.Open(path) xl.Visible = False workbook.RefreshAll() workbook.Save() # time.sleep(3) #如果文件足够大，那么最好是在关闭excel之前保持几秒钟 workbook.Close(True) xl.Quit()……
+        </div>
+        <p class="readmore"><a href="https://hank-leo.github.io/post/excel/%E5%9C%A8%E4%B8%8D%E6%89%93%E5%BC%80excel%E7%9A%84%E6%83%85%E5%86%B5%E4%B8%8B%E7%94%A8python%E6%89%A7%E8%A1%8Cexcel/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
                 <a href="https://hank-leo.github.io/post/analysis/Tableau%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AE%80%E5%8D%95%E6%A1%88%E4%BE%8B/" title="Tableau的一些简单案例">Tableau的一些简单案例</a>
             </h1>
         </header>
@@ -96,6 +114,149 @@
             豆瓣电影分析……
         </div>
         <p class="readmore"><a href="https://hank-leo.github.io/post/analysis/Tableau%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AE%80%E5%8D%95%E6%A1%88%E4%BE%8B/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://hank-leo.github.io/post/algorithm/Python%E7%AE%97%E6%B3%95%E4%BE%8B4%E6%B1%82%E5%B9%B3%E6%96%B9%E6%A0%B9/" title="Python算法|例4求平方根">Python算法|例4求平方根</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年9月1日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://hank-leo.github.io/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0'>算法学习</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            #sqrt(3)=1; sqrt(4)=2; sqrt(5)=2; sqrt(10)=3 class Solution: def sqrt(self, x): l, r = 0, x while l + 1 &lt; r: m = (r + l) // 2 if m * m == x: return m elif m * m &gt; x: r = m else: l = m if l * l == x: return l if r * r == x: return r return l if __name__ == '__main__': temp = Solution() x1 = 5 x2 = 10 print((&quot;输入:&quot; + str(x1))) print((&quot;输出:&quot; + str(temp.sqrt(x1)))) print((&quot;……
+        </div>
+        <p class="readmore"><a href="https://hank-leo.github.io/post/algorithm/Python%E7%AE%97%E6%B3%95%E4%BE%8B4%E6%B1%82%E5%B9%B3%E6%96%B9%E6%A0%B9/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://hank-leo.github.io/post/algorithm/Python%E7%AE%97%E6%B3%95%E4%BE%8B3%E6%A3%80%E6%B5%8B2%E7%9A%84%E5%B9%82%E6%AC%A1/" title="Python算法|例3检测2的幂次">Python算法|例3检测2的幂次</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年9月1日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://hank-leo.github.io/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0'>算法学习</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 class Solution: def checkPowerOf2(self, n): ans=1 for i in range(31): if ans == n: return True ans = ans &lt;&lt; 1 return False if __name__==&#34;__main__&#34;: temp = Solution() nums1 = 16 nums2 = 17 print((&#34;输入: &#34; + str(nums1))) print((&#34;输出: &#34; + str(temp.checkPowerOf2(nums1)))) print((&#34;输入: &#34; + str(nums2))) print((&#34;输出: &#34; + str(temp.checkPowerOf2(nums2)))) 结果如下: 输入: 16 输出: True 输入: 17……
+        </div>
+        <p class="readmore"><a href="https://hank-leo.github.io/post/algorithm/Python%E7%AE%97%E6%B3%95%E4%BE%8B3%E6%A3%80%E6%B5%8B2%E7%9A%84%E5%B9%82%E6%AC%A1/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://hank-leo.github.io/post/algorithm/Python%E7%AE%97%E6%B3%95%E4%BE%8B2%E5%88%A4%E6%96%AD%E5%B9%B3%E6%96%B9%E6%95%B0/" title="Python算法|例2判断平方数">Python算法|例2判断平方数</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年9月1日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://hank-leo.github.io/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0'>算法学习</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            #示例: 输入num=16, 输出True, sqrt(16)=4; 输入num=15, 输出False, sqrt(15)=3.87 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 class Solution: def isPerfectSquare(self, num): l=0 r=num while (r-l &gt; 1): mid=(l + r) / 2 if (mid * mid &lt;= num): l = mid else: r = mid ans = 1 if ( l * l &lt; num ): ans = r return ans * ans == num #主函数 if __name__ == &#34;__main__&#34;: num = 16 print(&#34;初始值: &#34;, num) solution = Solution()……
+        </div>
+        <p class="readmore"><a href="https://hank-leo.github.io/post/algorithm/Python%E7%AE%97%E6%B3%95%E4%BE%8B2%E5%88%A4%E6%96%AD%E5%B9%B3%E6%96%B9%E6%95%B0/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://hank-leo.github.io/post/algorithm/Python%E7%AE%97%E6%B3%95%E4%BE%8B16%E6%95%B0%E5%AD%97%E5%88%A4%E6%96%AD/" title="Python算法|例16数字判断">Python算法|例16数字判断</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年9月1日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://hank-leo.github.io/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0'>算法学习</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            问题描述 给定一个字符串，验证其是否为数字 问题示例 0判断为true 0.1判断为true abc判断为false 1 a判断为false 2e10判断为true python代码实现 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 #参数s是一个字符串，返回一个布尔值……
+        </div>
+        <p class="readmore"><a href="https://hank-leo.github.io/post/algorithm/Python%E7%AE%97%E6%B3%95%E4%BE%8B16%E6%95%B0%E5%AD%97%E5%88%A4%E6%96%AD/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://hank-leo.github.io/post/algorithm/Python%E7%AE%97%E6%B3%95%E4%BE%8B11%E6%95%B4%E6%95%B0%E6%8E%92%E5%BA%8F/" title="Python算法|例11整数排序">Python算法|例11整数排序</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年9月1日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://hank-leo.github.io/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0'>算法学习</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            #给出一组整数，将其按照升序排序 #例如给出[3,2,1,4,5],排序后的结果为[1,2,3,4,5] #参数A是一个整数数组 #返回一个整数数组 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 class Solution: def sortIntegers2(self,A): self.quickSort(A,0,len(A)-1) def quickSort(self,A,start,end): if start&gt;=end: return left,right=start,end pivot=A[int((start+end)/2)] while left&lt;=right: while left&lt;=right and A[left] &lt; pivot: left += 1 while left&lt;=right and A[right]&gt;pivot: right-=1 if left&lt;=right: A[left],A[right]=A[right],A[left] left+=1 right-=1 self .quickSort(A,start,right) self.quickSort(A,left,end) #主函数 if……
+        </div>
+        <p class="readmore"><a href="https://hank-leo.github.io/post/algorithm/Python%E7%AE%97%E6%B3%95%E4%BE%8B11%E6%95%B4%E6%95%B0%E6%8E%92%E5%BA%8F/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://hank-leo.github.io/post/excel/Python%E5%BF%AB%E9%80%9F%E8%AE%BE%E7%BD%AEExcel%E8%A1%A8%E6%A0%BC%E8%BE%B9%E6%A1%86/" title="Python快速设置Excel表格边框">Python快速设置Excel表格边框</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年9月1日
+        </date>
+        
+        <div class="post-content">
+            1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 import xlwings as xw #打开存好的excel app = xw.App() #设置应用 wb = xw.Book(&#34;E:/Data/小蜜蜂超市销售报表.xlsx&#34;) #打开文件 ws = wb.sheets[&#39;Sheet1&#39;] #选择表格 last_column = ws.range(1, 1).end(&#39;right&#39;).get_address(0, 0)[0] #获取最后列 last_row = ws.range(1, 1).end(&#39;down&#39;).row #获取最后行 a_range = f&#39;A1:{last_column}{last_row}&#39; #生成表格的数据范围 #设置……
+        </div>
+        <p class="readmore"><a href="https://hank-leo.github.io/post/excel/Python%E5%BF%AB%E9%80%9F%E8%AE%BE%E7%BD%AEExcel%E8%A1%A8%E6%A0%BC%E8%BE%B9%E6%A1%86/">阅读全文</a></p>
     </article>
     
     
@@ -150,174 +311,6 @@
     
     
     
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://hank-leo.github.io/post/go/Docker%E5%AD%A6%E4%B9%A0%E4%B8%8E%E4%BD%BF%E7%94%A8/" title="Docker学习与使用">Docker学习与使用</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年9月1日
-        </date>
-        
-        <div class="post-content">
-            ……
-        </div>
-        <p class="readmore"><a href="https://hank-leo.github.io/post/go/Docker%E5%AD%A6%E4%B9%A0%E4%B8%8E%E4%BD%BF%E7%94%A8/">阅读全文</a></p>
-    </article>
-    
-    
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://hank-leo.github.io/post/sql/%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9D%A2%E8%AF%95%E7%9F%A5%E8%AF%86%E7%82%B9/" title="数据库面试知识点">数据库面试知识点</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年8月28日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0'>数据库学习</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            基本概念 1.主键、外键、超键、候选键 超键：在关系中能唯一标识元组的属性集称为关系模式的超键。一个属性可以为作为一个超键，多个属性组合在一起也可以作为一个超键。超键包含候选键和主键。 候选键：是最小超键，即没有冗余元素的超键。 主键：数据库表中对储存数据对象予以唯一和完整标识的数据列或……
-        </div>
-        <p class="readmore"><a href="https://hank-leo.github.io/post/sql/%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9D%A2%E8%AF%95%E7%9F%A5%E8%AF%86%E7%82%B9/">阅读全文</a></p>
-    </article>
-    
-    
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://hank-leo.github.io/post/go/Go%E7%88%AC%E8%99%AB/" title="Go爬虫">Go爬虫</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年8月28日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='https://hank-leo.github.io/categories/Go%E5%AD%A6%E4%B9%A0'>Go学习</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            前言 Go是Google开发的一种静态强类型、编译型、并发型并具有垃圾回收功能的编程语言。为了方便搜索和识别，有时会将其称为Golang。 特点 Go是一种新的语言，是一种支持并发、带垃圾回收、可快速编译的静态语言。 Go为并发执行与通信提供了基本的支持，是天生的高性能服务开发语言。 Go……
-        </div>
-        <p class="readmore"><a href="https://hank-leo.github.io/post/go/Go%E7%88%AC%E8%99%AB/">阅读全文</a></p>
-    </article>
-    
-    
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://hank-leo.github.io/post/spider/%E7%88%AC%E5%8F%96%E6%9F%90%E8%91%97%E5%90%8D%E5%BF%AB%E9%A4%90%E5%B7%A8%E5%A4%B4%E9%97%A8%E5%BA%97%E6%95%B0%E6%8D%AE%E5%AE%9E%E6%88%98/" title="爬取某著名快餐巨头门店数据实战">爬取某著名快餐巨头门店数据实战</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年8月27日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='https://hank-leo.github.io/categories/%E7%88%AC%E8%99%AB%E5%AE%9E%E6%88%98%E5%AE%9E%E6%88%98'>爬虫实战实战</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            项目说明 通过python代码抓取*德基官网门店数据 爬取过程 首先查看网页结构可知，数据以json格式存储 要拿到请求参数才能访问数据，这里的参数主要是cname，也就是城市信息 解析网页信息，获取城市数据 1 2 3 4 5 6 7 8 9 10 11 def get_city(self): try: resp=session.get(url=self.base_url,headers=self.headers,verify=False).content.decode() sel=Selector(resp) all_li=sel.xpath(&#34;//ul[@class=&#39;shen_info&#39;]/li&#34;) for p in all_li: all_a=p.xpath(&#34;./div[@class=&#39;shen_city&#39;]/a&#34;) for c in all_a: city=c.xpath(&#34;./text()&#34;).get() except Exception: traceback.print_exc() 这里用到Selecto……
-        </div>
-        <p class="readmore"><a href="https://hank-leo.github.io/post/spider/%E7%88%AC%E5%8F%96%E6%9F%90%E8%91%97%E5%90%8D%E5%BF%AB%E9%A4%90%E5%B7%A8%E5%A4%B4%E9%97%A8%E5%BA%97%E6%95%B0%E6%8D%AE%E5%AE%9E%E6%88%98/">阅读全文</a></p>
-    </article>
-    
-    
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://hank-leo.github.io/post/sql/LeetCode-SQL%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/" title="LeetCode SQL刷题记录">LeetCode SQL刷题记录</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年8月27日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0'>数据库学习</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            175.【简单】组合两个表 1 select p.FirstName,p.LastName,a.City,a.State from person p left join address a on p.personid=a.personid; 176.【简单】第二高的薪水 1 select ifnull((select distinct(Salary) from Employee order by Salary desc limit 1,1),null) as SecondHighestSalary; 177.【中等】第N高的薪水 1 2 3 4 5 6 7 8 9 10 11 CREATE FUNCTION getNthHighestSalary(N INT) RETURNS INT BEGIN set n=n-1; RETURN ( # Write your MySQL query statement below. select distinct Salary as getNthHighestSalary from Employee order by Salary DESC limit N,1 ); END 181.【简单】超过经理收入的员工 1 2 select e1.Name as Employee from Employee as e1,Employee as e2……
-        </div>
-        <p class="readmore"><a href="https://hank-leo.github.io/post/sql/LeetCode-SQL%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/">阅读全文</a></p>
-    </article>
-    
-    
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://hank-leo.github.io/post/analysis/%E8%B1%86%E7%93%A3%E5%9B%BE%E4%B9%A6Top250%E8%AF%8D%E4%BA%91%E5%9B%BE%E5%B1%95%E7%A4%BA/" title="豆瓣图书Top250词云图展示">豆瓣图书Top250词云图展示</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年8月26日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%AE%9E%E6%88%98'>数据分析实战</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            项目背景 从豆瓣图书Top250抓取数据，并通过词云图展示 导入库 1 2 3 4 5 6 7 8 from lxml import etree #解析库 import time #时间 import random #随机函数 import pandas as pd import requests #请求库 import jieba #导入结巴分词 from pyecharts.charts import WordCloud from pyecharts import options as opts 数据抓取 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48……
-        </div>
-        <p class="readmore"><a href="https://hank-leo.github.io/post/analysis/%E8%B1%86%E7%93%A3%E5%9B%BE%E4%B9%A6Top250%E8%AF%8D%E4%BA%91%E5%9B%BE%E5%B1%95%E7%A4%BA/">阅读全文</a></p>
-    </article>
-    
-    
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://hank-leo.github.io/post/analysis/%E8%82%AF%E5%BE%B7%E5%9F%BA%E9%97%A8%E5%BA%97%E5%88%86%E5%B8%83%E5%8F%AF%E8%A7%86%E5%8C%96%E5%88%86%E6%9E%90/" title="肯德基门店分布可视化分析">肯德基门店分布可视化分析</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年8月26日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%AE%9E%E6%88%98'>数据分析实战</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            项目介绍 背景：肯德基快餐公司是全球大型连锁快餐企业，截止至2020年已进驻了中国140多个城市，门店突破7000家。 根据门店地址，使用Pyecharts对肯德基门店分布进行可视化分析： 可视化需要解决的思路: 需要把门店地址转换成经纬度 需要根据省份、城市、详细地址信息得到经纬度 构造G……
-        </div>
-        <p class="readmore"><a href="https://hank-leo.github.io/post/analysis/%E8%82%AF%E5%BE%B7%E5%9F%BA%E9%97%A8%E5%BA%97%E5%88%86%E5%B8%83%E5%8F%AF%E8%A7%86%E5%8C%96%E5%88%86%E6%9E%90/">阅读全文</a></p>
-    </article>
-    
-    
-    
 
 
 
@@ -347,6 +340,10 @@
     
     <li >
         <a href="https://hank-leo.github.io/post/page/6/">6</a>
+    </li>
+    
+    <li >
+        <a href="https://hank-leo.github.io/post/page/7/">7</a>
     </li>
     
 
@@ -405,6 +402,10 @@
     </li>
     
     <li>
+        <a href="https://hank-leo.github.io/post/excel/Excel%E5%90%88%E5%B9%B6/" title="Excel合并">Excel合并</a>
+    </li>
+    
+    <li>
         <a href="https://hank-leo.github.io/post/python/GUI-Tkinter%E7%99%BB%E9%99%86/" title="GUI Tkinter登陆">GUI Tkinter登陆</a>
     </li>
     
@@ -413,31 +414,27 @@
     </li>
     
     <li>
-        <a href="https://hank-leo.github.io/post/analysis/Tableau%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AE%80%E5%8D%95%E6%A1%88%E4%BE%8B/" title="Tableau的一些简单案例">Tableau的一些简单案例</a>
+        <a href="https://hank-leo.github.io/post/excel/Python%E5%BF%AB%E9%80%9F%E8%AE%BE%E7%BD%AEExcel%E8%A1%A8%E6%A0%BC%E8%BE%B9%E6%A1%86/" title="Python快速设置Excel表格边框">Python快速设置Excel表格边框</a>
     </li>
     
     <li>
-        <a href="https://hank-leo.github.io/post/go/Go%E7%88%AC%E8%99%AB/" title="Go爬虫">Go爬虫</a>
+        <a href="https://hank-leo.github.io/post/algorithm/Python%E7%AE%97%E6%B3%95%E4%BE%8B11%E6%95%B4%E6%95%B0%E6%8E%92%E5%BA%8F/" title="Python算法|例11整数排序">Python算法|例11整数排序</a>
     </li>
     
     <li>
-        <a href="https://hank-leo.github.io/post/sql/%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9D%A2%E8%AF%95%E7%9F%A5%E8%AF%86%E7%82%B9/" title="数据库面试知识点">数据库面试知识点</a>
+        <a href="https://hank-leo.github.io/post/algorithm/Python%E7%AE%97%E6%B3%95%E4%BE%8B16%E6%95%B0%E5%AD%97%E5%88%A4%E6%96%AD/" title="Python算法|例16数字判断">Python算法|例16数字判断</a>
     </li>
     
     <li>
-        <a href="https://hank-leo.github.io/post/sql/LeetCode-SQL%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/" title="LeetCode SQL刷题记录">LeetCode SQL刷题记录</a>
+        <a href="https://hank-leo.github.io/post/algorithm/Python%E7%AE%97%E6%B3%95%E4%BE%8B2%E5%88%A4%E6%96%AD%E5%B9%B3%E6%96%B9%E6%95%B0/" title="Python算法|例2判断平方数">Python算法|例2判断平方数</a>
     </li>
     
     <li>
-        <a href="https://hank-leo.github.io/post/spider/%E7%88%AC%E5%8F%96%E6%9F%90%E8%91%97%E5%90%8D%E5%BF%AB%E9%A4%90%E5%B7%A8%E5%A4%B4%E9%97%A8%E5%BA%97%E6%95%B0%E6%8D%AE%E5%AE%9E%E6%88%98/" title="爬取某著名快餐巨头门店数据实战">爬取某著名快餐巨头门店数据实战</a>
+        <a href="https://hank-leo.github.io/post/algorithm/Python%E7%AE%97%E6%B3%95%E4%BE%8B3%E6%A3%80%E6%B5%8B2%E7%9A%84%E5%B9%82%E6%AC%A1/" title="Python算法|例3检测2的幂次">Python算法|例3检测2的幂次</a>
     </li>
     
     <li>
-        <a href="https://hank-leo.github.io/post/spider/Aiohttp&#43;PyMongo%E5%BC%82%E6%AD%A5%E6%A1%88%E4%BE%8B%E5%AE%9E%E6%88%98/" title="Aiohttp&#43;PyMongo异步案例实战">Aiohttp&#43;PyMongo异步案例实战</a>
-    </li>
-    
-    <li>
-        <a href="https://hank-leo.github.io/post/spider/PyMongo&#43;PyQuery%E6%A1%88%E4%BE%8B%E5%AE%9E%E6%88%98/" title="PyMongo&#43;PyQuery案例实战">PyMongo&#43;PyQuery案例实战</a>
+        <a href="https://hank-leo.github.io/post/algorithm/Python%E7%AE%97%E6%B3%95%E4%BE%8B4%E6%B1%82%E5%B9%B3%E6%96%B9%E6%A0%B9/" title="Python算法|例4求平方根">Python算法|例4求平方根</a>
     </li>
     
 </ul>
@@ -476,6 +473,8 @@
     <li><a href="https://hank-leo.github.io/categories/%E7%88%AC%E8%99%AB%E5%AE%9E%E6%88%98/">爬虫实战 (4)</a></li>
     
     <li><a href="https://hank-leo.github.io/categories/%E7%88%AC%E8%99%AB%E5%AE%9E%E6%88%98%E5%AE%9E%E6%88%98/">爬虫实战实战 (1)</a></li>
+    
+    <li><a href="https://hank-leo.github.io/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/">算法学习 (5)</a></li>
     
     <li><a href="https://hank-leo.github.io/categories/%E7%BB%9F%E8%AE%A1%E5%AD%A6/">统计学 (2)</a></li>
     

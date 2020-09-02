@@ -76,6 +76,190 @@
     <article class="post">
         <header>
             <h1 class="post-title">
+                <a href="https://hank-leo.github.io/post/sql/%E7%89%9B%E5%AE%A2%E7%BD%91SQL%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/" title="牛客网SQL刷题记录">牛客网SQL刷题记录</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年8月26日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0'>数据库学习</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            1.查找最晚入职员工的所有信息 1 2 select * from employees order by hire_date desc limit 0,1; 2.查找入职员工时间排名倒数第三的员工所有信息 1 2 select * from employees order by hire_date desc limit 2,1; 3.查找当前薪水详情以及部门编号dept_no 1 2 3 select salaries.*,dept_manager.dept_no from salaries,dept_manager on salaries.emp_no = dept_manager.emp_no where salaries.to_date=&#39;9999-01-01&#39; and dept_manager.to_date=&#39;9999-01-01&#39;; 4.查找所有已经分配部门的员工的last_name和first_name以及de……
+        </div>
+        <p class="readmore"><a href="https://hank-leo.github.io/post/sql/%E7%89%9B%E5%AE%A2%E7%BD%91SQL%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://hank-leo.github.io/post/analysis/%E8%82%AF%E5%BE%B7%E5%9F%BA%E9%97%A8%E5%BA%97%E5%88%86%E5%B8%83%E5%8F%AF%E8%A7%86%E5%8C%96%E5%88%86%E6%9E%90/" title="肯德基门店分布可视化分析">肯德基门店分布可视化分析</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年8月26日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%AE%9E%E6%88%98'>数据分析实战</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            项目介绍 背景：肯德基快餐公司是全球大型连锁快餐企业，截止至2020年已进驻了中国140多个城市，门店突破7000家。 根据门店地址，使用Pyecharts对肯德基门店分布进行可视化分析： 可视化需要解决的思路: 需要把门店地址转换成经纬度 需要根据省份、城市、详细地址信息得到经纬度 构造G……
+        </div>
+        <p class="readmore"><a href="https://hank-leo.github.io/post/analysis/%E8%82%AF%E5%BE%B7%E5%9F%BA%E9%97%A8%E5%BA%97%E5%88%86%E5%B8%83%E5%8F%AF%E8%A7%86%E5%8C%96%E5%88%86%E6%9E%90/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://hank-leo.github.io/post/analysis/%E8%B1%86%E7%93%A3%E5%9B%BE%E4%B9%A6Top250%E8%AF%8D%E4%BA%91%E5%9B%BE%E5%B1%95%E7%A4%BA/" title="豆瓣图书Top250词云图展示">豆瓣图书Top250词云图展示</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年8月26日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%AE%9E%E6%88%98'>数据分析实战</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            项目背景 从豆瓣图书Top250抓取数据，并通过词云图展示 导入库 1 2 3 4 5 6 7 8 from lxml import etree #解析库 import time #时间 import random #随机函数 import pandas as pd import requests #请求库 import jieba #导入结巴分词 from pyecharts.charts import WordCloud from pyecharts import options as opts 数据抓取 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48……
+        </div>
+        <p class="readmore"><a href="https://hank-leo.github.io/post/analysis/%E8%B1%86%E7%93%A3%E5%9B%BE%E4%B9%A6Top250%E8%AF%8D%E4%BA%91%E5%9B%BE%E5%B1%95%E7%A4%BA/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://hank-leo.github.io/post/python/python%E7%BB%83%E4%B9%A0/" title="Python练习">Python练习</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年12月11日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://hank-leo.github.io/categories/Python%E5%AD%A6%E4%B9%A0'>Python学习</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            实例001：数字组合 题目： 有四个数字：1、2、3、4，能组成多少个互不相同且无重复数字的三位数？各是多少？ 程序分析： 遍历全部可能，把有重复的剃掉。 total=0 for i in range(1,5): for j in range(1,5): for k in range(1,5): if ((i!=j)and(j!=k)and(k!=i)): print(i,j,k) total+=1 print(total) 简便方法： 用itertools中的permutations即可。 import itertools sum2=0 a=[1,2,3,4] for i in itertools.permutations(a,3): print(i) sum2+=1 print(sum2) 实例002：……
+        </div>
+        <p class="readmore"><a href="https://hank-leo.github.io/post/python/python%E7%BB%83%E4%B9%A0/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://hank-leo.github.io/post/python/Python%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Python面试题">Python面试题</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年12月10日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://hank-leo.github.io/categories/%E9%9D%A2%E8%AF%95%E9%A2%98'>面试题</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            Python语言特性 1 Python的函数参数传递 看两个例子: a = 1 def fun(a): a = 2 fun(a) print a # 1 a = [] def fun(a): a.append(1) fun(a) print a # [1] 所有的变量都可以理解是内存中一个对象的“引用”，或者，也可以看似c中void*的感觉。 通过id来看引用a的内存地址可以比较理解： a = 1 def fun(a): print &quot;func_in&quot;,id(a) # func_in 41322472 a = 2 print &quot;re-point&quot;,id(a), id(2) # re-point 41322448 41322448 print &quot;func_out&quot;,id(a),……
+        </div>
+        <p class="readmore"><a href="https://hank-leo.github.io/post/python/Python%E9%9D%A2%E8%AF%95%E9%A2%98/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://hank-leo.github.io/post/spider/%E7%88%AC%E8%99%AB%E9%9D%A2%E8%AF%95%E9%A2%98/" title="爬虫面试题">爬虫面试题</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年12月10日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://hank-leo.github.io/categories/%E9%9D%A2%E8%AF%95%E9%A2%98'>面试题</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            基础 http协议, tcp协议 top 命令 Linux/Mac 下虚拟内存 (Swap) 用过的linux命令，具体细节比如crontab命令报错可能有哪些原因 线程、进程、协程 Async 相关、事件驱动相关 阻塞、非阻塞 Python GIL 布隆过滤器原理：如何实现、一般要几次哈希函数 MySQL的索引底层 实战 抓取天猫超市上某些商品配送省份信息 (主要需……
+        </div>
+        <p class="readmore"><a href="https://hank-leo.github.io/post/spider/%E7%88%AC%E8%99%AB%E9%9D%A2%E8%AF%95%E9%A2%98/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://hank-leo.github.io/post/blog/%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" title="使用hexo搭建个人博客">使用hexo搭建个人博客</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年12月6日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://hank-leo.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA'>博客搭建</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            新建项目 首先在 GitHub 新建一个仓库Repository, 名称为username.githu.io, 注意这个名比较特殊, 必须要是github.io为后缀结尾的。要与用户名一致，比如ihankleo的 GitHub 用户名就叫ihankleo.github.io, 新建完成之后就可以进行后续操作了。 在此之……
+        </div>
+        <p class="readmore"><a href="https://hank-leo.github.io/post/blog/%E4%BD%BF%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://hank-leo.github.io/post/scrapy/Scrapy%E6%A1%86%E6%9E%B6-Scrapy&#43;MongoDB%E5%AE%9E%E6%88%98%E6%8A%93%E5%8F%96%E5%B9%B6%E4%BF%9D%E5%AD%98IT%E4%B9%8B%E5%AE%B6%E5%8D%9A%E5%AE%A2%E6%96%B0%E9%97%BB/" title="Scrapy框架:Scrapy&#43;MongoDB实战:抓取并保存IT之家博客新闻">Scrapy框架:Scrapy&#43;MongoDB实战:抓取并保存IT之家博客新闻</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年12月6日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://hank-leo.github.io/categories/Scrapy%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0'>Scrapy框架学习</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            创建项目 scrapy startproject ithome cd ithome scrapy genspider -t crawl news ithome.com 编写items.py文件 # -*- coding: utf-8 -*- # Define here the models for your scraped items # # See documentation in: # https://doc.scrapy.org/en/latest/topics/items.html import scrapy class IthomeItem(scrapy.Item): # define the fields for your item here like: # name = scrapy.Field() #文章标题 title = scrapy.Field() #文章url url = scrapy.Field() #来源 source = scrapy.Field() #来源url source_url = scrapy.Field() #发布日期 release_大特＝ scrapy.Field() #作者 author = scrapy.Field() #关键词 key_words = scrapy.Field() 编写爬虫文件 news.py # -*- coding: utf-8 -*- import……
+        </div>
+        <p class="readmore"><a href="https://hank-leo.github.io/post/scrapy/Scrapy%E6%A1%86%E6%9E%B6-Scrapy&#43;MongoDB%E5%AE%9E%E6%88%98%E6%8A%93%E5%8F%96%E5%B9%B6%E4%BF%9D%E5%AD%98IT%E4%B9%8B%E5%AE%B6%E5%8D%9A%E5%AE%A2%E6%96%B0%E9%97%BB/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
                 <a href="https://hank-leo.github.io/post/scrapy/Scrapy%E6%A1%86%E6%9E%B6%E9%80%9A%E7%94%A8%E7%88%AC%E8%99%AB/" title="Scrapy框架:通用爬虫">Scrapy框架:通用爬虫</a>
             </h1>
         </header>
@@ -119,190 +303,6 @@
         <p class="readmore"><a href="https://hank-leo.github.io/post/app/%E4%BD%BF%E7%94%A8Airtest%E8%BF%9B%E8%A1%8CApp%E7%88%AC%E8%99%AB/">阅读全文</a></p>
     </article>
     
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://hank-leo.github.io/post/spider/%E5%AD%98%E5%82%A8%E6%95%B0%E6%8D%AE%E4%B9%8Bexcel/" title="存储数据之excel">存储数据之excel</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2019年12月6日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='https://hank-leo.github.io/categories/%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0'>爬虫学习</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            第一种方式是使用pandas库 def save(data): data = pd.DataFrame(data) data.to_excel(index=False) 第二种方式是使用openpyxl库 import openpyxl def save(title, head, data): outwb = openpyxl.Workbook() outws = outwb.active outws.title=title for h in range(len(head)): outws.cell(1,h+1).value=head[h] for row in data: outws.append(row) outwb.save(&quot;path&quot;) 第三种方式是使用xlwt库 def save(title, head, data): workbook = xlwt.Workbook(encoding='utf8') sheet = workbook.add_sheet(title, cell_overwrite_ok=True) for h in range(len(head)): sheet.write(0, h, head[h]) i = 1 for list in data: j = 0 for data in list: sheet.write(i, j, data) j += 1 i += 1 workbook.save(path)……
-        </div>
-        <p class="readmore"><a href="https://hank-leo.github.io/post/spider/%E5%AD%98%E5%82%A8%E6%95%B0%E6%8D%AE%E4%B9%8Bexcel/">阅读全文</a></p>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://hank-leo.github.io/post/spider/%E8%A7%A3%E6%9E%90%E4%B8%8E%E6%8F%90%E5%8F%96%E6%95%B0%E6%8D%AE%E4%B9%8Bre/" title="解析与提取数据之re">解析与提取数据之re</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2019年12月6日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='https://hank-leo.github.io/categories/%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0'>爬虫学习</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            对比xpath, re对文本结构的数据处理更加灵活 #导入包 import re def get_data(response): #提取内容 title = re.findall(&quot;^&lt;span&gt;(.*?)&lt;/span&gt;&quot;,response, re.S)……
-        </div>
-        <p class="readmore"><a href="https://hank-leo.github.io/post/spider/%E8%A7%A3%E6%9E%90%E4%B8%8E%E6%8F%90%E5%8F%96%E6%95%B0%E6%8D%AE%E4%B9%8Bre/">阅读全文</a></p>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://hank-leo.github.io/post/spider/%E8%A7%A3%E6%9E%90%E4%B8%8E%E6%8F%90%E5%8F%96%E6%95%B0%E6%8D%AE%E4%B9%8Bxpath/" title="解析与提取数据之xpath">解析与提取数据之xpath</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2019年12月6日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='https://hank-leo.github.io/categories/%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0'>爬虫学习</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            日常工作主要使用xpath进行数据的解析和提取，归于xpath有着强大的功能，适应大多数的网页结构。 #导入包 from lxml import etree def get_data(response): html=etree.HTML(response) #提取属性值 url=html.xpath(&quot;//div[@href]&quot;) #提取文本 title=html.xpath(&quot;//div[@class='title']/text()&quot;)……
-        </div>
-        <p class="readmore"><a href="https://hank-leo.github.io/post/spider/%E8%A7%A3%E6%9E%90%E4%B8%8E%E6%8F%90%E5%8F%96%E6%95%B0%E6%8D%AE%E4%B9%8Bxpath/">阅读全文</a></p>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://hank-leo.github.io/post/sql/MongoDB%E7%9A%84%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8/" title="MongoDB的实际应用">MongoDB的实际应用</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2019年12月5日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0'>数据库学习</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            MongoDB基本操作 1.数据库操作 使用use DATABASE_NAME创建数据库 use maitian 如果数据库不存在，就创建数据库，否则切换到指定的数据库 使用show dbs查看所有数据库 show dbs 使用db.dropDatabase()删除数据库 use maitian db.dropDatabase() 2.集合操作 在maitian数据库中创建名为zuf……
-        </div>
-        <p class="readmore"><a href="https://hank-leo.github.io/post/sql/MongoDB%E7%9A%84%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8/">阅读全文</a></p>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://hank-leo.github.io/post/python/xpath%E7%9A%84%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8/" title="Xpath的实际应用">Xpath的实际应用</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2019年12月5日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='https://hank-leo.github.io/categories/Python%E5%AD%A6%E4%B9%A0'>Python学习</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            xpath中使用contains xpath(span[contanins(@class, 'xxx')]) Xpath如何选择不包含某一个属性的节点? 这里可以用到 not 例如排除一个属性的节点可以使用 //tbody/tr[not(@class)] 排除一个或者两个属性可以使用 //tbody/tr[not(@class or @id)] xpath按序选择 有时候我们在选择的时候可能某些属性同时匹配了多个节点，但是我们只想要其中的某个节点，如第二个节点，或者最……
-        </div>
-        <p class="readmore"><a href="https://hank-leo.github.io/post/python/xpath%E7%9A%84%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8/">阅读全文</a></p>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://hank-leo.github.io/post/blog/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" title="使用hugo搭建个人博客">使用hugo搭建个人博客</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2019年12月5日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='https://hank-leo.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA'>博客搭建</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            安装 在这个页面下载安装https://github.com/gohugoio/hugo/releases 下载完成后解压，将解压出来的可执行文件，放到自定义目录下，并将选择的路径放入环境变量path中 初始化 下面开始存放我们的博客，在选好的路径下执行 hugo new site ihankleo.github.io 命令执行完会创建一个名为m……
-        </div>
-        <p class="readmore"><a href="https://hank-leo.github.io/post/blog/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">阅读全文</a></p>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://hank-leo.github.io/post/python/%E5%88%97%E8%A1%A8%E7%9A%84%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8/" title="列表的实际应用">列表的实际应用</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2019年12月5日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='https://hank-leo.github.io/categories/Python%E5%AD%A6%E4%B9%A0'>Python学习</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            列表合并保留最大长度 import itertools w, x, y, z = [], [1], [2, 3], [4, 5, 6] longest_wxyz = itertools.zip_longest(w, x, y, z) print(list(longest_wxyz)) 结果: [(None, 1, 2, 4), (None, None, 3, 5), (None, None, None, 6)] 列表元素替换 lst = ['1','2','3'] rep = ['4' if x == '2' else x for x in lst] print(rep) 结果: [&lsquo;1&rsquo;, &lsquo;4&rsquo;, &lsquo;3&rsquo;] 列表进行去重操作 一般的去重操作后是出现乱序的情况 t=['8','7','2','中国','China','中国','1','4']……
-        </div>
-        <p class="readmore"><a href="https://hank-leo.github.io/post/python/%E5%88%97%E8%A1%A8%E7%9A%84%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8/">阅读全文</a></p>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://hank-leo.github.io/post/python/%E5%AD%97%E5%85%B8%E7%9A%84%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8/" title="字典的实际应用">字典的实际应用</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2019年12月5日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='https://hank-leo.github.io/categories/Python%E5%AD%A6%E4%B9%A0'>Python学习</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            1.字典排序 利用key排序 d = {'d1':2, 'd2':4, 'd4':1,'d3':3,} for k in sorted(d): print(k,d[k]) d1 2 d2 4 d3 3 d4 1 利用value排序：getitem d = {'d1':2, 'd2':4, 'd4':1,'d3':3,} for k in sorted(d,key=d.__getitem__): print(k,d[k]) d4 1 d1 2 d3 3 d2 4 反序: reverse=True d = {'d1':2, 'd2':4, 'd4':1,'d3':3,} for k in sorted(d,key=d.__getitem__,reverse=True): print(k,d[k]) d2 4 d3 3 d1 2 d4 1 对dict_items进行排序 d = {'d1':2, 'd2':4, 'd4':1,'d3':3,} res = sorted(d.items(),key=lambda d:d[1],reverse=True) print(res) [(&lsquo;d2&rsquo;, 4), (&lsquo;d3&rsquo;, 3), (&lsquo;d1&rsquo;, 2), (&lsquo;d4&rsquo;, 1)] 2.两个字典（dict）合并 dict1 = { &quot;name&quot;:&quot;owen&quot;, &quot;age&quot;:……
-        </div>
-        <p class="readmore"><a href="https://hank-leo.github.io/post/python/%E5%AD%97%E5%85%B8%E7%9A%84%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8/">阅读全文</a></p>
-    </article>
-    
     
 
 
@@ -337,6 +337,10 @@
     
     <li >
         <a href="https://hank-leo.github.io/page/6/">6</a>
+    </li>
+    
+    <li >
+        <a href="https://hank-leo.github.io/page/7/">7</a>
     </li>
     
 
@@ -395,6 +399,10 @@
     </li>
     
     <li>
+        <a href="https://hank-leo.github.io/post/excel/Excel%E5%90%88%E5%B9%B6/" title="Excel合并">Excel合并</a>
+    </li>
+    
+    <li>
         <a href="https://hank-leo.github.io/post/python/GUI-Tkinter%E7%99%BB%E9%99%86/" title="GUI Tkinter登陆">GUI Tkinter登陆</a>
     </li>
     
@@ -403,31 +411,27 @@
     </li>
     
     <li>
-        <a href="https://hank-leo.github.io/post/analysis/Tableau%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AE%80%E5%8D%95%E6%A1%88%E4%BE%8B/" title="Tableau的一些简单案例">Tableau的一些简单案例</a>
+        <a href="https://hank-leo.github.io/post/excel/Python%E5%BF%AB%E9%80%9F%E8%AE%BE%E7%BD%AEExcel%E8%A1%A8%E6%A0%BC%E8%BE%B9%E6%A1%86/" title="Python快速设置Excel表格边框">Python快速设置Excel表格边框</a>
     </li>
     
     <li>
-        <a href="https://hank-leo.github.io/post/go/Go%E7%88%AC%E8%99%AB/" title="Go爬虫">Go爬虫</a>
+        <a href="https://hank-leo.github.io/post/algorithm/Python%E7%AE%97%E6%B3%95%E4%BE%8B11%E6%95%B4%E6%95%B0%E6%8E%92%E5%BA%8F/" title="Python算法|例11整数排序">Python算法|例11整数排序</a>
     </li>
     
     <li>
-        <a href="https://hank-leo.github.io/post/sql/%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9D%A2%E8%AF%95%E7%9F%A5%E8%AF%86%E7%82%B9/" title="数据库面试知识点">数据库面试知识点</a>
+        <a href="https://hank-leo.github.io/post/algorithm/Python%E7%AE%97%E6%B3%95%E4%BE%8B16%E6%95%B0%E5%AD%97%E5%88%A4%E6%96%AD/" title="Python算法|例16数字判断">Python算法|例16数字判断</a>
     </li>
     
     <li>
-        <a href="https://hank-leo.github.io/post/sql/LeetCode-SQL%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/" title="LeetCode SQL刷题记录">LeetCode SQL刷题记录</a>
+        <a href="https://hank-leo.github.io/post/algorithm/Python%E7%AE%97%E6%B3%95%E4%BE%8B2%E5%88%A4%E6%96%AD%E5%B9%B3%E6%96%B9%E6%95%B0/" title="Python算法|例2判断平方数">Python算法|例2判断平方数</a>
     </li>
     
     <li>
-        <a href="https://hank-leo.github.io/post/spider/%E7%88%AC%E5%8F%96%E6%9F%90%E8%91%97%E5%90%8D%E5%BF%AB%E9%A4%90%E5%B7%A8%E5%A4%B4%E9%97%A8%E5%BA%97%E6%95%B0%E6%8D%AE%E5%AE%9E%E6%88%98/" title="爬取某著名快餐巨头门店数据实战">爬取某著名快餐巨头门店数据实战</a>
+        <a href="https://hank-leo.github.io/post/algorithm/Python%E7%AE%97%E6%B3%95%E4%BE%8B3%E6%A3%80%E6%B5%8B2%E7%9A%84%E5%B9%82%E6%AC%A1/" title="Python算法|例3检测2的幂次">Python算法|例3检测2的幂次</a>
     </li>
     
     <li>
-        <a href="https://hank-leo.github.io/post/spider/Aiohttp&#43;PyMongo%E5%BC%82%E6%AD%A5%E6%A1%88%E4%BE%8B%E5%AE%9E%E6%88%98/" title="Aiohttp&#43;PyMongo异步案例实战">Aiohttp&#43;PyMongo异步案例实战</a>
-    </li>
-    
-    <li>
-        <a href="https://hank-leo.github.io/post/spider/PyMongo&#43;PyQuery%E6%A1%88%E4%BE%8B%E5%AE%9E%E6%88%98/" title="PyMongo&#43;PyQuery案例实战">PyMongo&#43;PyQuery案例实战</a>
+        <a href="https://hank-leo.github.io/post/algorithm/Python%E7%AE%97%E6%B3%95%E4%BE%8B4%E6%B1%82%E5%B9%B3%E6%96%B9%E6%A0%B9/" title="Python算法|例4求平方根">Python算法|例4求平方根</a>
     </li>
     
 </ul>
@@ -466,6 +470,8 @@
     <li><a href="https://hank-leo.github.io/categories/%E7%88%AC%E8%99%AB%E5%AE%9E%E6%88%98/">爬虫实战 (4)</a></li>
     
     <li><a href="https://hank-leo.github.io/categories/%E7%88%AC%E8%99%AB%E5%AE%9E%E6%88%98%E5%AE%9E%E6%88%98/">爬虫实战实战 (1)</a></li>
+    
+    <li><a href="https://hank-leo.github.io/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/">算法学习 (5)</a></li>
     
     <li><a href="https://hank-leo.github.io/categories/%E7%BB%9F%E8%AE%A1%E5%AD%A6/">统计学 (2)</a></li>
     

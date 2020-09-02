@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>算法学习 on Hank&#39;s Blog</title>
+    <link>https://hank-leo.github.io/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/</link>
+    <description>Recent content in 算法学习 on Hank&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 01 Sep 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://hank-leo.github.io/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Python算法|例11整数排序</title>
+      <link>https://hank-leo.github.io/post/algorithm/Python%E7%AE%97%E6%B3%95%E4%BE%8B11%E6%95%B4%E6%95%B0%E6%8E%92%E5%BA%8F/</link>
+      <pubDate>Tue, 01 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hank-leo.github.io/post/algorithm/Python%E7%AE%97%E6%B3%95%E4%BE%8B11%E6%95%B4%E6%95%B0%E6%8E%92%E5%BA%8F/</guid>
+      <description>#给出一组整数，将其按照升序排序 #例如给出[3,2,1,4,5],排序后的结果为[1,2,3,4,5] #参数A是一个整数数组 #返回一个整数数组 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 class Solution: def sortIntegers2(self,A): self.quickSort(A,0,len(A)-1) def quickSort(self,A,start,end): if start&amp;gt;=end: return left,right=start,end pivot=A[int((start+end)/2)] while left&amp;lt;=right: while left&amp;lt;=right and A[left] &amp;lt; pivot: left += 1 while left&amp;lt;=right and A[right]&amp;gt;pivot: right-=1 if left&amp;lt;=right: A[left],A[right]=A[right],A[left] left+=1 right-=1 self .quickSort(A,start,right) self.quickSort(A,left,end) #主函数 if</description>
+    </item>
+    
+    <item>
+      <title>Python算法|例16数字判断</title>
+      <link>https://hank-leo.github.io/post/algorithm/Python%E7%AE%97%E6%B3%95%E4%BE%8B16%E6%95%B0%E5%AD%97%E5%88%A4%E6%96%AD/</link>
+      <pubDate>Tue, 01 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hank-leo.github.io/post/algorithm/Python%E7%AE%97%E6%B3%95%E4%BE%8B16%E6%95%B0%E5%AD%97%E5%88%A4%E6%96%AD/</guid>
+      <description>问题描述 给定一个字符串，验证其是否为数字 问题示例 0判断为true 0.1判断为true abc判断为false 1 a判断为false 2e10判断为true python代码实现 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 #参数s是一个字符串，返回一个布尔值</description>
+    </item>
+    
+    <item>
+      <title>Python算法|例2判断平方数</title>
+      <link>https://hank-leo.github.io/post/algorithm/Python%E7%AE%97%E6%B3%95%E4%BE%8B2%E5%88%A4%E6%96%AD%E5%B9%B3%E6%96%B9%E6%95%B0/</link>
+      <pubDate>Tue, 01 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hank-leo.github.io/post/algorithm/Python%E7%AE%97%E6%B3%95%E4%BE%8B2%E5%88%A4%E6%96%AD%E5%B9%B3%E6%96%B9%E6%95%B0/</guid>
+      <description>#示例: 输入num=16, 输出True, sqrt(16)=4; 输入num=15, 输出False, sqrt(15)=3.87 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 class Solution: def isPerfectSquare(self, num): l=0 r=num while (r-l &amp;gt; 1): mid=(l + r) / 2 if (mid * mid &amp;lt;= num): l = mid else: r = mid ans = 1 if ( l * l &amp;lt; num ): ans = r return ans * ans == num #主函数 if __name__ == &amp;#34;__main__&amp;#34;: num = 16 print(&amp;#34;初始值: &amp;#34;, num) solution = Solution()</description>
+    </item>
+    
+    <item>
+      <title>Python算法|例3检测2的幂次</title>
+      <link>https://hank-leo.github.io/post/algorithm/Python%E7%AE%97%E6%B3%95%E4%BE%8B3%E6%A3%80%E6%B5%8B2%E7%9A%84%E5%B9%82%E6%AC%A1/</link>
+      <pubDate>Tue, 01 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hank-leo.github.io/post/algorithm/Python%E7%AE%97%E6%B3%95%E4%BE%8B3%E6%A3%80%E6%B5%8B2%E7%9A%84%E5%B9%82%E6%AC%A1/</guid>
+      <description>1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 class Solution: def checkPowerOf2(self, n): ans=1 for i in range(31): if ans == n: return True ans = ans &amp;lt;&amp;lt; 1 return False if __name__==&amp;#34;__main__&amp;#34;: temp = Solution() nums1 = 16 nums2 = 17 print((&amp;#34;输入: &amp;#34; + str(nums1))) print((&amp;#34;输出: &amp;#34; + str(temp.checkPowerOf2(nums1)))) print((&amp;#34;输入: &amp;#34; + str(nums2))) print((&amp;#34;输出: &amp;#34; + str(temp.checkPowerOf2(nums2)))) 结果如下: 输入: 16 输出: True 输入: 17</description>
+    </item>
+    
+    <item>
+      <title>Python算法|例4求平方根</title>
+      <link>https://hank-leo.github.io/post/algorithm/Python%E7%AE%97%E6%B3%95%E4%BE%8B4%E6%B1%82%E5%B9%B3%E6%96%B9%E6%A0%B9/</link>
+      <pubDate>Tue, 01 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hank-leo.github.io/post/algorithm/Python%E7%AE%97%E6%B3%95%E4%BE%8B4%E6%B1%82%E5%B9%B3%E6%96%B9%E6%A0%B9/</guid>
+      <description>#sqrt(3)=1; sqrt(4)=2; sqrt(5)=2; sqrt(10)=3 class Solution: def sqrt(self, x): l, r = 0, x while l + 1 &amp;lt; r: m = (r + l) // 2 if m * m == x: return m elif m * m &amp;gt; x: r = m else: l = m if l * l == x: return l if r * r == x: return r return l if __name__ == &#39;__main__&#39;: temp = Solution() x1 = 5 x2 = 10 print((&amp;quot;输入:&amp;quot; + str(x1))) print((&amp;quot;输出:&amp;quot; + str(temp.sqrt(x1)))) print((&amp;quot;</description>
+    </item>
+    
+  </channel>
+</rss>
