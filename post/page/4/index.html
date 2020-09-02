@@ -60,6 +60,8 @@
                     
                     <a  href="https://hank-leo.github.io/categories/" title="分类">分类</a>
                     
+                    <a  href="https://hank-leo.github.io/about/" title="关于">关于</a>
+                    
                 </nav>
             </div>
         </div>
@@ -73,6 +75,56 @@
                 <div class="col-8" id="main">
                     
 <div class="res-cons">
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://hank-leo.github.io/post/app/%E4%BD%BF%E7%94%A8Airtest%E7%88%AC%E5%8F%96%E6%9F%90%E5%92%96%E5%95%A1app%E6%95%B0%E6%8D%AEv2/" title="使用Airtest爬取某咖啡app数据v1">使用Airtest爬取某咖啡app数据v1</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年8月26日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://hank-leo.github.io/categories/%E7%88%AC%E8%99%AB%E5%AE%9E%E6%88%98'>爬虫实战</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 # -*- encoding=utf8 -*- __author__ = &#34;Hank&#34; import os import time import json import shutil import random import requests import traceback……
+        </div>
+        <p class="readmore"><a href="https://hank-leo.github.io/post/app/%E4%BD%BF%E7%94%A8Airtest%E7%88%AC%E5%8F%96%E6%9F%90%E5%92%96%E5%95%A1app%E6%95%B0%E6%8D%AEv2/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://hank-leo.github.io/post/app/%E4%BD%BF%E7%94%A8Airtest%E7%88%AC%E5%8F%96%E6%9F%90%E5%92%96%E5%95%A1app%E6%95%B0%E6%8D%AEv1/" title="使用Airtest爬取某咖啡app数据">使用Airtest爬取某咖啡app数据</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年8月26日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://hank-leo.github.io/categories/%E7%88%AC%E8%99%AB%E5%AE%9E%E6%88%98'>爬虫实战</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 # -*- encoding=utf8 -*- __author__ = &#34;Hank&#34; from airtest.core.api import * from poco.drivers.android.uiautomation import AndroidUiautomationPoco poco = AndroidUiautomationPoco(use_airtest_input=True, screenshot_each_action=False) auto_setup(__file__) import time import random import pandas as pd page_data=[] while True: city=poco(name=&#39;com.lucky.luckyclient:id/tv_select_city&#39;).get_text() result_obj = poco(&#34;com.lucky.luckyclient:id/frameLayout&#34;).offspring(&#34;com.lucky.luckyclient:id/lv_address_list&#34;).child(&#34;android.widget.LinearLayout&#34;) for result in result_obj: brand = result.child(&#34;android.widget.LinearLayout&#34;).child(&#34;android.widget.LinearLayout&#34;).child(name=&#39;com.lucky.luckyclient:id/iv_shop_brand&#39;).get_text() name = result.child(&#34;android.widget.LinearLayout&#34;).child(&#34;android.widget.LinearLayout&#34;).child(name=&#39;com.lucky.luckyclient:id/tv_dept_name&#39;).get_text() address = result.child(&#34;android.widget.LinearLayout&#34;).child(&#34;android.widget.LinearLayout&#34;).child(name=&#39;com.lucky.luckyclient:id/tv_dept_address&#39;).get_text() city=poco(name=&#39;com.lucky.luckyclient:id/tv_select_city&#39;).get_text() data = city, name, address, brand s=str(city)+str(name)+str(address)+str(brand) if &#34;UIObjectProxy&#34; in s: pass else: page_data.append(data) print(data) end = poco(text=&#34;已经全部加载完成&#34;)……
+        </div>
+        <p class="readmore"><a href="https://hank-leo.github.io/post/app/%E4%BD%BF%E7%94%A8Airtest%E7%88%AC%E5%8F%96%E6%9F%90%E5%92%96%E5%95%A1app%E6%95%B0%E6%8D%AEv1/">阅读全文</a></p>
+    </article>
+    
     
     
     <article class="post">
@@ -275,56 +327,6 @@
     
     
     
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://hank-leo.github.io/post/spider/%E8%A7%A3%E6%9E%90%E4%B8%8E%E6%8F%90%E5%8F%96%E6%95%B0%E6%8D%AE%E4%B9%8Bre/" title="解析与提取数据之re">解析与提取数据之re</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2019年12月6日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='https://hank-leo.github.io/categories/%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0'>爬虫学习</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            对比xpath, re对文本结构的数据处理更加灵活 #导入包 import re def get_data(response): #提取内容 title = re.findall(&quot;^&lt;span&gt;(.*?)&lt;/span&gt;&quot;,response, re.S)……
-        </div>
-        <p class="readmore"><a href="https://hank-leo.github.io/post/spider/%E8%A7%A3%E6%9E%90%E4%B8%8E%E6%8F%90%E5%8F%96%E6%95%B0%E6%8D%AE%E4%B9%8Bre/">阅读全文</a></p>
-    </article>
-    
-    
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://hank-leo.github.io/post/spider/%E5%AD%98%E5%82%A8%E6%95%B0%E6%8D%AE%E4%B9%8Bexcel/" title="存储数据之excel">存储数据之excel</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2019年12月6日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='https://hank-leo.github.io/categories/%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0'>爬虫学习</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            第一种方式是使用pandas库 def save(data): data = pd.DataFrame(data) data.to_excel(index=False) 第二种方式是使用openpyxl库 import openpyxl def save(title, head, data): outwb = openpyxl.Workbook() outws = outwb.active outws.title=title for h in range(len(head)): outws.cell(1,h+1).value=head[h] for row in data: outws.append(row) outwb.save(&quot;path&quot;) 第三种方式是使用xlwt库 def save(title, head, data): workbook = xlwt.Workbook(encoding='utf8') sheet = workbook.add_sheet(title, cell_overwrite_ok=True) for h in range(len(head)): sheet.write(0, h, head[h]) i = 1 for list in data: j = 0 for data in list: sheet.write(i, j, data) j += 1 i += 1 workbook.save(path)……
-        </div>
-        <p class="readmore"><a href="https://hank-leo.github.io/post/spider/%E5%AD%98%E5%82%A8%E6%95%B0%E6%8D%AE%E4%B9%8Bexcel/">阅读全文</a></p>
-    </article>
-    
-    
-    
 
 
 
@@ -416,6 +418,14 @@
 <ul class="widget-list">
     
     <li>
+        <a href="https://hank-leo.github.io/post/analysis/Pandas%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/" title="Pandas基础操作">Pandas基础操作</a>
+    </li>
+    
+    <li>
+        <a href="https://hank-leo.github.io/post/analysis/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E7%B1%BB%E7%BD%91%E7%AB%99%E5%90%88%E9%9B%86/" title="数据分析类网站合集">数据分析类网站合集</a>
+    </li>
+    
+    <li>
         <a href="https://hank-leo.github.io/post/go/Docker%E5%AD%A6%E4%B9%A0%E4%B8%8E%E4%BD%BF%E7%94%A8/" title="Docker学习与使用">Docker学习与使用</a>
     </li>
     
@@ -447,14 +457,6 @@
         <a href="https://hank-leo.github.io/post/algorithm/Python%E7%AE%97%E6%B3%95%E4%BE%8B2%E5%88%A4%E6%96%AD%E5%B9%B3%E6%96%B9%E6%95%B0/" title="Python算法|例2判断平方数">Python算法|例2判断平方数</a>
     </li>
     
-    <li>
-        <a href="https://hank-leo.github.io/post/algorithm/Python%E7%AE%97%E6%B3%95%E4%BE%8B3%E6%A3%80%E6%B5%8B2%E7%9A%84%E5%B9%82%E6%AC%A1/" title="Python算法|例3检测2的幂次">Python算法|例3检测2的幂次</a>
-    </li>
-    
-    <li>
-        <a href="https://hank-leo.github.io/post/algorithm/Python%E7%AE%97%E6%B3%95%E4%BE%8B4%E6%B1%82%E5%B9%B3%E6%96%B9%E6%A0%B9/" title="Python算法|例4求平方根">Python算法|例4求平方根</a>
-    </li>
-    
 </ul>
     </section>
 
@@ -474,7 +476,7 @@
     
     <li><a href="https://hank-leo.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建 (3)</a></li>
     
-    <li><a href="https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%AD%A6%E4%B9%A0/">数据分析学习 (3)</a></li>
+    <li><a href="https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%AD%A6%E4%B9%A0/">数据分析学习 (5)</a></li>
     
     <li><a href="https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%AE%9E%E6%88%98/">数据分析实战 (3)</a></li>
     
@@ -565,53 +567,12 @@
     
     <a href="https://hank-leo.github.io/tags/%E7%88%AC%E8%99%AB%E9%9D%A2%E8%AF%95/">爬虫面试</a>
     
+    <a href="https://hank-leo.github.io/tags/%E8%B5%84%E6%BA%90/">资源</a>
+    
 </div>
     </section>
 
     
-<section class="widget">
-    <h3 class="widget-title">友情链接</h3>
-    <ul class="widget-list">
-        
-        <li>
-            <a target="_blank" href="http://cnblogs.hankleo.com" title="博客园">博客园</a>
-        </li>
-        
-        <li>
-            <a target="_blank" href="https://github.com/hank-leo" title="Github">Github</a>
-        </li>
-        
-        <li>
-            <a target="_blank" href="https://juejin.im/user/1257497033980263" title="掘金">掘金</a>
-        </li>
-        
-        <li>
-            <a target="_blank" href="https://gitbook.cn/gitchat/author/5b140311cfed0223b4277e19" title="GitChat">GitChat</a>
-        </li>
-        
-        <li>
-            <a target="_blank" href="https://blog.csdn.net/weixin_42247053" title="CSDN">CSDN</a>
-        </li>
-        
-        <li>
-            <a target="_blank" href="https://www.v2ex.com/member/hankleo" title="V2EX">V2EX</a>
-        </li>
-        
-        <li>
-            <a target="_blank" href="https://segmentfault.com/u/hankleo" title="Segmentfault">Segmentfault</a>
-        </li>
-        
-        <li>
-            <a target="_blank" href="https://gitee.com/hank_leo" title="Gitee">Gitee</a>
-        </li>
-        
-        <li>
-            <a target="_blank" href="https://www.infoq.cn/profile/584F08177BF384/following/user" title="InfoQ">InfoQ</a>
-        </li>
-        
-    </ul>
-</section>
-
 
     <section class="widget">
         <h3 class="widget-title">其它</h3>

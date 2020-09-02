@@ -6,10 +6,19 @@
     <description>Recent content in pandas on Hank&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 26 Aug 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 02 Sep 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://hank-leo.github.io/tags/pandas/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Pandas基础操作</title>
+      <link>https://hank-leo.github.io/post/analysis/Pandas%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Wed, 02 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hank-leo.github.io/post/analysis/Pandas%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/</guid>
+      <description>行列操作 1.修改列名 1 data.columns=[&amp;#34;columns1&amp;#34;,&amp;#34;columns2&amp;#34;,&amp;#34;columns3&amp;#34;] 2.找出空值所在行 1 2 3 data[data[&amp;#39;column1&amp;#39;].isnull()] #或者 result=data[data.isnull().T.any()] 注意isnull()的结果需要求转置之后，才能进行any()操作 非转置: data.isnull().any()，得到的每一列求any()计算的结果，输出为列的Series 转置: frame3.isnull().T.any()</description>
+    </item>
     
     <item>
       <title>利用PyQt5交互导出数据</title>

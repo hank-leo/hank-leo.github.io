@@ -59,6 +59,8 @@
                     
                     <a  href="https://hank-leo.github.io/categories/" title="分类">分类</a>
                     
+                    <a  href="https://hank-leo.github.io/about/" title="关于">关于</a>
+                    
                 </nav>
             </div>
         </div>
@@ -72,6 +74,52 @@
                 <div class="col-8" id="main">
                     
 <div class="res-cons">
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://hank-leo.github.io/post/python/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8/" title="字符串的实际应用">字符串的实际应用</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年12月5日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://hank-leo.github.io/categories/Python%E5%AD%A6%E4%B9%A0'>Python学习</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            1.判断字符串是否为小数 try: lat = float(location.split(',')[1]) lon = float(location.split(',')[0]) except ValueError: print('no number') 2.用split对字符串进行分割 str='storeId=ff8080816277aa0a0162845d48e3012b&amp;appid=wxe37b2e703155ed41&amp;transId=wxe37b2e703155ed412019-05-09%2010%3A28%3A15&amp;sign=dc8fac903b03556247659e1b548bccce&amp;timestamp=2019-05-09%2010%3A28%3A15&amp;memberId=ff8080816a889e71016a9a68a6c55a37&amp;cliqueId=-1&amp;cliqueMemberId=-1&amp;useClique=0&amp;enterpriseId=ff808081624e60f601625c50a30900ce&amp;unionid=oLWn80pR0DtSJXfnO_1O4ZOzfvAE&amp;openid=oZe8D5gmPcPANw4kNNcG8mlAW1mI&amp;launchOptions=%7B%22path%22%3A%22%2Fpages%2Fmall%2Fmall-index%2Fmall-index%22%2C%22query%22%3A%7B%7D%2C%22scene%22%3A1102%2C%22referrerInfo%22%3A%7B%22appId%22%3A%22wx97e5123eb6041454%22%7D%7D' str2=str.split('&amp;') for i in str2: print('&quot;'+i.split('=')[0]+'&quot;:&quot;'+i.split('=')[1]+'&quot;,') 结果如下： &ldquo;storeId&rdquo;:&ldquo;ff8080816277aa0a0162845d48e3012b&rdquo;, &ldquo;appid&rdquo;:&ldquo;wxe37b2e703155ed41&rdquo;, &ldquo;transId&rdquo;:&ldquo;wxe37b2e703155ed412019-05-09%2010%3A28%3A15&rdquo;, &ldquo;sign&rdquo;:&ldquo;dc8fac903b03556247659e1b548bccce&rdquo;, &ldquo;timestamp&rdquo;:&ldquo;2019-05-09%2010%3A28%3A15&rdquo;, &ldquo;memberId&rdquo;:&ldquo;ff8080816a889e71016a9a68a6c55a37&rdquo;, &ldquo;cliqueId&rdquo;:&quot;-1&rdquo;, &ldquo;cliqueMemberId&rdquo;:&quot;-1&rdquo;, &ldquo;useClique&rdquo;:&ldquo;0&rdquo;, &ldquo;enterpriseId&rdquo;:&ldquo;ff808081624e60f601625c50a30900ce&rdquo;, &ldquo;unionid&rdquo;:&ldquo;oLWn80pR0DtSJXfnO_1O4ZOzfvAE&rdquo;, &ldquo;openid&rdquo;:&ldquo;oZe8D5gmPcPANw4kNNcG8mlAW1mI&rdquo;, &ldquo;launchOptions&rdquo;:&quot;%7B%22path%22%3A%22%2Fpages%2Fmall%2Fmall-index%2Fmall-index%22%2C%22query%22%3A%7B%7D%2C%22scene%22%3A1102%2C%22referrerInfo%22%3A%7B%22appId%22%3A%22wx97e5123eb6041454%22%7D%7D&rdquo;, 3.python检测字符串乱码 import chardet f=open('test.txt','rb') f_read=f.read() f_charInfo=chardet.detect(f_read) print(f_charInfo) # f_charInfo的输出是这样的的一个字典{'confidence': 0.99, 'encoding': 'utf-8'} 4.将逗号分隔的字符串转换为P……
+        </div>
+        <p class="readmore"><a href="https://hank-leo.github.io/post/python/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://hank-leo.github.io/post/python/%E6%AD%A3%E5%88%99%E7%9A%84%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8/" title="正则的实际应用">正则的实际应用</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年12月5日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://hank-leo.github.io/categories/Python%E5%AD%A6%E4%B9%A0'>Python学习</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            grep hank@hank:~$ cat grep.txt ooxx121212121ooxx ooxx 12121212 oox 12121212 1212 ooxx 1212 oo3xx oo4xx ooWxx oomxx $ooxx oo1234xx ooxyzxx hank@hank:~$ grep &quot;ooxx&quot; grep.txt ooxx121212121ooxx ooxx 12121212 1212 ooxx 1212 $ooxx hank@hank:~$ grep &quot;[34]&quot; grep.txt oo3xx oo4xx oo1234xx hank@hank:~$ grep &quot;[0-9]\{4\}&quot; grep.txt ooxx121212121ooxx ooxx 12121212 oox 12121212 1212 ooxx 1212 oo1234xx hank@hank:~$ grep -E &quot;[0-9]{4}&quot; grep.txt ooxx121212121ooxx ooxx 12121212 oox 12121212 1212 ooxx 1212 oo1234xx hank@hank:~$ grep &quot;\&lt;ooxx\&gt;&quot; grep.txt ooxx 12121212 1212 ooxx 1212 $ooxx hank@hank:~$ grep &quot;[^0-9][0-9]\{4\}[^0-9]&quot; grep.txt oo1234xx hank@hank:~$ grep &quot;\(^[0-9]\|[^0-9][0-9]\)[0-9]\{2\}\([0-9]$\|[0-9][^0-9]\)&quot; grep.txt 1212 ooxx 1212 oo1234xx hank@hank:~$ grep -E &quot;(^[0-9]|[^0-9][0-9])[0-9]{2}([0-9]$|[0-9][^0-9])&quot; grep.txt 1212 ooxx 1212 oo1234xx……
+        </div>
+        <p class="readmore"><a href="https://hank-leo.github.io/post/python/%E6%AD%A3%E5%88%99%E7%9A%84%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8/">阅读全文</a></p>
+    </article>
     
     <article class="post">
         <header>
@@ -257,52 +305,6 @@
         <p class="readmore"><a href="https://hank-leo.github.io/post/scrapy/Scrapy%E6%A1%86%E6%9E%B6-settings-py/">阅读全文</a></p>
     </article>
     
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://hank-leo.github.io/post/scrapy/Scrapy%E6%A1%86%E6%9E%B6-%E5%85%A5%E9%97%A8%E6%A1%88%E4%BE%8B/" title="Scrapy框架:入门案例">Scrapy框架:入门案例</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2019年12月4日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='https://hank-leo.github.io/categories/Scrapy%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0'>Scrapy框架学习</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            创建项目: scrappy start project maitian 明确要抓取的字段items.py import scrapy class MaitianItem(scrapy.Item): # define the fields for your item here like: # name = scrapy.Field() title = scrapy.Field() price = scrapy.Field() area = scrapy.Field() district = scrapy.Field() 在spider目录下创建爬虫文件: zufang_spider.py 2.1 创建一个类，并继承scrapy的一个子类: scrapy.Spider 2.2 自定义爬取名, name=&quot;&quot; 后面运行框架需要用到； 2.3 定义爬取目标网址 2.4 定义scrapy的方法 下面是简……
-        </div>
-        <p class="readmore"><a href="https://hank-leo.github.io/post/scrapy/Scrapy%E6%A1%86%E6%9E%B6-%E5%85%A5%E9%97%A8%E6%A1%88%E4%BE%8B/">阅读全文</a></p>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://hank-leo.github.io/post/scrapy/Scrapy%E6%A1%86%E6%9E%B6-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" title="Scrapy框架:异常处理">Scrapy框架:异常处理</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2019年12月4日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='https://hank-leo.github.io/categories/Scrapy%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0'>Scrapy框架学习</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            import scrapy from scrapy.spidermiddlewares.httperror import HttpError from twisted.internet.error import DNSLookupError from twisted.internet.error import TimeoutError, TCPTimedOutError class ErrbackSpider(scrapy.Spider): name = &quot;errback_example&quot; start_urls = [ &quot;http://www.httpbin.org/&quot;, # 正常HTTP 200返回 &quot;http://www.httpbin.org/status/404&quot;, # 404 Not found error &quot;http://www.httpbin.org/status/500&quot;, # 500服务器错误 &quot;http://www.httpbin.org:12345/&quot;, # 超时无响应错误 &quot;http://www.httphttpbinbin.org/&quot;, # DNS 错误 ] def start_requests(self): for u in self.start_urls: yield scrapy.Request(u, callback=self.parse_httpbin, errback=self.errback_httpbin, dont_filter=True) def parse_httpbin(self, response): self.logger.info('Got successful response from {}'.format(response.url)) # 其他处理. def errback_httpbin(self, failure): # 日志记录所有的异常信息 self.logger.error(repr(failure)) # 假设我们需要对指定的异常类型做处理， # 我们需要判断异常的类型 if……
-        </div>
-        <p class="readmore"><a href="https://hank-leo.github.io/post/scrapy/Scrapy%E6%A1%86%E6%9E%B6-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">阅读全文</a></p>
-    </article>
-    
     
 
 
@@ -395,6 +397,14 @@
 <ul class="widget-list">
     
     <li>
+        <a href="https://hank-leo.github.io/post/analysis/Pandas%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/" title="Pandas基础操作">Pandas基础操作</a>
+    </li>
+    
+    <li>
+        <a href="https://hank-leo.github.io/post/analysis/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E7%B1%BB%E7%BD%91%E7%AB%99%E5%90%88%E9%9B%86/" title="数据分析类网站合集">数据分析类网站合集</a>
+    </li>
+    
+    <li>
         <a href="https://hank-leo.github.io/post/go/Docker%E5%AD%A6%E4%B9%A0%E4%B8%8E%E4%BD%BF%E7%94%A8/" title="Docker学习与使用">Docker学习与使用</a>
     </li>
     
@@ -426,14 +436,6 @@
         <a href="https://hank-leo.github.io/post/algorithm/Python%E7%AE%97%E6%B3%95%E4%BE%8B2%E5%88%A4%E6%96%AD%E5%B9%B3%E6%96%B9%E6%95%B0/" title="Python算法|例2判断平方数">Python算法|例2判断平方数</a>
     </li>
     
-    <li>
-        <a href="https://hank-leo.github.io/post/algorithm/Python%E7%AE%97%E6%B3%95%E4%BE%8B3%E6%A3%80%E6%B5%8B2%E7%9A%84%E5%B9%82%E6%AC%A1/" title="Python算法|例3检测2的幂次">Python算法|例3检测2的幂次</a>
-    </li>
-    
-    <li>
-        <a href="https://hank-leo.github.io/post/algorithm/Python%E7%AE%97%E6%B3%95%E4%BE%8B4%E6%B1%82%E5%B9%B3%E6%96%B9%E6%A0%B9/" title="Python算法|例4求平方根">Python算法|例4求平方根</a>
-    </li>
-    
 </ul>
     </section>
 
@@ -453,7 +455,7 @@
     
     <li><a href="https://hank-leo.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建 (3)</a></li>
     
-    <li><a href="https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%AD%A6%E4%B9%A0/">数据分析学习 (3)</a></li>
+    <li><a href="https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%AD%A6%E4%B9%A0/">数据分析学习 (5)</a></li>
     
     <li><a href="https://hank-leo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%AE%9E%E6%88%98/">数据分析实战 (3)</a></li>
     
@@ -544,53 +546,12 @@
     
     <a href="https://hank-leo.github.io/tags/%E7%88%AC%E8%99%AB%E9%9D%A2%E8%AF%95/">爬虫面试</a>
     
+    <a href="https://hank-leo.github.io/tags/%E8%B5%84%E6%BA%90/">资源</a>
+    
 </div>
     </section>
 
     
-<section class="widget">
-    <h3 class="widget-title">友情链接</h3>
-    <ul class="widget-list">
-        
-        <li>
-            <a target="_blank" href="http://cnblogs.hankleo.com" title="博客园">博客园</a>
-        </li>
-        
-        <li>
-            <a target="_blank" href="https://github.com/hank-leo" title="Github">Github</a>
-        </li>
-        
-        <li>
-            <a target="_blank" href="https://juejin.im/user/1257497033980263" title="掘金">掘金</a>
-        </li>
-        
-        <li>
-            <a target="_blank" href="https://gitbook.cn/gitchat/author/5b140311cfed0223b4277e19" title="GitChat">GitChat</a>
-        </li>
-        
-        <li>
-            <a target="_blank" href="https://blog.csdn.net/weixin_42247053" title="CSDN">CSDN</a>
-        </li>
-        
-        <li>
-            <a target="_blank" href="https://www.v2ex.com/member/hankleo" title="V2EX">V2EX</a>
-        </li>
-        
-        <li>
-            <a target="_blank" href="https://segmentfault.com/u/hankleo" title="Segmentfault">Segmentfault</a>
-        </li>
-        
-        <li>
-            <a target="_blank" href="https://gitee.com/hank_leo" title="Gitee">Gitee</a>
-        </li>
-        
-        <li>
-            <a target="_blank" href="https://www.infoq.cn/profile/584F08177BF384/following/user" title="InfoQ">InfoQ</a>
-        </li>
-        
-    </ul>
-</section>
-
 
     <section class="widget">
         <h3 class="widget-title">其它</h3>
